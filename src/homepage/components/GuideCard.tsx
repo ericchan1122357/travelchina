@@ -10,6 +10,9 @@ interface GuideCardProps {
 
 const GuideCard: React.FC<GuideCardProps> = ({ guide }) => {
   const { title, description, iconName, url, category } = guide;
+  
+  // 构建默认 URL
+  const guideUrl = url || `/guides/${category.toLowerCase()}/${title.toLowerCase().replace(/\s+/g, '-')}`;
 
   // 根据类别返回图标和颜色
   const getIconAndColor = (category: string) => {
@@ -81,7 +84,7 @@ const GuideCard: React.FC<GuideCardProps> = ({ guide }) => {
 
   return (
     <Link 
-      href={url}
+      href={guideUrl}
       className="block p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 h-full"
     >
       <div className="flex flex-col h-full">
