@@ -30,10 +30,12 @@ export interface TravelStory {
 export interface TravelGuide {
   id: string;
   title: string;
-  summary: string;
+  description: string;
   content: string;
   category: string;
   imageUrl: string;
+  iconName?: string;
+  url?: string;
 }
 
 // 价值主张数据类型
