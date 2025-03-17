@@ -32,9 +32,10 @@ const NavBar: React.FC<NavBarProps> = ({
     zh: '中文',
     fr: 'FR',
     de: 'DE',
-    ja: 'JP',
-    ko: 'KR',
-    es: 'ES'
+    ja: '日本語',
+    ko: '한국어',
+    es: 'ES',
+    ru: 'RU'
   };
 
   const handleLanguageChange = (language: Language) => {
