@@ -8,90 +8,79 @@ interface DestinationCardProps {
   destination: Destination;
 }
 
-const DestinationCard: React.FC<DestinationCardProps> = ({ destination }) => {
-  const { name, description, imageUrl, season, tags, url } = destination;
+type SeasonType = 'spring' | 'summer' | 'autumn' | 'winter' | 'all-season';
 
-  const seasonColors = {
+const DestinationCard: React.FC<DestinationCardProps> = ({ destination }) => {
+  const { name, description, imageUrl, season, activities } = destination;
+
+  const seasonColors: Record<SeasonType, string> = {
     spring: 'bg-green-100 text-green-800',
     summer: 'bg-yellow-100 text-yellow-800',
     autumn: 'bg-orange-100 text-orange-800',
     winter: 'bg-blue-100 text-blue-800',
-    all: 'bg-purple-100 text-purple-800'
+    'all-season': 'bg-purple-100 text-purple-800'
   };
 
-  // 根据季节返回对应的标签样式
-  const getSeasonClass = (season: 'spring' | 'summer' | 'autumn' | 'winter' | 'all') => {
-    return seasonColors[season] || 'bg-gray-100 text-gray-800';
-  };
-
-  // 获取季节的中文名称
-  const getSeasonName = (season: 'spring' | 'summer' | 'autumn' | 'winter' | 'all') => {
-    const seasonNames = {
-      spring: '春季',
-      summer: '夏季',
-      autumn: '秋季',
-      winter: '冬季',
-      all: '全年'
-    };
-    return seasonNames[season];
-  };
+  const seasonColor = seasonColors[season.toLowerCase() as SeasonType] || seasonColors['all-season'];
 
   return (
-    <div className="group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 bg-white h-full flex flex-col">
-      {/* 图片容器 */}
-      <div className="relative h-48 w-full overflow-hidden">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      <div className="relative aspect-w-16 aspect-h-9">
         <Image
           src={imageUrl}
           alt={name}
-          fill
-          className="object-cover transform group-hover:scale-105 transition-transform duration-500"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          layout="fill"
+          objectFit="cover"
+          className="transition-transform duration-300 hover:scale-105"
         />
-        <div className="absolute top-3 right-3">
-          <span 
-            className={`${getSeasonClass(season)} text-xs font-medium px-2.5 py-1 rounded-full`}
-          >
-            {getSeasonName(season)}
+      </div>
+      
+      <div className="p-4">
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-xl font-bold text-gray-900">{name}</h3>
+          <span className={`px-2 py-1 rounded-full text-sm font-medium ${seasonColor}`}>
+            {season}
           </span>
         </div>
-      </div>
-
-      {/* 内容 */}
-      <div className="p-5 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold text-gray-800 mb-2">{name}</h3>
-        <p className="text-gray-600 text-sm mb-4 flex-grow">{description}</p>
         
-        {/* 标签 */}
-        <div className="flex flex-wrap gap-1 mb-4">
-          {tags.slice(0, 3).map((tag, index) => (
-            <span 
-              key={index}
-              className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"
-            >
-              {tag}
-            </span>
-          ))}
-          {tags.length > 3 && (
-            <span className="text-gray-500 text-xs px-2 py-1">
-              +{tags.length - 3}
-            </span>
-          )}
-        </div>
+        <p className="text-gray-600 mb-4 line-clamp-2">{description}</p>
         
-        {/* 链接 */}
+        {activities && activities.length > 0 && (
+          <div className="mb-4">
+            <div className="flex flex-wrap gap-2">
+              {activities.slice(0, 3).map((activity, index) => (
+                <span
+                  key={index}
+                  className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+                >
+                  {activity}
+                </span>
+              ))}
+              {activities.length > 3 && (
+                <span className="text-xs text-gray-500">+{activities.length - 3} more</span>
+              )}
+            </div>
+          </div>
+        )}
+        
         <Link
-          href={url}
-          className="text-red-600 hover:text-red-700 font-medium text-sm inline-flex items-center group-hover:underline"
+          href={`/destinations/${name.toLowerCase()}`}
+          className="inline-flex items-center text-china-red hover:text-red-700"
         >
           了解更多
-          <svg 
-            className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24" 
+          <svg
+            className="ml-2 w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </Link>
       </div>

@@ -10,6 +10,8 @@ export interface Destination {
   season: string;
   featured: boolean;
   activities: string[];
+  tags?: string[];  // 可选的标签数组
+  url?: string;     // 可选的URL
 }
 
 // 旅行故事数据类型
