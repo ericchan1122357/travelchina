@@ -18,7 +18,7 @@ export interface Destination {
 export interface TravelStory {
   id: string;
   title: string;
-  summary: string;
+  description: string;
   content: string;
   author: Author;
   date: string;

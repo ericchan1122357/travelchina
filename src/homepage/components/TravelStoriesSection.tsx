@@ -42,7 +42,7 @@ const TravelStoriesSection = ({
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {story.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{story.summary}</p>
+                <p className="text-gray-600 mb-4">{story.description}</p>
 
                 {/* 作者信息 */}
                 <div className="flex items-center">

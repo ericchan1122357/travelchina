@@ -73,7 +73,7 @@ export const travelStories: TravelStory[] = [
   {
     id: "1",
     title: "徒步长城：走进历史的天际线",
-    summary: "一段难忘的长城徒步之旅，探索明长城最美的司马台段",
+    description: "一段难忘的长城徒步之旅，探索明长城最美的司马台段",
     content: "这是一段精彩的长城徒步故事...",
     author: {
       name: "Sarah Chen",
@@ -86,7 +86,7 @@ export const travelStories: TravelStory[] = [
   {
     id: "2",
     title: "寻味成都：舌尖上的川菜之旅",
-    summary: "探索成都的街头小巷，品尝最地道的川菜美食",
+    description: "探索成都的街头小巷，品尝最地道的川菜美食",
     content: "这是一段美食探索的故事...",
     author: {
       name: "Mike Zhang",
@@ -103,7 +103,7 @@ export const travelGuides: TravelGuide[] = [
   {
     id: "1",
     title: "中国签证办理指南",
-    summary: "详细介绍各类签证的申请流程和所需材料",
+    description: "详细介绍各类签证的申请流程和所需材料",
     content: "这是签证办理的详细指南...",
     category: "实用信息",
     imageUrl: "/images/guides/visa.jpg"
@@ -111,7 +111,7 @@ export const travelGuides: TravelGuide[] = [
   {
     id: "2",
     title: "中国交通攻略",
-    summary: "火车、飞机、地铁等各类交通工具的使用指南",
+    description: "火车、飞机、地铁等各类交通工具的使用指南",
     content: "这是交通出行的详细指南...",
     category: "交通",
     imageUrl: "/images/guides/transportation.jpg"
@@ -119,7 +119,7 @@ export const travelGuides: TravelGuide[] = [
   {
     id: "3",
     title: "中国文化礼仪",
-    summary: "了解中国的基本礼仪和文化禁忌",
+    description: "了解中国的基本礼仪和文化禁忌",
     content: "这是文化礼仪的详细指南...",
     category: "文化",
     imageUrl: "/images/guides/culture.jpg"
