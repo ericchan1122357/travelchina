@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Language } from '../types';
+import { getTranslation } from '../utils/translations';
 
 interface NavBarProps {
   currentLanguage: Language;
@@ -16,6 +17,9 @@ const NavBar: React.FC<NavBarProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+
+  // 获取当前语言的翻译
+  const t = (key: string) => getTranslation(currentLanguage, key);
 
   const languageOptions: { code: Language; label: string }[] = [
     { code: 'en', label: 'English' },
@@ -65,16 +69,16 @@ const NavBar: React.FC<NavBarProps> = ({
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/destinations" className="text-gray-600 hover:text-china-red">
-              目的地
+              {t('destinations')}
             </Link>
             <Link href="/stories" className="text-gray-600 hover:text-china-red">
-              旅行故事
+              {t('stories')}
             </Link>
             <Link href="/guides" className="text-gray-600 hover:text-china-red">
-              实用指南
+              {t('guides')}
             </Link>
             <Link href="/planner" className="text-gray-600 hover:text-china-red">
-              行程规划
+              {t('planner')}
             </Link>
           </div>
 
@@ -127,28 +131,28 @@ const NavBar: React.FC<NavBarProps> = ({
               className="block px-3 py-2 text-gray-600 hover:text-china-red"
               onClick={() => setIsMenuOpen(false)}
             >
-              目的地
+              {t('destinations')}
             </Link>
             <Link
               href="/stories"
               className="block px-3 py-2 text-gray-600 hover:text-china-red"
               onClick={() => setIsMenuOpen(false)}
             >
-              旅行故事
+              {t('stories')}
             </Link>
             <Link
               href="/guides"
               className="block px-3 py-2 text-gray-600 hover:text-china-red"
               onClick={() => setIsMenuOpen(false)}
             >
-              实用指南
+              {t('guides')}
             </Link>
             <Link
               href="/planner"
               className="block px-3 py-2 text-gray-600 hover:text-china-red"
               onClick={() => setIsMenuOpen(false)}
             >
-              行程规划
+              {t('planner')}
             </Link>
             <div className="px-3 py-2">
               <select

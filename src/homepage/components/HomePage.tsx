@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Language } from '../types';
+import { getTranslation } from '../utils/translations';
 import NavBar from './NavBar';
 import HeroBanner from './HeroBanner';
 import ValueProposition from './ValueProposition';
@@ -28,7 +29,6 @@ const HomePage = () => {
 
   const handleLanguageChange = (language: Language) => {
     setCurrentLanguage(language);
-    // 在实际应用中，可能需要加载不同语言的内容或更改URL
   };
 
   const handleCtaClick = () => {
@@ -39,6 +39,9 @@ const HomePage = () => {
     router.push(`/stories/${storyId}`);
   };
 
+  // 获取当前语言的翻译
+  const t = (key: string) => getTranslation(currentLanguage, key);
+
   // 错误边界
   try {
     return (
@@ -48,32 +51,48 @@ const HomePage = () => {
           onLanguageChange={handleLanguageChange} 
         />
         
-        <main className="flex-grow pt-16"> {/* pt-16 为顶部导航栏留出空间 */}
+        <main className="flex-grow pt-16">
           <HeroBanner 
-            data={heroData} 
+            data={{
+              ...heroData,
+              title: t('heroTitle'),
+              subtitle: t('heroSubtitle'),
+              ctaText: t('startPlanning')
+            }}
             onCtaClick={handleCtaClick} 
           />
           
-          <ValueProposition values={valueProps} />
+          <ValueProposition 
+            values={valueProps.map((prop, index) => ({
+              ...prop,
+              title: t(`valueProp${index + 1}Title`),
+              description: t(`valueProp${index + 1}Desc`)
+            }))} 
+          />
           
           <DestinationSection 
-            title="2024春季推荐目的地" 
+            title={t('destinationsTitle')}
             destinations={featuredDestinations} 
           />
           
           <TravelStoriesSection 
-            title="旅行者的中国故事" 
+            title={t('storiesTitle')}
             stories={travelStories} 
             onReadMoreClick={handleReadMoreClick} 
           />
           
           <GuidesSection 
-            title="中国旅行实用指南" 
+            title={t('guidesTitle')}
             guides={travelGuides} 
           />
           
           <CallToAction 
-            data={ctaData} 
+            data={{
+              ...ctaData,
+              title: t('ctaTitle'),
+              subtitle: t('ctaSubtitle'),
+              buttonText: t('startPlanning')
+            }}
             onCtaClick={handleCtaClick} 
           />
         </main>

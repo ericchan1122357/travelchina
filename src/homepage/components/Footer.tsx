@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Language } from '../types';
+import { getTranslation } from '../utils/translations';
 
 interface FooterProps {
   currentLanguage: Language;
@@ -10,6 +11,9 @@ interface FooterProps {
 }
 
 const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
+  // 获取当前语言的翻译
+  const t = (key: string) => getTranslation(currentLanguage, key);
+
   const languageOptions: { code: Language; label: string }[] = [
     { code: 'en', label: 'English' },
     { code: 'zh', label: '中文' },
@@ -33,32 +37,36 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
               中国旅游
             </Link>
             <p className="mt-4 text-gray-400">
-              发现中国的魅力，体验独特的文化之旅。我们致力于为您提供最佳的旅行体验和专业的规划建议。
+              {currentLanguage === 'zh' 
+                ? '发现中国的魅力，体验独特的文化之旅。我们致力于为您提供最佳的旅行体验和专业的规划建议。'
+                : 'Discover the charm of China and experience unique cultural journeys. We are committed to providing you with the best travel experiences and professional planning advice.'}
             </p>
           </div>
 
           {/* 快速链接 */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">快速链接</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              {currentLanguage === 'zh' ? '快速链接' : 'Quick Links'}
+            </h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/destinations" className="text-gray-400 hover:text-white">
-                  目的地
+                  {t('destinations')}
                 </Link>
               </li>
               <li>
                 <Link href="/stories" className="text-gray-400 hover:text-white">
-                  旅行故事
+                  {t('stories')}
                 </Link>
               </li>
               <li>
                 <Link href="/guides" className="text-gray-400 hover:text-white">
-                  实用指南
+                  {t('guides')}
                 </Link>
               </li>
               <li>
                 <Link href="/planner" className="text-gray-400 hover:text-white">
-                  行程规划
+                  {t('planner')}
                 </Link>
               </li>
             </ul>
@@ -66,7 +74,9 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
 
           {/* 语言和联系方式 */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">语言选择</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              {currentLanguage === 'zh' ? '语言选择' : 'Language'}
+            </h3>
             <select
               value={currentLanguage}
               onChange={(e) => onLanguageChange(e.target.value as Language)}
@@ -78,17 +88,19 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
               <option value="ko">한국어</option>
             </select>
 
-            <h3 className="text-lg font-semibold mt-6 mb-4">联系我们</h3>
+            <h3 className="text-lg font-semibold mt-6 mb-4">
+              {t('contact')}
+            </h3>
             <div className="space-y-2 text-gray-400">
-              <p>邮箱：contact@chinatravel.com</p>
-              <p>电话：+86 123 4567 8900</p>
+              <p>Email: contact@chinatravel.com</p>
+              <p>Tel: +86 123 4567 8900</p>
             </div>
           </div>
         </div>
 
         {/* 版权信息 */}
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>© {year} 中国旅游. 保留所有权利.</p>
+          <p>© {year} {currentLanguage === 'zh' ? '中国旅游' : 'China Travel'}. {currentLanguage === 'zh' ? '保留所有权利' : 'All rights reserved'}.</p>
         </div>
       </div>
     </footer>
