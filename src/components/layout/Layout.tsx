@@ -1,19 +1,38 @@
-import { ReactNode } from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import React, { Suspense } from 'react';
+import ErrorBoundary from '../common/ErrorBoundary';
+import LoadingSpinner from '../common/LoadingSpinner';
+import PerformanceMonitor from '../common/PerformanceMonitor';
+
+// 懒加载组件
+const Header = React.lazy(() => import('./Header'));
+const Footer = React.lazy(() => import('./Footer'));
+const PageTransition = React.lazy(() => import('./PageTransition'));
 
 interface LayoutProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
-      <main id="main-content" className="flex-grow">
-        {children}
+      <PerformanceMonitor />
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Header />
+        </Suspense>
+      </ErrorBoundary>
+      <main className="flex-grow">
+        <ErrorBoundary>
+          <Suspense fallback={<LoadingSpinner />}>
+            <PageTransition>{children}</PageTransition>
+          </Suspense>
+        </ErrorBoundary>
       </main>
-      <Footer />
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Footer />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };

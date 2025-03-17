@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import * as Sentry from '@sentry/nextjs';
 
 interface PerformanceMetric {
@@ -7,55 +7,34 @@ interface PerformanceMetric {
   rating: 'good' | 'needs-improvement' | 'poor';
 }
 
-const PerformanceMonitor = () => {
+const PerformanceMonitor: React.FC = () => {
   useEffect(() => {
+    // 监控页面加载性能
     if (typeof window !== 'undefined') {
-      // 监控核心Web指标
-      const observer = new PerformanceObserver((list) => {
-        list.getEntries().forEach((entry: any) => {
-          const metric: PerformanceMetric = {
-            name: entry.name,
-            value: entry.value,
-            rating: getRating(entry.name, entry.value)
-          };
-
-          // 发送到Sentry
-          Sentry.addBreadcrumb({
-            category: 'performance',
-            message: `${metric.name}: ${metric.value}ms (${metric.rating})`,
-            level: 'info'
-          });
-
-          // 如果性能不佳，创建Sentry事件
-          if (metric.rating === 'poor') {
-            Sentry.captureMessage(`Poor performance detected: ${metric.name}`, {
-              level: 'warning',
-              extra: {
-                metricName: metric.name,
-                metricValue: metric.value,
-                metricRating: metric.rating
-              }
-            });
+      const performanceObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          // 记录性能指标
+          console.log('Performance Entry:', entry);
+          
+          // 这里可以添加性能数据上报逻辑
+          // 例如发送到Sentry或其他监控服务
+          if (entry.entryType === 'largest-contentful-paint') {
+            // 记录最大内容绘制时间
+            console.log('LCP:', entry.startTime);
+          } else if (entry.entryType === 'first-input') {
+            // 记录首次输入延迟
+            console.log('FID:', entry.duration);
           }
-
-          // 发送到Google Analytics（如果配置了）
-          if (typeof window.gtag !== 'undefined') {
-            window.gtag('event', 'performance_metric', {
-              metric_name: metric.name,
-              value: metric.value,
-              rating: metric.rating
-            });
-          }
-        });
+        }
       });
 
-      // 观察关键性能指标
-      observer.observe({
-        entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift', 'paint']
-      });
+      // 观察不同类型的性能指标
+      performanceObserver.observe({ entryTypes: ['largest-contentful-paint', 'first-input'] });
 
       // 清理函数
-      return () => observer.disconnect();
+      return () => {
+        performanceObserver.disconnect();
+      };
     }
   }, []);
 
