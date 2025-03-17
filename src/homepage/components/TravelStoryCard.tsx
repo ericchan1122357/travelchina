@@ -9,7 +9,7 @@ interface TravelStoryCardProps {
 }
 
 const TravelStoryCard: React.FC<TravelStoryCardProps> = ({ story, onReadMore }) => {
-  const { id, title, summary, imageUrl, user, date, destination } = story;
+  const { id, title, summary, imageUrl, author, date, destination } = story;
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
@@ -33,16 +33,16 @@ const TravelStoryCard: React.FC<TravelStoryCardProps> = ({ story, onReadMore }) 
             {/* 用户头像 */}
             <div className="h-10 w-10 rounded-full overflow-hidden relative mr-3">
               <Image
-                src={user.avatar || '/default-avatar.png'}
-                alt={user.name}
+                src={author.avatar || '/default-avatar.png'}
+                alt={author.name}
                 fill
                 className="object-cover"
               />
             </div>
             
             <div>
-              <p className="text-sm font-medium text-gray-900">{user.name}</p>
-              <p className="text-xs text-gray-500">{user.nationality} | {date}</p>
+              <p className="text-sm font-medium text-gray-900">{author.name}</p>
+              <p className="text-xs text-gray-500">{date}</p>
             </div>
           </div>
           
