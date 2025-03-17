@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { TravelGuide } from '../types';
 
 interface GuidesSectionProps {
@@ -21,11 +22,13 @@ const GuidesSection = ({ title, guides }: GuidesSectionProps) => {
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               {/* 图片 */}
-              <div className="aspect-w-16 aspect-h-9 bg-gray-200">
-                <img
+              <div className="relative aspect-w-16 aspect-h-9 bg-gray-200">
+                <Image
                   src={guide.imageUrl}
                   alt={guide.title}
-                  className="object-cover w-full h-full"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
 
@@ -36,11 +39,11 @@ const GuidesSection = ({ title, guides }: GuidesSectionProps) => {
                     {guide.category}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {guide.title}
                 </h3>
                 <p className="text-gray-600">
-                  {guide.summary}
+                  {guide.description}
                 </p>
               </div>
             </div>

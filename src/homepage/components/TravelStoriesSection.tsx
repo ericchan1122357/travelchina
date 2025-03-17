@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { TravelStory } from '../types';
 
 interface TravelStoriesSectionProps {
@@ -19,50 +20,47 @@ const TravelStoriesSection = ({
         <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
           {title}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {stories.map((story) => (
             <div
               key={story.id}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
-              {/* 图片 */}
-              <div className="aspect-w-16 aspect-h-9 bg-gray-200">
-                <img
+              {/* 故事图片 */}
+              <div className="relative aspect-w-16 aspect-h-9">
+                <Image
                   src={story.imageUrl}
                   alt={story.title}
-                  className="object-cover w-full h-full"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
 
-              {/* 内容 */}
+              {/* 故事内容 */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {story.title}
                 </h3>
-                <p className="text-gray-600 mb-4">
-                  {story.summary}
-                </p>
+                <p className="text-gray-600 mb-4">{story.summary}</p>
 
-                {/* 作者信息和日期 */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center">
-                    <img
+                {/* 作者信息 */}
+                <div className="flex items-center">
+                  <div className="relative h-10 w-10 rounded-full overflow-hidden">
+                    <Image
                       src={story.author.avatar}
                       alt={story.author.name}
-                      className="w-10 h-10 rounded-full mr-3"
+                      fill
+                      className="object-cover"
+                      sizes="40px"
                     />
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">
-                        {story.author.name}
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        {story.destination}
-                      </p>
-                    </div>
                   </div>
-                  <span className="text-sm text-gray-500">
-                    {new Date(story.date).toLocaleDateString('zh-CN')}
-                  </span>
+                  <div className="ml-3">
+                    <p className="text-sm font-medium text-gray-900">
+                      {story.author.name}
+                    </p>
+                    <p className="text-sm text-gray-500">{story.destination}</p>
+                  </div>
                 </div>
 
                 {/* 阅读更多按钮 */}
