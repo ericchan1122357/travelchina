@@ -37,26 +37,20 @@ const NavBar: React.FC<NavBarProps> = ({ currentLanguage, onLanguageChange }) =>
 
           {/* Language Selector */}
           <div className="flex items-center space-x-4">
-            <button
-              onClick={() => onLanguageChange('en')}
-              className={`px-3 py-1 rounded ${
-                currentLanguage === 'en'
-                  ? 'bg-china-red text-white'
-                  : 'text-gray-700 hover:text-china-red'
-              }`}
+            <select
+              value={currentLanguage}
+              onChange={(e) => onLanguageChange(e.target.value as Language)}
+              className="px-3 py-1 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-china-red focus:border-transparent"
             >
-              EN
-            </button>
-            <button
-              onClick={() => onLanguageChange('zh')}
-              className={`px-3 py-1 rounded ${
-                currentLanguage === 'zh'
-                  ? 'bg-china-red text-white'
-                  : 'text-gray-700 hover:text-china-red'
-              }`}
-            >
-              中文
-            </button>
+              <option value="en">English</option>
+              <option value="zh">中文</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="es">Español</option>
+              <option value="ru">Русский</option>
+            </select>
           </div>
         </div>
       </div>
