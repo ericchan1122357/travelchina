@@ -55,9 +55,7 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
               中国旅游
             </Link>
             <p className="mt-4 text-gray-400">
-              {currentLanguage === 'zh' 
-                ? '发现中国的魅力，体验独特的文化之旅。我们致力于为您提供最佳的旅行体验和专业的规划建议。'
-                : 'Discover the charm of China and experience unique cultural journeys. We are committed to providing you with the best travel experiences and professional planning advice.'}
+              {t('footerDescription') as string}
             </p>
             {/* 社交媒体链接 */}
             <div 
