@@ -1,13 +1,10 @@
 import { useState } from 'react';
-import { Language } from '../../homepage/types';
-import { getTranslation, TranslationValue } from '../../homepage/utils/translations';
+import { getTranslation, TranslationValue } from '@/homepage/utils/translations';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-interface SkipToMainProps {
-  currentLanguage: Language;
-}
-
-const SkipToMain: React.FC<SkipToMainProps> = ({ currentLanguage }) => {
+const SkipToMain: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { currentLanguage } = useLanguage();
 
   // 获取当前语言的翻译
   const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);

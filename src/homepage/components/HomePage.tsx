@@ -1,9 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Language } from '../types';
-import { getTranslation, TranslationValue } from '../utils/translations';
+import { getTranslation, TranslationValue } from '@/homepage/utils/translations';
 import NavBar from './NavBar';
 import HeroBanner from './HeroBanner';
 import ValueProposition from './ValueProposition';
@@ -12,6 +10,8 @@ import TravelStoriesSection from './TravelStoriesSection';
 import GuidesSection from './GuidesSection';
 import CallToAction from './CallToAction';
 import Footer from './Footer';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { ValueProp } from '@/homepage/types';
 
 // 示例数据
 import { 
@@ -21,15 +21,11 @@ import {
   travelStories,
   travelGuides,
   ctaData
-} from '../utils/mockData';
+} from '@/homepage/utils/mockData';
 
 const HomePage = () => {
   const router = useRouter();
-  const [currentLanguage, setCurrentLanguage] = useState<Language>('en');
-
-  const handleLanguageChange = (language: Language) => {
-    setCurrentLanguage(language);
-  };
+  const { currentLanguage, setCurrentLanguage } = useLanguage();
 
   const handleCtaClick = () => {
     router.push('/planner');
@@ -48,7 +44,7 @@ const HomePage = () => {
       <div className="min-h-screen flex flex-col">
         <NavBar 
           currentLanguage={currentLanguage} 
-          onLanguageChange={handleLanguageChange} 
+          onLanguageChange={setCurrentLanguage} 
         />
         
         <main className="flex-grow pt-16">
@@ -63,7 +59,7 @@ const HomePage = () => {
           />
           
           <ValueProposition 
-            values={valueProps.map((prop, index) => ({
+            values={valueProps.map((prop: ValueProp, index: number) => ({
               ...prop,
               title: t(`valueProp${index + 1}Title` as keyof TranslationValue) as string,
               description: t(`valueProp${index + 1}Desc` as keyof TranslationValue) as string
@@ -99,20 +95,13 @@ const HomePage = () => {
         
         <Footer 
           currentLanguage={currentLanguage} 
-          onLanguageChange={handleLanguageChange} 
+          onLanguageChange={setCurrentLanguage} 
         />
       </div>
     );
   } catch (error) {
-    console.error('HomePage rendering error:', error);
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">页面加载出错</h1>
-          <p className="text-gray-600">抱歉，页面加载时遇到了问题。请刷新页面重试。</p>
-        </div>
-      </div>
-    );
+    console.error('Error rendering HomePage:', error);
+    return <div>Something went wrong. Please try again later.</div>;
   }
 };
 
