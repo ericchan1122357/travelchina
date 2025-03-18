@@ -68,18 +68,21 @@ const HomePage = () => {
           
           <DestinationSection 
             title={t('destinationsTitle') as string}
-            destinations={featuredDestinations} 
+            destinations={featuredDestinations}
+            currentLanguage={currentLanguage}
           />
           
           <TravelStoriesSection 
             title={t('storiesTitle') as string}
             stories={travelStories} 
-            onReadMoreClick={handleReadMoreClick} 
+            onReadMoreClick={handleReadMoreClick}
+            currentLanguage={currentLanguage}
           />
           
           <GuidesSection 
             title={t('guidesTitle') as string}
-            guides={travelGuides} 
+            guides={travelGuides}
+            currentLanguage={currentLanguage}
           />
           
           <CallToAction 

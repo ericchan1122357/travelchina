@@ -1,55 +1,161 @@
 'use client';
 
-import Image from 'next/image';
-import { TravelGuide } from '../types';
+import { useState, useRef } from 'react';
+import { TravelGuide, Language } from '../types';
+import OptimizedImage from './common/OptimizedImage';
+import { getTranslation, TranslationValue } from '../utils/translations';
 
 interface GuidesSectionProps {
   title: string;
   guides: TravelGuide[];
+  currentLanguage: Language;
 }
 
-const GuidesSection = ({ title, guides }: GuidesSectionProps) => {
+const GuidesSection = ({
+  title,
+  guides,
+  currentLanguage
+}: GuidesSectionProps) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+
+  // 获取当前语言的翻译
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key) as string;
+
+  const checkScrollButtons = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    setShowLeftArrow(container.scrollLeft > 0);
+    setShowRightArrow(
+      container.scrollLeft < container.scrollWidth - container.clientWidth - 10
+    );
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const scrollAmount = direction === 'left' ? -400 : 400;
+    container.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <section className="py-16 bg-white">
+    <section 
+      className="py-16 bg-gray-50"
+      aria-labelledby="guides-title"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+        <h2 
+          id="guides-title"
+          className="text-3xl font-bold text-gray-900 text-center mb-12"
+        >
           {title}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {guides.map((guide) => (
-            <div
-              key={guide.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+        
+        {/* 滚动容器 */}
+        <div className="relative">
+          {/* 左侧箭头 */}
+          {showLeftArrow && (
+            <button
+              onClick={() => scroll('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-colors duration-300
+                       focus:outline-none focus:ring-2 focus:ring-china-red focus:ring-offset-2"
+              aria-label={t('scrollLeft')}
             >
-              {/* 图片 */}
-              <div className="relative aspect-w-16 aspect-h-9 bg-gray-200">
-                <Image
-                  src={guide.imageUrl}
-                  alt={guide.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
+              <svg
+                className="w-6 h-6 text-gray-800"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+          )}
 
-              {/* 内容 */}
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-china-red/10 text-china-red">
-                    {guide.category}
-                  </span>
+          {/* 右侧箭头 */}
+          {showRightArrow && (
+            <button
+              onClick={() => scroll('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-colors duration-300
+                       focus:outline-none focus:ring-2 focus:ring-china-red focus:ring-offset-2"
+              aria-label={t('scrollRight')}
+            >
+              <svg
+                className="w-6 h-6 text-gray-800"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          )}
+
+          {/* 指南卡片滚动区域 */}
+          <div
+            ref={scrollContainerRef}
+            className="flex space-x-6 overflow-x-auto pb-4 hide-scrollbar"
+            onScroll={checkScrollButtons}
+          >
+            {guides.map((guide) => (
+              <article
+                key={guide.id}
+                className="flex-none w-full sm:w-96 bg-white rounded-lg shadow-md overflow-hidden"
+              >
+                <div className="relative h-48">
+                  <OptimizedImage
+                    src={guide.imageUrl}
+                    alt={t(`guide.${guide.id}.title` as keyof TranslationValue)}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {guide.title}
-                </h3>
-                <p className="text-gray-600">
-                  {guide.description}
-                </p>
-              </div>
-            </div>
-          ))}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    {t(`guide.${guide.id}.title` as keyof TranslationValue)}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    {t(`guide.${guide.id}.description` as keyof TranslationValue)}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-500">
+                      {t(`guide.${guide.id}.category` as keyof TranslationValue)}
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      {guide.publishDate}
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
+      
+      {/* 自定义样式以隐藏滚动条但保留功能 */}
+      <style jsx>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };

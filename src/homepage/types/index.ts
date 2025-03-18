@@ -36,6 +36,7 @@ export interface TravelGuide {
   imageUrl: string;
   iconName?: string;
   url?: string;
+  publishDate: string;
 }
 
 // 价值主张数据类型

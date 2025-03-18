@@ -1,23 +1,29 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { TravelStory } from '../types';
+import { TravelStory, Language } from '../types';
 import OptimizedImage from './common/OptimizedImage';
+import { getTranslation, TranslationValue } from '../utils/translations';
 
 interface TravelStoriesSectionProps {
   title: string;
   stories: TravelStory[];
   onReadMoreClick: (storyId: string) => void;
+  currentLanguage: Language;
 }
 
 const TravelStoriesSection = ({
   title,
   stories,
   onReadMoreClick,
+  currentLanguage
 }: TravelStoriesSectionProps) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
+
+  // 获取当前语言的翻译
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
   const checkScrollButtons = () => {
     const container = scrollContainerRef.current;
@@ -61,7 +67,7 @@ const TravelStoriesSection = ({
               onClick={() => scroll('left')}
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-colors duration-300
                        focus:outline-none focus:ring-2 focus:ring-china-red focus:ring-offset-2"
-              aria-label="向左滚动"
+              aria-label={t('scrollLeft')}
             >
               <svg
                 className="w-6 h-6 text-gray-800"
@@ -84,7 +90,7 @@ const TravelStoriesSection = ({
               onClick={() => scroll('right')}
               className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-colors duration-300
                        focus:outline-none focus:ring-2 focus:ring-china-red focus:ring-offset-2"
-              aria-label="向右滚动"
+              aria-label={t('scrollRight')}
             >
               <svg
                 className="w-6 h-6 text-gray-800"
@@ -101,73 +107,79 @@ const TravelStoriesSection = ({
             </button>
           )}
 
-          {/* 故事卡片容器 */}
-          <div
+          {/* 故事卡片滚动区域 */}
+          <div 
             ref={scrollContainerRef}
+            className="flex space-x-6 overflow-x-auto pb-4 hide-scrollbar"
             onScroll={checkScrollButtons}
-            className="overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide"
-            role="region"
-            aria-label="旅行故事列表"
-            tabIndex={0}
           >
-            <div className="flex space-x-6 min-w-max">
-              {stories.map((story) => (
-                <article
-                  key={story.id}
-                  className="flex-none w-80 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300
-                           focus:outline-none focus:ring-2 focus:ring-china-red focus:ring-offset-2"
-                >
-                  {/* 故事图片 */}
-                  <div className="relative aspect-w-16 aspect-h-9">
-                    <OptimizedImage
-                      src={story.imageUrl}
-                      alt={`${story.title}的配图`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+            {stories.map((story) => (
+              <article
+                key={story.id}
+                className="flex-none w-full sm:w-96 bg-white rounded-lg shadow-md overflow-hidden"
+              >
+                <div className="relative h-48">
+                  <OptimizedImage
+                    src={story.imageUrl}
+                    alt={t(`story.${story.id}.title` as keyof TranslationValue) as string}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    {t(`story.${story.id}.title` as keyof TranslationValue)}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    {t(`story.${story.id}.description` as keyof TranslationValue)}
+                  </p>
 
-                  {/* 故事内容 */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {story.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4">{story.description}</p>
-
-                    {/* 作者信息 */}
-                    <div className="flex items-center">
-                      <div className="relative h-10 w-10 rounded-full overflow-hidden">
-                        <OptimizedImage
-                          src={story.author.avatar}
-                          alt={`${story.author.name}的头像`}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="ml-3">
-                        <p className="text-sm font-medium text-gray-900">
-                          {story.author.name}
-                        </p>
-                        <p className="text-sm text-gray-500">{story.destination}</p>
-                      </div>
+                  {/* 作者信息 */}
+                  <div className="flex items-center">
+                    <div className="relative h-10 w-10 rounded-full overflow-hidden">
+                      <OptimizedImage
+                        src={story.author.avatar}
+                        alt={`${story.author.name}的头像`}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
-
-                    {/* 阅读更多按钮 */}
-                    <button
-                      onClick={() => onReadMoreClick(story.id)}
-                      className="w-full mt-4 bg-china-red text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors duration-300
-                               focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
-                      aria-label={`阅读更多关于${story.title}的内容`}
-                    >
-                      阅读更多
-                    </button>
+                    <div className="ml-3">
+                      <p className="text-sm font-medium text-gray-900">
+                        {story.author.name}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {t(`story.${story.id}.destination` as keyof TranslationValue)}
+                      </p>
+                    </div>
                   </div>
-                </article>
-              ))}
-            </div>
+
+                  {/* 阅读更多按钮 */}
+                  <button
+                    onClick={() => onReadMoreClick(story.id)}
+                    className="w-full mt-4 bg-china-red text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors duration-300
+                             focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                    aria-label={`${t('readMore')} ${t(`story.${story.id}.title` as keyof TranslationValue)}`}
+                  >
+                    {t('readMore')}
+                  </button>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>
+      
+      {/* 自定义样式以隐藏滚动条但保留功能 */}
+      <style jsx>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };
