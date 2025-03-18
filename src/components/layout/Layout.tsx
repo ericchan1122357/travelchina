@@ -4,9 +4,9 @@ import LoadingSpinner from '../common/LoadingSpinner';
 import PerformanceMonitor from '../common/PerformanceMonitor';
 
 // 懒加载组件
-const Header = React.lazy(() => import('./Header'));
-const Footer = React.lazy(() => import('./Footer'));
-const PageTransition = React.lazy(() => import('./PageTransition'));
+const Header = React.lazy(() => import('@/components/layout/Header'));
+const Footer = React.lazy(() => import('@/components/layout/Footer'));
+const PageTransition = React.lazy(() => import('@/components/layout/PageTransition'));
 
 interface LayoutProps {
   children: React.ReactNode;
