@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Language } from '../types';
-import { getTranslation } from '../utils/translations';
+import { getTranslation, TranslationValue } from '../utils/translations';
 import NavBar from './NavBar';
 import HeroBanner from './HeroBanner';
 import ValueProposition from './ValueProposition';
@@ -40,7 +40,7 @@ const HomePage = () => {
   };
 
   // 获取当前语言的翻译
-  const t = (key: string) => getTranslation(currentLanguage, key);
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
   // 错误边界
   try {
@@ -55,9 +55,9 @@ const HomePage = () => {
           <HeroBanner 
             data={{
               ...heroData,
-              title: t('heroTitle'),
-              subtitle: t('heroSubtitle'),
-              ctaText: t('startPlanning')
+              title: t('heroTitle') as string,
+              subtitle: t('heroSubtitle') as string,
+              ctaText: t('startPlanning') as string
             }}
             onCtaClick={handleCtaClick} 
           />
@@ -65,33 +65,33 @@ const HomePage = () => {
           <ValueProposition 
             values={valueProps.map((prop, index) => ({
               ...prop,
-              title: t(`valueProp${index + 1}Title`),
-              description: t(`valueProp${index + 1}Desc`)
+              title: t(`valueProp${index + 1}Title` as keyof TranslationValue) as string,
+              description: t(`valueProp${index + 1}Desc` as keyof TranslationValue) as string
             }))} 
           />
           
           <DestinationSection 
-            title={t('destinationsTitle')}
+            title={t('destinationsTitle') as string}
             destinations={featuredDestinations} 
           />
           
           <TravelStoriesSection 
-            title={t('storiesTitle')}
+            title={t('storiesTitle') as string}
             stories={travelStories} 
             onReadMoreClick={handleReadMoreClick} 
           />
           
           <GuidesSection 
-            title={t('guidesTitle')}
+            title={t('guidesTitle') as string}
             guides={travelGuides} 
           />
           
           <CallToAction 
             data={{
               ...ctaData,
-              title: t('ctaTitle'),
-              subtitle: t('ctaSubtitle'),
-              buttonText: t('startPlanning')
+              title: t('ctaTitle') as string,
+              subtitle: t('ctaSubtitle') as string,
+              buttonText: t('startPlanning') as string
             }}
             onCtaClick={handleCtaClick} 
           />

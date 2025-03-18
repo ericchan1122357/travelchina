@@ -1,7 +1,16 @@
 import { useEffect, useState } from 'react';
+import { Language } from '../../homepage/types';
+import { getTranslation, TranslationValue } from '../../homepage/utils/translations';
 
-const SkipToContent = () => {
+interface SkipToContentProps {
+  currentLanguage: Language;
+}
+
+const SkipToContent: React.FC<SkipToContentProps> = ({ currentLanguage }) => {
   const [isVisible, setIsVisible] = useState(false);
+
+  // 获取当前语言的翻译
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -21,8 +30,9 @@ const SkipToContent = () => {
         isVisible ? 'focus:translate-y-0' : ''
       }`}
       onClick={() => setIsVisible(false)}
+      aria-label={t('skipToContent') as string}
     >
-      跳转到主要内容
+      {t('skipToContent') as string}
     </a>
   );
 };

@@ -1,7 +1,16 @@
 import { useState } from 'react';
+import { Language } from '../../homepage/types';
+import { getTranslation, TranslationValue } from '../../homepage/utils/translations';
 
-const SkipToMain = () => {
+interface SkipToMainProps {
+  currentLanguage: Language;
+}
+
+const SkipToMain: React.FC<SkipToMainProps> = ({ currentLanguage }) => {
   const [isVisible, setIsVisible] = useState(false);
+
+  // 获取当前语言的翻译
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
   return (
     <a
@@ -17,8 +26,9 @@ const SkipToMain = () => {
       `}
       onFocus={() => setIsVisible(true)}
       onBlur={() => setIsVisible(false)}
+      aria-label={t('skipToContent') as string}
     >
-      跳转到主要内容
+      {t('skipToContent') as string}
     </a>
   );
 };

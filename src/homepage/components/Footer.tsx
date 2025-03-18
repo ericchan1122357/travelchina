@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Language } from '../types';
-import { getTranslation } from '../utils/translations';
+import { getTranslation, TranslationValue } from '../utils/translations';
 
 interface FooterProps {
   currentLanguage: Language;
@@ -11,7 +11,7 @@ interface FooterProps {
 
 const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
   // 获取当前语言的翻译
-  const t = (key: string) => getTranslation(currentLanguage, key);
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
   const languageOptions: { code: Language; label: string }[] = [
     { code: 'en', label: 'English' },
@@ -114,7 +114,7 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
                   className="text-gray-400 hover:text-china-red transition-colors duration-300"
                   role="listitem"
                 >
-                  {t('destinations')}
+                  {t('destinations') as string}
                 </Link>
               </li>
               <li>
@@ -123,7 +123,7 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
                   className="text-gray-400 hover:text-china-red transition-colors duration-300"
                   role="listitem"
                 >
-                  {t('stories')}
+                  {t('stories') as string}
                 </Link>
               </li>
               <li>
@@ -132,7 +132,7 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
                   className="text-gray-400 hover:text-china-red transition-colors duration-300"
                   role="listitem"
                 >
-                  {t('guides')}
+                  {t('guides') as string}
                 </Link>
               </li>
               <li>
@@ -141,7 +141,7 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
                   className="text-gray-400 hover:text-china-red transition-colors duration-300"
                   role="listitem"
                 >
-                  {t('planner')}
+                  {t('planner') as string}
                 </Link>
               </li>
             </ul>
@@ -166,7 +166,7 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
             </select>
 
             <h3 className="text-lg font-semibold mt-6 mb-4">
-              {t('contact')}
+              {t('footerContact') as string}
             </h3>
             <div 
               className="space-y-2 text-gray-400"
