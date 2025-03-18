@@ -21,7 +21,7 @@ const DestinationSection: React.FC<DestinationSectionProps> = ({
   const [showRightArrow, setShowRightArrow] = useState(true);
 
   // 获取当前语言的翻译
-  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key) as string;
 
   // 获取当前季节
   const getCurrentSeason = () => {
