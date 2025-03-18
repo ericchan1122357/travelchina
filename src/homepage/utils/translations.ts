@@ -1,5 +1,39 @@
 import { Language } from '../types';
 
+// 获取当前季节的标题
+export const getCurrentSeasonTitle = (language: Language): string => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1; // 0-11 转换为 1-12
+  
+  let season: 'spring' | 'summer' | 'autumn' | 'winter';
+  
+  if (month >= 3 && month <= 5) {
+    season = 'spring';
+  } else if (month >= 6 && month <= 8) {
+    season = 'summer';
+  } else if (month >= 9 && month <= 11) {
+    season = 'autumn';
+  } else {
+    season = 'winter';
+  }
+  
+  const seasonKey = `season.${season}` as keyof TranslationValue;
+  const seasonText = translations[language][seasonKey];
+  
+  // 根据语言返回不同格式
+  switch (language) {
+    case 'zh':
+      return `${year}年${seasonText}推荐目的地`;
+    case 'ja':
+      return `${year}年${seasonText}のおすすめ目的地`;
+    case 'ko':
+      return `${year}년 ${seasonText} 추천 목적지`;
+    default:
+      return `Featured Destinations for ${seasonText} ${year}`;
+  }
+};
+
 interface CtaStats {
   cities: string;
   itineraries: string;
@@ -114,7 +148,7 @@ export const translations: Translations = {
     valueProp3Desc: '基于大数据分析，推荐最佳游览路线和时间',
     
     // 目的地
-    destinationsTitle: '2024年春季推荐目的地',
+    destinationsTitle: '2026年夏季推荐目的地',
     destinationDescription: '探索中国最迷人的目的地，体验独特的文化与自然之美',
     destinationActivities: '特色活动',
     destinationSeason: '最佳季节',
@@ -209,7 +243,7 @@ export const translations: Translations = {
     valueProp3Desc: 'AI-powered recommendations for optimal routes and timing',
     
     // Destinations
-    destinationsTitle: 'Featured Destinations for Spring 2024',
+    destinationsTitle: 'Featured Destinations for Summer 2026',
     destinationDescription: 'Explore China\'s most fascinating destinations and experience unique culture and natural beauty',
     destinationActivities: 'Featured Activities',
     destinationSeason: 'Best Season',
@@ -304,7 +338,7 @@ export const translations: Translations = {
     valueProp3Desc: 'AIによる最適なルートとタイミングの推奨',
     
     // 目的地
-    destinationsTitle: '2024年春のおすすめ目的地',
+    destinationsTitle: '2026年夏のおすすめ目的地',
     destinationDescription: '中国の最も魅力的な目的地を探索し、ユニークな文化と自然の美しさを体験',
     destinationActivities: 'おすすめアクティビティ',
     destinationSeason: 'ベストシーズン',
@@ -399,7 +433,7 @@ export const translations: Translations = {
     valueProp3Desc: 'AI 기반 최적 경로 및 타이밍 추천',
     
     // 목적지
-    destinationsTitle: '2024년 봄 추천 목적지',
+    destinationsTitle: '2026년 여름 추천 목적지',
     destinationDescription: '중국의 가장 매력적인 목적지를 탐험하고 독특한 문화와 자연의 아름다움을 경험하세요',
     destinationActivities: '추천 활동',
     destinationSeason: '최적 계절',
@@ -494,7 +528,7 @@ export const translations: Translations = {
     valueProp3Desc: 'Recommandations basées sur l\'IA pour les meilleurs itinéraires et moments',
     
     // Destinations
-    destinationsTitle: 'Destinations Recommandées pour le Printemps 2024',
+    destinationsTitle: 'Destinations Recommandées pour le Printemps 2025',
     destinationDescription: 'Explorez les destinations les plus fascinantes de Chine et découvrez une culture et une beauté naturelle uniques',
     destinationActivities: 'Activités Recommandées',
     destinationSeason: 'Meilleure Saison',
@@ -525,7 +559,7 @@ export const translations: Translations = {
     footerAbout: 'À Propos',
     footerContact: 'Contact',
     footerPrivacy: 'Politique de Confidentialité',
-    footerTerms: 'Conditions d\'Utilisation',
+    footerTerms: 'Términos de Servicio',
     footerDescription: 'Découvrez la Chine, explorez des possibilités infinies. Nous nous engageons à vous offrir la meilleure expérience de voyage.',
     skipToContent: '跳转到主要内容',
     scrollLeft: 'Défiler à gauche',
@@ -541,9 +575,9 @@ export const translations: Translations = {
     'destination.2.activities.culture': 'Culture du Jardin Yu',
     'destination.2.activities.food': 'Xiaolongbao',
     'destination.3.name': 'Xi\'an',
-    'destination.3.description': 'Ville culturelle de l\'ancienne capitale',
+    'destination.3.description': 'Ville culturelle de la antigua capital',
     'destination.3.activities.hiking': 'Vélo sur les remparts',
-    'destination.3.activities.culture': 'Armée de terre cuite',
+    'destination.3.activities.culture': 'Armée de terracota',
     'destination.3.activities.food': 'Roujiamo',
     'story.1.title': 'Explorer la Grande Muraille : Un Voyage de Randonnée Inoubliable',
     'story.1.description': 'Suivez nos pas alors que nous explorons l\'une des Sept Merveilles du Monde, ressentant l\'émerveillement de l\'histoire et de la beauté naturelle.',
@@ -589,7 +623,7 @@ export const translations: Translations = {
     valueProp3Desc: 'KI-basierte Empfehlungen für optimale Routen und Zeiten',
     
     // Reiseziele
-    destinationsTitle: 'Empfohlene Reiseziele für den Frühling 2024',
+    destinationsTitle: 'Empfohlene Reiseziele für den Frühling 2025',
     destinationDescription: 'Entdecken Sie die faszinierendsten Reiseziele Chinas und erleben Sie einzigartige Kultur und natürliche Schönheit',
     destinationActivities: 'Empfohlene Aktivitäten',
     destinationSeason: 'Beste Reisezeit',
@@ -684,7 +718,7 @@ export const translations: Translations = {
     valueProp3Desc: 'Recomendaciones basadas en IA para rutas y momentos óptimos',
     
     // Destinos
-    destinationsTitle: 'Destinos Destacados para la Primavera 2024',
+    destinationsTitle: 'Destinos Destacados para la Primavera 2025',
     destinationDescription: 'Explora los destinos más fascinantes de China y experimenta una cultura y belleza natural únicas',
     destinationActivities: 'Actividades Destacadas',
     destinationSeason: 'Mejor Época',
@@ -779,7 +813,7 @@ export const translations: Translations = {
     valueProp3Desc: 'Рекомендации на основе ИИ для оптимальных маршрутов и времени',
     
     // Направления
-    destinationsTitle: 'Рекомендуемые Направления на Весну 2024',
+    destinationsTitle: 'Рекомендуемые Направления на Весну 2025',
     destinationDescription: 'Исследуйте самые увлекательные направления Китая и познакомьтесь с уникальной культурой и природной красотой',
     destinationActivities: 'Рекомендуемые Мероприятия',
     destinationSeason: 'Лучшее Время',
@@ -857,5 +891,11 @@ export const getTranslation = (
     console.warn(`Translation not found for language: ${language}`);
     return translations['en'][key] || key;
   }
+
+  // 特殊处理destinationsTitle
+  if (key === 'destinationsTitle') {
+    return getCurrentSeasonTitle(language);
+  }
+
   return translation[key];
 }; 
