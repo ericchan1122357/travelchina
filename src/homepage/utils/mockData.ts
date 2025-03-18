@@ -99,7 +99,8 @@ export const travelGuides: TravelGuide[] = [
     description: '为首次来华旅行的游客提供全面的基础信息',
     category: '基础攻略',
     content: '关于签证、交通、住宿等基本信息...',
-    imageUrl: '/images/guides/first-time.jpg'
+    imageUrl: '/images/guides/first-time.jpg',
+    publishDate: '2024-01-15'
   },
   {
     id: '2',
@@ -107,7 +108,8 @@ export const travelGuides: TravelGuide[] = [
     description: '带您了解中国八大菜系和地方特色美食',
     category: '美食攻略',
     content: '各地特色美食推荐与饮食文化解读...',
-    imageUrl: '/images/guides/food.jpg'
+    imageUrl: '/images/guides/food.jpg',
+    publishDate: '2024-01-20'
   }
 ];
 
