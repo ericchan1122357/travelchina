@@ -171,6 +171,13 @@ export interface TranslationValue {
   'planner.plan.lunch': string;
   'planner.plan.dinner': string;
   'planner.plan.specialNotes': string;
+  'planner.destinations.recommendedRoutes': string;
+  'planner.destinations.route1': string;
+  'planner.destinations.route2': string;
+  'planner.destinations.route3': string;
+  'planner.destinations.route1.description': string;
+  'planner.destinations.route2.description': string;
+  'planner.destinations.route3.description': string;
 }
 
 interface Translations {
@@ -329,7 +336,14 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.plan.breakfast': '早餐',
     'planner.plan.lunch': '午餐',
     'planner.plan.dinner': '晚餐',
-    'planner.plan.specialNotes': '特别注意事项'
+    'planner.plan.specialNotes': '特别注意事项',
+    'planner.destinations.recommendedRoutes': '推荐路线',
+    'planner.destinations.route1': '经典江南水乡',
+    'planner.destinations.route2': '丝绸之路探索',
+    'planner.destinations.route3': '长城文化之旅',
+    'planner.destinations.route1.description': '游览苏州、杭州等江南水乡，体验传统园林文化',
+    'planner.destinations.route2.description': '探索西安、敦煌等古丝绸之路重镇，感受东西方文化交融',
+    'planner.destinations.route3.description': '游览北京、八达岭等长城景点，了解中国历史文化'
   },
   en: {
     // Navigation
@@ -482,7 +496,14 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.plan.breakfast': 'Breakfast',
     'planner.plan.lunch': 'Lunch',
     'planner.plan.dinner': 'Dinner',
-    'planner.plan.specialNotes': 'Special Notes'
+    'planner.plan.specialNotes': 'Special Notes',
+    'planner.destinations.recommendedRoutes': 'Recommended Routes',
+    'planner.destinations.route1': 'Classic Jiangnan Watertown',
+    'planner.destinations.route2': 'Silk Road Exploration',
+    'planner.destinations.route3': 'Great Wall Cultural Tour',
+    'planner.destinations.route1.description': 'Visit Suzhou, Hangzhou and other water towns, experience traditional garden culture',
+    'planner.destinations.route2.description': 'Explore Xi\'an, Dunhuang and other ancient Silk Road cities, feel the fusion of Eastern and Western cultures',
+    'planner.destinations.route3.description': 'Visit Beijing, Badaling and other Great Wall sites, learn about Chinese history and culture'
   },
   ja: {
     // ナビゲーション
@@ -635,7 +656,14 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.plan.breakfast': '朝食',
     'planner.plan.lunch': '昼食',
     'planner.plan.dinner': '夕食',
-    'planner.plan.specialNotes': '特別注意事項'
+    'planner.plan.specialNotes': '特別注意事項',
+    'planner.destinations.recommendedRoutes': 'おすすめルート',
+    'planner.destinations.route1': '江南水郷クラシック',
+    'planner.destinations.route2': 'シルクロード探検',
+    'planner.destinations.route3': '万里の長城文化ツアー',
+    'planner.destinations.route1.description': '蘇州、杭州などの水郷を訪れ、伝統的な庭園文化を体験',
+    'planner.destinations.route2.description': '西安、敦煌など古代シルクロードの都市を探検し、東西文化の融合を感じる',
+    'planner.destinations.route3.description': '北京、八達嶺など長城の名所を訪れ、中国の歴史文化を学ぶ'
   },
   ko: {
     // 네비게이션
@@ -788,7 +816,14 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.plan.breakfast': '아침',
     'planner.plan.lunch': '점심',
     'planner.plan.dinner': '저녁',
-    'planner.plan.specialNotes': '특별 주의사항'
+    'planner.plan.specialNotes': '특별 주의사항',
+    'planner.destinations.recommendedRoutes': '추천 코스',
+    'planner.destinations.route1': '전통 강남 수향',
+    'planner.destinations.route2': '실크로드 탐험',
+    'planner.destinations.route3': '만리장성 문화 여행',
+    'planner.destinations.route1.description': '쑤저우, 항저우 등 강남 수향을 방문하여 전통 정원 문화 체험',
+    'planner.destinations.route2.description': '시안, 둔황 등 고대 실크로드 도시를 탐험하고 동서양 문화의 융합 체험',
+    'planner.destinations.route3.description': '베이징, 바달링 등 장성 명소를 방문하여 중국 역사 문화 이해'
   },
   fr: {
     // Navigation
@@ -941,7 +976,14 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.plan.breakfast': 'Petit-déjeuner',
     'planner.plan.lunch': 'Déjeuner',
     'planner.plan.dinner': 'Dîner',
-    'planner.plan.specialNotes': 'Notes spéciales'
+    'planner.plan.specialNotes': 'Notes spéciales',
+    'planner.destinations.recommendedRoutes': 'Itinéraires Recommandés',
+    'planner.destinations.route1': 'Villes d\'eau classiques du Jiangnan',
+    'planner.destinations.route2': 'Exploration de la Route de la Soie',
+    'planner.destinations.route3': 'Tour Culturel de la Grande Muraille',
+    'planner.destinations.route1.description': 'Visitez Suzhou, Hangzhou et autres villes d\'eau, découvrez la culture des jardins traditionnels',
+    'planner.destinations.route2.description': 'Explorez Xi\'an, Dunhuang et autres villes anciennes de la Route de la Soie, ressentez la fusion des cultures orientale et occidentale',
+    'planner.destinations.route3.description': 'Visitez Pékin, Badaling et autres sites de la Grande Muraille, découvrez l\'histoire et la culture chinoises'
   },
   de: {
     // Navigation
@@ -1094,7 +1136,14 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.plan.breakfast': 'Frühstück',
     'planner.plan.lunch': 'Mittagessen',
     'planner.plan.dinner': 'Abendessen',
-    'planner.plan.specialNotes': 'Besondere Hinweise'
+    'planner.plan.specialNotes': 'Besondere Hinweise',
+    'planner.destinations.recommendedRoutes': 'Empfohlene Routen',
+    'planner.destinations.route1': 'Klassische Jiangnan-Wasserstädte',
+    'planner.destinations.route2': 'Seidenstraßen-Erkundung',
+    'planner.destinations.route3': 'Kulturelle Tour zur Großen Mauer',
+    'planner.destinations.route1.description': 'Besuchen Sie Suzhou, Hangzhou und andere Wasserstädte, erleben Sie die traditionelle Gartenkultur',
+    'planner.destinations.route2.description': 'Erkunden Sie Xi\'an, Dunhuang und andere alte Städte der Seidenstraße, spüren Sie die Verschmelzung von östlicher und westlicher Kultur',
+    'planner.destinations.route3.description': 'Besuchen Sie Peking, Badaling und andere Stätten der Großen Mauer, lernen Sie die chinesische Geschichte und Kultur kennen'
   },
   es: {
     // Navegación
@@ -1247,7 +1296,14 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.plan.breakfast': 'Desayuno',
     'planner.plan.lunch': 'Almuerzo',
     'planner.plan.dinner': 'Cena',
-    'planner.plan.specialNotes': 'Notas especiales'
+    'planner.plan.specialNotes': 'Notas especiales',
+    'planner.destinations.recommendedRoutes': 'Rutas Recomendadas',
+    'planner.destinations.route1': 'Ciudades Acuáticas Clásicas de Jiangnan',
+    'planner.destinations.route2': 'Exploración de la Ruta de la Seda',
+    'planner.destinations.route3': 'Tour Cultural de la Gran Muralla',
+    'planner.destinations.route1.description': 'Visite Suzhou, Hangzhou y otras ciudades acuáticas, experimente la cultura tradicional de los jardines',
+    'planner.destinations.route2.description': 'Explore Xi\'an, Dunhuang y otras ciudades antiguas de la Ruta de la Seda, sienta la fusión de las culturas oriental y occidental',
+    'planner.destinations.route3.description': 'Visite Pekín, Badaling y otros sitios de la Gran Muralla, conozca la historia y cultura china'
   },
   ru: {
     // Навигация
@@ -1400,7 +1456,14 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.plan.breakfast': 'Завтрак',
     'planner.plan.lunch': 'Обед',
     'planner.plan.dinner': 'Ужин',
-    'planner.plan.specialNotes': 'Особые примечания'
+    'planner.plan.specialNotes': 'Особые примечания',
+    'planner.destinations.recommendedRoutes': 'Рекомендуемые маршруты',
+    'planner.destinations.route1': 'Классические водные города Цзяннань',
+    'planner.destinations.route2': 'Исследование Шелкового пути',
+    'planner.destinations.route3': 'Культурный тур по Великой стене',
+    'planner.destinations.route1.description': 'Посетите Сучжоу, Ханчжоу и другие водные города, познакомьтесь с традиционной культурой садов',
+    'planner.destinations.route2.description': 'Исследуйте Сиань, Дуньхуан и другие древние города Шелкового пути, почувствуйте слияние восточной и западной культур',
+    'planner.destinations.route3.description': 'Посетите Пекин, Бадалин и другие места Великой стены, изучите китайскую историю и культуру'
   }
 };
 
