@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Language } from '../types';
+import { getTranslation, TranslationValue } from '../utils/translations';
 
 interface NavBarProps {
   currentLanguage: Language;
@@ -10,6 +11,8 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ currentLanguage, onLanguageChange }) => {
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key) as string;
+
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,16 +25,16 @@ const NavBar: React.FC<NavBarProps> = ({ currentLanguage, onLanguageChange }) =>
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/destinations" className="text-gray-700 hover:text-china-red">
-              Destinations
+              {t('destinations')}
             </Link>
             <Link href="/guides" className="text-gray-700 hover:text-china-red">
-              Travel Guides
+              {t('guides')}
             </Link>
             <Link href="/stories" className="text-gray-700 hover:text-china-red">
-              Travel Stories
+              {t('stories')}
             </Link>
             <Link href="/planner" className="text-gray-700 hover:text-china-red">
-              Trip Planner
+              {t('planner')}
             </Link>
           </div>
 
