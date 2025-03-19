@@ -175,9 +175,32 @@ export interface TranslationValue {
   'planner.destinations.route1': string;
   'planner.destinations.route2': string;
   'planner.destinations.route3': string;
+  'planner.destinations.route4': string;
+  'planner.destinations.route5': string;
+  'planner.destinations.route6': string;
+  'planner.destinations.route7': string;
+  'planner.destinations.route8': string;
+  'planner.destinations.route9': string;
+  'planner.destinations.route10': string;
   'planner.destinations.route1.description': string;
   'planner.destinations.route2.description': string;
   'planner.destinations.route3.description': string;
+  'planner.destinations.route4.description': string;
+  'planner.destinations.route5.description': string;
+  'planner.destinations.route6.description': string;
+  'planner.destinations.route7.description': string;
+  'planner.destinations.route8.description': string;
+  'planner.destinations.route9.description': string;
+  'planner.destinations.route10.description': string;
+  'planner.destinations.selectCities': string;
+  'planner.destinations.cities.beijing': string;
+  'planner.destinations.cities.shanghai': string;
+  'planner.destinations.cities.guangzhou': string;
+  'planner.destinations.cities.xian': string;
+  'planner.destinations.cities.chengdu': string;
+  'planner.destinations.cities.guilin': string;
+  'planner.destinations.cities.zhangjiajie': string;
+  'planner.destinations.cities.huangshan': string;
 }
 
 interface Translations {
@@ -341,9 +364,32 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.destinations.route1': '经典江南水乡',
     'planner.destinations.route2': '丝绸之路探索',
     'planner.destinations.route3': '长城文化之旅',
+    'planner.destinations.route4': '江南水乡新探索',
+    'planner.destinations.route5': '文化古镇深度游',
+    'planner.destinations.route6': '自然风光摄影之旅',
+    'planner.destinations.route7': '美食之旅',
+    'planner.destinations.route8': '历史遗迹探秘',
+    'planner.destinations.route9': '现代都市体验',
+    'planner.destinations.route10': '乡村田园生活',
     'planner.destinations.route1.description': '游览苏州、杭州等江南水乡，体验传统园林文化',
     'planner.destinations.route2.description': '探索西安、敦煌等古丝绸之路重镇，感受东西方文化交融',
-    'planner.destinations.route3.description': '游览北京、八达岭等长城景点，了解中国历史文化'
+    'planner.destinations.route3.description': '游览北京、八达岭等长城景点，了解中国历史文化',
+    'planner.destinations.route4.description': '探索江南水乡的新景点，体验现代与传统的融合',
+    'planner.destinations.route5.description': '游览古镇，了解传统文化，体验慢生活',
+    'planner.destinations.route6.description': '拍摄自然风光，记录美丽瞬间',
+    'planner.destinations.route7.description': '品尝各地美食，享受味蕾盛宴',
+    'planner.destinations.route8.description': '探访历史遗迹，了解古代文化',
+    'planner.destinations.route9.description': '体验现代都市生活，感受科技与文化的融合',
+    'planner.destinations.route10.description': '走进乡村，体验田园生活，享受宁静与和谐',
+    'planner.destinations.selectCities': '选择城市',
+    'planner.destinations.cities.beijing': '北京',
+    'planner.destinations.cities.shanghai': '上海',
+    'planner.destinations.cities.guangzhou': '广州',
+    'planner.destinations.cities.xian': '西安',
+    'planner.destinations.cities.chengdu': '成都',
+    'planner.destinations.cities.guilin': '桂林',
+    'planner.destinations.cities.zhangjiajie': '张家界',
+    'planner.destinations.cities.huangshan': '黄山'
   },
   en: {
     // Navigation
@@ -501,9 +547,32 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.destinations.route1': 'Classic Jiangnan Watertown',
     'planner.destinations.route2': 'Silk Road Exploration',
     'planner.destinations.route3': 'Great Wall Cultural Tour',
+    'planner.destinations.route4': 'New Exploration of Jiangnan Water Towns',
+    'planner.destinations.route5': 'Deep Cultural Tour of Ancient Towns',
+    'planner.destinations.route6': 'Photography Tour of Natural Scenery',
+    'planner.destinations.route7': 'Food Tour',
+    'planner.destinations.route8': 'Exploration of Historical Sites',
+    'planner.destinations.route9': 'Experience Modern Urban Life',
+    'planner.destinations.route10': 'Rural Life Experience',
     'planner.destinations.route1.description': 'Visit Suzhou, Hangzhou and other water towns, experience traditional garden culture',
     'planner.destinations.route2.description': 'Explore Xi\'an, Dunhuang and other ancient Silk Road cities, feel the fusion of Eastern and Western cultures',
-    'planner.destinations.route3.description': 'Visit Beijing, Badaling and other Great Wall sites, learn about Chinese history and culture'
+    'planner.destinations.route3.description': 'Visit Beijing, Badaling and other Great Wall sites, learn about Chinese history and culture',
+    'planner.destinations.route4.description': 'Explore new attractions in Jiangnan water towns, experience the blend of modern and traditional culture',
+    'planner.destinations.route5.description': 'Visit ancient towns, learn about local culture, and enjoy a slow life',
+    'planner.destinations.route6.description': 'Capture natural scenery and beautiful moments',
+    'planner.destinations.route7.description': 'Experience various cuisines and enjoy a feast',
+    'planner.destinations.route8.description': 'Visit historical sites, learn about ancient culture',
+    'planner.destinations.route9.description': 'Experience modern urban life, feel the fusion of technology and culture',
+    'planner.destinations.route10.description': 'Enter rural areas, experience rural life, and enjoy peace and harmony',
+    'planner.destinations.selectCities': 'Select Cities',
+    'planner.destinations.cities.beijing': 'Beijing',
+    'planner.destinations.cities.shanghai': 'Shanghai',
+    'planner.destinations.cities.guangzhou': 'Guangzhou',
+    'planner.destinations.cities.xian': 'Xi\'an',
+    'planner.destinations.cities.chengdu': 'Chengdu',
+    'planner.destinations.cities.guilin': 'Guilin',
+    'planner.destinations.cities.zhangjiajie': 'Zhangjiajie',
+    'planner.destinations.cities.huangshan': 'Huangshan'
   },
   ja: {
     // ナビゲーション
@@ -661,9 +730,32 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.destinations.route1': '江南水郷クラシック',
     'planner.destinations.route2': 'シルクロード探検',
     'planner.destinations.route3': '万里の長城文化ツアー',
+    'planner.destinations.route4': '新しい江南水郷探索',
+    'planner.destinations.route5': '文化古鎮ディープツアー',
+    'planner.destinations.route6': '自然風景写真ツアー',
+    'planner.destinations.route7': '美食ツアー',
+    'planner.destinations.route8': '歴史遺跡探検',
+    'planner.destinations.route9': '現代都市体験',
+    'planner.destinations.route10': '田園生活体験',
     'planner.destinations.route1.description': '蘇州、杭州などの水郷を訪れ、伝統的な庭園文化を体験',
     'planner.destinations.route2.description': '西安、敦煌など古代シルクロードの都市を探検し、東西文化の融合を感じる',
-    'planner.destinations.route3.description': '北京、八達嶺など長城の名所を訪れ、中国の歴史文化を学ぶ'
+    'planner.destinations.route3.description': '北京、八達嶺など長城の名所を訪れ、中国の歴史文化を学ぶ',
+    'planner.destinations.route4.description': '江南水郷の新しい観光地を探索し、現代と伝統の融合を体験',
+    'planner.destinations.route5.description': '文化古鎮を訪れ、伝統文化と地元生活を体験',
+    'planner.destinations.route6.description': '自然風景を撮影し、美しい瞬間を記録',
+    'planner.destinations.route7.description': '各地の美食を味わい、盛宴を楽しむ',
+    'planner.destinations.route8.description': '歴史的遺跡を訪れ、古代文化を学ぶ',
+    'planner.destinations.route9.description': '現代都市の生活を体験し、技術と文化の融合を感じる',
+    'planner.destinations.route10.description': '田園の生活を体験し、平和と調和を感じる',
+    'planner.destinations.selectCities': '都市を選択',
+    'planner.destinations.cities.beijing': '北京',
+    'planner.destinations.cities.shanghai': '上海',
+    'planner.destinations.cities.guangzhou': '広州',
+    'planner.destinations.cities.xian': '西安',
+    'planner.destinations.cities.chengdu': '成都',
+    'planner.destinations.cities.guilin': '桂林',
+    'planner.destinations.cities.zhangjiajie': '張家界',
+    'planner.destinations.cities.huangshan': '黄山'
   },
   ko: {
     // 네비게이션
@@ -821,9 +913,32 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.destinations.route1': '전통 강남 수향',
     'planner.destinations.route2': '실크로드 탐험',
     'planner.destinations.route3': '만리장성 문화 여행',
+    'planner.destinations.route4': '새로운 강남 수향 탐험',
+    'planner.destinations.route5': '문화 고전 마을 깊은 여행',
+    'planner.destinations.route6': '자연 경관 사진 여행',
+    'planner.destinations.route7': '음식 여행',
+    'planner.destinations.route8': '역사 遺跡 탐험',
+    'planner.destinations.route9': '현대 도시 체험',
+    'planner.destinations.route10': '농촌 삶 체험',
     'planner.destinations.route1.description': '쑤저우, 항저우 등 강남 수향을 방문하여 전통 정원 문화 체험',
     'planner.destinations.route2.description': '시안, 둔황 등 고대 실크로드 도시를 탐험하고 동서양 문화의 융합 체험',
-    'planner.destinations.route3.description': '베이징, 바달링 등 장성 명소를 방문하여 중국 역사 문화 이해'
+    'planner.destinations.route3.description': '베이징, 바달링 등 장성 명소를 방문하여 중국 역사 문화 이해',
+    'planner.destinations.route4.description': '새로운 강남 수향 관광지를 탐험하고 현대와 전통의 융합을 경험',
+    'planner.destinations.route5.description': '문화 고전 마을을 방문하여 전통 문화와 지역 삶을 경험',
+    'planner.destinations.route6.description': '자연 경관을 촬영하고 아름다운 순간을 기록',
+    'planner.destinations.route7.description': '다양한 음식을 맛보고 음식 여행을 즐기세요',
+    'planner.destinations.route8.description': '역사적 遺跡을 방문하여 고대 문화를 배워보세요',
+    'planner.destinations.route9.description': '현대 도시의 삶을 경험하고 기술과 문화의 융합을 느껴보세요',
+    'planner.destinations.route10.description': '농촌의 삶을 경험하고 평화와 조화를 느껴보세요',
+    'planner.destinations.selectCities': '도시 선택',
+    'planner.destinations.cities.beijing': '베이징',
+    'planner.destinations.cities.shanghai': '상하이',
+    'planner.destinations.cities.guangzhou': '광저우',
+    'planner.destinations.cities.xian': '시안',
+    'planner.destinations.cities.chengdu': '승도',
+    'planner.destinations.cities.guilin': '관린',
+    'planner.destinations.cities.zhangjiajie': '장가정',
+    'planner.destinations.cities.huangshan': '황산'
   },
   fr: {
     // Navigation
@@ -981,9 +1096,32 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.destinations.route1': 'Villes d\'eau classiques du Jiangnan',
     'planner.destinations.route2': 'Exploration de la Route de la Soie',
     'planner.destinations.route3': 'Tour Culturel de la Grande Muraille',
+    'planner.destinations.route4': 'Nouvelle Exploration des Villes d\'Eau de Jiangnan',
+    'planner.destinations.route5': 'Tour de Culture de Vieilles Villes',
+    'planner.destinations.route6': 'Tour de Photographie de Paysage',
+    'planner.destinations.route7': 'Tour de Gastronomie',
+    'planner.destinations.route8': 'Tour d\'Exploration des Sites Historiques',
+    'planner.destinations.route9': 'Tour d\'Experience de Ville Moderne',
+    'planner.destinations.route10': 'Tour de Vie Rurale',
     'planner.destinations.route1.description': 'Visitez Suzhou, Hangzhou et autres villes d\'eau, découvrez la culture des jardins traditionnels',
     'planner.destinations.route2.description': 'Explorez Xi\'an, Dunhuang et autres villes anciennes de la Route de la Soie, ressentez la fusion des cultures orientale et occidentale',
-    'planner.destinations.route3.description': 'Visitez Pékin, Badaling et autres sites de la Grande Muraille, découvrez l\'histoire et la culture chinoises'
+    'planner.destinations.route3.description': 'Visitez Pékin, Badaling et autres sites de la Grande Muraille, découvrez l\'histoire et la culture chinoises',
+    'planner.destinations.route4.description': 'Explorez de nouvelles attractions dans les villes d\'eau de Jiangnan, expérimentez le mélange de la culture traditionnelle et moderne',
+    'planner.destinations.route5.description': 'Visitez des vieilles villes, apprenez sur la culture locale et profitez d\'une vie paisible',
+    'planner.destinations.route6.description': 'Capturez les paysages naturels et enregistrez les moments beaux',
+    'planner.destinations.route7.description': 'Dégustez diverses spécialités culinaires et partez en voyage gastronomique',
+    'planner.destinations.route8.description': 'Visitez des sites historiques, apprenez sur la culture ancienne',
+    'planner.destinations.route9.description': 'Expérimentez la vie urbaine moderne, sentez la fusion de la technologie et de la culture',
+    'planner.destinations.route10.description': 'Entrez dans les campagnes, expérimentez la vie rurale et sentez la paix et l\'harmonie',
+    'planner.destinations.selectCities': 'Sélectionnez des villes',
+    'planner.destinations.cities.beijing': 'Pékin',
+    'planner.destinations.cities.shanghai': 'Shanghai',
+    'planner.destinations.cities.guangzhou': 'Guangzhou',
+    'planner.destinations.cities.xian': 'Xi\'an',
+    'planner.destinations.cities.chengdu': 'Chengdu',
+    'planner.destinations.cities.guilin': 'Guilin',
+    'planner.destinations.cities.zhangjiajie': 'Zhangjiajie',
+    'planner.destinations.cities.huangshan': 'Huangshan'
   },
   de: {
     // Navigation
@@ -1141,9 +1279,32 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.destinations.route1': 'Klassische Jiangnan-Wasserstädte',
     'planner.destinations.route2': 'Seidenstraßen-Erkundung',
     'planner.destinations.route3': 'Kulturelle Tour zur Großen Mauer',
+    'planner.destinations.route4': 'Neue Explorationsstrecke in Jiangnan',
+    'planner.destinations.route5': 'Tour d\'Ancien Village',
+    'planner.destinations.route6': 'Tour de Photographie de Paysage',
+    'planner.destinations.route7': 'Tour de Gastronomie',
+    'planner.destinations.route8': 'Tour d\'Exploration des Sites Historiques',
+    'planner.destinations.route9': 'Tour d\'Experience de Ville Moderne',
+    'planner.destinations.route10': 'Rural Life Experience',
     'planner.destinations.route1.description': 'Besuchen Sie Suzhou, Hangzhou und andere Wasserstädte, erleben Sie die traditionelle Gartenkultur',
     'planner.destinations.route2.description': 'Erkunden Sie Xi\'an, Dunhuang und andere alte Städte der Seidenstraße, spüren Sie die Verschmelzung von östlicher und westlicher Kultur',
-    'planner.destinations.route3.description': 'Besuchen Sie Peking, Badaling und andere Stätten der Großen Mauer, lernen Sie die chinesische Geschichte und Kultur kennen'
+    'planner.destinations.route3.description': 'Besuchen Sie Peking, Badaling und andere Stätten der Großen Mauer, lernen Sie die chinesische Geschichte und Kultur kennen',
+    'planner.destinations.route4.description': 'Erkunden Sie neue Attraktionen in den Wasserstädten von Jiangnan, erleben Sie die Mischung aus traditioneller und moderner Kultur',
+    'planner.destinations.route5.description': 'Besuchen Sie alte Städte, lernen Sie über die lokale Kultur und genießen Sie ein ruhiges Leben',
+    'planner.destinations.route6.description': 'Natürliche Landschaften fotografieren und schöne Momente festhalten',
+    'planner.destinations.route7.description': 'Verschiedene Spezialitäten kosten und gute Essen genießen',
+    'planner.destinations.route8.description': 'Historische Stätten besuchen und die Kultur der Vergangenheit erkunden',
+    'planner.destinations.route9.description': 'Modernes Stadtleben erleben und die Fusion von Technologie und Kultur spüren',
+    'planner.destinations.route10.description': 'Landleben erleben und Frieden und Harmonie spüren',
+    'planner.destinations.selectCities': 'Städte auswählen',
+    'planner.destinations.cities.beijing': 'Peking',
+    'planner.destinations.cities.shanghai': 'Shanghai',
+    'planner.destinations.cities.guangzhou': 'Guangzhou',
+    'planner.destinations.cities.xian': 'Xi\'an',
+    'planner.destinations.cities.chengdu': 'Chengdu',
+    'planner.destinations.cities.guilin': 'Guilin',
+    'planner.destinations.cities.zhangjiajie': 'Zhangjiajie',
+    'planner.destinations.cities.huangshan': 'Huangshan'
   },
   es: {
     // Navegación
@@ -1301,9 +1462,32 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.destinations.route1': 'Ciudades Acuáticas Clásicas de Jiangnan',
     'planner.destinations.route2': 'Exploración de la Ruta de la Seda',
     'planner.destinations.route3': 'Tour Cultural de la Gran Muralla',
+    'planner.destinations.route4': 'Nueva Exploración de las Ciudades de Agua de Jiangnan',
+    'planner.destinations.route5': 'Tour de Cultura de Viejo Pueblo',
+    'planner.destinations.route6': 'Tour de Fotografía de Paisaje',
+    'planner.destinations.route7': 'Tour de Gastronomía',
+    'planner.destinations.route8': 'Tour de Exploración de Sitios Históricos',
+    'planner.destinations.route9': 'Tour de Experiencia Urbana',
+    'planner.destinations.route10': 'Experiencia Rural',
     'planner.destinations.route1.description': 'Visite Suzhou, Hangzhou y otras ciudades acuáticas, experimente la cultura tradicional de los jardines',
     'planner.destinations.route2.description': 'Explore Xi\'an, Dunhuang y otras ciudades antiguas de la Ruta de la Seda, sienta la fusión de las culturas oriental y occidental',
-    'planner.destinations.route3.description': 'Visite Pekín, Badaling y otros sitios de la Gran Muralla, conozca la historia y cultura china'
+    'planner.destinations.route3.description': 'Visite Pekín, Badaling y otros sitios de la Gran Muralla, conozca la historia y cultura china',
+    'planner.destinations.route4.description': 'Explore nuevas atracciones en las ciudades de agua de Jiangnan, experimente la mezcla de la cultura tradicional y moderna',
+    'planner.destinations.route5.description': 'Visite viejos pueblos, aprenda sobre la cultura local y disfrute de una vida tranquila',
+    'planner.destinations.route6.description': 'Fotografía de paisajes naturales y grabe momentos hermosos',
+    'planner.destinations.route7.description': 'Pruebe diversas especialidades culinarias y disfrute de un banquete',
+    'planner.destinations.route8.description': 'Visite sitios históricos, aprenda sobre la cultura antigua',
+    'planner.destinations.route9.description': 'Experimente la vida urbana moderna, sienta la fusión de la tecnología y la cultura',
+    'planner.destinations.route10.description': 'Entra en el campo, experimenta la vida rural y siente la paz y la armonía',
+    'planner.destinations.selectCities': 'Seleccionar ciudades',
+    'planner.destinations.cities.beijing': 'Pekín',
+    'planner.destinations.cities.shanghai': 'Shanghái',
+    'planner.destinations.cities.guangzhou': 'Guangzhou',
+    'planner.destinations.cities.xian': 'Xi\'an',
+    'planner.destinations.cities.chengdu': 'Chengdu',
+    'planner.destinations.cities.guilin': 'Guilin',
+    'planner.destinations.cities.zhangjiajie': 'Zhangjiajie',
+    'planner.destinations.cities.huangshan': 'Huangshan'
   },
   ru: {
     // Навигация
@@ -1461,9 +1645,32 @@ export const translations: Record<Language, TranslationValue> = {
     'planner.destinations.route1': 'Классические водные города Цзяннань',
     'planner.destinations.route2': 'Исследование Шелкового пути',
     'planner.destinations.route3': 'Культурный тур по Великой стене',
+    'planner.destinations.route4': 'Новая экспедиция по водным городам Цзяннань',
+    'planner.destinations.route5': 'Тур по древнему городу',
+    'planner.destinations.route6': 'Фототур по природному ландшафту',
+    'planner.destinations.route7': 'Гастротур',
+    'planner.destinations.route8': 'Экскурсия по историческим местам',
+    'planner.destinations.route9': 'Городской тур',
+    'planner.destinations.route10': 'Рыбалка в горах',
     'planner.destinations.route1.description': 'Посетите Сучжоу, Ханчжоу и другие водные города, познакомьтесь с традиционной культурой садов',
     'planner.destinations.route2.description': 'Исследуйте Сиань, Дуньхуан и другие древние города Шелкового пути, почувствуйте слияние восточной и западной культур',
-    'planner.destinations.route3.description': 'Посетите Пекин, Бадалин и другие места Великой стены, изучите китайскую историю и культуру'
+    'planner.destinations.route3.description': 'Посетите Пекин, Бадалин и другие места Великой стены, изучите китайскую историю и культуру',
+    'planner.destinations.route4.description': 'Исследуйте новые достопримечательности в водных городах Цзяннань, ощутите смешение традиционной и современной культуры',
+    'planner.destinations.route5.description': 'Посетите древние города, узнайте о местной культуре и насладитесь спокойной жизнью',
+    'planner.destinations.route6.description': 'Фотографируйте природные ландшафты и запечатлите красивые моменты',
+    'planner.destinations.route7.description': 'Попробуйте различные местные блюда и насладитесь гастрономическим путешествием',
+    'planner.destinations.route8.description': 'Посетите исторические места, узнайте о древней культуре',
+    'planner.destinations.route9.description': 'Проведите городское путешествие, ощутите смешение технологии и культуры',
+    'planner.destinations.route10.description': 'Погрузитесь в горы, исследуйте местную культуру и насладитесь тишиной и гармонией',
+    'planner.destinations.selectCities': 'Выберите города',
+    'planner.destinations.cities.beijing': 'Пекин',
+    'planner.destinations.cities.shanghai': 'Шанхай',
+    'planner.destinations.cities.guangzhou': 'Гуанчжоу',
+    'planner.destinations.cities.xian': 'Сиань',
+    'planner.destinations.cities.chengdu': 'Шэньчжэнь',
+    'planner.destinations.cities.guilin': 'Гуйлинь',
+    'planner.destinations.cities.zhangjiajie': 'Zhangjiajie',
+    'planner.destinations.cities.huangshan': 'Huangshan'
   }
 };
 
