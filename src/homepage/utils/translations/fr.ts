@@ -85,8 +85,15 @@ export const frTranslations: TranslationValue = {
   'planner.dining.styles.local': 'Local',
   'planner.dining.styles.fine': 'Fine cuisine',
   'planner.dining.styles.theme': 'Thème',
+  'planner.dining.styles.modern': 'Moderne',
+  'planner.dining.styles.traditional': 'Traditionnel',
+  'planner.dining.styles.fusion': 'Fusion',
+  'planner.dining.conservative.title': 'Conservateur',
+  'planner.dining.moderate.title': 'Modéré',
+  'planner.dining.adventurous.title': 'Aventureux',
   'planner.dining.adventurous': 'Aventureux',
   'planner.dining.adventurous.description': 'Prêt à essayer de nouvelles saveurs',
+  'planner.dining.adventurous.exotic': 'Exotique',
   'planner.title': 'Planificateur de voyage',
   'planner.subtitle': 'Créez votre voyage parfait',
   'planner.progress': 'Progression',
@@ -184,9 +191,5 @@ export const frTranslations: TranslationValue = {
   'planner.interests.history': 'Histoire',
   'planner.accommodation.hotel': 'Hôtel',
   'planner.dining.spiciness.mild': 'Doux',
-  'planner.dining.types.chinese': 'Chinois',
-  'planner.dining.styles.modern': 'Moderne',
-  'planner.dining.conservative.traditional': 'Traditionnel',
-  'planner.dining.moderate.fusion': 'Fusion',
-  'planner.dining.adventurous.exotic': 'Exotique'
+  'planner.dining.types.chinese': 'Chinois'
 }; 

@@ -22,7 +22,7 @@ const getBrowserLanguage = (): Language => {
   if (typeof window !== 'undefined') {
     const browserLang = navigator.language.split('-')[0];
     // 检查浏览器语言是否在支持的语言列表中
-    const supportedLanguages: Language[] = ['en', 'zh', 'ja', 'ko', 'fr', 'de', 'es', 'ru'];
+    const supportedLanguages: Language[] = ['en', 'zh', 'ja', 'ko', 'fr', 'de'];
     return supportedLanguages.includes(browserLang as Language) ? browserLang as Language : 'en';
   }
   return 'en';

@@ -1,102 +1,105 @@
 import { TranslationValue } from './types';
 
 export const deTranslations: TranslationValue = {
+  // 基础键
   destinations: 'Reiseziele',
   stories: 'Geschichten',
   guides: 'Reiseführer',
   planner: 'Planer',
   viewAllDestinations: 'Alle Reiseziele anzeigen',
   
+  // 主要内容
+  heroTitle: 'Schaffen Sie Reiseerinnerungen',
+  heroSubtitle: 'Für das beste Reiseerlebnis',
+  startPlanning: 'Planung beginnen',
+  
+  // 季节相关
   'season.spring': 'Frühling',
   'season.summer': 'Sommer', 
   'season.autumn': 'Herbst',
   'season.winter': 'Winter',
 
-  heroTitle: 'Schaffen Sie Reiseerinnerungen',
-  heroSubtitle: 'Für das beste Reiseerlebnis',
-  startPlanning: 'Planung beginnen',
-  
+  // 主要内容
+  'main.title': 'Entdecken Sie China mit KI-gestützter Reiseplanung',
+  'main.subtitle': 'Maßgeschneiderte Reiseerlebnisse für jeden Reisenden',
+  'main.cta.start': 'Jetzt planen',
+  'main.cta.learn': 'Mehr erfahren',
+  'main.features.title': 'Unsere Funktionen',
+  'main.features.description': 'Alles, was Sie für eine perfekte China-Reise brauchen',
+  'main.testimonials.title': 'Was unsere Reisenden sagen',
+  'main.testimonials.description': 'Echte Erfahrungen von echten Reisenden',
+  'main.partners.title': 'Unsere Partner',
+  'main.partners.description': 'Vertrauenswürdige Partner für Ihre Reise',
+
+  // 导航相关
+  'nav.home': 'Startseite',
+  'nav.destinations': 'Reiseziele',
+  'nav.stories': 'Geschichten',
+  'nav.guides': 'Reiseführer',
+  'nav.planner': 'Planer',
+  'nav.community': 'Community',
+  'nav.login': 'Anmelden',
+  'nav.signup': 'Registrieren',
+
+  // 价值主张
   'value.1.title': 'Maßgeschneiderte Reise',
   'value.1.desc': 'Erstellen Sie Ihren eigenen Reiseplan',
   'value.2.title': 'Lokale Erfahrung',
   'value.2.desc': 'Entdecken Sie lokale Attraktionen',
   'value.3.title': '24/7 Support',
   'value.3.desc': 'Sichere Reiseunterstützung',
-  
+
+  // 目的地相关
   destinationsTitle: 'Beliebte Reiseziele',
   destinationDescription: 'Reiseziel Beschreibung',
   destinationActivities: 'Aktivitäten',
   destinationSeason: 'Empfohlene Saison',
-  
+
+  // 故事相关
   storiesTitle: 'Reisegeschichten',
   readMore: 'Weiterlesen',
   storyAuthor: 'Autor',
   storyDestination: 'Reiseziel',
   storyDate: 'Veröffentlichungsdatum',
-  
+
+  // 指南相关
   guidesTitle: 'Reiseführer',
   guideCategory: 'Kategorie',
   guideContent: 'Inhalt',
-  
+
+  // CTA相关
   ctaTitle: 'Bereit für Ihr Abenteuer?',
   ctaSubtitle: 'Beginnen Sie Ihre Reiseplanung noch heute',
   ctaButton: 'Jetzt starten',
   ctaStats: 'Reisestatistiken',
 
+  // 页脚相关
   footerAbout: 'Über uns',
   footerContact: 'Kontakt',
   footerPrivacy: 'Datenschutz',
   footerTerms: 'Nutzungsbedingungen',
   footerDescription: 'Ihr Experte für China-Reiseplanung',
   
+  // 辅助功能
   skipToContent: 'Zum Inhalt springen',
   scrollLeft: 'Nach links scrollen',
   scrollRight: 'Nach rechts scrollen',
 
-  'destination.1.name': 'Peking',
-  'destination.1.description': 'Die Hauptstadt Chinas, eine Stadt der Geschichte und Kultur',
-  'destination.1.activities.hiking': 'Wandern auf der Großen Mauer',
-  'destination.1.activities.culture': 'Kultur der Verbotenen Stadt',
-  'destination.1.activities.food': 'Pekingente',
-  'destination.1.activities.shopping': 'Wangfujing',
-  'destination.1.activities.nightlife': 'Sanlitun',
+  // 价格相关
+  'pricing.free.title': 'Kostenloser Plan',
+  'pricing.free.description': 'Grundlegende Funktionen testen',
+  'pricing.premium.title': 'Premium Plan',
+  'pricing.premium.description': 'Alle Funktionen verfügbar',
+  'pricing.advanced.title': 'Erweiterter Plan',
+  'pricing.advanced.description': 'Professionelle Funktionen',
+  'pricing.compare': 'Pläne vergleichen',
+  'pricing.features': 'Funktionsliste',
+  'pricing.cta.upgrade': 'Upgrade',
+  'pricing.cta.trial': 'Kostenlose Testversion',
+  'pricing.discount.firstTime': 'Erstnutzer-Rabatt',
+  'pricing.discount.seasonal': 'Saisonaler Rabatt',
 
-  'destination.2.name': 'Shanghai',
-  'destination.2.description': 'Die Perle des Ostens, eine moderne Metropole',
-  'destination.2.activities.hiking': 'Spaziergang am Bund',
-  'destination.2.activities.culture': 'Yu-Garten Kultur',
-  'destination.2.activities.food': 'Xiaolongbao',
-  'destination.2.activities.shopping': 'Nanjing Road',
-  'destination.2.activities.nightlife': 'Xintiandi',
-
-  'destination.3.name': "Xi'an",
-  'destination.3.description': 'Alte Hauptstadt, Ausgangspunkt der Seidenstraße',
-  'destination.3.activities.hiking': 'Wandern auf der Stadtmauer',
-  'destination.3.activities.culture': 'Terrakotta-Armee',
-  'destination.3.activities.food': 'Roujiamo',
-  'destination.3.activities.shopping': 'Muslimisches Viertel',
-  'destination.3.activities.nightlife': 'Defu Straße',
-
-  'story.1.title': 'Erkundung der Hutong-Kultur in Peking',
-  'story.1.description': 'Spaziergang durch die alten Hutongs, Entdeckung des alten Pekings',
-  'story.1.destination': 'Peking',
-  
-  'story.2.title': 'Große Mauer Reise',
-  'story.2.description': 'Wandern auf der Großen Mauer, Geschichte erleben',
-  'story.2.destination': 'Peking',
-  
-  'story.3.title': 'Jiangnan Wasserstädte',
-  'story.3.description': 'Spaziergang durch antike Städte, Jiangnan-Kultur erleben',
-  'story.3.destination': 'Suzhou',
-  
-  'guide.1.title': 'Umfassender 3-Tage-Guide für Peking',
-  'guide.1.description': 'Vollständige Informationen zu Sehenswürdigkeiten, Essen und Transport',
-  'guide.1.category': 'Stadtführer',
-  
-  'guide.2.title': 'Shanghai Shopping Guide',
-  'guide.2.description': 'Shopping-Führer für Shanghai',
-  'guide.2.category': 'Shopping',
-
+  // 规划器基础键
   'planner.title': 'Intelligente Reiseplanung',
   'planner.subtitle': 'Gestalten Sie Ihre perfekte Route nach Ihren Wünschen',
   'planner.progress': 'Fortschritt',
@@ -108,12 +111,14 @@ export const deTranslations: TranslationValue = {
   'planner.error': 'Fehler',
   'planner.loading': 'Laden',
   'planner.step': 'Schritt',
-  'planner.error.general': 'Ein Fehler ist aufgetreten, bitte versuchen Sie es erneut',
+  'planner.nextStep': 'Nächster Schritt',
   'planner.step1': 'Schritt 1',
   'planner.step2': 'Schritt 2',
   'planner.step3': 'Schritt 3',
   'planner.step4': 'Schritt 4',
-  
+  'planner.error.general': 'Ein Fehler ist aufgetreten, bitte versuchen Sie es erneut',
+
+  // 规划器基本信息
   'planner.basicInfo.travelDates': 'Reisedaten',
   'planner.basicInfo.startDate': 'Startdatum',
   'planner.basicInfo.endDate': 'Enddatum',
@@ -123,7 +128,10 @@ export const deTranslations: TranslationValue = {
   'planner.basicInfo.travelTypes.family': 'Familienreise',
   'planner.basicInfo.travelTypes.friends': 'Freundesreise',
   'planner.basicInfo.budget': 'Budget',
+  'planner.basicInfo.travelDuration': 'Reisedauer',
+  'planner.basicInfo.travelBudget': 'Reisebudget',
 
+  // 规划器特殊需求
   'planner.special.accessibility.title': 'Barrierefreiheit',
   'planner.special.accessibility.wheelchair': 'Rollstuhlgerecht',
   'planner.special.accessibility.elevator': 'Aufzug',
@@ -148,6 +156,7 @@ export const deTranslations: TranslationValue = {
   'planner.special.other.title': 'Sonstige Bedürfnisse',
   'planner.special.other.placeholder': 'Bitte geben Sie weitere Bedürfnisse ein',
 
+  // 规划器计划详情
   'planner.plan.duration': 'Dauer',
   'planner.plan.days': 'Tage',
   'planner.plan.budget': 'Budget',
@@ -161,27 +170,8 @@ export const deTranslations: TranslationValue = {
   'planner.plan.dinner': 'Abendessen',
   'planner.plan.specialNotes': 'Besondere Hinweise',
 
+  // 规划器目的地
   'planner.destinations.recommendedRoutes': 'Empfohlene Routen',
-  'planner.destinations.route1': 'Route 1',
-  'planner.destinations.route2': 'Route 2',
-  'planner.destinations.route3': 'Route 3',
-  'planner.destinations.route4': 'Route 4',
-  'planner.destinations.route5': 'Route 5',
-  'planner.destinations.route6': 'Route 6',
-  'planner.destinations.route7': 'Route 7',
-  'planner.destinations.route8': 'Route 8',
-  'planner.destinations.route9': 'Route 9',
-  'planner.destinations.route10': 'Route 10',
-  'planner.destinations.route1.description': 'Beschreibung der Route 1',
-  'planner.destinations.route2.description': 'Beschreibung der Route 2',
-  'planner.destinations.route3.description': 'Beschreibung der Route 3',
-  'planner.destinations.route4.description': 'Beschreibung der Route 4',
-  'planner.destinations.route5.description': 'Beschreibung der Route 5',
-  'planner.destinations.route6.description': 'Beschreibung der Route 6',
-  'planner.destinations.route7.description': 'Beschreibung der Route 7',
-  'planner.destinations.route8.description': 'Beschreibung der Route 8',
-  'planner.destinations.route9.description': 'Beschreibung der Route 9',
-  'planner.destinations.route10.description': 'Beschreibung der Route 10',
   'planner.destinations.selectCities': 'Städte auswählen',
   'planner.destinations.cities.beijing': 'Peking',
   'planner.destinations.cities.shanghai': 'Shanghai',
@@ -191,34 +181,13 @@ export const deTranslations: TranslationValue = {
   'planner.destinations.cities.guilin': 'Guilin',
   'planner.destinations.cities.zhangjiajie': 'Zhangjiajie',
 
-  'planner.nextStep': 'Nächster Schritt',
-  'planner.basicInfo.travelDuration': 'Reisedauer',
-  'planner.basicInfo.travelBudget': 'Reisebudget',
-  
-  'nav.home': 'Startseite',
-  'nav.destinations': 'Reiseziele',
-  'nav.stories': 'Geschichten',
-  'nav.guides': 'Reiseführer',
-  'nav.planner': 'Planer',
-  'nav.community': 'Community',
-  'nav.login': 'Anmelden',
-  'nav.signup': 'Registrieren',
+  // 规划器节奏
+  'planner.pace.title': 'Reiserhythmus',
+  'planner.pace.relaxed': 'Entspannt',
+  'planner.pace.balanced': 'Ausgewogen',
+  'planner.pace.intensive': 'Intensiv',
 
-  // 价格相关
-  'pricing.free.title': 'Kostenloser Plan',
-  'pricing.free.description': 'Grundlegende Funktionen testen',
-  'pricing.premium.title': 'Premium Plan',
-  'pricing.premium.description': 'Alle Funktionen verfügbar',
-  'pricing.advanced.title': 'Erweiterter Plan',
-  'pricing.advanced.description': 'Professionelle Funktionen',
-  'pricing.compare': 'Pläne vergleichen',
-  'pricing.features': 'Funktionsliste',
-  'pricing.cta.upgrade': 'Upgrade',
-  'pricing.cta.trial': 'Kostenlose Testversion',
-  'pricing.discount.firstTime': 'Erstnutzer-Rabatt',
-  'pricing.discount.seasonal': 'Saisonaler Rabatt',
-
-  // 兴趣相关
+  // 规划器兴趣
   'planner.interests.title': 'Interessengebiete',
   'planner.interests.history': 'Geschichte',
   'planner.interests.culture': 'Kultur',
@@ -229,78 +198,104 @@ export const deTranslations: TranslationValue = {
   'planner.interests.architecture': 'Architektur',
   'planner.interests.photography': 'Fotografie',
 
-  // 节奏相关
-  'planner.pace.title': 'Reiserhythmus',
-  'planner.pace.relaxed': 'Entspannt',
-  'planner.pace.balanced': 'Ausgewogen',
-  'planner.pace.intensive': 'Intensiv',
-
-  // 住宿相关
+  // 规划器住宿
   'planner.accommodation.title': 'Unterkunft',
   'planner.accommodation.budget': 'Budget',
   'planner.accommodation.comfort': 'Komfort-orientiert',
   'planner.accommodation.luxury': 'Luxus',
 
-  // 餐饮相关
+  // 规划器餐饮
   'planner.dining.title': 'Essensplan',
   'planner.dining.spiciness': 'Schärfegrad',
   'planner.dining.notSpicy': 'Nicht scharf',
   'planner.dining.medium': 'Mittel',
   'planner.dining.verySpicy': 'Sehr scharf',
-  'planner.dining.cuisineTypes': 'Küchen-Arten',
   'planner.dining.types.seafood': 'Meeresfrüchte',
   'planner.dining.types.meat': 'Fleisch',
   'planner.dining.types.vegetarian': 'Vegetarisch',
   'planner.dining.types.noodles': 'Nudeln',
   'planner.dining.types.rice': 'Reis',
-  'planner.dining.style': 'Essensstil',
-  'planner.dining.styles.street': 'Straßenessen',
-  'planner.dining.styles.local': 'Lokale Küche',
-  'planner.dining.styles.fine': 'Gehobene Küche',
-  'planner.dining.styles.theme': 'Themenrestaurants',
-  'planner.dining.conservative.title': 'Konservativ',
-  'planner.dining.moderate.title': 'Moderat',
-  'planner.dining.adventurous.title': 'Abenteuerlich',
-  'planner.dining.adventurous': 'Abenteuerlustig',
-  'planner.dining.adventurous.description': 'Probieren Sie verschiedene exotische Gerichte',
   'planner.dining.types.hotpot': 'Hot Pot',
   'planner.dining.types.dimsum': 'Dim Sum',
   'planner.dining.types.soup': 'Suppe',
-  'planner.dining.styles.modern': 'Modern',
+  'planner.dining.styles.street': 'Straßenküche',
+  'planner.dining.styles.local': 'Lokale Restaurants',
+  'planner.dining.styles.fine': 'Feine Restaurants',
+  'planner.dining.styles.theme': 'Themenrestaurants',
   'planner.dining.styles.traditional': 'Traditionell',
   'planner.dining.styles.fusion': 'Fusion',
-  'planner.dining.conservative.description': 'Traditionelle Küche bevorzugen',
-  'planner.dining.moderate.description': 'Offen für neue Dinge',
-  'planner.dining.conservative.preferences': 'Traditionelle Präferenzen',
-  'planner.dining.moderate.preferences': 'Moderate Präferenzen',
-  'planner.dining.adventurous.preferences': 'Abenteuerliche Präferenzen',
-  'planner.dining.spiciness.mild': 'Mild',
-  'planner.dining.spiciness.medium': 'Mittel',
-  'planner.dining.spiciness.hot': 'Scharf',
-  'planner.destinations.route2': 'Seidenstraßen-Tour',
-  'planner.destinations.route2.description': 'Entdecken Sie die antike Seidenstraße',
-  'planner.destinations.cities.chengdu': 'Chengdu',
-  'planner.interests.nature': 'Natur',
-  'planner.interests.history': 'Geschichte',
-  'planner.accommodation.luxury': 'Luxus',
-  'planner.accommodation.budget': 'Budget',
-  'planner.accommodation.midrange': 'Mittelklasse',
+  'planner.dining.conservative.title': 'Konservativ',
+  'planner.dining.conservative.description': 'Bevorzugt traditionelle Gerichte',
+  'planner.dining.moderate.title': 'Moderat',
+  'planner.dining.moderate.description': 'Offen für neue Erfahrungen',
+  'planner.dining.adventurous.title': 'Abenteuerlich',
+  'planner.dining.adventurous': 'Abenteuerlich',
+  'planner.dining.adventurous.description': 'Bereit für neue kulinarische Erfahrungen',
+
+  // 社区相关
+  'community.title': 'Reise-Community',
+  'community.description': 'Tauschen Sie Erfahrungen mit anderen Reisenden aus',
+  'community.qa.title': 'Fragen & Antworten',
+  'community.qa.askQuestion': 'Frage stellen',
+  'community.qa.myQuestions': 'Meine Fragen',
+  'community.qa.popular': 'Beliebte Fragen',
+  'community.qa.unanswered': 'Unbeantwortete Fragen',
+  'community.rating.title': 'Bewertungen',
+  'community.rating.overall': 'Gesamtbewertung',
+  'community.rating.accuracy': 'Genauigkeit',
+  'community.rating.value': 'Preis-Leistung',
+  'community.rating.usefulness': 'Nützlichkeit',
+  'community.guides.title': 'Lokale Reiseführer',
+  'community.guides.connect': 'Mit Guide verbinden',
+  'community.guides.search': 'Guide suchen',
+  'community.guides.book': 'Guide buchen',
+
+  // 动态键
+  'story.1.title': 'Erkundung der Hutong-Kultur in Peking',
+  'story.1.description': 'Spaziergang durch die alten Hutongs, Entdeckung des alten Pekings',
+  'story.1.destination': 'Peking',
+  
   'story.2.title': 'Große Mauer Reise',
   'story.2.description': 'Wandern auf der Großen Mauer, Geschichte erleben',
   'story.2.destination': 'Peking',
+  
   'story.3.title': 'Jiangnan Wasserstädte',
   'story.3.description': 'Spaziergang durch antike Städte, Jiangnan-Kultur erleben',
   'story.3.destination': 'Suzhou',
+  
+  'guide.1.title': 'Umfassender 3-Tage-Guide für Peking',
+  'guide.1.description': 'Vollständige Informationen zu Sehenswürdigkeiten, Essen und Transport',
+  'guide.1.category': 'Stadtführer',
+  
   'guide.2.title': 'Shanghai Shopping Guide',
   'guide.2.description': 'Shopping-Führer für Shanghai',
   'guide.2.category': 'Shopping',
+
   'guide.3.title': 'Chengdu Food Map',
-  'guide.3.description': 'Essensempfehlungen in Chengdu',
+  'guide.3.description': 'Entdecken Sie die besten lokalen Restaurants',
   'guide.3.category': 'Essen',
+
+  'destination.1.name': 'Peking',
+  'destination.1.description': 'Die Hauptstadt Chinas, eine Stadt der Geschichte und Kultur',
+  'destination.1.activities.hiking': 'Wandern auf der Großen Mauer',
+  'destination.1.activities.culture': 'Kultur der Verbotenen Stadt',
+  'destination.1.activities.food': 'Pekingente',
+  'destination.1.activities.shopping': 'Wangfujing',
+  'destination.1.activities.nightlife': 'Sanlitun',
+
   'destination.2.name': 'Shanghai',
-  'destination.2.description': 'Perle des Ostens',
-  'destination.2.activities.shopping': 'Shopping',
-  'destination.3.name': 'Chengdu',
-  'destination.3.description': 'Land der Fülle',
-  'destination.3.activities.food': 'Essen'
+  'destination.2.description': 'Die Perle des Ostens, eine moderne Metropole',
+  'destination.2.activities.hiking': 'Spaziergang am Bund',
+  'destination.2.activities.culture': 'Yu-Garten Kultur',
+  'destination.2.activities.food': 'Xiaolongbao',
+  'destination.2.activities.shopping': 'Nanjing Road',
+  'destination.2.activities.nightlife': 'Xintiandi',
+
+  'destination.3.name': "Xi'an",
+  'destination.3.description': 'Alte Hauptstadt, Ausgangspunkt der Seidenstraße',
+  'destination.3.activities.hiking': 'Wandern auf der Stadtmauer',
+  'destination.3.activities.culture': 'Terrakotta-Armee',
+  'destination.3.activities.food': 'Roujiamo',
+  'destination.3.activities.shopping': 'Muslimisches Viertel',
+  'destination.3.activities.nightlife': 'Defu Straße'
 };

@@ -14,15 +14,13 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
   // 获取当前语言的翻译
   const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
-  const languageOptions: { code: Language; label: string }[] = [
+  const languageOptions = [
     { code: 'en', label: 'English' },
     { code: 'zh', label: '中文' },
-    { code: 'fr', label: 'Français' },
-    { code: 'de', label: 'Deutsch' },
     { code: 'ja', label: '日本語' },
     { code: 'ko', label: '한국어' },
-    { code: 'es', label: 'Español' },
-    { code: 'ru', label: 'Русский' }
+    { code: 'fr', label: 'Français' },
+    { code: 'de', label: 'Deutsch' }
   ];
 
   const year = new Date().getFullYear();
