@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Language } from '@/homepage/types';
+import { TranslationValue } from '@/homepage/utils/translations';
 import { motion } from 'framer-motion';
 
 interface InterestPreferenceProps {
@@ -110,7 +111,7 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
       {/* 兴趣选择 */}
       <div className="space-y-4">
         <h3 className="text-lg font-medium text-gray-900">
-          {t('planner.interests.title')}
+          {t('planner.interests.title' as keyof TranslationValue)}
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {interests.map(interest => (
@@ -125,7 +126,7 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
               }`}
             >
               <span className="text-2xl mb-2 block">{interest.icon}</span>
-              {t(`planner.interests.${interest.id}`)}
+              {t(`planner.interests.${interest.id}` as keyof TranslationValue)}
             </button>
           ))}
         </div>
@@ -134,7 +135,7 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
       {/* 旅行节奏 */}
       <div className="space-y-4">
         <h3 className="text-lg font-medium text-gray-900">
-          {t('planner.pace.title')}
+          {t('planner.pace.title' as keyof TranslationValue)}
         </h3>
         <div className="space-y-2">
           <input
@@ -146,9 +147,9 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
             className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
           />
           <div className="flex justify-between text-sm text-gray-600">
-            <span>{t('planner.pace.relaxed')}</span>
-            <span>{t('planner.pace.balanced')}</span>
-            <span>{t('planner.pace.intensive')}</span>
+            <span>{t('planner.pace.relaxed' as keyof TranslationValue)}</span>
+            <span>{t('planner.pace.balanced' as keyof TranslationValue)}</span>
+            <span>{t('planner.pace.intensive' as keyof TranslationValue)}</span>
           </div>
         </div>
       </div>
@@ -156,7 +157,7 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
       {/* 住宿偏好 */}
       <div className="space-y-4">
         <h3 className="text-lg font-medium text-gray-900">
-          {t('planner.accommodation.title')}
+          {t('planner.accommodation.title' as keyof TranslationValue)}
         </h3>
         <div className="grid grid-cols-3 gap-4">
           {['budget', 'comfort', 'luxury'].map(type => (
@@ -170,7 +171,7 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
                   : 'border-gray-200 hover:border-blue-300'
               }`}
             >
-              {t(`planner.accommodation.${type}`)}
+              {t(`planner.accommodation.${type}` as keyof TranslationValue)}
             </button>
           ))}
         </div>
@@ -179,13 +180,13 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
       {/* 饮食偏好 */}
       <div className="space-y-6">
         <h3 className="text-lg font-medium text-gray-900">
-          {t('planner.dining.title')}
+          {t('planner.dining.title' as keyof TranslationValue)}
         </h3>
 
         {/* 辣度偏好 */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
-            {t('planner.dining.spiciness')}
+            {t('planner.dining.spiciness' as keyof TranslationValue)}
           </label>
           <input
             type="range"
@@ -199,16 +200,16 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
             className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
           />
           <div className="flex justify-between text-sm text-gray-600">
-            <span>{t('planner.dining.notSpicy')}</span>
-            <span>{t('planner.dining.medium')}</span>
-            <span>{t('planner.dining.verySpicy')}</span>
+            <span>{t('planner.dining.notSpicy' as keyof TranslationValue)}</span>
+            <span>{t('planner.dining.medium' as keyof TranslationValue)}</span>
+            <span>{t('planner.dining.verySpicy' as keyof TranslationValue)}</span>
           </div>
         </div>
 
         {/* 美食类型 */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
-            {t('planner.dining.cuisineTypes')}
+            {t('planner.dining.cuisineTypes' as keyof TranslationValue)}
           </label>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {cuisineTypes.map(type => (
@@ -223,7 +224,7 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
                 }`}
               >
                 <span className="text-2xl mb-2 block">{type.icon}</span>
-                {t(`planner.dining.types.${type.id}`)}
+                {t(`planner.dining.types.${type.id}` as keyof TranslationValue)}
               </button>
             ))}
           </div>
@@ -232,7 +233,7 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
         {/* 用餐环境 */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
-            {t('planner.dining.style')}
+            {t('planner.dining.style' as keyof TranslationValue)}
           </label>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {diningStyles.map(style => (
@@ -247,7 +248,7 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
                 }`}
               >
                 <span className="text-2xl mb-2 block">{style.icon}</span>
-                {t(`planner.dining.styles.${style.id}`)}
+                {t(`planner.dining.styles.${style.id}` as keyof TranslationValue)}
               </button>
             ))}
           </div>
@@ -256,7 +257,7 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
         {/* 美食探索度 */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">
-            {t('planner.dining.adventurous')}
+            {t('planner.dining.adventurous' as keyof TranslationValue)}
           </label>
           <input
             type="range"
@@ -270,9 +271,9 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
             className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
           />
           <div className="flex justify-between text-sm text-gray-600">
-            <span>{t('planner.dining.conservative')}</span>
-            <span>{t('planner.dining.moderate')}</span>
-            <span>{t('planner.dining.adventurous')}</span>
+            <span>{t('planner.dining.conservative.title' as keyof TranslationValue)}</span>
+            <span>{t('planner.dining.moderate.title' as keyof TranslationValue)}</span>
+            <span>{t('planner.dining.adventurous.title' as keyof TranslationValue)}</span>
           </div>
         </div>
       </div>
@@ -284,7 +285,7 @@ export default function InterestPreference({ language, onNext }: InterestPrefere
           disabled={formData.interests.length === 0}
           className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
         >
-          {t('planner.next')}
+          {t('planner.next' as keyof TranslationValue)}
         </button>
       </div>
     </form>
