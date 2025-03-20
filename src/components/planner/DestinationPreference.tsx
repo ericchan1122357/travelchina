@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Language } from '@/homepage/types';
-import { TranslationValue } from '@/homepage/utils/translations';
+import { TranslationValue } from '@/homepage/utils/translations/types';
 import Image from 'next/image';
 
 interface DestinationPreferenceProps {

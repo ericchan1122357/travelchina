@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { getTranslation, TranslationValue } from '@/homepage/utils/translations';
+import { getTranslation } from '@/homepage/utils/translations';
+import { TranslationValue } from '@/homepage/utils/translations/types';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const SkipToMain: React.FC = () => {

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslation } from '@/hooks/useTranslation';
 import { Language } from '@/homepage/types';
 import { motion } from 'framer-motion';
-import { TranslationValue } from '@/homepage/utils/translations';
+import { TranslationValue } from '@/homepage/utils/translations/types';
 
 interface SpecialRequirementsProps {
   language: Language;

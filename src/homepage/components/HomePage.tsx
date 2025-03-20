@@ -1,7 +1,8 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { getTranslation, TranslationValue } from '@/homepage/utils/translations';
+import { getTranslation } from '@/homepage/utils/translations';
+import { TranslationValue } from '@/homepage/utils/translations/types';
 import NavBar from './NavBar';
 import HeroBanner from './HeroBanner';
 import ValueProposition from './ValueProposition';

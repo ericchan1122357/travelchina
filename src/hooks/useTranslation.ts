@@ -1,4 +1,5 @@
-import { getTranslation, TranslationValue } from '@/homepage/utils/translations';
+import { getTranslation } from '@/homepage/utils/translations';
+import { TranslationValue } from '@/homepage/utils/translations/types';
 import { Language } from '@/homepage/types';
 
 export function useTranslation(language: Language) {
