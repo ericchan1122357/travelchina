@@ -3,7 +3,8 @@
 import { useState, useRef } from 'react';
 import { TravelGuide, Language } from '../types';
 import OptimizedImage from './common/OptimizedImage';
-import { getTranslation, TranslationValue } from '../utils/translations';
+import { getTranslation } from '../utils/translations';
+import { TranslationValue } from '../utils/translations/types';
 
 interface GuidesSectionProps {
   title: string;

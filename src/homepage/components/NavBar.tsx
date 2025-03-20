@@ -3,7 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { Language } from '../types';
-import { getTranslation, TranslationValue } from '../utils/translations';
+import { getTranslation } from '../utils/translations';
+import { TranslationValue } from '../utils/translations/types';
 
 interface NavBarProps {
   currentLanguage: Language;

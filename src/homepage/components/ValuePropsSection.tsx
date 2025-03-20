@@ -3,7 +3,8 @@
 import { ValueProp } from '../types';
 import Image from 'next/image';
 import { Language } from '../types';
-import { getTranslation, TranslationValue } from '../utils/translations';
+import { getTranslation } from '../utils/translations';
+import { TranslationValue } from '../utils/translations/types';
 
 interface ValuePropsSectionProps {
   valueProps: ValueProp[];

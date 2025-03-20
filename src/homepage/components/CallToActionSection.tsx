@@ -1,7 +1,8 @@
 'use client';
 
 import { CallToActionData, Language } from '../types';
-import { getTranslation, TranslationValue } from '../utils/translations';
+import { getTranslation } from '../utils/translations';
+import { TranslationValue } from '../utils/translations/types';
 
 interface CallToActionSectionProps {
   data: CallToActionData;
