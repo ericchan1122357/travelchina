@@ -92,12 +92,29 @@ export const enTranslations: TranslationValue = {
   'planner.dining.types.vegetarian': 'Vegetarian',
   'planner.dining.types.noodles': 'Noodles',
   'planner.dining.types.rice': 'Rice',
+  'planner.dining.types.hotpot': 'Hot Pot',
+  'planner.dining.types.dimsum': 'Dim Sum',
+  'planner.dining.types.soup': 'Soup',
   'planner.dining.styles.street': 'Street Food',
   'planner.dining.styles.local': 'Local Food',
   'planner.dining.styles.fine': 'Fine Dining',
   'planner.dining.styles.theme': 'Theme Restaurant',
+  'planner.dining.styles.modern': 'Modern',
+  'planner.dining.styles.traditional': 'Traditional',
+  'planner.dining.styles.fusion': 'Fusion',
   'planner.dining.adventurous': 'Food Adventurer',
   'planner.dining.adventurous.description': 'Try unique local cuisine',
+  'planner.dining.conservative.title': 'Conservative',
+  'planner.dining.moderate.title': 'Moderate',
+  'planner.dining.adventurous.title': 'Adventurous',
+  'planner.dining.conservative.description': 'Prefer traditional cuisine',
+  'planner.dining.moderate.description': 'Open to trying new things',
+  'planner.dining.conservative.preferences': 'Traditional Preferences',
+  'planner.dining.moderate.preferences': 'Moderate Preferences',
+  'planner.dining.adventurous.preferences': 'Adventurous Preferences',
+  'planner.dining.spiciness.mild': 'Mild',
+  'planner.dining.spiciness.medium': 'Medium',
+  'planner.dining.spiciness.hot': 'Hot',
 
   // Planner basics
   'planner.title': 'Trip Planning',
@@ -178,6 +195,19 @@ export const enTranslations: TranslationValue = {
   // Planner destinations
   'planner.destinations.recommendedRoutes': 'Recommended Routes',
   'planner.destinations.selectCities': 'Select Cities',
+  'planner.destinations.route1': 'Jiangnan Water Towns Tour',
+  'planner.destinations.route1.description': 'In-depth tour of Suzhou and Hangzhou ancient towns',
+  'planner.destinations.route2': 'Silk Road Tour',
+  'planner.destinations.route2.description': 'Explore the ancient Silk Road',
+  'planner.destinations.cities.beijing': 'Beijing',
+  'planner.destinations.cities.shanghai': 'Shanghai',
+  'planner.destinations.cities.chengdu': 'Chengdu',
+  'planner.interests.culture': 'Culture',
+  'planner.interests.nature': 'Nature',
+  'planner.interests.history': 'History',
+  'planner.accommodation.luxury': 'Luxury',
+  'planner.accommodation.budget': 'Budget',
+  'planner.accommodation.midrange': 'Mid-range',
 
   // Community
   'community.title': 'Travel Community',
@@ -200,25 +230,36 @@ export const enTranslations: TranslationValue = {
   // Error messages
   'planner.error.general': 'An error occurred, please try again',
 
-  // Dynamic keys support
+  // Stories
   'story.1.title': 'Exploring West Lake',
   'story.1.description': 'A poetic journey around Hangzhou\'s West Lake',
   'story.1.destination': 'Hangzhou',
+  'story.2.title': 'Great Wall Journey',
+  'story.2.description': 'Hiking the Great Wall, experiencing history',
+  'story.2.destination': 'Beijing',
+  'story.3.title': 'Jiangnan Water Towns',
+  'story.3.description': 'Strolling through ancient towns, experiencing Jiangnan culture',
+  'story.3.destination': 'Suzhou',
+
+  // Guides
   'guide.1.title': 'Beijing Food Guide',
   'guide.1.description': 'Explore authentic Beijing cuisine',
   'guide.1.category': 'Food',
+  'guide.2.title': 'Shanghai Shopping Guide',
+  'guide.2.description': 'Shopping guide for Shanghai',
+  'guide.2.category': 'Shopping',
+  'guide.3.title': 'Chengdu Food Map',
+  'guide.3.description': 'Food recommendations in Chengdu',
+  'guide.3.category': 'Food',
+
+  // Destinations
   'destination.1.name': 'Beijing',
   'destination.1.description': 'Capital of China',
   'destination.1.activities.history': 'Visit the Forbidden City',
-  'planner.destinations.route1': 'Jiangnan Water Towns Tour',
-  'planner.destinations.route1.description': 'In-depth tour of Suzhou and Hangzhou ancient towns',
-  'planner.destinations.cities.beijing': 'Beijing',
-  'planner.interests.culture': 'Culture',
-  'planner.accommodation.luxury': 'Luxury',
-  'planner.dining.spiciness.mild': 'Mild',
-  'planner.dining.types.hotpot': 'Hot Pot',
-  'planner.dining.styles.modern': 'Modern',
-  'planner.dining.conservative.title': 'Conservative',
-  'planner.dining.moderate.title': 'Moderate',
-  'planner.dining.adventurous.title': 'Adventurous'
+  'destination.2.name': 'Shanghai',
+  'destination.2.description': 'Pearl of the Orient',
+  'destination.2.activities.shopping': 'Shopping',
+  'destination.3.name': 'Chengdu',
+  'destination.3.description': 'Land of Abundance',
+  'destination.3.activities.food': 'Food'
 }; 

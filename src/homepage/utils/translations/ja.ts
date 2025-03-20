@@ -92,12 +92,26 @@ export const jaTranslations: TranslationValue = {
   'planner.dining.types.vegetarian': '菜食',
   'planner.dining.types.noodles': '麺類',
   'planner.dining.types.rice': 'ご飯物',
+  'planner.dining.types.hotpot': '火鍋',
+  'planner.dining.types.dimsum': '点心',
+  'planner.dining.types.soup': 'スープ',
   'planner.dining.styles.street': '屋台料理',
   'planner.dining.styles.local': '郷土料理',
   'planner.dining.styles.fine': '高級料理',
   'planner.dining.styles.theme': 'テーマレストラン',
+  'planner.dining.styles.modern': 'モダン',
+  'planner.dining.styles.traditional': '伝統的',
+  'planner.dining.styles.fusion': 'フュージョン',
   'planner.dining.adventurous': '冒険的な食事',
-  'planner.dining.adventurous.description': 'ユニークな現地料理を試す',
+  'planner.dining.adventurous.description': '様々な料理に挑戦する',
+  'planner.dining.conservative.title': '保守的',
+  'planner.dining.conservative.description': '伝統的な料理を好む',
+  'planner.dining.moderate.title': '普通',
+  'planner.dining.moderate.description': '新しいものに挑戦する',
+  'planner.dining.adventurous.title': '冒険的',
+  'planner.dining.spiciness.mild': '少し辛い',
+  'planner.dining.spiciness.medium': '中辛',
+  'planner.dining.spiciness.hot': '辛い',
 
   // Planner basics
   'planner.title': '旅行プラン',
@@ -178,6 +192,24 @@ export const jaTranslations: TranslationValue = {
   // Planner destinations
   'planner.destinations.recommendedRoutes': 'おすすめルート',
   'planner.destinations.selectCities': '都市を選択',
+  'planner.destinations.route1': '江南水郷の旅',
+  'planner.destinations.route1.description': '蘇州・杭州の古都めぐり',
+  'planner.destinations.route2': '北京文化の旅',
+  'planner.destinations.route2.description': '北京の歴史と文化を探索',
+  'planner.destinations.cities.beijing': '北京',
+  'planner.destinations.cities.shanghai': '上海',
+  'planner.destinations.cities.chengdu': '成都',
+
+  // Interests
+  'planner.interests.culture': '文化',
+  'planner.interests.nature': '自然',
+  'planner.interests.history': '歴史',
+  'planner.interests.food': 'グルメ',
+
+  // Accommodation
+  'planner.accommodation.luxury': '高級',
+  'planner.accommodation.midrange': '中級',
+  'planner.accommodation.budget': '経済的',
 
   // Community
   'community.title': '旅行コミュニティ',
@@ -200,25 +232,36 @@ export const jaTranslations: TranslationValue = {
   // Error messages
   'planner.error.general': 'エラーが発生しました。後でもう一度お試しください',
 
-  // Dynamic content
+  // Stories
   'story.1.title': '西湖の魅力を探る',
   'story.1.description': '杭州の西湖で詩情豊かな散策',
   'story.1.destination': '杭州',
+  'story.2.title': '万里の長城の旅',
+  'story.2.description': '中国の偉大な遺産を探索',
+  'story.2.destination': '北京',
+  'story.3.title': '江南水郷の旅',
+  'story.3.description': '蘇州・杭州の古都めぐり',
+  'story.3.destination': '蘇州',
+
+  // Guides
   'guide.1.title': '北京グルメガイド',
   'guide.1.description': '本場の北京料理を探索',
   'guide.1.category': 'グルメ',
+  'guide.2.title': '上海ショッピングガイド',
+  'guide.2.description': '上海のショッピングスポットを探索',
+  'guide.2.category': 'ショッピング',
+  'guide.3.title': '成都グルメマップ',
+  'guide.3.description': '成都の美味しい料理を探索',
+  'guide.3.category': 'グルメ',
+
+  // Destinations
   'destination.1.name': '北京',
   'destination.1.description': '中国の首都',
   'destination.1.activities.history': '故宮博物院見学',
-  'planner.destinations.route1': '江南水郷の旅',
-  'planner.destinations.route1.description': '蘇州・杭州の古都めぐり',
-  'planner.destinations.cities.beijing': '北京',
-  'planner.interests.culture': '文化',
-  'planner.accommodation.luxury': '高級',
-  'planner.dining.spiciness.mild': '少し辛い',
-  'planner.dining.types.hotpot': '火鍋',
-  'planner.dining.styles.modern': 'モダン',
-  'planner.dining.conservative.title': '保守的',
-  'planner.dining.moderate.title': '普通',
-  'planner.dining.adventurous.title': '冒険的'
+  'destination.2.name': '上海',
+  'destination.2.description': '中国の経済中心地',
+  'destination.2.activities.shopping': 'ショッピング',
+  'destination.3.name': '成都',
+  'destination.3.description': 'パンダの故郷',
+  'destination.3.activities.food': 'グルメ'
 }; 
