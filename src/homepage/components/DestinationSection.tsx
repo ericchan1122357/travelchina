@@ -3,7 +3,8 @@
 import { useState, useRef } from 'react';
 import { Destination, Language } from '../types';
 import DestinationCard from './DestinationCard';
-import { getTranslation, TranslationValue } from '../utils/translations';
+import { getTranslation } from '../utils/translations';
+import { TranslationValue } from '../utils/translations/types';
 
 interface DestinationSectionProps {
   title: string;
