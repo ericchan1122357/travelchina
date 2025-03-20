@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Language } from '../../homepage/types';
-import { getTranslation, TranslationValue } from '../../homepage/utils/translations';
+import { Language, TranslationValue } from '../../homepage/utils/translations/types';
+import { getTranslation } from '../../homepage/utils/translations';
 
 interface SkipToContentProps {
   currentLanguage: Language;

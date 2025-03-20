@@ -15,4 +15,8 @@ export const translations: Record<Language, TranslationValue> = {
   ko: koTranslations
 };
 
-export * from './types'; 
+export type { Language, TranslationValue } from './types';
+
+export const getTranslation = (language: Language, key: keyof TranslationValue): string => {
+  return translations[language][key];
+}; 
