@@ -8,6 +8,7 @@ import DestinationPreference, { DestinationPreferenceData } from './DestinationP
 import InterestPreference, { InterestPreferenceData } from './InterestPreference';
 import SpecialRequirements, { SpecialRequirementsData } from './SpecialRequirements';
 import { Language } from '@/homepage/types';
+import { TranslationValue } from '@/homepage/utils/translations/types';
 
 interface QuestionnaireProps {
   language: Language;
@@ -161,7 +162,15 @@ export default function Questionnaire({ language }: QuestionnaireProps) {
           ))}
         </div>
         <div className="mt-4 text-center text-gray-600">
-          {t(`planner.step${currentStep}`)}
+          {(() => {
+            const stepKeys: Record<number, keyof TranslationValue> = {
+              1: 'planner.step1',
+              2: 'planner.step2',
+              3: 'planner.step3',
+              4: 'planner.step4'
+            };
+            return t(stepKeys[currentStep] || 'planner.step');
+          })()}
         </div>
       </div>
 
