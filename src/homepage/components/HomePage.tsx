@@ -62,8 +62,8 @@ const HomePage = () => {
           <ValueProposition 
             values={valueProps.map((prop: ValueProp, index: number) => ({
               ...prop,
-              title: t(`valueProp${index + 1}Title` as keyof TranslationValue) as string,
-              description: t(`valueProp${index + 1}Desc` as keyof TranslationValue) as string
+              title: t(`value.${index + 1}.title` as keyof TranslationValue) as string,
+              description: t(`value.${index + 1}.desc` as keyof TranslationValue) as string
             }))} 
           />
           
