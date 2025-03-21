@@ -6,6 +6,8 @@ import { jaTranslations } from './translations/ja';
 import { koTranslations } from './translations/ko';
 import { frTranslations } from './translations/fr';
 import { deTranslations } from './translations/de';
+import { esTranslations } from './translations/es';
+import { ruTranslations } from './translations/ru';
 
 interface CtaStats {
   cities: string;
@@ -41,6 +43,10 @@ export const getCurrentSeasonTitle = (language: Language): string => {
       return `${year}年${seasonText}のおすすめ目的地`;
     case 'ko':
       return `${year}年 ${seasonText} 推천 목的지`;
+    case 'ru':
+      return `Рекомендуемые направления на ${seasonText} ${year}`;
+    case 'es':
+      return `Destinos recomendados para ${seasonText} de ${year}`;
     default:
       return `Featured Destinations for ${seasonText} ${year}`;
   }
@@ -52,7 +58,9 @@ export const translations: Record<Language, TranslationValue> = {
   ja: jaTranslations,
   ko: koTranslations,
   fr: frTranslations,
-  de: deTranslations
+  de: deTranslations,
+  es: esTranslations,
+  ru: ruTranslations
 };
 
 export const getTranslation = (
@@ -77,7 +85,7 @@ export const getBrowserLanguage = (): Language => {
   if (typeof window !== 'undefined') {
     const browserLang = navigator.language.split('-')[0];
     // 检查浏览器语言是否在支持的语言列表中
-    const supportedLanguages: Language[] = ['en', 'zh', 'ja', 'ko', 'fr', 'de'];
+    const supportedLanguages: Language[] = ['en', 'zh', 'ja', 'ko', 'fr', 'de', 'es', 'ru'];
     return supportedLanguages.includes(browserLang as Language) ? browserLang as Language : 'en';
   }
   return 'en';
