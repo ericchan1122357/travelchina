@@ -1,5 +1,5 @@
 // 语言类型
-export type Language = 'en' | 'zh' | 'ja' | 'ko' | 'fr' | 'de';
+export type Language = 'en' | 'zh' | 'ja' | 'ko' | 'fr' | 'de' | 'es' | 'ru';
 
 // 目的地数据类型
 export interface Destination {

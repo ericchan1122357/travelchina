@@ -1,4 +1,4 @@
-export type Language = 'zh' | 'en' | 'fr' | 'de' | 'ja' | 'ko';
+export type Language = 'zh' | 'en' | 'fr' | 'de' | 'ja' | 'ko' | 'es' | 'ru';
 
 export interface TranslationValue {
   // 基础键

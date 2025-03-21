@@ -20,7 +20,9 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
     { code: 'ja', label: '日本語' },
     { code: 'ko', label: '한국어' },
     { code: 'fr', label: 'Français' },
-    { code: 'de', label: 'Deutsch' }
+    { code: 'de', label: 'Deutsch' },
+    { code: 'es', label: 'Español' },
+    { code: 'ru', label: 'Русский' }
   ];
 
   const year = new Date().getFullYear();

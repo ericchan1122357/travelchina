@@ -5,6 +5,8 @@ import { frTranslations } from './fr';
 import { deTranslations } from './de';
 import { jaTranslations } from './ja';
 import { koTranslations } from './ko';
+import { esTranslations } from './es';
+import { ruTranslations } from './ru';
 
 export const translations: Record<Language, TranslationValue> = {
   zh: zhTranslations,
@@ -12,7 +14,9 @@ export const translations: Record<Language, TranslationValue> = {
   fr: frTranslations,
   de: deTranslations,
   ja: jaTranslations,
-  ko: koTranslations
+  ko: koTranslations,
+  es: esTranslations,
+  ru: ruTranslations
 };
 
 export type { Language, TranslationValue } from './types';
