@@ -7,9 +7,9 @@ interface CallToActionProps {
 }
 
 const CallToAction = ({ data }: CallToActionProps) => {
-  const handlePlannerClick = () => {
-    window.location.href = '/planner';
-  };
+  // 计算完整的planner URL
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+  const plannerUrl = `${baseUrl}/planner`;
 
   return (
     <section className="relative py-24">
@@ -45,29 +45,32 @@ const CallToAction = ({ data }: CallToActionProps) => {
         </div>
 
         {/* CTA按钮 */}
-        <button
-          onClick={handlePlannerClick}
-          className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
-                 text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
-                 transition-colors duration-300 cursor-pointer"
-          style={{ position: 'relative', zIndex: 50 }}
-        >
-          {data.buttonText}
-          <svg
-            className="ml-2 w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+        <div className="relative" style={{ zIndex: 100 }}>
+          <a
+            href={plannerUrl}
+            className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
+                   text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
+                   transition-colors duration-300 cursor-pointer active:bg-red-800 active:scale-95 active:border-red-800
+                   transform transition-transform text-center no-underline"
+            style={{ position: 'relative', zIndex: 999 }}
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            />
-          </svg>
-        </button>
+            {data.buttonText}
+            <svg
+              className="ml-2 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   );

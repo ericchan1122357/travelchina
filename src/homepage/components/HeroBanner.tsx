@@ -25,9 +25,9 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
     transition: 'transform 0.1s ease-out'
   };
 
-  const handlePlannerClick = () => {
-    window.location.href = '/planner';
-  };
+  // 计算完整的planner URL
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+  const plannerUrl = `${baseUrl}/planner`;
 
   return (
     <div 
@@ -62,17 +62,20 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
           >
             {data.subtitle}
           </p>
-          <button
-            onClick={handlePlannerClick}
-            className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
-                   hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
-                   focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent 
-                   cursor-pointer"
-            aria-label={data.ctaText}
-            style={{ position: 'relative', zIndex: 50 }}
-          >
-            {data.ctaText}
-          </button>
+          <div className="relative" style={{ zIndex: 100 }}>
+            <a
+              href={plannerUrl}
+              className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
+                     hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
+                     focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent 
+                     cursor-pointer active:bg-red-800 active:scale-95 transform transition-transform
+                     text-center no-underline"
+              aria-label={data.ctaText}
+              style={{ position: 'relative', zIndex: 999 }}
+            >
+              {data.ctaText}
+            </a>
+          </div>
         </div>
       </div>
 
@@ -81,6 +84,7 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
         role="presentation"
         aria-hidden="true"
+        style={{ zIndex: 50 }}
       >
         <svg
           className="w-6 h-6 text-white"
