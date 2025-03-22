@@ -42,8 +42,13 @@ const CallToAction = ({ data, onCtaClick }: CallToActionProps) => {
         </div>
 
         {/* CTA按钮 */}
-        <a
-          href="/planner"
+        <button
+          onClick={() => {
+            const baseUrl = window.location.origin;
+            const targetUrl = `${baseUrl}/planner`;
+            console.log(`CallToAction直接跳转到: ${targetUrl}`);
+            window.location.replace(targetUrl);
+          }}
           className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
                    text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
                    transition-colors duration-300"
@@ -63,7 +68,7 @@ const CallToAction = ({ data, onCtaClick }: CallToActionProps) => {
               d="M17 8l4 4m0 0l-4 4m4-4H3"
             />
           </svg>
-        </a>
+        </button>
       </div>
     </section>
   );

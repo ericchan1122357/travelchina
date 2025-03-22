@@ -59,15 +59,20 @@ const HeroBanner = ({ data, onCtaClick }: HeroBannerProps) => {
           >
             {data.subtitle}
           </p>
-          <a
-            href="/planner"
+          <button
+            onClick={() => {
+              const baseUrl = window.location.origin;
+              const targetUrl = `${baseUrl}/planner`;
+              console.log(`HeroBanner直接跳转到: ${targetUrl}`);
+              window.location.replace(targetUrl);
+            }}
             className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
                      hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
                      focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
             aria-label={data.ctaText}
           >
             {data.ctaText}
-          </a>
+          </button>
         </div>
       </div>
 

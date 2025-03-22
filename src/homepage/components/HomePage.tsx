@@ -35,22 +35,23 @@ const HomePage = () => {
     // 使用直接跳转方式，避免路由系统冲突
     console.log('点击开始规划按钮，准备跳转到/planner页面');
     
-    // 尝试使用绝对URL路径
-    const currentUrl = window.location.href;
-    const baseUrl = currentUrl.split('/').slice(0, 3).join('/');
+    // 使用完整的绝对URL路径，确保跳转不被Next.js路由系统拦截
+    const baseUrl = window.location.origin;
     const targetUrl = `${baseUrl}/planner`;
     
     console.log(`跳转到绝对URL路径: ${targetUrl}`);
-    window.location.href = targetUrl;
+    
+    // 使用强制硬跳转方式，完全绕过Next.js路由
+    window.location.replace(targetUrl);
   };
 
   const handleReadMoreClick = (storyId: string) => {
     // 使用与handleCtaClick相同的方法
-    const currentUrl = window.location.href;
-    const baseUrl = currentUrl.split('/').slice(0, 3).join('/');
+    const baseUrl = window.location.origin;
     const targetUrl = `${baseUrl}/stories/${storyId}`;
     
-    window.location.href = targetUrl;
+    // 使用硬跳转
+    window.location.replace(targetUrl);
   };
 
   // 获取当前语言的翻译
