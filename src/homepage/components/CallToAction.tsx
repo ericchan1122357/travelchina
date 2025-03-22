@@ -48,27 +48,31 @@ const CallToAction = ({ data }: CallToActionProps) => {
         <div className="relative" style={{ zIndex: 100 }}>
           <a
             href={plannerUrl}
-            className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
+            className="group relative inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
                    text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
-                   transition-colors duration-300 cursor-pointer active:bg-red-800 active:scale-95 active:border-red-800
-                   transform transition-transform text-center no-underline"
+                   hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(220,38,38,0.7)]
+                   transition-all duration-300 ease-out
+                   cursor-pointer text-center no-underline overflow-hidden"
             style={{ position: 'relative', zIndex: 999 }}
           >
-            {data.buttonText}
-            <svg
-              className="ml-2 w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
+            <span className="relative z-10 flex items-center justify-center">
+              {data.buttonText}
+              <svg
+                className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></span>
           </a>
         </div>
       </div>

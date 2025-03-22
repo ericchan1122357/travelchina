@@ -65,15 +65,27 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
           <div className="relative" style={{ zIndex: 100 }}>
             <a
               href={plannerUrl}
-              className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
-                     hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
+              className="group relative inline-flex items-center bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
+                     hover:bg-red-700 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(220,38,38,0.7)]
+                     transition-all duration-300 ease-out
                      focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent 
-                     cursor-pointer active:bg-red-800 active:scale-95 transform transition-transform
-                     text-center no-underline"
+                     cursor-pointer text-center no-underline overflow-hidden animate-fade-in-delay-2"
               aria-label={data.ctaText}
               style={{ position: 'relative', zIndex: 999 }}
             >
-              {data.ctaText}
+              <span className="relative z-10 flex items-center justify-center">
+                {data.ctaText}
+                <svg 
+                  className="ml-0 w-0 h-5 group-hover:w-5 group-hover:ml-2 transition-all duration-300"
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></span>
             </a>
           </div>
         </div>
