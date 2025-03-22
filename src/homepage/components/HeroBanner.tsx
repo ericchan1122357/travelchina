@@ -6,10 +6,9 @@ import OptimizedImage from './common/OptimizedImage';
 
 interface HeroBannerProps {
   data: HeroBannerData;
-  onCtaClick: () => void;
 }
 
-const HeroBanner = ({ data, onCtaClick }: HeroBannerProps) => {
+const HeroBanner = ({ data }: HeroBannerProps) => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -59,15 +58,15 @@ const HeroBanner = ({ data, onCtaClick }: HeroBannerProps) => {
           >
             {data.subtitle}
           </p>
-          <button
-            onClick={onCtaClick}
+          <a
+            href="/planner"
             className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
                    hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
                    focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
             aria-label={data.ctaText}
           >
             {data.ctaText}
-          </button>
+          </a>
         </div>
       </div>
 

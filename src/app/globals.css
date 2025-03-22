@@ -6,6 +6,15 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --china-red: #ce1d3e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
 }
 
 body {
@@ -16,4 +25,41 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .bg-china-red {
+    background-color: var(--china-red);
+  }
+  .border-china-red {
+    border-color: var(--china-red);
+  }
+  .text-china-red {
+    color: var(--china-red);
+  }
+}
+
+@layer components {
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .animate-fade-in-delay {
+    animation: fadeIn 1s ease-in-out 0.3s both;
+  }
+  
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 1s ease-in-out 0.6s both;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 } 
