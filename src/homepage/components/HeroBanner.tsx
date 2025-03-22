@@ -25,6 +25,12 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
     transition: 'transform 0.1s ease-out'
   };
 
+  // 直接在新窗口打开规划页面
+  const openPlannerPage = () => {
+    const plannerUrl = 'https://ericchan1122357.github.io/travelchina/planner.html';
+    window.open(plannerUrl, '_blank');
+  };
+
   return (
     <div 
       className="relative h-screen overflow-hidden"
@@ -58,17 +64,15 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
           >
             {data.subtitle}
           </p>
-          <form method="get" action="/planner.html">
-            <button
-              type="submit"
-              className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
-                     hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
-                     focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
-              aria-label={data.ctaText}
-            >
-              {data.ctaText}
-            </button>
-          </form>
+          <button
+            onClick={openPlannerPage}
+            className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
+                   hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
+                   focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+            aria-label={data.ctaText}
+          >
+            {data.ctaText}
+          </button>
         </div>
       </div>
 
