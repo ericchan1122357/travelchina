@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { CallToActionData } from '../types';
 
 interface CallToActionProps {
@@ -9,11 +7,8 @@ interface CallToActionProps {
 }
 
 const CallToAction = ({ data }: CallToActionProps) => {
-  const router = useRouter();
-
-  const handlePlannerClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    router.push('/planner');
+  const handlePlannerClick = () => {
+    window.location.href = '/planner';
   };
 
   return (
@@ -55,6 +50,7 @@ const CallToAction = ({ data }: CallToActionProps) => {
           className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
                  text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
                  transition-colors duration-300 cursor-pointer"
+          style={{ position: 'relative', zIndex: 50 }}
         >
           {data.buttonText}
           <svg

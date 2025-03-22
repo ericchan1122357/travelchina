@@ -1,8 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { HeroBannerData } from '../types';
 import OptimizedImage from './common/OptimizedImage';
 
@@ -12,7 +10,6 @@ interface HeroBannerProps {
 
 const HeroBanner = ({ data }: HeroBannerProps) => {
   const [scrollY, setScrollY] = useState(0);
-  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,9 +25,8 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
     transition: 'transform 0.1s ease-out'
   };
 
-  const handlePlannerClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    router.push('/planner');
+  const handlePlannerClick = () => {
+    window.location.href = '/planner';
   };
 
   return (
@@ -73,6 +69,7 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
                    focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent 
                    cursor-pointer"
             aria-label={data.ctaText}
+            style={{ position: 'relative', zIndex: 50 }}
           >
             {data.ctaText}
           </button>
