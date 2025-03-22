@@ -41,7 +41,7 @@ const CallToAction = ({ data }: CallToActionProps) => {
         </div>
 
         {/* CTA按钮 */}
-        <form method="get" action="/planner">
+        <form method="get" action="/planner.html">
           <button
             type="submit"
             className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 

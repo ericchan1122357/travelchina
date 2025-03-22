@@ -58,7 +58,7 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
           >
             {data.subtitle}
           </p>
-          <form method="get" action="/planner">
+          <form method="get" action="/planner.html">
             <button
               type="submit"
               className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
