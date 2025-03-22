@@ -4,10 +4,9 @@ import { CallToActionData } from '../types';
 
 interface CallToActionProps {
   data: CallToActionData;
-  onCtaClick: () => void;
 }
 
-const CallToAction = ({ data, onCtaClick }: CallToActionProps) => {
+const CallToAction = ({ data }: CallToActionProps) => {
   return (
     <section className="relative py-24">
       {/* 背景图片 */}
@@ -42,16 +41,11 @@ const CallToAction = ({ data, onCtaClick }: CallToActionProps) => {
         </div>
 
         {/* CTA按钮 */}
-        <button
-          onClick={() => {
-            const baseUrl = window.location.origin;
-            const targetUrl = `${baseUrl}/planner`;
-            console.log(`CallToAction直接跳转到: ${targetUrl}`);
-            window.location.replace(targetUrl);
-          }}
+        <a
+          href="/planner"
           className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
-                   text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
-                   transition-colors duration-300"
+                 text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
+                 transition-colors duration-300"
         >
           {data.buttonText}
           <svg
@@ -68,7 +62,7 @@ const CallToAction = ({ data, onCtaClick }: CallToActionProps) => {
               d="M17 8l4 4m0 0l-4 4m4-4H3"
             />
           </svg>
-        </button>
+        </a>
       </div>
     </section>
   );

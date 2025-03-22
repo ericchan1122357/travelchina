@@ -28,32 +28,6 @@ const HomePage = () => {
   const router = useRouter();
   const { currentLanguage, setCurrentLanguage } = useLanguage();
 
-  const handleCtaClick = () => {
-    // 添加调试代码，显示弹窗确认事件触发
-    alert('开始规划按钮被点击了！即将跳转...');
-    
-    // 使用直接跳转方式，避免路由系统冲突
-    console.log('点击开始规划按钮，准备跳转到/planner页面');
-    
-    // 使用完整的绝对URL路径，确保跳转不被Next.js路由系统拦截
-    const baseUrl = window.location.origin;
-    const targetUrl = `${baseUrl}/planner`;
-    
-    console.log(`跳转到绝对URL路径: ${targetUrl}`);
-    
-    // 使用强制硬跳转方式，完全绕过Next.js路由
-    window.location.replace(targetUrl);
-  };
-
-  const handleReadMoreClick = (storyId: string) => {
-    // 使用与handleCtaClick相同的方法
-    const baseUrl = window.location.origin;
-    const targetUrl = `${baseUrl}/stories/${storyId}`;
-    
-    // 使用硬跳转
-    window.location.replace(targetUrl);
-  };
-
   // 获取当前语言的翻译
   const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
@@ -74,7 +48,6 @@ const HomePage = () => {
               subtitle: t('heroSubtitle') as string,
               ctaText: t('startPlanning') as string
             }}
-            onCtaClick={handleCtaClick} 
           />
           
           <ValueProposition 
@@ -94,7 +67,9 @@ const HomePage = () => {
           <TravelStoriesSection 
             title={t('storiesTitle') as string}
             stories={travelStories} 
-            onReadMoreClick={handleReadMoreClick}
+            onReadMoreClick={(storyId: string) => {
+              window.location.href = `/stories/${storyId}`;
+            }}
             currentLanguage={currentLanguage}
           />
           
@@ -111,7 +86,6 @@ const HomePage = () => {
               subtitle: t('ctaSubtitle') as string,
               buttonText: t('startPlanning') as string
             }}
-            onCtaClick={handleCtaClick} 
           />
         </main>
         
