@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { HeroBannerData } from '../types';
 import OptimizedImage from './common/OptimizedImage';
 
@@ -58,15 +59,16 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
           >
             {data.subtitle}
           </p>
-          <a
+          <Link
             href="/planner"
             className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
                    hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
-                   focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                   focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent 
+                   cursor-pointer"
             aria-label={data.ctaText}
           >
             {data.ctaText}
-          </a>
+          </Link>
         </div>
       </div>
 

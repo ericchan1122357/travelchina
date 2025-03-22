@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { CallToActionData } from '../types';
 
 interface CallToActionProps {
@@ -41,11 +42,11 @@ const CallToAction = ({ data }: CallToActionProps) => {
         </div>
 
         {/* CTA按钮 */}
-        <a
+        <Link
           href="/planner"
           className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
                  text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
-                 transition-colors duration-300"
+                 transition-colors duration-300 cursor-pointer"
         >
           {data.buttonText}
           <svg
@@ -62,7 +63,7 @@ const CallToAction = ({ data }: CallToActionProps) => {
               d="M17 8l4 4m0 0l-4 4m4-4H3"
             />
           </svg>
-        </a>
+        </Link>
       </div>
     </section>
   );
