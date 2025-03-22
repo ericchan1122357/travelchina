@@ -16,9 +16,9 @@ const nextConfig = {
     locales: ['zh', 'en'],
     defaultLocale: 'zh',
   },
-  // 生产环境配置
+  // 生产环境配置 - 移除localhost默认值
   env: {
-    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL || ''
   }
 }
 

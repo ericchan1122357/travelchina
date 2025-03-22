@@ -7,9 +7,8 @@ interface CallToActionProps {
 }
 
 const CallToAction = ({ data }: CallToActionProps) => {
-  // 计算完整的planner URL
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
-  const plannerUrl = `${baseUrl}/planner`;
+  // 使用相对路径而不是绝对URL
+  const plannerUrl = `/planner`;
 
   return (
     <section className="relative py-24">
