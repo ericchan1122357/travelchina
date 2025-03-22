@@ -25,11 +25,6 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
     transition: 'transform 0.1s ease-out'
   };
 
-  const handleNavigation = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.location.href = window.location.origin + '/planner';
-  };
-
   return (
     <div 
       className="relative h-screen overflow-hidden"
@@ -63,16 +58,17 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
           >
             {data.subtitle}
           </p>
-          <a
-            href="/planner"
-            onClick={handleNavigation}
-            className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
-                   hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
-                   focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
-            aria-label={data.ctaText}
-          >
-            {data.ctaText}
-          </a>
+          <form method="get" action="/planner">
+            <button
+              type="submit"
+              className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
+                     hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
+                     focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+              aria-label={data.ctaText}
+            >
+              {data.ctaText}
+            </button>
+          </form>
         </div>
       </div>
 

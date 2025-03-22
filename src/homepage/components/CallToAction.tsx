@@ -7,11 +7,6 @@ interface CallToActionProps {
 }
 
 const CallToAction = ({ data }: CallToActionProps) => {
-  const handleNavigation = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.location.href = window.location.origin + '/planner';
-  };
-
   return (
     <section className="relative py-24">
       {/* 背景图片 */}
@@ -46,29 +41,30 @@ const CallToAction = ({ data }: CallToActionProps) => {
         </div>
 
         {/* CTA按钮 */}
-        <a
-          href="/planner"
-          onClick={handleNavigation}
-          className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
-                 text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
-                 transition-colors duration-300"
-        >
-          {data.buttonText}
-          <svg
-            className="ml-2 w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+        <form method="get" action="/planner">
+          <button
+            type="submit"
+            className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
+                   text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
+                   transition-colors duration-300"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            />
-          </svg>
-        </a>
+            {data.buttonText}
+            <svg
+              className="ml-2 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </button>
+        </form>
       </div>
     </section>
   );
