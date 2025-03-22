@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { HeroBannerData } from '../types';
 import OptimizedImage from './common/OptimizedImage';
 
@@ -11,6 +12,7 @@ interface HeroBannerProps {
 
 const HeroBanner = ({ data }: HeroBannerProps) => {
   const [scrollY, setScrollY] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,11 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
   const parallaxStyle = {
     transform: `translateY(${scrollY * 0.5}px)`,
     transition: 'transform 0.1s ease-out'
+  };
+
+  const handlePlannerClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    router.push('/planner');
   };
 
   return (
@@ -59,8 +66,8 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
           >
             {data.subtitle}
           </p>
-          <Link
-            href="/planner"
+          <button
+            onClick={handlePlannerClick}
             className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
                    hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
                    focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent 
@@ -68,7 +75,7 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
             aria-label={data.ctaText}
           >
             {data.ctaText}
-          </Link>
+          </button>
         </div>
       </div>
 
