@@ -25,17 +25,6 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
     transition: 'transform 0.1s ease-out'
   };
 
-  // 强制跳转函数
-  const forceNavigate = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.location.href = '/planner';
-    // 备用方法，以防第一种方式被拦截
-    setTimeout(() => {
-      window.open('/planner', '_self');
-    }, 100);
-    return false; // 阻止默认行为
-  };
-
   return (
     <div 
       className="relative h-screen overflow-hidden"
@@ -69,35 +58,15 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
           >
             {data.subtitle}
           </p>
-          
-          {/* 使用多种方式确保链接可以正常工作 */}
           <a
             href="/planner"
-            onClick={forceNavigate}
             className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
-                     hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
-                     focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                   hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
+                   focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
             aria-label={data.ctaText}
-            rel="noopener noreferrer"
           >
             {data.ctaText}
           </a>
-          
-          {/* 备用按钮，隐藏但可通过Tab访问 */}
-          <form 
-            action="/planner" 
-            method="get" 
-            style={{display: 'inline'}}
-            className="ml-4"
-          >
-            <button
-              type="submit"
-              className="bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
-                       hover:bg-red-700 transition-colors duration-300"
-            >
-              {data.ctaText}
-            </button>
-          </form>
         </div>
       </div>
 

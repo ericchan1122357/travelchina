@@ -31,16 +31,6 @@ const HomePage = () => {
   // 获取当前语言的翻译
   const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
-  // 强制跳转函数 - 使用完整的绝对URL
-  const forceNavigateToPlanner = (e: React.MouseEvent) => {
-    e.preventDefault();
-    // 获取当前域名
-    const baseUrl = window.location.origin;
-    // 直接修改location到完整URL
-    window.location.href = `${baseUrl}/planner`;
-    return false;
-  };
-
   // 错误边界
   try {
     return (
@@ -97,45 +87,6 @@ const HomePage = () => {
               buttonText: t('startPlanning') as string
             }}
           />
-          
-          {/* 备用跳转区域 - 直接HTML链接和iframe组合 */}
-          <div className="py-8 bg-gray-100 text-center">
-            <p className="text-lg mb-4">如果上面的按钮无法跳转，请尝试以下链接：</p>
-            <div className="flex justify-center space-x-4 flex-wrap">
-              <a 
-                href="/planner"
-                className="px-6 py-2 bg-blue-500 text-white rounded-lg m-2"
-                onClick={forceNavigateToPlanner}
-              >
-                方式1: 直接跳转到规划页
-              </a>
-              
-              <form action="/planner" method="get" style={{display: 'inline'}} className="m-2">
-                <button 
-                  type="submit"
-                  className="px-6 py-2 bg-green-500 text-white rounded-lg"
-                >
-                  方式2: 表单提交跳转
-                </button>
-              </form>
-              
-              <a 
-                href={`${typeof window !== 'undefined' ? window.location.origin : ''}/planner`}
-                className="px-6 py-2 bg-purple-500 text-white rounded-lg m-2"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                方式3: 新窗口打开
-              </a>
-              
-              <a 
-                href="/directplanner.html"
-                className="px-6 py-2 bg-amber-500 text-white rounded-lg m-2"
-              >
-                方式4: 使用静态HTML页面
-              </a>
-            </div>
-          </div>
         </main>
         
         <Footer 
