@@ -7,6 +7,18 @@ interface CallToActionProps {
 }
 
 const CallToAction = ({ data }: CallToActionProps) => {
+  // 强制跳转函数
+  const forceNavigate = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // 直接修改location
+    window.location.href = '/planner';
+    // 备用方法，以防第一种方式被拦截
+    setTimeout(() => {
+      window.open('/planner', '_self');
+    }, 100);
+    return false; // 阻止默认行为
+  };
+  
   return (
     <section className="relative py-24">
       {/* 背景图片 */}
@@ -40,29 +52,64 @@ const CallToAction = ({ data }: CallToActionProps) => {
           ))}
         </div>
 
-        {/* CTA按钮 */}
-        <a
-          href="/planner"
-          className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
-                 text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
-                 transition-colors duration-300"
-        >
-          {data.buttonText}
-          <svg
-            className="ml-2 w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+        {/* CTA按钮组 - 使用多种方法确保至少一种能工作 */}
+        <div className="flex flex-wrap justify-center gap-4">
+          {/* 方法1: 带onClick的链接 */}
+          <a
+            href="/planner"
+            onClick={forceNavigate}
+            className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
+                   text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
+                   transition-colors duration-300"
+            rel="noopener noreferrer"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            />
-          </svg>
-        </a>
+            {data.buttonText}
+            <svg
+              className="ml-2 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+          
+          {/* 方法2: 表单提交 */}
+          <form 
+            action="/planner" 
+            method="get" 
+            style={{display: 'inline'}}
+          >
+            <button
+              type="submit"
+              className="inline-flex items-center px-8 py-3 border-2 border-blue-500 bg-blue-500 text-white 
+                     text-lg font-semibold rounded-lg hover:bg-blue-600 hover:border-blue-600 
+                     transition-colors duration-300"
+            >
+              开始规划
+              <svg
+                className="ml-2 w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   );
