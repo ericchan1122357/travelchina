@@ -29,18 +29,17 @@ const HomePage = () => {
   const { currentLanguage, setCurrentLanguage } = useLanguage();
 
   const handleCtaClick = () => {
-    // 直接使用router.push方法导航到planner页面
+    // 使用直接跳转方式，避免路由系统冲突
     console.log('点击开始规划按钮，准备跳转到/planner页面');
     
-    // 使用Next.js App Router的导航方法
-    router.push('/planner');
-    
-    // 如果上述方法在某些情况下失败，可以取消下面的注释作为后备方案
-    // window.location.href = '/planner';
+    // 由于项目混合使用了next/router和next/navigation
+    // 使用原生跳转方法更可靠
+    window.location.href = '/planner';
   };
 
   const handleReadMoreClick = (storyId: string) => {
-    router.push(`/stories/${storyId}`);
+    // 使用原生跳转方法，与handleCtaClick保持一致
+    window.location.href = `/stories/${storyId}`;
   };
 
   // 获取当前语言的翻译
