@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getTranslation } from '@/homepage/utils/translations';
 import { TranslationValue } from '@/homepage/utils/translations/types';
@@ -11,6 +12,7 @@ import TravelStoriesSection from './TravelStoriesSection';
 import GuidesSection from './GuidesSection';
 import CallToAction from './CallToAction';
 import Footer from './Footer';
+import SimplePlanner from './SimplePlanner';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ValueProp } from '@/homepage/types';
 
@@ -27,6 +29,17 @@ import {
 const HomePage = () => {
   const router = useRouter();
   const { currentLanguage, setCurrentLanguage } = useLanguage();
+  const [showPlanner, setShowPlanner] = useState(false);
+
+  // 显示规划器
+  const handleShowPlanner = () => {
+    setShowPlanner(true);
+  };
+
+  // 隐藏规划器
+  const handleClosePlanner = () => {
+    setShowPlanner(false);
+  };
 
   // 获取当前语言的翻译
   const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
@@ -48,6 +61,7 @@ const HomePage = () => {
               subtitle: t('heroSubtitle') as string,
               ctaText: t('startPlanning') as string
             }}
+            onCtaClick={handleShowPlanner}
           />
           
           <ValueProposition 
@@ -86,6 +100,7 @@ const HomePage = () => {
               subtitle: t('ctaSubtitle') as string,
               buttonText: t('startPlanning') as string
             }}
+            onCtaClick={handleShowPlanner}
           />
         </main>
         
@@ -93,6 +108,9 @@ const HomePage = () => {
           currentLanguage={currentLanguage} 
           onLanguageChange={setCurrentLanguage} 
         />
+
+        {/* 规划器模态框 */}
+        {showPlanner && <SimplePlanner onClose={handleClosePlanner} />}
       </div>
     );
   } catch (error) {

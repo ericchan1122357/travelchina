@@ -6,9 +6,10 @@ import OptimizedImage from './common/OptimizedImage';
 
 interface HeroBannerProps {
   data: HeroBannerData;
+  onCtaClick: () => void;
 }
 
-const HeroBanner = ({ data }: HeroBannerProps) => {
+const HeroBanner = ({ data, onCtaClick }: HeroBannerProps) => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -23,12 +24,6 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
   const parallaxStyle = {
     transform: `translateY(${scrollY * 0.5}px)`,
     transition: 'transform 0.1s ease-out'
-  };
-
-  // 直接在新窗口打开规划页面
-  const openPlannerPage = () => {
-    const plannerUrl = 'https://ericchan1122357.github.io/travelchina/planner.html';
-    window.open(plannerUrl, '_blank');
   };
 
   return (
@@ -65,7 +60,7 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
             {data.subtitle}
           </p>
           <button
-            onClick={openPlannerPage}
+            onClick={onCtaClick}
             className="inline-block bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
                    hover:bg-red-700 transition-colors duration-300 animate-fade-in-delay-2
                    focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
