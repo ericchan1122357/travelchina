@@ -7,6 +7,11 @@ interface CallToActionProps {
 }
 
 const CallToAction = ({ data }: CallToActionProps) => {
+  const handleNavigation = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.href = window.location.origin + '/planner';
+  };
+
   return (
     <section className="relative py-24">
       {/* 背景图片 */}
@@ -43,6 +48,7 @@ const CallToAction = ({ data }: CallToActionProps) => {
         {/* CTA按钮 */}
         <a
           href="/planner"
+          onClick={handleNavigation}
           className="inline-flex items-center px-8 py-3 border-2 border-china-red bg-china-red text-white 
                  text-lg font-semibold rounded-lg hover:bg-red-700 hover:border-red-700 
                  transition-colors duration-300"
