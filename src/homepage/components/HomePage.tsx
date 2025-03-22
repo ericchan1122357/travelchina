@@ -29,20 +29,14 @@ const HomePage = () => {
   const { currentLanguage, setCurrentLanguage } = useLanguage();
 
   const handleCtaClick = () => {
-    // 首先尝试使用window.location直接跳转(最可靠的方法)
+    // 直接使用router.push方法导航到planner页面
     console.log('点击开始规划按钮，准备跳转到/planner页面');
     
-    // 由于我们项目同时使用了Pages Router和App Router
-    // 这里直接使用window.location更可靠
-    window.location.href = '/planner';
+    // 使用Next.js App Router的导航方法
+    router.push('/planner');
     
-    // 注意：下面的router.push方法在混合路由系统中可能有兼容性问题
-    // try {
-    //   router.push('/planner');
-    // } catch (error) {
-    //   console.error('导航错误:', error);
-    //   window.location.href = '/planner';
-    // }
+    // 如果上述方法在某些情况下失败，可以取消下面的注释作为后备方案
+    // window.location.href = '/planner';
   };
 
   const handleReadMoreClick = (storyId: string) => {
