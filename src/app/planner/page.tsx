@@ -2746,6 +2746,230 @@ export default function PlannerPage() {
     };
   }, []);
 
+  // 添加一个自定义修复函数，包装原生日期选择器
+  useEffect(() => {
+    // 处理报错和语言问题的全面方案
+    const fixDateInputs = () => {
+      // 查找所有日期输入框
+      const dateInputs = document.querySelectorAll('input[type="date"]');
+      
+      dateInputs.forEach(input => {
+        // 如果已经处理过，跳过
+        if (input.getAttribute('data-fixed') === 'true') return;
+        
+        // 设置已处理标记
+        input.setAttribute('data-fixed', 'true');
+        
+        // 1. 阻止原生日期选择器的错误传播
+        input.addEventListener('invalid', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        }, true);
+        
+        // 2. 拦截日期变化事件，手动管理状态更新
+        input.addEventListener('change', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          try {
+            const target = e.target as HTMLInputElement;
+            const name = target.name;
+            const value = target.value;
+            
+            // 只更新我们预期的字段
+            if (name === 'departureDate' || name === 'returnDate') {
+              // 使用setFormData回调式更新，确保类型安全
+              setFormData(prev => ({
+                ...prev,
+                [name]: value
+              }));
+              
+              // 给输入框添加已有值的样式类
+              if (value) {
+                target.classList.add('has-value');
+              } else {
+                target.classList.remove('has-value');
+              }
+              
+              // 手动触发验证
+              setTimeout(() => validateDates(), 0);
+            }
+          } catch (error) {
+            console.error('安全处理日期变更错误:', error);
+          }
+          
+          return false;
+        }, true);
+        
+        // 3. 拦截点击事件，确保日期选择器使用英文
+        input.addEventListener('click', () => {
+          // 强制设置文档语言为英文
+          document.documentElement.setAttribute('lang', 'en');
+          
+          // 确保输入框使用英文
+          input.setAttribute('lang', 'en');
+        }, true);
+        
+        // 4. 处理焦点事件，确保选择器打开时使用英文
+        input.addEventListener('focus', () => {
+          // 强制设置文档语言为英文
+          document.documentElement.setAttribute('lang', 'en');
+          
+          // 再次确保当前输入框使用英文
+          input.setAttribute('lang', 'en');
+          
+          // 立即向document添加一个临时class，确保日期选择器使用英文
+          document.body.classList.add('date-picker-active');
+        }, true);
+        
+        // 5. 处理失焦事件，恢复原始语言
+        input.addEventListener('blur', () => {
+          // 延迟恢复，确保日期选择器完全关闭
+          setTimeout(() => {
+            // 如果没有其他日期输入框处于焦点状态，恢复语言
+            if (!document.querySelector('input[type="date"]:focus')) {
+              document.body.classList.remove('date-picker-active');
+            }
+          }, 100);
+        }, true);
+      });
+    };
+    
+    // 立即执行一次
+    fixDateInputs();
+    
+    // 设置一个MutationObserver监视DOM变化，处理动态添加的日期输入框
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+          // 检查新添加的节点
+          mutation.addedNodes.forEach(node => {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              const element = node as HTMLElement;
+              
+              // 检查新元素是否包含日期输入框
+              const dateInputs = element.querySelectorAll('input[type="date"]');
+              if (dateInputs.length > 0 || 
+                 (element.tagName === 'INPUT' && (element as HTMLInputElement).type === 'date')) {
+                // 处理新添加的日期输入框
+                fixDateInputs();
+              }
+            }
+          });
+        }
+      }
+    });
+    
+    // 监视DOM变化
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+    
+    // 清理函数
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // 添加日期选择器显示英文的样式
+  useEffect(() => {
+    // 创建一个样式元素
+    const styleEl = document.createElement('style');
+    styleEl.setAttribute('id', 'date-picker-fix-styles');
+    styleEl.textContent = `
+      /* 确保日期选择器组件使用英文 */
+      .date-picker-active *,
+      input[type="date"],
+      input[type="date"] ~ *,
+      [role="dialog"],
+      .datepicker,
+      .ui-datepicker,
+      .calendar-popup,
+      .date-picker {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      }
+      
+      /* 完全隐藏未输入值的日期字段的原生内容 */
+      input[type="date"]:not(.has-value)::-webkit-datetime-edit {
+        color: transparent;
+      }
+      
+      /* 强制日期字段占位符使用我们的自定义占位符 */
+      input[type="date"]::-webkit-inner-spin-button,
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        display: block;
+      }
+      
+      /* 修复日期选择器内月份和年份的显示 */
+      select::-webkit-calendar-picker-indicator {
+        color: black;
+      }
+      
+      /* 确保日期选择器的月份名称使用英文 */
+      option {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      }
+      
+      /* 修复2025年03月等日期显示 */
+      [lang="en"] select,
+      [lang="en"] option,
+      [lang="en"] th {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      }
+      
+      /* 确保星期几的文本显示为英文 */
+      th, td, select, option, button {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      }
+    `;
+    
+    // 添加到文档中
+    document.head.appendChild(styleEl);
+    
+    // 清理函数
+    return () => {
+      document.getElementById('date-picker-fix-styles')?.remove();
+    };
+  }, []);
+  
+  // 添加专门处理Date原型方法的钩子
+  useEffect(() => {
+    // 强制使用英文显示日期
+    const originalToLocaleDateString = Date.prototype.toLocaleDateString;
+    const originalToLocaleString = Date.prototype.toLocaleString;
+    
+    // 记录原始函数以便恢复
+    const originals = {
+      toLocaleDateString: originalToLocaleDateString,
+      toLocaleString: originalToLocaleString
+    };
+    
+    try {
+      // 重写toLocaleDateString方法，强制使用英文
+      Date.prototype.toLocaleDateString = function(this: Date) {
+        return originalToLocaleDateString.call(this, 'en-US');
+      };
+      
+      // 重写toLocaleString方法，强制使用英文
+      Date.prototype.toLocaleString = function(this: Date) {
+        return originalToLocaleString.call(this, 'en-US');
+      };
+    } catch (error) {
+      console.error('无法重写Date原型方法:', error);
+    }
+    
+    // 清理函数，恢复原始方法
+    return () => {
+      try {
+        Date.prototype.toLocaleDateString = originals.toLocaleDateString;
+        Date.prototype.toLocaleString = originals.toLocaleString;
+      } catch (error) {
+        console.error('恢复Date原型方法时出错:', error);
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 添加全局样式，强制日期选择器显示为英文 */}
