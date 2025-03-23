@@ -92,13 +92,14 @@ const translations: Record<Language, any> = {
       additionalReq: "Please specify any special requirements for your itinerary",
       formSummary: "Travel Plan Summary",
       savedData: "Data saved successfully",
-      restored: "We have restored your previous progress",
+      restored: "Progress restored successfully",
       clearData: "Data cleared successfully",
       loading: "Processing...",
       selectedCities: "Select at least one",
       multiSelection: "Multiple selection",
       submittingData: "Submitting Data",
-      submissionError: "Submission Error"
+      submissionError: "Submission Error",
+      submitSuccess: "Your travel plan has been submitted successfully! Redirecting to results..."
     }
   },
   zh: {
@@ -165,13 +166,14 @@ const translations: Record<Language, any> = {
       additionalReq: "对行程有任何特殊需求请在此说明",
       formSummary: "旅行计划摘要",
       savedData: "数据保存成功",
-      restored: "我们已为您恢复之前的填写进度",
+      restored: "进度恢复成功",
       clearData: "数据清除成功",
       loading: "处理中...",
       selectedCities: "至少选择一个",
       multiSelection: "可多选",
       submittingData: "提交数据",
-      submissionError: "提交错误"
+      submissionError: "提交错误",
+      submitSuccess: "您的旅行计划已成功提交！正在跳转到结果页面..."
     }
   },
   fr: {
@@ -724,6 +726,58 @@ export default function PlannerPage() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
+  // 步骤标题数组
+  const steps = ['step1Title', 'step2Title', 'step3Title', 'step4Title', 'step5Title'];
+  
+  // 允许直接跳转到指定步骤的函数
+  const goToStep = (step: number) => {
+    if (step >= 1 && step <= totalSteps) {
+      setCurrentStep(step);
+    }
+  };
+  
+  // 初始化表单的函数
+  const initializeForm = () => {
+    if (typeof window === 'undefined') return {
+      travellerType: '',
+      travellers: 2,
+      departureDate: '',
+      returnDate: '',
+      budget: '',
+      selectedDestinations: [],
+      selectedRoute: '',
+      travelStyle: '',
+      travelPace: 50,
+      accommodation: '',
+      tastePreference: 50,
+      foodTypes: [],
+      diningEnvironment: '',
+      dietaryRestrictions: '',
+      additionalRequests: ''
+    };
+    
+    // 使用当前语言初始化表单
+    const defaultFormData = {
+      travellerType: getTranslation(currentLanguage, 'travellerTypes')[0] || '',
+      travellers: 2,
+      departureDate: '',
+      returnDate: '',
+      budget: getTranslation(currentLanguage, 'budgetRanges')[0] || '',
+      selectedDestinations: [],
+      selectedRoute: '',
+      travelStyle: getTranslation(currentLanguage, 'travelStyles')[0] || '',
+      travelPace: 50,
+      accommodation: getTranslation(currentLanguage, 'accommodationTypes')[0] || '',
+      tastePreference: 50,
+      foodTypes: [],
+      diningEnvironment: getTranslation(currentLanguage, 'diningEnvOptions')[0] || '',
+      dietaryRestrictions: '',
+      additionalRequests: ''
+    };
+    
+    return defaultFormData;
+  };
+  
   // 表单数据状态
   const [formData, setFormData] = useState<FormData>({
     travellerType: '',
@@ -755,57 +809,34 @@ export default function PlannerPage() {
 
   // 初始化表单默认值
   useEffect(() => {
-    const initializeForm = () => {
-      if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined') return;
+    
+    // 设置语言
+    setT(translations[currentLanguage] || translations.en);
+    
+    // 尝试从localStorage恢复数据
+    try {
+      const savedFormData = localStorage.getItem(FORM_DATA_KEY);
+      const savedStep = localStorage.getItem(CURRENT_STEP_KEY);
       
-      // 设置语言
-      setT(translations[currentLanguage] || translations.en);
-      
-      // 使用当前语言初始化表单
-      const defaultFormData = {
-        travellerType: getTranslation(currentLanguage, 'travellerTypes')[0] || '',
-        travellers: 2,
-        departureDate: '',
-        returnDate: '',
-        budget: getTranslation(currentLanguage, 'budgetRanges')[0] || '',
-        selectedDestinations: [],
-        selectedRoute: getTranslation(currentLanguage, 'routeTypes')[0] || '',
-        travelStyle: getTranslation(currentLanguage, 'travelStyles')[0] || '',
-        travelPace: 50,
-        accommodation: getTranslation(currentLanguage, 'accommodationTypes')[0] || '',
-        tastePreference: 50,
-        foodTypes: [],
-        diningEnvironment: getTranslation(currentLanguage, 'diningEnvOptions')[0] || '',
-        dietaryRestrictions: '',
-        additionalRequests: ''
-      };
-      
-      // 尝试从localStorage恢复数据
-      try {
-        const savedFormData = localStorage.getItem(FORM_DATA_KEY);
-        const savedStep = localStorage.getItem(CURRENT_STEP_KEY);
-        
-        if (savedFormData) {
-          const parsedData = JSON.parse(savedFormData) as FormData;
-          setFormData(parsedData);
-        } else {
-          setFormData(defaultFormData);
-        }
-        
-        if (savedStep) {
-          const step = parseInt(savedStep);
-          if (step >= 1 && step <= totalSteps) {
-            setCurrentStep(step);
-          }
-        }
-      } catch (error) {
-        console.error('加载保存的表单数据时出错:', error);
-        setFormData(defaultFormData);
+      if (savedFormData) {
+        const parsedData = JSON.parse(savedFormData) as FormData;
+        setFormData(parsedData);
+      } else {
+        setFormData(initializeForm());
       }
-    };
-
-    initializeForm();
-  }, [currentLanguage]);
+      
+      if (savedStep) {
+        const step = parseInt(savedStep);
+        if (step >= 1 && step <= totalSteps) {
+          setCurrentStep(step);
+        }
+      }
+    } catch (error) {
+      console.error('加载保存的表单数据时出错:', error);
+      setFormData(initializeForm());
+    }
+  }, [currentLanguage, initializeForm]);
 
   // 保存表单数据到localStorage
   useEffect(() => {
@@ -1592,7 +1623,7 @@ export default function PlannerPage() {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('travelPlannerForm');
       localStorage.removeItem('travelPlannerStep');
-      setFormData(initializeForm(currentLanguage));
+      setFormData(initializeForm());
       setCurrentStep(1);
       
       // 显示清除成功提示
@@ -1601,155 +1632,6 @@ export default function PlannerPage() {
     }
   };
   
-  // 添加通知消息相关的翻译
-  const translations = {
-    en: {
-      // 已有的翻译...
-      hints: {
-        // 已有的hints翻译...
-        savedData: "Data saved successfully",
-        restoredProgress: "Progress restored successfully",
-        clearedData: "Data cleared successfully",
-        submitSuccess: "Your travel plan has been submitted successfully! Redirecting to results..."
-      },
-      submitSuccess: "Submitted successfully"
-    },
-    zh: {
-      // 已有的翻译...
-      hints: {
-        // 已有的hints翻译...
-        savedData: "数据保存成功",
-        restoredProgress: "进度恢复成功",
-        clearedData: "数据清除成功",
-        submitSuccess: "您的旅行计划已成功提交！正在跳转到结果页面..."
-      },
-      submitSuccess: "提交成功"
-    },
-    fr: {
-      // 已有的翻译...
-      hints: {
-        // 已有的hints翻译...
-        savedData: "Données enregistrées avec succès",
-        restoredProgress: "Progression restaurée avec succès",
-        clearedData: "Données effacées avec succès",
-        submitSuccess: "Votre plan de voyage a été soumis avec succès ! Redirection vers les résultats..."
-      },
-      submitSuccess: "Soumis avec succès"
-    },
-    de: {
-      // 已有的翻译...
-      hints: {
-        // 已有的hints翻译...
-        savedData: "Daten erfolgreich gespeichert",
-        restoredProgress: "Fortschritt erfolgreich wiederhergestellt",
-        clearedData: "Daten erfolgreich gelöscht",
-        submitSuccess: "Ihr Reiseplan wurde erfolgreich übermittelt! Weiterleitung zu den Ergebnissen..."
-      },
-      submitSuccess: "Erfolgreich eingereicht"
-    },
-    ja: {
-      // 已有的翻译...
-      hints: {
-        // 已有的hints翻译...
-        savedData: "データが正常に保存されました",
-        restoredProgress: "進行状況が正常に復元されました",
-        clearedData: "データが正常にクリアされました",
-        submitSuccess: "旅行プランが正常に送信されました！結果ページにリダイレクトしています..."
-      },
-      submitSuccess: "送信に成功しました"
-    },
-    ko: {
-      // 其他译文...
-      hints: {
-        travellerType: "여행에 가장 적합한 유형을 선택하세요",
-        travellers: "여행 그룹의 인원 수를 입력하세요 (1-20명)",
-        travelDates: "출발 및 귀국 날짜를 선택하세요",
-        budget: "총 여행 예산을 추정하세요",
-        routes: "추천 경로를 선택하거나 자신만의 경로를 맞춤 설정하세요",
-        destinations: "방문하고 싶은 도시를 선택하려면 클릭하세요",
-        travelStyle: "여행 선호도에 맞는 스타일을 선택하세요",
-        pace: "하루 1-2개 명소 | 하루 3-5개 명소",
-        accommodation: "여행 중 선호하는 숙박 유형을 선택하세요",
-        spiciness: "매우 순한 맛 또는 약간 매운 맛 | 쓰촨, 후난식 등 매운 요리",
-        foodTypes: "좋아하는 음식 유형을 선택하세요",
-        diningEnv: "선호하는 식사 환경을 선택하세요",
-        dietaryRestr: "식이 제한이나 요구 사항을 입력하세요",
-        additionalReq: "여행 일정에 대한 특별한 요구 사항을 명시하세요",
-        formSummary: "여행 계획 요약",
-        savedData: "데이터가 성공적으로 저장되었습니다",
-        restored: "진행 상황이 성공적으로 복원되었습니다",
-        clearData: "데이터가 성공적으로 지워졌습니다",
-        loading: "처리 중...",
-        selectedCities: "최소 하나 선택",
-        multiSelection: "다중 선택 가능",
-        submittingData: "데이터 전송중",
-        submissionError: "전송 오류",
-        submitSuccess: "여행 계획이 성공적으로 제출되었습니다! 결과 페이지로 리디렉션 중..."
-      },
-      submitSuccess: "성공적으로 제출"
-    },
-    es: {
-      // 其他译文...
-      hints: {
-        travellerType: "Elija el tipo que mejor se adapte a su viaje",
-        travellers: "Ingrese el número de personas en su grupo de viaje (1-20)",
-        travelDates: "Seleccione sus fechas de salida y regreso",
-        budget: "Estime su presupuesto total de viaje",
-        routes: "Elija una ruta recomendada o personalice la suya propia",
-        destinations: "Haga clic para seleccionar las ciudades que desea visitar",
-        travelStyle: "Elija un estilo que coincida con sus preferencias de viaje",
-        pace: "1-2 atracciones por día | 3-5 atracciones por día",
-        accommodation: "Seleccione su tipo de alojamiento preferido",
-        spiciness: "Sin picante o picante suave | Cocina picante de Sichuan o Hunan",
-        foodTypes: "Seleccione los tipos de alimentos que disfruta",
-        diningEnv: "Elija su entorno de comedor preferido",
-        dietaryRestr: "Ingrese cualquier restricción o requisito dietético",
-        additionalReq: "Por favor, especifique cualquier requisito especial para su itinerario",
-        formSummary: "Revise su plan de viaje antes de enviar",
-        savedData: "Datos guardados con éxito",
-        restoredProgress: "Progreso restaurado con éxito",
-        clearedData: "Datos borrados con éxito",
-        loading: "Procesando...",
-        selectedCities: "Seleccione al menos uno",
-        multiSelection: "Selección múltiple",
-        submittingData: "Envío de Datos",
-        submissionError: "Error de Envío",
-        submitSuccess: "¡Su plan de viaje ha sido enviado con éxito! Redirigiendo a los resultados..."
-      },
-      submitSuccess: "Enviado con éxito"
-    },
-    ru: {
-      // 其他译文...
-      hints: {
-        travellerType: "Выберите тип, который лучше всего соответствует вашему путешествию",
-        travellers: "Введите количество людей в вашей туристической группе (1-20)",
-        travelDates: "Выберите даты отъезда и возвращения",
-        budget: "Оцените свой общий бюджет на путешествие",
-        routes: "Выберите рекомендуемый маршрут или настройте свой собственный",
-        destinations: "Нажмите, чтобы выбрать города, которые вы хотите посетить",
-        travelStyle: "Выберите стиль, соответствующий вашим предпочтениям в путешествии",
-        pace: "1-2 достопримечательности в день | 3-5 достопримечательностей в день",
-        accommodation: "Выберите предпочитаемый тип жилья",
-        spiciness: "Без острого или слегка острого | Острая кухня Сычуани и Хунани",
-        foodTypes: "Выберите типы еды, которые вам нравятся",
-        diningEnv: "Выберите предпочитаемую среду для приема пищи",
-        dietaryRestr: "Введите любые ограничения в питании или требования",
-        additionalReq: "Пожалуйста, укажите любые особые требования для вашего маршрута",
-        formSummary: "Сводка Плана Путешествия",
-        savedData: "Данные успешно сохранены",
-        restored: "Прогресс успешно восстановлен",
-        clearData: "Данные успешно очищены",
-        loading: "Обработка...",
-        selectedCities: "Выберите хотя бы один",
-        multiSelection: "Множественный выбор",
-        submittingData: "Отправка Данных",
-        submissionError: "Ошибка Отправки",
-        submitSuccess: "Ваш план путешествия успешно отправлен! Перенаправление к результатам..."
-      },
-      submitSuccess: "Успешно отправлено"
-    }
-  };
-
   return (
     <div className="min-h-screen max-w-4xl mx-auto px-4 py-10">
       <h1 className="text-2xl md:text-3xl font-bold text-center mb-8 text-china-red">{getTranslation(currentLanguage, 'questionnaire')}</h1>
@@ -1772,7 +1654,7 @@ export default function PlannerPage() {
             </div>
           ))}
         </div>
-        <div className="h-2 bg-gray-200 rounded-full mt-4">
+        <div className="h-1 bg-gray-200 rounded-full mt-2">
           <div 
             className="h-2 bg-china-red rounded-full transition-all duration-500 ease-in-out"
             style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
@@ -1783,7 +1665,7 @@ export default function PlannerPage() {
       {/* 表单内容 */}
       <div className="bg-white rounded-lg shadow-lg p-6 mb-6 relative">
         {/* 当前步骤内容 */}
-        {renderStepContent(currentStep)}
+        {renderStepContent()}
         
         {/* 导航按钮 */}
         <div className="flex justify-between mt-8">
