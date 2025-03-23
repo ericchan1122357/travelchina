@@ -70,7 +70,45 @@ const translations: Record<Language, any> = {
     fast: 'Fast-paced',
     light: 'Very Mild',
     medium: 'Medium',
-    spicy: 'Very Spicy'
+    spicy: 'Very Spicy',
+    foundPreviousData: 'Found previously filled data',
+    dataRestored: 'Your data has been restored',
+    clearData: 'Clear saved data',
+    selectTravellerType: 'Select the type that best matches your travel',
+    enterTravellerCount: 'Enter the number of people in your travel group (1-20)',
+    departureDateHint: 'Planned departure date',
+    returnDateHint: 'Planned return date',
+    budgetRangeHint: 'Select the budget range that meets your expectations',
+    selectRouteHint: 'Choose a recommended route or customize your itinerary',
+    selectCityHint: 'Click to select the cities you want to visit',
+    selectAtLeastOne: 'Select at least one',
+    travelStyleHint: 'Choose the style that best matches your travel preferences',
+    paceSlowDescription: 'Visit 1-2 attractions per day',
+    paceFastDescription: 'Visit 3-5 attractions per day',
+    accommodationHint: 'Select your preferred accommodation type during the trip',
+    spicyPreferenceHint: 'No spicy or mild spicy',
+    verySpicyPreferenceHint: 'Sichuan, Hunan and other spicy cuisines',
+    foodTypesHint: 'Select the types of food you like',
+    multipleSelections: 'Multiple selections',
+    diningEnvironmentHint: 'Choose your preferred dining environment',
+    dietaryRestrictionsHint: 'Please enter any dietary restrictions or requirements',
+    additionalRequestsHint: 'Please specify any special requirements for the trip here',
+    travelSummary: 'Travel Plan Summary',
+    travelTypeSummary: 'Travel Type',
+    travellerCountSummary: 'Number of Travellers',
+    departureDateSummary: 'Departure Date',
+    returnDateSummary: 'Return Date',
+    budgetSummary: 'Budget',
+    destinationsSummary: 'Destinations',
+    notSelected: 'Not selected',
+    routeTypeSummary: 'Route Type',
+    travelStyleSummary: 'Travel Style',
+    accommodationSummary: 'Accommodation',
+    foodTypesSummary: 'Food Types',
+    diningEnvironmentSummary: 'Dining Environment',
+    dietaryRestrictionsSummary: 'Dietary Restrictions',
+    none: 'None',
+    processing: 'Processing...'
   },
   zh: {
     title: '旅行规划',
@@ -118,7 +156,45 @@ const translations: Record<Language, any> = {
     fast: '紧凑充实',
     light: '很轻微',
     medium: '适中',
-    spicy: '非常辣'
+    spicy: '非常辣',
+    foundPreviousData: '发现之前填写的数据',
+    dataRestored: '您的数据已恢复',
+    clearData: '清除保存的数据',
+    selectTravellerType: '选择最符合您此次旅行的类型',
+    enterTravellerCount: '请输入旅行团队的人数 (1-20人)',
+    departureDateHint: '计划出发的日期',
+    returnDateHint: '计划返回的日期',
+    budgetRangeHint: '选择符合您期望的预算范围',
+    selectRouteHint: '选择一个推荐路线或自定义您的行程',
+    selectCityHint: '点击选择您想要游览的城市',
+    selectAtLeastOne: '至少选择一个',
+    travelStyleHint: '选择与您的旅行喜好最匹配的风格',
+    paceSlowDescription: '每天游览1-2个景点',
+    paceFastDescription: '每天游览3-5个景点',
+    accommodationHint: '选择您在旅行中偏好的住宿类型',
+    spicyPreferenceHint: '不吃辣或微辣',
+    verySpicyPreferenceHint: '川菜、湘菜等重辣美食',
+    foodTypesHint: '选择您喜欢的食物类型',
+    multipleSelections: '可多选',
+    diningEnvironmentHint: '选择您偏好的用餐环境',
+    dietaryRestrictionsHint: '请输入任何饮食方面的限制或需求',
+    additionalRequestsHint: '对行程有任何特殊需求请在此说明',
+    travelSummary: '旅行计划摘要',
+    travelTypeSummary: '旅行类型',
+    travellerCountSummary: '人数',
+    departureDateSummary: '出发日期',
+    returnDateSummary: '返回日期',
+    budgetSummary: '预算',
+    destinationsSummary: '目的地',
+    notSelected: '未选择',
+    routeTypeSummary: '路线类型',
+    travelStyleSummary: '旅行风格',
+    accommodationSummary: '住宿偏好',
+    foodTypesSummary: '食物类型',
+    diningEnvironmentSummary: '用餐环境',
+    dietaryRestrictionsSummary: '饮食限制',
+    none: '无',
+    processing: '处理中...'
   },
   fr: {
     title: 'Planification de Voyage',
@@ -166,7 +242,45 @@ const translations: Record<Language, any> = {
     fast: 'Rythme Soutenu',
     light: 'Très Doux',
     medium: 'Moyen',
-    spicy: 'Très Épicé'
+    spicy: 'Très Épicé',
+    foundPreviousData: 'Données précédentes trouvées',
+    dataRestored: 'Nous avons restauré votre progression précédente',
+    clearData: 'Effacer les données',
+    selectTravellerType: 'Choisissez le type qui convient le mieux à votre voyage',
+    enterTravellerCount: 'Veuillez entrer le nombre de voyageurs (1-20 personnes)',
+    departureDateHint: 'Date de départ prévue',
+    returnDateHint: 'Date de retour prévue',
+    budgetRangeHint: 'Choisissez une gamme de budget qui correspond à vos attentes',
+    selectRouteHint: 'Choisissez un itinéraire recommandé ou personnalisez votre voyage',
+    selectCityHint: 'Cliquez pour sélectionner les villes que vous souhaitez visiter',
+    selectAtLeastOne: 'Sélectionnez au moins un',
+    travelStyleHint: 'Choisissez un style qui correspond à vos préférences de voyage',
+    paceSlowDescription: '1-2 attractions par jour',
+    paceFastDescription: '3-5 attractions par jour',
+    accommodationHint: 'Choisissez votre type d\'hébergement préféré pendant le voyage',
+    spicyPreferenceHint: 'Pas épicé ou légèrement épicé',
+    verySpicyPreferenceHint: 'Cuisines épicées comme le Sichuan, le Hunan, etc.',
+    foodTypesHint: 'Choisissez vos types d\'aliments préférés',
+    multipleSelections: 'Sélections multiples',
+    diningEnvironmentHint: 'Choisissez votre environnement de repas préféré',
+    dietaryRestrictionsHint: 'Veuillez indiquer toute restriction ou exigence alimentaire',
+    additionalRequestsHint: 'Veuillez préciser toute exigence particulière pour l\'itinéraire',
+    travelSummary: 'Résumé du Plan de Voyage',
+    travelTypeSummary: 'Type de Voyage',
+    travellerCountSummary: 'Nombre de Voyageurs',
+    departureDateSummary: 'Date de Départ',
+    returnDateSummary: 'Date de Retour',
+    budgetSummary: 'Budget',
+    destinationsSummary: 'Destinations',
+    notSelected: 'Non Sélectionné',
+    routeTypeSummary: 'Type d\'Itinéraire',
+    travelStyleSummary: 'Style de Voyage',
+    accommodationSummary: 'Préférence d\'Hébergement',
+    foodTypesSummary: 'Types d\'Aliments',
+    diningEnvironmentSummary: 'Environnement de Repas',
+    dietaryRestrictionsSummary: 'Restrictions Alimentaires',
+    none: 'Aucune',
+    processing: 'Traitement en cours...'
   },
   de: {
     title: 'Reiseplanung',
@@ -214,7 +328,45 @@ const translations: Record<Language, any> = {
     fast: 'Schnelles Tempo',
     light: 'Sehr Mild',
     medium: 'Mittel',
-    spicy: 'Sehr Scharf'
+    spicy: 'Sehr Scharf',
+    foundPreviousData: 'Zuvor ausgefüllte Daten gefunden',
+    dataRestored: 'Ihre Daten wurden wiederhergestellt',
+    clearData: 'Gespeicherte Daten löschen',
+    selectTravellerType: 'Wählen Sie den Typ, der am besten zu Ihrer Reise passt',
+    enterTravellerCount: 'Bitte geben Sie die Anzahl der Reisenden ein (1-20 Personen)',
+    departureDateHint: 'Geplantes Abreisedatum',
+    returnDateHint: 'Geplantes Rückkehrdatum',
+    budgetRangeHint: 'Wählen Sie einen Budgetbereich, der Ihren Erwartungen entspricht',
+    selectRouteHint: 'Wählen Sie eine empfohlene Route oder passen Sie Ihre Reiseroute an',
+    selectCityHint: 'Klicken Sie, um die Städte auszuwählen, die Sie besuchen möchten',
+    selectAtLeastOne: 'Mindestens eine auswählen',
+    travelStyleHint: 'Wählen Sie einen Stil, der Ihren Reisepräferenzen entspricht',
+    paceSlowDescription: '1-2 Sehenswürdigkeiten pro Tag besuchen',
+    paceFastDescription: '3-5 Sehenswürdigkeiten pro Tag besuchen',
+    accommodationHint: 'Wählen Sie Ihren bevorzugten Unterkunftstyp während der Reise',
+    spicyPreferenceHint: 'Nicht scharf oder leicht scharf',
+    verySpicyPreferenceHint: 'Sichuan-, Hunan- und andere scharfe Küchen',
+    foodTypesHint: 'Wählen Sie Ihre Lieblingslebensmittelarten',
+    multipleSelections: 'Mehrfachauswahl möglich',
+    diningEnvironmentHint: 'Wählen Sie Ihre bevorzugte Speiseumgebung',
+    dietaryRestrictionsHint: 'Bitte geben Sie alle Ernährungseinschränkungen oder -anforderungen ein',
+    additionalRequestsHint: 'Bitte geben Sie hier besondere Anforderungen für die Reise an',
+    travelSummary: 'Reiseplan Zusammenfassung',
+    travelTypeSummary: 'Reisetyp',
+    travellerCountSummary: 'Anzahl der Reisenden',
+    departureDateSummary: 'Abreisedatum',
+    returnDateSummary: 'Rückkehrdatum',
+    budgetSummary: 'Budget',
+    destinationsSummary: 'Reiseziele',
+    notSelected: 'Nicht ausgewählt',
+    routeTypeSummary: 'Routentyp',
+    travelStyleSummary: 'Reisestil',
+    accommodationSummary: 'Unterkunftspräferenz',
+    foodTypesSummary: 'Essenstypen',
+    diningEnvironmentSummary: 'Speiseumgebung',
+    dietaryRestrictionsSummary: 'Ernährungseinschränkungen',
+    none: 'Keine',
+    processing: 'Wird bearbeitet...'
   },
   ja: {
     title: '旅行プランニング',
@@ -262,7 +414,45 @@ const translations: Record<Language, any> = {
     fast: '速いペース',
     light: '非常にマイルド',
     medium: '中程度',
-    spicy: '非常に辛い'
+    spicy: '非常に辛い',
+    foundPreviousData: '以前に入力されたデータを見つけました',
+    dataRestored: 'データが復元されました',
+    clearData: '保存されたデータをクリア',
+    selectTravellerType: 'あなたの旅行タイプに最も適したものを選択してください',
+    enterTravellerCount: '旅行グループの人数を入力してください（1〜20人）',
+    departureDateHint: '出発予定日',
+    returnDateHint: '帰国予定日',
+    budgetRangeHint: 'ご希望の予算範囲を選択してください',
+    selectRouteHint: 'おすすめルートを選択するか、独自の旅程をカスタマイズしてください',
+    selectCityHint: '訪問したい都市をクリックして選択してください',
+    selectAtLeastOne: '少なくとも1つ選択',
+    travelStyleHint: 'あなたの旅行の好みに合ったスタイルを選択してください',
+    paceSlowDescription: '1日に1〜2か所の観光スポット',
+    paceFastDescription: '1日に3〜5か所の観光スポット',
+    accommodationHint: '旅行中に希望する宿泊タイプを選択してください',
+    spicyPreferenceHint: '辛くないまたは少し辛い',
+    verySpicyPreferenceHint: '四川料理、湖南料理などの辛い料理',
+    foodTypesHint: 'お好みの食べ物の種類を選択してください',
+    multipleSelections: '複数選択可能',
+    diningEnvironmentHint: '希望する食事環境を選択してください',
+    dietaryRestrictionsHint: '食事制限や要件を入力してください',
+    additionalRequestsHint: '旅程に関する特別な要件を指定してください',
+    travelSummary: '旅行計画の概要',
+    travelTypeSummary: '旅行タイプ',
+    travellerCountSummary: '人数',
+    departureDateSummary: '出発日',
+    returnDateSummary: '帰国日',
+    budgetSummary: '予算',
+    destinationsSummary: '目的地',
+    notSelected: '選択されていません',
+    routeTypeSummary: 'ルートタイプ',
+    travelStyleSummary: '旅行スタイル',
+    accommodationSummary: '宿泊施設の好み',
+    foodTypesSummary: '食物タイプ',
+    diningEnvironmentSummary: '食事環境',
+    dietaryRestrictionsSummary: '食事制限',
+    none: 'なし',
+    processing: '処理中...'
   },
   ko: {
     title: '여행 계획',
@@ -310,7 +500,45 @@ const translations: Record<Language, any> = {
     fast: '빠른 속도',
     light: '매우 순한',
     medium: '중간',
-    spicy: '매우 매운'
+    spicy: '매우 매운',
+    foundPreviousData: '이전에 입력한 데이터를 찾았습니다',
+    dataRestored: '데이터가 복원되었습니다',
+    clearData: '저장된 데이터 지우기',
+    selectTravellerType: '여행에 가장 적합한 유형을 선택하세요',
+    enterTravellerCount: '여행 그룹의 인원 수를 입력하세요(1-20명)',
+    departureDateHint: '계획된 출발 날짜',
+    returnDateHint: '계획된 귀국 날짜',
+    budgetRangeHint: '원하는 예산 범위를 선택하세요',
+    selectRouteHint: '추천 경로를 선택하거나 여행 일정을 맞춤 설정하세요',
+    selectCityHint: '방문하고 싶은 도시를 선택하려면 클릭하세요',
+    selectAtLeastOne: '최소 하나 선택',
+    travelStyleHint: '여행 선호도와 가장 일치하는 스타일을 선택하세요',
+    paceSlowDescription: '하루에 1-2개 명소',
+    paceFastDescription: '하루에 3-5개 명소',
+    accommodationHint: '여행 중 선호하는 숙박 유형을 선택하세요',
+    spicyPreferenceHint: '맵지 않거나 약간 매운맛',
+    verySpicyPreferenceHint: '쓰촨, 후난 등의 매운 요리',
+    foodTypesHint: '좋아하는 음식 유형을 선택하세요',
+    multipleSelections: '다중 선택 가능',
+    diningEnvironmentHint: '선호하는 식사 환경을 선택하세요',
+    dietaryRestrictionsHint: '식이 제한이나 요구 사항을 입력하세요',
+    additionalRequestsHint: '여행 일정에 대한 특별한 요구 사항을 지정하세요',
+    travelSummary: '여행 계획 요약',
+    travelTypeSummary: '여행 유형',
+    travellerCountSummary: '여행자 수',
+    departureDateSummary: '출발 날짜',
+    returnDateSummary: '귀국 날짜',
+    budgetSummary: '예산',
+    destinationsSummary: '목적지',
+    notSelected: '선택되지 않음',
+    routeTypeSummary: '경로 유형',
+    travelStyleSummary: '여행 스타일',
+    accommodationSummary: '숙박 선호도',
+    foodTypesSummary: '음식 유형',
+    diningEnvironmentSummary: '식사 환경',
+    dietaryRestrictionsSummary: '식이 제한',
+    none: '없음',
+    processing: '처리 중...'
   },
   es: {
     title: 'Planificación de Viajes',
@@ -358,7 +586,45 @@ const translations: Record<Language, any> = {
     fast: 'Ritmo Acelerado',
     light: 'Muy Suave',
     medium: 'Medio',
-    spicy: 'Muy Picante'
+    spicy: 'Muy Picante',
+    foundPreviousData: 'Datos anteriores encontrados',
+    dataRestored: 'Hemos restaurado su progreso anterior',
+    clearData: 'Borrar datos',
+    selectTravellerType: 'Elija el tipo que mejor se adapte a su viaje',
+    enterTravellerCount: 'Por favor, introduzca el número de viajeros (1-20 personas)',
+    departureDateHint: 'Fecha de salida prevista',
+    returnDateHint: 'Fecha de regreso prevista',
+    budgetRangeHint: 'Elija un rango de presupuesto que se ajuste a sus expectativas',
+    selectRouteHint: 'Elija una ruta recomendada o personalice su itinerario',
+    selectCityHint: 'Haga clic para seleccionar las ciudades que desea visitar',
+    selectAtLeastOne: 'Seleccione al menos uno',
+    travelStyleHint: 'Elija un estilo que coincida con sus preferencias de viaje',
+    paceSlowDescription: '1-2 atracciones por día',
+    paceFastDescription: '3-5 atracciones por día',
+    accommodationHint: 'Elija su tipo de alojamiento preferido durante el viaje',
+    spicyPreferenceHint: 'No picante o ligeramente picante',
+    verySpicyPreferenceHint: 'Cocinas picantes como Sichuan, Hunan, etc.',
+    foodTypesHint: 'Elija sus tipos de alimentos favoritos',
+    multipleSelections: 'Selecciones múltiples',
+    diningEnvironmentHint: 'Elija su entorno de comida preferido',
+    dietaryRestrictionsHint: 'Por favor, introduzca cualquier restricción o requisito dietético',
+    additionalRequestsHint: 'Por favor, especifique cualquier requisito especial para el itinerario',
+    travelSummary: 'Resumen del Plan de Viaje',
+    travelTypeSummary: 'Tipo de Viaje',
+    travellerCountSummary: 'Número de Viajeros',
+    departureDateSummary: 'Fecha de Salida',
+    returnDateSummary: 'Fecha de Regreso',
+    budgetSummary: 'Presupuesto',
+    destinationsSummary: 'Destinos',
+    notSelected: 'No Seleccionado',
+    routeTypeSummary: 'Tipo de Ruta',
+    travelStyleSummary: 'Estilo de Viaje',
+    accommodationSummary: 'Preferencia de Alojamiento',
+    foodTypesSummary: 'Tipos de Alimentos',
+    diningEnvironmentSummary: 'Entorno de Comida',
+    dietaryRestrictionsSummary: 'Restricciones Dietéticas',
+    none: 'Ninguna',
+    processing: 'Procesando...'
   },
   ru: {
     title: 'Планирование Путешествия',
@@ -406,7 +672,45 @@ const translations: Record<Language, any> = {
     fast: 'Быстрый Темп',
     light: 'Очень Мягкий',
     medium: 'Средний',
-    spicy: 'Очень Острый'
+    spicy: 'Очень Острый',
+    foundPreviousData: 'Найдены предыдущие данные',
+    dataRestored: 'Мы восстановили ваш предыдущий прогресс',
+    clearData: 'Очистить данные',
+    selectTravellerType: 'Выберите тип, который лучше всего подходит для вашего путешествия',
+    enterTravellerCount: 'Пожалуйста, введите количество путешественников (1-20 человек)',
+    departureDateHint: 'Планируемая дата отправления',
+    returnDateHint: 'Планируемая дата возвращения',
+    budgetRangeHint: 'Выберите диапазон бюджета, соответствующий вашим ожиданиям',
+    selectRouteHint: 'Выберите рекомендуемый маршрут или настройте свой маршрут',
+    selectCityHint: 'Нажмите, чтобы выбрать города, которые вы хотите посетить',
+    selectAtLeastOne: 'Выберите хотя бы один',
+    travelStyleHint: 'Выберите стиль, соответствующий вашим предпочтениям в путешествии',
+    paceSlowDescription: '1-2 достопримечательности в день',
+    paceFastDescription: '3-5 достопримечательностей в день',
+    accommodationHint: 'Выберите предпочитаемый тип размещения во время путешествия',
+    spicyPreferenceHint: 'Неострая или слегка острая',
+    verySpicyPreferenceHint: 'Острые кухни, такие как сычуаньская, хунаньская и т.д.',
+    foodTypesHint: 'Выберите ваши любимые типы еды',
+    multipleSelections: 'Возможен множественный выбор',
+    diningEnvironmentHint: 'Выберите предпочтительную среду для приема пищи',
+    dietaryRestrictionsHint: 'Пожалуйста, укажите любые диетические ограничения или требования',
+    additionalRequestsHint: 'Пожалуйста, укажите любые особые требования к маршруту',
+    travelSummary: 'Сводка Плана Путешествия',
+    travelTypeSummary: 'Тип Путешествия',
+    travellerCountSummary: 'Количество Путешественников',
+    departureDateSummary: 'Дата Отправления',
+    returnDateSummary: 'Дата Возвращения',
+    budgetSummary: 'Бюджет',
+    destinationsSummary: 'Направления',
+    notSelected: 'Не Выбрано',
+    routeTypeSummary: 'Тип Маршрута',
+    travelStyleSummary: 'Стиль Путешествия',
+    accommodationSummary: 'Предпочтения по Размещению',
+    foodTypesSummary: 'Типы Еды',
+    diningEnvironmentSummary: 'Среда Питания',
+    dietaryRestrictionsSummary: 'Диетические Ограничения',
+    none: 'Нет',
+    processing: 'Обработка...'
   }
 };
 
@@ -967,7 +1271,7 @@ export default function PlannerPage() {
                     <option key={index} value={type}>{type}</option>
                   ))}
                 </select>
-                <p className="mt-1 text-sm text-gray-500">选择最符合您此次旅行的类型</p>
+                <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'selectTravellerType')}</p>
               </div>
 
               {/* 旅行人数 */}
@@ -1005,7 +1309,7 @@ export default function PlannerPage() {
                     <PlusCircleIcon className="w-5 h-5" />
                   </button>
                 </div>
-                <p className="mt-1 text-sm text-gray-500">请输入旅行团队的人数 (1-20人)</p>
+                <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'enterTravellerCount')}</p>
               </div>
 
               {/* 旅行时间 */}
@@ -1024,7 +1328,7 @@ export default function PlannerPage() {
                       ${errors.departureDate ? 'border-red-500' : 'border-gray-300'}`}
                   />
                   {renderError('departureDate')}
-                  <p className="mt-1 text-sm text-gray-500">计划出发的日期</p>
+                  <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'departureDateHint')}</p>
                 </div>
                 <div>
                   <label className="block text-gray-700 mb-2 font-medium flex items-center">
@@ -1040,7 +1344,7 @@ export default function PlannerPage() {
                       ${errors.returnDate ? 'border-red-500' : 'border-gray-300'}`}
                   />
                   {renderError('returnDate')}
-                  <p className="mt-1 text-sm text-gray-500">计划返回的日期</p>
+                  <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'returnDateHint')}</p>
                 </div>
               </div>
 
@@ -1060,7 +1364,7 @@ export default function PlannerPage() {
                     <option key={index} value={range}>{range}</option>
                   ))}
                 </select>
-                <p className="mt-1 text-sm text-gray-500">选择符合您期望的预算范围</p>
+                <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'budgetRangeHint')}</p>
               </div>
             </div>
           );
@@ -1084,7 +1388,7 @@ export default function PlannerPage() {
                     <option key={index} value={route}>{route}</option>
                   ))}
                 </select>
-                <p className="mt-1 text-sm text-gray-500">选择一个推荐路线或自定义您的行程</p>
+                <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'selectRouteHint')}</p>
               </div>
 
               {/* 目的地选择 */}
@@ -1094,7 +1398,7 @@ export default function PlannerPage() {
                   {t.destinations}
                   <span className="ml-2 inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
                     <QuestionMarkCircleIcon className="w-3 h-3 mr-1" />
-                    至少选择一个
+                    {getTranslation(currentLanguage, 'selectAtLeastOne')}
                   </span>
                 </label>
                 <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 ${errors.selectedDestinations ? 'border border-red-500 p-2 rounded-lg' : ''}`}>
@@ -1120,7 +1424,7 @@ export default function PlannerPage() {
                   ))}
                 </div>
                 {renderError('selectedDestinations')}
-                <p className="mt-2 text-sm text-gray-500">点击选择您想要游览的城市</p>
+                <p className="mt-2 text-sm text-gray-500">{getTranslation(currentLanguage, 'selectCityHint')}</p>
               </div>
             </div>
           );
@@ -1144,7 +1448,7 @@ export default function PlannerPage() {
                     <option key={index} value={style}>{style}</option>
                   ))}
                 </select>
-                <p className="mt-1 text-sm text-gray-500">选择与您的旅行喜好最匹配的风格</p>
+                <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'travelStyleHint')}</p>
               </div>
 
               {/* 旅行节奏 */}
@@ -1166,8 +1470,8 @@ export default function PlannerPage() {
                   <span className="text-sm text-gray-500 min-w-[80px]">{t.fast}</span>
                 </div>
                 <div className="mt-2 flex justify-between">
-                  <p className="text-xs text-gray-500">每天游览1-2个景点</p>
-                  <p className="text-xs text-gray-500">每天游览3-5个景点</p>
+                  <p className="text-xs text-gray-500">{getTranslation(currentLanguage, 'paceSlowDescription')}</p>
+                  <p className="text-xs text-gray-500">{getTranslation(currentLanguage, 'paceFastDescription')}</p>
                 </div>
               </div>
 
@@ -1192,7 +1496,7 @@ export default function PlannerPage() {
                     </div>
                   ))}
                 </div>
-                <p className="mt-1 text-sm text-gray-500">选择您在旅行中偏好的住宿类型</p>
+                <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'accommodationHint')}</p>
               </div>
 
               {/* 显示基于当前选择的推荐 */}
@@ -1222,8 +1526,8 @@ export default function PlannerPage() {
                   <span className="text-sm text-gray-500 min-w-[80px]">{t.spicy}</span>
                 </div>
                 <div className="flex justify-between mt-2">
-                  <p className="text-xs text-gray-500">不吃辣或微辣</p>
-                  <p className="text-xs text-gray-500">川菜、湘菜等重辣美食</p>
+                  <p className="text-xs text-gray-500">{getTranslation(currentLanguage, 'spicyPreferenceHint')}</p>
+                  <p className="text-xs text-gray-500">{getTranslation(currentLanguage, 'verySpicyPreferenceHint')}</p>
                 </div>
               </div>
 
@@ -1234,7 +1538,7 @@ export default function PlannerPage() {
                   {t.foodTypes}
                   <span className="ml-2 inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
                     <QuestionMarkCircleIcon className="w-3 h-3 mr-1" />
-                    可多选
+                    {getTranslation(currentLanguage, 'multipleSelections')}
                   </span>
                 </label>
                 <div className={`grid grid-cols-2 md:grid-cols-5 gap-4 ${errors.foodTypes ? 'border border-red-500 p-2 rounded-lg' : ''}`}>
@@ -1260,7 +1564,7 @@ export default function PlannerPage() {
                   ))}
                 </div>
                 {renderError('foodTypes')}
-                <p className="mt-2 text-sm text-gray-500">选择您喜欢的食物类型</p>
+                <p className="mt-2 text-sm text-gray-500">{getTranslation(currentLanguage, 'foodTypesHint')}</p>
               </div>
 
               {/* 用餐环境 */}
@@ -1279,7 +1583,7 @@ export default function PlannerPage() {
                     <option key={index} value={env}>{env}</option>
                   ))}
                 </select>
-                <p className="mt-1 text-sm text-gray-500">选择您偏好的用餐环境</p>
+                <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'diningEnvironmentHint')}</p>
               </div>
 
               {/* 饮食限制 */}
@@ -1296,7 +1600,7 @@ export default function PlannerPage() {
                   placeholder="如食物过敏、宗教禁忌等"
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
                 />
-                <p className="mt-1 text-sm text-gray-500">请输入任何饮食方面的限制或需求</p>
+                <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'dietaryRestrictionsHint')}</p>
               </div>
             </div>
           );
@@ -1317,28 +1621,28 @@ export default function PlannerPage() {
                   className="w-full p-4 border border-gray-300 rounded-lg h-32 focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
                   placeholder={getTranslation(currentLanguage, 'requestsPlaceholder') || 'Please tell us any special requirements...'}
                 ></textarea>
-                <p className="mt-1 text-sm text-gray-500">对行程有任何特殊需求请在此说明</p>
+                <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'additionalRequestsHint')}</p>
               </div>
 
               {/* 显示表单摘要 */}
               <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
                 <h3 className="text-lg font-semibold mb-4 text-gray-700 flex items-center">
                   <FaceSmileIcon className="w-5 h-5 mr-2 text-china-red" />
-                  旅行计划摘要
+                  {getTranslation(currentLanguage, 'travelSummary')}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                  <div><span className="font-medium">旅行类型:</span> {formData.travellerType}</div>
-                  <div><span className="font-medium">人数:</span> {formData.travellers}</div>
-                  <div><span className="font-medium">出发日期:</span> {formData.departureDate}</div>
-                  <div><span className="font-medium">返回日期:</span> {formData.returnDate}</div>
-                  <div><span className="font-medium">预算:</span> {formData.budget}</div>
-                  <div><span className="font-medium">目的地:</span> {formData.selectedDestinations.length > 0 ? formData.selectedDestinations.join(', ') : '未选择'}</div>
-                  <div className="col-span-2"><span className="font-medium">路线类型:</span> {formData.selectedRoute}</div>
-                  <div><span className="font-medium">旅行风格:</span> {formData.travelStyle}</div>
-                  <div><span className="font-medium">住宿偏好:</span> {formData.accommodation}</div>
-                  <div className="col-span-2"><span className="font-medium">食物类型:</span> {formData.foodTypes.length > 0 ? formData.foodTypes.join(', ') : '未选择'}</div>
-                  <div className="col-span-2"><span className="font-medium">用餐环境:</span> {formData.diningEnvironment}</div>
-                  <div className="col-span-2"><span className="font-medium">饮食限制:</span> {formData.dietaryRestrictions || '无'}</div>
+                  <div><span className="font-medium">{getTranslation(currentLanguage, 'travelTypeSummary')}:</span> {formData.travellerType}</div>
+                  <div><span className="font-medium">{getTranslation(currentLanguage, 'travellerCountSummary')}:</span> {formData.travellers}</div>
+                  <div><span className="font-medium">{getTranslation(currentLanguage, 'departureDateSummary')}:</span> {formData.departureDate}</div>
+                  <div><span className="font-medium">{getTranslation(currentLanguage, 'returnDateSummary')}:</span> {formData.returnDate}</div>
+                  <div><span className="font-medium">{getTranslation(currentLanguage, 'budgetSummary')}:</span> {formData.budget}</div>
+                  <div><span className="font-medium">{getTranslation(currentLanguage, 'destinationsSummary')}:</span> {formData.selectedDestinations.length > 0 ? formData.selectedDestinations.join(', ') : getTranslation(currentLanguage, 'notSelected')}</div>
+                  <div className="col-span-2"><span className="font-medium">{getTranslation(currentLanguage, 'routeTypeSummary')}:</span> {formData.selectedRoute}</div>
+                  <div><span className="font-medium">{getTranslation(currentLanguage, 'travelStyleSummary')}:</span> {formData.travelStyle}</div>
+                  <div><span className="font-medium">{getTranslation(currentLanguage, 'accommodationSummary')}:</span> {formData.accommodation}</div>
+                  <div className="col-span-2"><span className="font-medium">{getTranslation(currentLanguage, 'foodTypesSummary')}:</span> {formData.foodTypes.length > 0 ? formData.foodTypes.join(', ') : getTranslation(currentLanguage, 'notSelected')}</div>
+                  <div className="col-span-2"><span className="font-medium">{getTranslation(currentLanguage, 'diningEnvironmentSummary')}:</span> {formData.diningEnvironment}</div>
+                  <div className="col-span-2"><span className="font-medium">{getTranslation(currentLanguage, 'dietaryRestrictionsSummary')}:</span> {formData.dietaryRestrictions || getTranslation(currentLanguage, 'none')}</div>
                 </div>
               </div>
             </div>
@@ -1381,16 +1685,8 @@ export default function PlannerPage() {
     <div className="min-h-screen bg-gray-50">
       {/* 顶部导航 */}
       <header className="bg-china-red text-white p-4 shadow-md">
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="container mx-auto flex justify-center items-center">
           <h1 className="text-2xl font-bold">{getTranslation(currentLanguage, 'title') || 'Travel Planning'}</h1>
-          <div className="flex items-center">
-            <span className="mr-3 text-sm bg-white text-china-red px-2 py-1 rounded">
-              当前语言: {currentLanguage}
-            </span>
-            <Link href="/" className="hover:underline transition-colors">
-              {getTranslation(currentLanguage, 'backToHome') || 'Back to Home'}
-            </Link>
-          </div>
         </div>
       </header>
 
@@ -1438,14 +1734,14 @@ export default function PlannerPage() {
             {typeof window !== 'undefined' && localStorage.getItem(FORM_DATA_KEY) && currentStep === 1 && (
               <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg flex justify-between items-center">
                 <div>
-                  <p className="text-blue-800 font-medium">发现您之前填写的数据</p>
-                  <p className="text-sm text-blue-600">我们已为您恢复之前的填写进度</p>
+                  <p className="text-blue-800 font-medium">{getTranslation(currentLanguage, 'foundPreviousData') || 'Found previously filled data'}</p>
+                  <p className="text-sm text-blue-600">{getTranslation(currentLanguage, 'dataRestored') || 'Your data has been restored'}</p>
                 </div>
                 <button 
                   onClick={clearFormData}
                   className="px-3 py-1 bg-white text-blue-700 rounded border border-blue-300 text-sm hover:bg-blue-100 transition-colors"
                 >
-                  清除数据
+                  {getTranslation(currentLanguage, 'clearData') || 'Clear saved data'}
                 </button>
               </div>
             )}
@@ -1514,7 +1810,7 @@ export default function PlannerPage() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      处理中...
+                      {getTranslation(currentLanguage, 'processing')}
                     </>
                   ) : (
                     <>
