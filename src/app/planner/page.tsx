@@ -262,7 +262,11 @@ const translations: Record<Language, any> = {
 
 // 默认使用英文，如果找不到对应的语言
 const getTranslation = (language: Language, key: string): any => {
-  return translations[language]?.[key] || translations.en[key];
+  // 如果当前语言不存在此键，则使用英文版本
+  if (!translations[language] || !translations[language][key]) {
+    return translations.en[key];
+  }
+  return translations[language][key];
 };
 
 type FormData = {
@@ -399,21 +403,21 @@ export default function PlannerPage() {
       // 设置语言
       setT(translations[currentLanguage] || translations.en);
       
-      // 使用当前语言初始化表单
+      // 使用当前语言初始化表单，确保安全访问键值
       const defaultFormData = {
-        travellerType: t.travellerTypes[0],
+        travellerType: getTranslation(currentLanguage, 'travellerTypes')?.[0] || '',
         travellers: 2,
         departureDate: '',
         returnDate: '',
-        budget: t.budgetRanges[0],
+        budget: getTranslation(currentLanguage, 'budgetRanges')?.[0] || '',
         selectedDestinations: [],
-        selectedRoute: t.routeTypes[0],
-        travelStyle: t.travelStyles[0],
+        selectedRoute: getTranslation(currentLanguage, 'routeTypes')?.[0] || '',
+        travelStyle: getTranslation(currentLanguage, 'travelStyles')?.[0] || '',
         travelPace: 50,
-        accommodation: t.accommodationTypes[0],
+        accommodation: getTranslation(currentLanguage, 'accommodationTypes')?.[0] || '',
         tastePreference: 50,
         foodTypes: [],
-        diningEnvironment: t.diningEnvOptions[0],
+        diningEnvironment: getTranslation(currentLanguage, 'diningEnvOptions')?.[0] || '',
         dietaryRestrictions: '',
         additionalRequests: ''
       };
@@ -704,19 +708,36 @@ export default function PlannerPage() {
       return null;
     }
 
+    // 获取当前语言的推荐文本
+    const recommendationTitle = currentLanguage === 'zh' ? '根据您的选择，我们为您推荐' :
+      currentLanguage === 'en' ? 'Based on your choices, we recommend' : 
+      'Based on your choices, we recommend';
+
+    const attractionsTitle = currentLanguage === 'zh' ? '推荐景点' :
+      currentLanguage === 'en' ? 'Recommended Attractions' :
+      'Recommended Attractions';
+
+    const foodsTitle = currentLanguage === 'zh' ? '推荐美食' :
+      currentLanguage === 'en' ? 'Recommended Food' :
+      'Recommended Food';
+
+    const activitiesTitle = currentLanguage === 'zh' ? '推荐活动' :
+      currentLanguage === 'en' ? 'Recommended Activities' :
+      'Recommended Activities';
+
     return (
       <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-lg">
         <h3 className="text-lg font-semibold text-amber-800 mb-3 flex items-center">
           <svg className="w-5 h-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
           </svg>
-          根据您的选择，我们为您推荐
+          {recommendationTitle}
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {recommendations.attractions.length > 0 && (
             <div>
-              <h4 className="font-medium text-amber-700 mb-2">推荐景点</h4>
+              <h4 className="font-medium text-amber-700 mb-2">{attractionsTitle}</h4>
               <ul className="space-y-1">
                 {recommendations.attractions.slice(0, 5).map((attraction, index) => (
                   <li key={index} className="flex items-center text-sm">
@@ -732,7 +753,7 @@ export default function PlannerPage() {
 
           {recommendations.foods.length > 0 && (
             <div>
-              <h4 className="font-medium text-amber-700 mb-2">推荐美食</h4>
+              <h4 className="font-medium text-amber-700 mb-2">{foodsTitle}</h4>
               <ul className="space-y-1">
                 {recommendations.foods.slice(0, 5).map((food, index) => (
                   <li key={index} className="flex items-center text-sm">
@@ -748,7 +769,7 @@ export default function PlannerPage() {
 
           {recommendations.activities.length > 0 && (
             <div>
-              <h4 className="font-medium text-amber-700 mb-2">推荐活动</h4>
+              <h4 className="font-medium text-amber-700 mb-2">{activitiesTitle}</h4>
               <ul className="space-y-1">
                 {recommendations.activities.slice(0, 5).map((activity, index) => (
                   <li key={index} className="flex items-center text-sm">
