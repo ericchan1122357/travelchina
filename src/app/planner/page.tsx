@@ -1290,6 +1290,8 @@ export default function PlannerPage() {
         });
         setCurrentStep(1);
         setErrors({});
+        // 隐藏提示信息
+        setFoundPreviousData(false);
       } catch (error) {
         console.error('清除表单数据时出错:', error);
       }
@@ -1986,7 +1988,7 @@ export default function PlannerPage() {
 
   // 渲染发现先前数据的提示信息
   const renderPreviousDataMessage = () => {
-    if (foundPreviousData) {
+    if (foundPreviousData && currentStep === 1) {
       return (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex justify-between items-center">
           <div>
@@ -2013,23 +2015,15 @@ export default function PlannerPage() {
       // 确保日期输入框根据当前语言更新显示格式
       const dateInputs = document.querySelectorAll('input[type="date"]');
       dateInputs.forEach(input => {
-        // 设置lang属性以尝试影响日期选择器的语言
-        input.setAttribute('lang', currentLanguage);
+        // 设置lang属性为英文，确保日期选择器始终显示英文
+        input.setAttribute('lang', 'en');
         
-        // 更新日期格式显示
+        // 更新日期格式显示（仍然使用当前语言显示占位符）
         const format = `${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`;
         input.setAttribute('data-date-format', format);
         
         // 清除默认占位符
         input.setAttribute('placeholder', '');
-        
-        // 添加点击事件监听器，在日期选择器打开时修改其内容
-        input.addEventListener('click', () => {
-          // 使用setTimeout确保选择器DOM已经生成
-          setTimeout(() => {
-            localizeDatePicker(currentLanguage);
-          }, 100);
-        });
       });
       
       // 清除任何可能的错误信息，以避免旧语言的错误信息停留
@@ -2039,69 +2033,18 @@ export default function PlannerPage() {
     }
   }, [currentLanguage]);
   
-  // 本地化日期选择器的函数
+  // 本地化日期选择器的函数 - 不再使用，保持英文界面
   const localizeDatePicker = (language: Language) => {
-    // 获取当前打开的日期选择器元素
-    // 不同浏览器实现不同，尝试多种选择器
-    const datePickers = [
-      ...Array.from(document.querySelectorAll('.calendar-container')),  // 一般选择器
-      ...Array.from(document.querySelectorAll('[role="dialog"]')),      // ARIA 角色
-      ...Array.from(document.querySelectorAll('.date-picker')),         // 常见类名
-      ...Array.from(document.querySelectorAll('input[type="date"]:focus + div')), // 相邻元素
-    ];
-    
-    if (datePickers.length === 0) {
-      console.log('未找到日期选择器DOM元素');
-      return;
-    }
-    
-    datePickers.forEach(picker => {
-      try {
-        // 尝试找到并修改星期几标题
-        const weekdayElements = picker.querySelectorAll('th, .weekday, [data-day]');
-        if (weekdayElements.length) {
-          const weekdays = [
-            getTranslation(language, 'sunday'),
-            getTranslation(language, 'monday'),
-            getTranslation(language, 'tuesday'),
-            getTranslation(language, 'wednesday'),
-            getTranslation(language, 'thursday'),
-            getTranslation(language, 'friday'),
-            getTranslation(language, 'saturday')
-          ];
-          
-          weekdayElements.forEach((el, i) => {
-            if (i < 7) { // 确保只修改7天的标题
-              el.textContent = weekdays[i] || el.textContent;
-            }
-          });
-        }
-        
-        // 尝试找到并修改按钮文本
-        const todayButton = picker.querySelector('[data-action="today"], .today-button, button:contains("Today")');
-        const clearButton = picker.querySelector('[data-action="clear"], .clear-button, button:contains("Clear")');
-        
-        if (todayButton) {
-          todayButton.textContent = getTranslation(language, 'today');
-        }
-        if (clearButton) {
-          clearButton.textContent = getTranslation(language, 'clear');
-        }
-      } catch (error) {
-        console.error('修改日期选择器元素时出错:', error);
-      }
-    });
+    // 不执行任何本地化操作，保持英文界面
+    return;
   };
 
-  // 添加自定义样式以支持日期选择器的多语言显示
+  // 添加自定义样式以支持日期选择器的英文显示
   useEffect(() => {
     // 创建动态样式标签
     const styleElement = document.createElement('style');
     styleElement.id = 'date-picker-styles';
     document.head.appendChild(styleElement);
-    
-    // 根据当前语言设置样式
-    const language = currentLanguage;
     
     // 添加自定义CSS，隐藏原生占位符并设置日期选择器样式
     styleElement.textContent = `
@@ -2121,8 +2064,13 @@ export default function PlannerPage() {
         color: inherit;
       }
       
-      /* 确保日期选择器中的所有文本使用与lang属性匹配的语言 */
-      :lang(${language}) * {
+      /* 确保日期选择器中的所有文本使用英文 */
+      input[type="date"], input[type="date"] * {
+        font-family: system-ui, -apple-system, sans-serif !important;
+      }
+      
+      /* 强制日期选择器使用英文 */
+      :lang(en) * {
         font-family: system-ui, -apple-system, sans-serif;
       }
     `;
@@ -2133,7 +2081,7 @@ export default function PlannerPage() {
         document.getElementById('date-picker-styles')?.remove();
       }
     };
-  }, [currentLanguage]);
+  }, []);
   
   // 监听输入框值变化，添加有值的类
   useEffect(() => {
