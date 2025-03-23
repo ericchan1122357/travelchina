@@ -1517,7 +1517,7 @@ export default function PlannerPage() {
                     onChange={handleInputChange}
                     className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors appearance-none
                       ${errors.departureDate ? 'border-red-500' : 'border-gray-300'}`}
-                    lang={currentLanguage}
+                    lang="en"
                     data-date-format={`${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`}
                     placeholder=""
                   />
@@ -1560,7 +1560,7 @@ export default function PlannerPage() {
                     onChange={handleInputChange}
                     className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors appearance-none
                       ${errors.returnDate ? 'border-red-500' : 'border-gray-300'}`}
-                    lang={currentLanguage}
+                    lang="en"
                     data-date-format={`${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`}
                     placeholder=""
                   />
@@ -2007,6 +2007,40 @@ export default function PlannerPage() {
     return null;
   };
 
+  // 添加全局HTML语言设置钩子，确保日期选择器始终显示英文
+  useEffect(() => {
+    // 存储原始语言设置
+    const originalLang = document.documentElement.lang;
+    
+    // 创建一个变化观察器来保持英文日期选择器
+    const observer = new MutationObserver((mutations) => {
+      const datePickers = document.querySelectorAll('input[type="date"]:focus ~ div, [role="dialog"], .calendar-picker');
+      
+      if (datePickers.length > 0) {
+        // 当日期选择器出现时，强制将文档语言设置为英文
+        document.documentElement.lang = 'en';
+        
+        // 为日期选择器添加强制英文类
+        datePickers.forEach(picker => {
+          picker.setAttribute('lang', 'en');
+          picker.classList.add('force-english');
+        });
+      }
+    });
+    
+    // 开始观察文档变化
+    observer.observe(document.body, { 
+      childList: true, 
+      subtree: true 
+    });
+    
+    return () => {
+      // 清理：停止观察并恢复原始语言
+      observer.disconnect();
+      document.documentElement.lang = originalLang;
+    };
+  }, []);
+
   // 监听语言变化，更新日期组件显示
   useEffect(() => {
     if (translations[currentLanguage]) {
@@ -2024,6 +2058,24 @@ export default function PlannerPage() {
         
         // 清除默认占位符
         input.setAttribute('placeholder', '');
+        
+        // 添加点击事件监听器强制设置HTML语言为英文
+        input.addEventListener('click', () => {
+          document.documentElement.lang = 'en';
+        });
+        
+        // 添加失焦事件监听器恢复HTML语言
+        input.addEventListener('blur', () => {
+          // 如果还有其他日期选择器处于焦点状态，不恢复
+          if (!document.querySelector('input[type="date"]:focus')) {
+            setTimeout(() => {
+              // 额外延迟以确保日期选择器已关闭
+              if (!document.querySelector('input[type="date"]:focus')) {
+                document.documentElement.lang = currentLanguage;
+              }
+            }, 300);
+          }
+        });
       });
       
       // 清除任何可能的错误信息，以避免旧语言的错误信息停留
@@ -2073,6 +2125,34 @@ export default function PlannerPage() {
       :lang(en) * {
         font-family: system-ui, -apple-system, sans-serif;
       }
+      
+      /* 强制日期选择器中的文本使用英文 */
+      ::-webkit-calendar-picker-indicator {
+        filter: invert(0.5);
+      }
+      
+      /* 强制日期选择器背景区域 */
+      input[type="date"]::-webkit-datetime-edit {
+        padding: 0;
+      }
+      
+      /* 强制所有弹出的日期选择器对话框使用英文 */
+      [role="dialog"], 
+      .calendar-container, 
+      .date-picker,
+      .force-english,
+      input[type="date"]:focus ~ div {
+        font-family: system-ui, -apple-system, sans-serif !important;
+      }
+      
+      /* 明确覆盖日期选择器组件内部元素的语言 */
+      html[lang="en"] .calendar-header th,
+      html[lang="en"] .month-dropdown,
+      html[lang="en"] .year-dropdown,
+      html[lang="en"] .day-cell,
+      html[lang="en"] .calendar-footer button {
+        font-family: system-ui, -apple-system, sans-serif !important;
+      }
     `;
     
     // 清理函数
@@ -2102,6 +2182,34 @@ export default function PlannerPage() {
         updateValueClass(input as HTMLInputElement);
       });
     });
+  }, []);
+
+  // 添加一个 useEffect 钩子，动态创建并管理 meta 标签
+  useEffect(() => {
+    // 创建 meta 标签来指定日期选择器的语言为英文
+    const metaTag = document.createElement('meta');
+    metaTag.setAttribute('name', 'datepicker-lang');
+    metaTag.setAttribute('content', 'en-US');
+    document.head.appendChild(metaTag);
+    
+    // 创建 meta 标签来指定内容语言优先级
+    const htmlLangMeta = document.createElement('meta');
+    htmlLangMeta.setAttribute('http-equiv', 'Content-Language');
+    htmlLangMeta.setAttribute('content', 'en-US');
+    document.head.appendChild(htmlLangMeta);
+    
+    // 确保日期选择器显示英文
+    const dateMetaTag = document.createElement('meta');
+    dateMetaTag.setAttribute('name', 'calendar-lang');
+    dateMetaTag.setAttribute('content', 'en-US');
+    document.head.appendChild(dateMetaTag);
+    
+    return () => {
+      // 清理函数：移除创建的 meta 标签
+      document.head.removeChild(metaTag);
+      document.head.removeChild(htmlLangMeta);
+      document.head.removeChild(dateMetaTag);
+    };
   }, []);
 
   return (
