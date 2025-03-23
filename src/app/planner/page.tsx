@@ -889,6 +889,24 @@ const getTranslation = (language: Language, key: string): any => {
     if (key.includes('Types') || key.includes('cities') || key.includes('Ranges') || key.includes('Options')) {
       return [];  // 返回空数组给数组类型的翻译
     }
+    
+    // 返回日期相关翻译的默认值
+    if (['year', 'month', 'day', 'today', 'clear'].includes(key)) {
+      const defaultDateTranslations: Record<string, string> = {
+        year: 'Year', month: 'Month', day: 'Day', today: 'Today', clear: 'Clear'
+      };
+      return defaultDateTranslations[key] || '';
+    }
+    
+    // 返回星期几相关翻译的默认值
+    if (['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'].includes(key)) {
+      const defaultWeekdayTranslations: Record<string, string> = {
+        monday: 'Mon', tuesday: 'Tue', wednesday: 'Wed', thursday: 'Thu', 
+        friday: 'Fri', saturday: 'Sat', sunday: 'Sun'
+      };
+      return defaultWeekdayTranslations[key] || '';
+    }
+    
     return '';  // 返回空字符串给字符串类型的翻译
   }
 };
@@ -1487,17 +1505,25 @@ export default function PlannerPage() {
               <div>
                 <label className="block text-gray-700 mb-2 font-medium flex items-center">
                   <CalendarDaysIcon className="w-5 h-5 mr-2 text-china-red" />
-                  {t.departureDate}
+                  {getTranslation(currentLanguage, 'departureDate')}
                 </label>
-                <input 
-                  type="date" 
-                  name="departureDate"
-                  value={formData.departureDate}
-                  onChange={handleInputChange}
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors 
-                    ${errors.departureDate ? 'border-red-500' : 'border-gray-300'}`}
-                  placeholder={`${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`}
-                />
+                <div className="relative">
+                  <input 
+                    type="date" 
+                    name="departureDate"
+                    value={formData.departureDate}
+                    onChange={handleInputChange}
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors 
+                      ${errors.departureDate ? 'border-red-500' : 'border-gray-300'}`}
+                    lang={currentLanguage}
+                    data-date-format={`${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`}
+                  />
+                  <div className={`pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ${formData.departureDate ? 'hidden' : 'block'}`}>
+                    <span className="text-gray-500">
+                      {getTranslation(currentLanguage, 'year')}/{getTranslation(currentLanguage, 'month')}/{getTranslation(currentLanguage, 'day')}
+                    </span>
+                  </div>
+                </div>
                 {renderError('departureDate')}
                 <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'departureDateHint')}</p>
                 
@@ -1521,17 +1547,25 @@ export default function PlannerPage() {
               <div>
                 <label className="block text-gray-700 mb-2 font-medium flex items-center">
                   <CalendarDaysIcon className="w-5 h-5 mr-2 text-china-red" />
-                  {t.returnDate}
+                  {getTranslation(currentLanguage, 'returnDate')}
                 </label>
-                <input 
-                  type="date" 
-                  name="returnDate"
-                  value={formData.returnDate}
-                  onChange={handleInputChange}
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors
-                    ${errors.returnDate ? 'border-red-500' : 'border-gray-300'}`}
-                  placeholder={`${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`}
-                />
+                <div className="relative">
+                  <input 
+                    type="date" 
+                    name="returnDate"
+                    value={formData.returnDate}
+                    onChange={handleInputChange}
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors
+                      ${errors.returnDate ? 'border-red-500' : 'border-gray-300'}`}
+                    lang={currentLanguage}
+                    data-date-format={`${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`}
+                  />
+                  <div className={`pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ${formData.returnDate ? 'hidden' : 'block'}`}>
+                    <span className="text-gray-500">
+                      {getTranslation(currentLanguage, 'year')}/{getTranslation(currentLanguage, 'month')}/{getTranslation(currentLanguage, 'day')}
+                    </span>
+                  </div>
+                </div>
                 {renderError('returnDate')}
                 <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'returnDateHint')}</p>
                 
@@ -1968,6 +2002,107 @@ export default function PlannerPage() {
     }
     return null;
   };
+
+  // 监听语言变化，更新日期组件显示
+  useEffect(() => {
+    if (translations[currentLanguage]) {
+      console.log(`当前语言：${currentLanguage}`);
+      
+      // 确保日期输入框根据当前语言更新显示格式
+      const dateInputs = document.querySelectorAll('input[type="date"]');
+      dateInputs.forEach(input => {
+        // 设置lang属性以尝试影响日期选择器的语言
+        input.setAttribute('lang', currentLanguage);
+        
+        // 更新日期格式显示
+        const format = `${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`;
+        input.setAttribute('data-date-format', format);
+      });
+      
+      // 清除任何可能的错误信息，以避免旧语言的错误信息停留
+      setErrors({});
+    } else {
+      console.warn(`不支持的语言：${currentLanguage}，回退到英文`);
+    }
+  }, [currentLanguage]);
+
+  // 添加自定义样式以支持日期选择器的多语言显示
+  useEffect(() => {
+    // 创建动态样式标签
+    const styleElement = document.createElement('style');
+    styleElement.id = 'date-picker-styles';
+    document.head.appendChild(styleElement);
+    
+    // 根据当前语言设置样式
+    const language = currentLanguage;
+    const mondayText = getTranslation(language, 'monday');
+    const tuesdayText = getTranslation(language, 'tuesday');
+    const wednesdayText = getTranslation(language, 'wednesday');
+    const thursdayText = getTranslation(language, 'thursday');
+    const fridayText = getTranslation(language, 'friday');
+    const saturdayText = getTranslation(language, 'saturday');
+    const sundayText = getTranslation(language, 'sunday');
+    const todayText = getTranslation(language, 'today');
+    const clearText = getTranslation(language, 'clear');
+
+    // 添加自定义CSS，尝试覆盖日期选择器的默认文本
+    // 注意：这些选择器可能需要根据实际浏览器的实现进行调整
+    styleElement.textContent = `
+      /* 星期几标题 */
+      :lang(${language}) .calendar-header th:nth-child(1)::before,
+      :lang(${language}) .calendar-day:nth-child(1)::before,
+      :lang(${language}) [data-day="0"]::before {
+        content: "${sundayText}" !important;
+      }
+      :lang(${language}) .calendar-header th:nth-child(2)::before,
+      :lang(${language}) .calendar-day:nth-child(2)::before,
+      :lang(${language}) [data-day="1"]::before {
+        content: "${mondayText}" !important;
+      }
+      :lang(${language}) .calendar-header th:nth-child(3)::before,
+      :lang(${language}) .calendar-day:nth-child(3)::before,
+      :lang(${language}) [data-day="2"]::before {
+        content: "${tuesdayText}" !important;
+      }
+      :lang(${language}) .calendar-header th:nth-child(4)::before,
+      :lang(${language}) .calendar-day:nth-child(4)::before,
+      :lang(${language}) [data-day="3"]::before {
+        content: "${wednesdayText}" !important;
+      }
+      :lang(${language}) .calendar-header th:nth-child(5)::before,
+      :lang(${language}) .calendar-day:nth-child(5)::before,
+      :lang(${language}) [data-day="4"]::before {
+        content: "${thursdayText}" !important;
+      }
+      :lang(${language}) .calendar-header th:nth-child(6)::before,
+      :lang(${language}) .calendar-day:nth-child(6)::before,
+      :lang(${language}) [data-day="5"]::before {
+        content: "${fridayText}" !important;
+      }
+      :lang(${language}) .calendar-header th:nth-child(7)::before,
+      :lang(${language}) .calendar-day:nth-child(7)::before,
+      :lang(${language}) [data-day="6"]::before {
+        content: "${saturdayText}" !important;
+      }
+      
+      /* 按钮文本 */
+      :lang(${language}) .today-button::before,
+      :lang(${language}) [data-action="today"]::before {
+        content: "${todayText}" !important;
+      }
+      :lang(${language}) .clear-button::before,
+      :lang(${language}) [data-action="clear"]::before {
+        content: "${clearText}" !important;
+      }
+    `;
+    
+    // 清理函数
+    return () => {
+      if (document.getElementById('date-picker-styles')) {
+        document.getElementById('date-picker-styles')?.remove();
+      }
+    };
+  }, [currentLanguage]);
 
   return (
     <div className="min-h-screen bg-gray-50">
