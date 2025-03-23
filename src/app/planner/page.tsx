@@ -19,11 +19,7 @@ import {
   ArrowPathIcon,
   PlusCircleIcon,
   MinusCircleIcon,
-  QuestionMarkCircleIcon,
-  DocumentTextIcon,
-  DocumentArrowDownIcon,
-  ArrowUturnLeftIcon,
-  TrashIcon
+  QuestionMarkCircleIcon
 } from '@heroicons/react/24/outline';
 
 // 翻译数据
@@ -70,37 +66,11 @@ const translations: Record<Language, any> = {
     footer: '© 2023 China Travel Guide. All rights reserved.',
     cities: ['Beijing', 'Shanghai', 'Xi\'an', 'Chengdu', 'Hangzhou', 'Guilin', 'Guangzhou', 'Shenzhen'],
     slow: 'Slow & Relaxed',
-    fast: 'Fast & Intensive',
-    light: 'Mild',
-    spicy: 'Very Spicy',
-    submitSuccess: 'Your travel plan has been submitted successfully! Redirecting to results page...',
-    submitFailed: 'Failed to submit. Please try again later.',
-    hints: {
-      travellerType: "Choose the type that best fits your journey",
-      travellers: "Enter the number of people in your travel group (1-20)",
-      dates: "Plan your travel dates",
-      budget: "Select a budget range that meets your expectations",
-      routes: "Choose a recommended route or customize your own itinerary",
-      destinations: "Click to select the cities you want to visit",
-      travelStyle: "Select the style that matches your travel preferences",
-      pace: "1-2 attractions per day | 3-5 attractions per day",
-      accommodation: "Select your preferred accommodation type during travel",
-      spiciness: "Very mild or slightly spicy | Spicy Sichuan and Hunan cuisine",
-      foodTypes: "Select your favorite food types",
-      diningEnv: "Select your preferred dining environment",
-      dietaryRestr: "Enter any dietary restrictions or requirements",
-      additionalReq: "Please specify any special requirements for your itinerary",
-      formSummary: "Travel Plan Summary",
-      savedData: "Data saved successfully",
-      restored: "Progress restored successfully",
-      clearData: "Data cleared successfully",
-      loading: "Processing...",
-      selectedCities: "Select at least one",
-      multiSelection: "Multiple selection",
-      submittingData: "Submitting Data",
-      submissionError: "Submission Error",
-      submitSuccess: "Your travel plan has been submitted successfully! Redirecting to results..."
-    }
+    balanced: 'Balanced',
+    fast: 'Fast-paced',
+    light: 'Very Mild',
+    medium: 'Medium',
+    spicy: 'Very Spicy'
   },
   zh: {
     title: '旅行规划',
@@ -144,37 +114,11 @@ const translations: Record<Language, any> = {
     footer: '© 2023 中国旅游攻略. 保留所有权利.',
     cities: ['北京', '上海', '西安', '成都', '杭州', '桂林', '广州', '深圳'],
     slow: '悠闲放松',
-    fast: '快速紧凑',
-    light: '微辣',
-    spicy: '重辣',
-    submitSuccess: '您的旅行计划已成功提交！正在跳转到结果页面...',
-    submitFailed: '提交失败，请稍后再试。',
-    hints: {
-      travellerType: "选择最符合您此次旅行的类型",
-      travellers: "请输入旅行团队的人数 (1-20人)",
-      dates: "规划您的旅行日期",
-      budget: "选择符合您期望的预算范围",
-      routes: "选择一个推荐路线或自定义您的行程",
-      destinations: "点击选择您想要游览的城市",
-      travelStyle: "选择与您的旅行喜好最匹配的风格",
-      pace: "每天游览1-2个景点 | 每天游览3-5个景点",
-      accommodation: "选择您在旅行中偏好的住宿类型",
-      spiciness: "不吃辣或微辣 | 川菜、湘菜等重辣美食",
-      foodTypes: "选择您喜欢的食物类型",
-      diningEnv: "选择您偏好的用餐环境",
-      dietaryRestr: "请输入任何饮食方面的限制或需求",
-      additionalReq: "对行程有任何特殊需求请在此说明",
-      formSummary: "旅行计划摘要",
-      savedData: "数据保存成功",
-      restored: "进度恢复成功",
-      clearData: "数据清除成功",
-      loading: "处理中...",
-      selectedCities: "至少选择一个",
-      multiSelection: "可多选",
-      submittingData: "提交数据",
-      submissionError: "提交错误",
-      submitSuccess: "您的旅行计划已成功提交！正在跳转到结果页面..."
-    }
+    balanced: '平衡',
+    fast: '紧凑充实',
+    light: '很轻微',
+    medium: '适中',
+    spicy: '非常辣'
   },
   fr: {
     title: 'Planification de Voyage',
@@ -186,7 +130,7 @@ const translations: Record<Language, any> = {
     step4Title: 'Préférences Culinaires',
     step5Title: 'Exigences Spéciales',
     travellerType: 'Type de Voyageur',
-    travellerTypes: ['Solo', 'Couple', 'Famille', 'Amis', 'Voyage d\'Affaires', 'Autre'],
+    travellerTypes: ['Solo', 'Couple', 'Famille', 'Amis', 'Affaires', 'Autre'],
     travellers: 'Nombre de Voyageurs',
     travelDates: 'Dates de Voyage',
     departureDate: 'Date de Départ',
@@ -206,8 +150,8 @@ const translations: Record<Language, any> = {
     tastePreference: 'Préférence de Goût',
     foodTypes: 'Types d\'Aliments',
     foodTypePref: ['Fruits de Mer', 'Plats de Viande', 'Végétarien', 'Nouilles', 'À Base de Riz'],
-    diningEnvironment: 'Environnement de Restauration',
-    diningEnvOptions: ['Restaurants Populaires Locaux', 'Haute Cuisine', 'Nourriture de Rue', 'Restaurants Thématiques', 'Repas Rapides'],
+    diningEnvironment: 'Environnement de Repas',
+    diningEnvOptions: ['Restaurants Populaires Locaux', 'Restaurants Gastronomiques', 'Cuisine de Rue', 'Restaurants Thématiques', 'Repas Rapides'],
     spiciness: 'Préférence d\'Épices',
     dietaryRestrictions: 'Restrictions Alimentaires',
     additionalRequests: 'Demandes Supplémentaires',
@@ -219,36 +163,10 @@ const translations: Record<Language, any> = {
     cities: ['Pékin', 'Shanghai', 'Xi\'an', 'Chengdu', 'Hangzhou', 'Guilin', 'Guangzhou', 'Shenzhen'],
     slow: 'Lent et Détendu',
     balanced: 'Équilibré',
-    fast: 'Rythme Rapide',
+    fast: 'Rythme Soutenu',
     light: 'Très Doux',
     medium: 'Moyen',
-    spicy: 'Très Épicé',
-    hints: {
-      travellerType: "Choisissez le type qui correspond le mieux à votre voyage",
-      travellers: "Entrez le nombre de personnes dans votre groupe (1-20)",
-      dates: "Planifiez vos dates de voyage",
-      budget: "Sélectionnez une gamme de budget qui répond à vos attentes",
-      routes: "Choisissez un itinéraire recommandé ou personnalisez votre propre itinéraire",
-      destinations: "Cliquez pour sélectionner les villes que vous souhaitez visiter",
-      travelStyle: "Sélectionnez le style qui correspond à vos préférences de voyage",
-      pace: "1-2 attractions par jour | 3-5 attractions par jour",
-      accommodation: "Sélectionnez votre type d'hébergement préféré",
-      spiciness: "Très doux ou légèrement épicé | Cuisine épicée du Sichuan et Hunan",
-      foodTypes: "Sélectionnez vos types de nourriture préférés",
-      diningEnv: "Sélectionnez votre environnement de restauration préféré",
-      dietaryRestr: "Entrez toutes restrictions alimentaires ou exigences",
-      additionalReq: "Veuillez préciser toute exigence particulière pour votre itinéraire",
-      formSummary: "Résumé du Plan de Voyage",
-      savedData: "Données enregistrées avec succès",
-      restored: "Progression restaurée avec succès",
-      clearData: "Données effacées avec succès",
-      loading: "Traitement en cours...",
-      selectedCities: "Sélectionnez-en au moins un",
-      multiSelection: "Sélection multiple",
-      submittingData: "Soumission des Données",
-      submissionError: "Erreur de Soumission",
-      submitSuccess: "Votre plan de voyage a été soumis avec succès ! Redirection vers les résultats..."
-    }
+    spicy: 'Très Épicé'
   },
   de: {
     title: 'Reiseplanung',
@@ -257,10 +175,10 @@ const translations: Record<Language, any> = {
     step1Title: 'Grundlegende Reiseinformationen',
     step2Title: 'Reiseziele',
     step3Title: 'Reisevorlieben',
-    step4Title: 'Essensvorlieben',
+    step4Title: 'Essenspräferenzen',
     step5Title: 'Besondere Anforderungen',
     travellerType: 'Reisetyp',
-    travellerTypes: ['Alleinreisend', 'Paar', 'Familie', 'Freunde', 'Geschäftsreise', 'Andere'],
+    travellerTypes: ['Alleinreisender', 'Paar', 'Familie', 'Freunde', 'Geschäftsreise', 'Andere'],
     travellers: 'Anzahl der Reisenden',
     travelDates: 'Reisedaten',
     departureDate: 'Abreisedatum',
@@ -269,21 +187,21 @@ const translations: Record<Language, any> = {
     budgetRanges: ['Wirtschaftlich (Unter €450)', 'Standard (€450-€900)', 'Premium (€900-€1350)', 'Luxus (€1350+)'],
     destinations: 'Reiseziele auswählen',
     suggestedRoutes: 'Vorgeschlagene Routen',
-    routeTypes: ['Klassische Peking-Shanghai-Guangzhou Route', 'Historische & Kulturelle Tour', 'Natur & Landschaft', 'Moderne Chinesische Städte', 'Kulinarische Reise'],
+    routeTypes: ['Klassisch Peking-Shanghai-Guangzhou', 'Historische & Kulturelle Tour', 'Natur & Landschaft', 'Moderne Chinesische Städte', 'Kulinarische Reise'],
     preferences: 'Reisevorlieben',
     travelStyle: 'Reisestil',
     travelStyles: ['Entspannung', 'Kulturelle Erkundung', 'Gourmet-Tour', 'Naturlandschaften', 'Tiefgreifende Erfahrung'],
     travelPace: 'Reisetempo',
     accommodation: 'Unterkunftspräferenz',
     accommodationTypes: ['Budgethotels', 'Mittelklassehotels', 'Luxushotels', 'Charakteristische Pensionen', 'Hostels'],
-    diningTitle: 'Essensvorlieben',
+    diningTitle: 'Essenspräferenzen',
     tastePreference: 'Geschmacksvorliebe',
     foodTypes: 'Lebensmittelarten',
-    foodTypePref: ['Meeresfrüchte', 'Fleischgerichte', 'Vegetarisch', 'Nudelgerichte', 'Reisbasiert'],
+    foodTypePref: ['Meeresfrüchte', 'Fleischgerichte', 'Vegetarisch', 'Nudeln', 'Reisbasiert'],
     diningEnvironment: 'Essensumgebung',
-    diningEnvOptions: ['Lokale beliebte Restaurants', 'Gehobene Küche', 'Straßenessen', 'Themenrestaurants', 'Schnellrestaurants'],
-    spiciness: 'Schärfe-Präferenz',
-    dietaryRestrictions: 'Ernährungsbeschränkungen',
+    diningEnvOptions: ['Lokale Beliebte Restaurants', 'Gehobene Gastronomie', 'Straßenessen', 'Themenrestaurants', 'Schnelle Mahlzeiten'],
+    spiciness: 'Schärfegrad',
+    dietaryRestrictions: 'Ernährungseinschränkungen',
     additionalRequests: 'Zusätzliche Anfragen',
     requestsPlaceholder: 'Bitte teilen Sie uns besondere Anforderungen oder Erwartungen mit...',
     nextStep: 'Nächster Schritt',
@@ -296,33 +214,7 @@ const translations: Record<Language, any> = {
     fast: 'Schnelles Tempo',
     light: 'Sehr Mild',
     medium: 'Mittel',
-    spicy: 'Sehr Scharf',
-    hints: {
-      travellerType: "Wählen Sie den Typ, der am besten zu Ihrer Reise passt",
-      travellers: "Geben Sie die Anzahl der Personen in Ihrer Reisegruppe an (1-20)",
-      dates: "Planen Sie Ihre Reisedaten",
-      budget: "Wählen Sie einen Budgetbereich, der Ihren Erwartungen entspricht",
-      routes: "Wählen Sie eine empfohlene Route oder erstellen Sie Ihre eigene Reiseroute",
-      destinations: "Klicken Sie, um die Städte auszuwählen, die Sie besuchen möchten",
-      travelStyle: "Wählen Sie den Stil, der Ihren Reisepräferenzen entspricht",
-      pace: "1-2 Attraktionen pro Tag | 3-5 Attraktionen pro Tag",
-      accommodation: "Wählen Sie Ihre bevorzugte Unterkunftsart während der Reise",
-      spiciness: "Sehr mild oder leicht scharf | Scharfe Sichuan- und Hunan-Küche",
-      foodTypes: "Wählen Sie Ihre Lieblings-Lebensmittelarten",
-      diningEnv: "Wählen Sie Ihre bevorzugte Essensumgebung",
-      dietaryRestr: "Geben Sie alle Ernährungseinschränkungen oder Anforderungen ein",
-      additionalReq: "Bitte geben Sie besondere Anforderungen für Ihre Reiseroute an",
-      formSummary: "Reiseplan Zusammenfassung",
-      savedData: "Daten erfolgreich gespeichert",
-      restored: "Fortschritt erfolgreich wiederhergestellt",
-      clearData: "Daten erfolgreich gelöscht",
-      loading: "Verarbeitung...",
-      selectedCities: "Wählen Sie mindestens eine aus",
-      multiSelection: "Mehrfachauswahl",
-      submittingData: "Daten Übermittlung",
-      submissionError: "Übermittlungsfehler",
-      submitSuccess: "Ihr Reiseplan wurde erfolgreich übermittelt! Weiterleitung zu den Ergebnissen..."
-    }
+    spicy: 'Sehr Scharf'
   },
   ja: {
     title: '旅行プランニング',
@@ -342,8 +234,8 @@ const translations: Record<Language, any> = {
     budget: '予算範囲',
     budgetRanges: ['エコノミー (¥50,000以下)', 'スタンダード (¥50,000-¥100,000)', 'プレミアム (¥100,000-¥150,000)', 'ラグジュアリー (¥150,000+)'],
     destinations: '目的地を選ぶ',
-    suggestedRoutes: '推奨ルート',
-    routeTypes: ['クラシック北京-上海-広州', '歴史・文化ツアー', '自然と風景', '現代中国の都市', 'フードジャーニー'],
+    suggestedRoutes: '提案ルート',
+    routeTypes: ['クラシック北京-上海-広州', '歴史的・文化的ツアー', '自然と風景', '現代中国の都市', 'グルメツアー'],
     preferences: '旅行の好み',
     travelStyle: '旅行スタイル',
     travelStyles: ['リラクゼーション', '文化探訪', 'グルメツアー', '自然風景', '深い体験'],
@@ -352,10 +244,10 @@ const translations: Record<Language, any> = {
     accommodationTypes: ['エコノミーホテル', 'ミッドレンジホテル', '高級ホテル', '特色ある民宿', 'ユースホステル'],
     diningTitle: '食事の好み',
     tastePreference: '味の好み',
-    foodTypes: '食べ物の種類',
-    foodTypePref: ['シーフード', '肉料理', 'ベジタリアン', '麺類', '米料理'],
+    foodTypes: '食物タイプ',
+    foodTypePref: ['シーフード', '肉料理', 'ベジタリアン', '麺類', '米ベース'],
     diningEnvironment: '食事環境',
-    diningEnvOptions: ['地元の人気レストラン', '高級レストラン', 'ストリートフード', 'テーマレストラン', 'クイックミール'],
+    diningEnvOptions: ['ローカル人気レストラン', '高級レストラン', 'ストリートフード', 'テーマレストラン', 'クイックミール'],
     spiciness: '辛さの好み',
     dietaryRestrictions: '食事制限',
     additionalRequests: '追加リクエスト',
@@ -365,38 +257,12 @@ const translations: Record<Language, any> = {
     generatePlan: '旅行プランを生成',
     footer: '© 2023 中国旅行ガイド. 全著作権所有.',
     cities: ['北京', '上海', '西安', '成都', '杭州', '桂林', '広州', '深セン'],
-    slow: 'ゆっくりリラックス',
-    balanced: 'バランス',
+    slow: 'スローで落ち着いた',
+    balanced: 'バランスのとれた',
     fast: '速いペース',
     light: '非常にマイルド',
     medium: '中程度',
-    spicy: '非常に辛い',
-    hints: {
-      travellerType: "あなたの旅行に最も適したタイプを選択してください",
-      travellers: "旅行グループの人数を入力してください（1-20人）",
-      dates: "旅行日程を計画してください",
-      budget: "ご希望に合った予算範囲を選択してください",
-      routes: "推奨ルートを選択するか、独自のルートをカスタマイズしてください",
-      destinations: "訪問したい都市を選択するにはクリックしてください",
-      travelStyle: "あなたの旅行の好みに合ったスタイルを選択してください",
-      pace: "1日1〜2つの観光スポット | 1日3〜5つの観光スポット",
-      accommodation: "旅行中の希望する宿泊タイプを選択してください",
-      spiciness: "非常にマイルドまたは少し辛い | 四川料理や湖南料理などの辛い料理",
-      foodTypes: "お好みの食べ物のタイプを選択してください",
-      diningEnv: "希望する食事環境を選択してください",
-      dietaryRestr: "食事制限や要件を入力してください",
-      additionalReq: "旅程に関する特別な要件を明記してください",
-      formSummary: "旅行計画の概要",
-      savedData: "データが正常に保存されました",
-      restored: "進行状況が正常に復元されました",
-      clearData: "データが正常にクリアされました",
-      loading: "処理中...",
-      selectedCities: "少なくとも1つ選択してください",
-      multiSelection: "複数選択可",
-      submittingData: "データ送信中",
-      submissionError: "送信エラー",
-      submitSuccess: "旅行プランが正常に送信されました！結果ページにリダイレクトしています..."
-    }
+    spicy: '非常に辛い'
   },
   ko: {
     title: '여행 계획',
@@ -417,7 +283,7 @@ const translations: Record<Language, any> = {
     budgetRanges: ['이코노미 (₩500,000 이하)', '스탠다드 (₩500,000-₩1,000,000)', '프리미엄 (₩1,000,000-₩1,500,000)', '럭셔리 (₩1,500,000+)'],
     destinations: '목적지 선택',
     suggestedRoutes: '추천 경로',
-    routeTypes: ['클래식 베이징-상하이-광저우', '역사 및 문화 투어', '자연과 경치', '현대 중국 도시', '음식 여행'],
+    routeTypes: ['클래식 베이징-상하이-광저우', '역사 및 문화 투어', '자연과 풍경', '현대 중국 도시', '음식 여행'],
     preferences: '여행 선호도',
     travelStyle: '여행 스타일',
     travelStyles: ['휴식', '문화 탐험', '음식 여행', '자연 경관', '심층 경험'],
@@ -426,10 +292,10 @@ const translations: Record<Language, any> = {
     accommodationTypes: ['이코노미 호텔', '중급 호텔', '럭셔리 호텔', '특색 있는 민박', '호스텔'],
     diningTitle: '식사 선호도',
     tastePreference: '맛 선호도',
-    foodTypes: '음식 종류',
-    foodTypePref: ['해산물', '육류 요리', '채식', '면요리', '쌀 기반'],
+    foodTypes: '음식 유형',
+    foodTypePref: ['해산물', '고기 요리', '채식', '국수', '쌀 기반'],
     diningEnvironment: '식사 환경',
-    diningEnvOptions: ['현지 인기 레스토랑', '고급 레스토랑', '길거리 음식', '테마 레스토랑', '빠른 식사'],
+    diningEnvOptions: ['현지 인기 레스토랑', '고급 레스토랑', '길거리 음식', '테마 레스토랑', '간편 식사'],
     spiciness: '매운맛 선호도',
     dietaryRestrictions: '식이 제한',
     additionalRequests: '추가 요청',
@@ -439,38 +305,12 @@ const translations: Record<Language, any> = {
     generatePlan: '여행 계획 생성',
     footer: '© 2023 중국 여행 가이드. 모든 권리 보유.',
     cities: ['베이징', '상하이', '시안', '청두', '항저우', '구이린', '광저우', '선전'],
-    slow: '느리고 편안함',
-    balanced: '균형',
+    slow: '느리고 여유로움',
+    balanced: '균형 잡힌',
     fast: '빠른 속도',
-    light: '매우 순한맛',
+    light: '매우 순한',
     medium: '중간',
-    spicy: '매우 매운맛',
-    hints: {
-      travellerType: "여행에 가장 적합한 유형을 선택하세요",
-      travellers: "여행 그룹의 인원 수를 입력하세요 (1-20명)",
-      dates: "여행 날짜를 계획하세요",
-      budget: "기대에 맞는 예산 범위를 선택하세요",
-      routes: "추천 경로를 선택하거나 자신만의 여행 일정을 맞춤 설정하세요",
-      destinations: "방문하고 싶은 도시를 선택하려면 클릭하세요",
-      travelStyle: "여행 선호도에 맞는 스타일을 선택하세요",
-      pace: "하루 1-2개 명소 | 하루 3-5개 명소",
-      accommodation: "여행 중 선호하는 숙박 유형을 선택하세요",
-      spiciness: "매우 순한 맛 또는 약간 매운 맛 | 쓰촨, 후난식 등 매운 요리",
-      foodTypes: "좋아하는 음식 유형을 선택하세요",
-      diningEnv: "선호하는 식사 환경을 선택하세요",
-      dietaryRestr: "식이 제한이나 요구 사항을 입력하세요",
-      additionalReq: "여행 일정에 대한 특별한 요구 사항을 명시하세요",
-      formSummary: "여행 계획 요약",
-      savedData: "데이터가 성공적으로 저장되었습니다",
-      restored: "진행 상황이 성공적으로 복원되었습니다",
-      clearData: "데이터가 성공적으로 지워졌습니다",
-      loading: "처리 중...",
-      selectedCities: "최소 하나 선택",
-      multiSelection: "다중 선택 가능",
-      submittingData: "데이터 전송중",
-      submissionError: "전송 오류",
-      submitSuccess: "여행 계획이 성공적으로 제출되었습니다! 결과 페이지로 리디렉션 중..."
-    }
+    spicy: '매우 매운'
   },
   es: {
     title: 'Planificación de Viajes',
@@ -491,7 +331,7 @@ const translations: Record<Language, any> = {
     budgetRanges: ['Económico (Menos de €450)', 'Estándar (€450-€900)', 'Premium (€900-€1350)', 'Lujo (€1350+)'],
     destinations: 'Elegir Destinos',
     suggestedRoutes: 'Rutas Sugeridas',
-    routeTypes: ['Clásica Pekín-Shanghái-Guangzhou', 'Tour Histórico y Cultural', 'Naturaleza y Paisajes', 'Ciudades Chinas Modernas', 'Viaje Gastronómico'],
+    routeTypes: ['Clásico Pekín-Shanghái-Guangzhou', 'Tour Histórico y Cultural', 'Naturaleza y Paisajes', 'Ciudades Chinas Modernas', 'Viaje Gastronómico'],
     preferences: 'Preferencias de Viaje',
     travelStyle: 'Estilo de Viaje',
     travelStyles: ['Relajación', 'Exploración Cultural', 'Tour Gastronómico', 'Paisajes Naturales', 'Experiencia Profunda'],
@@ -501,9 +341,9 @@ const translations: Record<Language, any> = {
     diningTitle: 'Preferencias Culinarias',
     tastePreference: 'Preferencia de Sabor',
     foodTypes: 'Tipos de Alimentos',
-    foodTypePref: ['Mariscos', 'Platos de Carne', 'Vegetariano', 'Fideos', 'Basados en Arroz'],
+    foodTypePref: ['Mariscos', 'Platos de Carne', 'Vegetariano', 'Fideos', 'Base de Arroz'],
     diningEnvironment: 'Entorno de Comida',
-    diningEnvOptions: ['Restaurantes Populares Locales', 'Alta Cocina', 'Comida Callejera', 'Restaurantes Temáticos', 'Comidas Rápidas'],
+    diningEnvOptions: ['Restaurantes Populares Locales', 'Restaurantes de Alta Cocina', 'Comida Callejera', 'Restaurantes Temáticos', 'Comidas Rápidas'],
     spiciness: 'Preferencia de Picante',
     dietaryRestrictions: 'Restricciones Dietéticas',
     additionalRequests: 'Solicitudes Adicionales',
@@ -515,45 +355,19 @@ const translations: Record<Language, any> = {
     cities: ['Pekín', 'Shanghái', 'Xi\'an', 'Chengdu', 'Hangzhou', 'Guilin', 'Guangzhou', 'Shenzhen'],
     slow: 'Lento y Relajado',
     balanced: 'Equilibrado',
-    fast: 'Ritmo Rápido',
+    fast: 'Ritmo Acelerado',
     light: 'Muy Suave',
     medium: 'Medio',
-    spicy: 'Muy Picante',
-    hints: {
-      travellerType: "Elija el tipo que mejor se adapte a su viaje",
-      travellers: "Ingrese el número de personas en su grupo de viaje (1-20)",
-      dates: "Planifique sus fechas de viaje",
-      budget: "Seleccione un rango de presupuesto que cumpla con sus expectativas",
-      routes: "Elija una ruta recomendada o personalice su propio itinerario",
-      destinations: "Haga clic para seleccionar las ciudades que desea visitar",
-      travelStyle: "Seleccione el estilo que coincida con sus preferencias de viaje",
-      pace: "1-2 atracciones por día | 3-5 atracciones por día",
-      accommodation: "Seleccione su tipo de alojamiento preferido durante el viaje",
-      spiciness: "Muy suave o ligeramente picante | Cocina picante de Sichuan y Hunan",
-      foodTypes: "Seleccione sus tipos de alimentos favoritos",
-      diningEnv: "Seleccione su entorno de comida preferido",
-      dietaryRestr: "Ingrese cualquier restricción dietética o requisito",
-      additionalReq: "Por favor, especifique cualquier requisito especial para su itinerario",
-      formSummary: "Resumen del Plan de Viaje",
-      savedData: "Datos guardados con éxito",
-      restored: "Progreso restaurado con éxito",
-      clearData: "Datos borrados con éxito",
-      loading: "Procesando...",
-      selectedCities: "Seleccione al menos uno",
-      multiSelection: "Selección múltiple",
-      submittingData: "Envío de Datos",
-      submissionError: "Error de Envío",
-      submitSuccess: "¡Su plan de viaje ha sido enviado con éxito! Redirigiendo a los resultados..."
-    }
+    spicy: 'Muy Picante'
   },
   ru: {
     title: 'Планирование Путешествия',
     backToHome: 'Вернуться на Главную',
     createPlan: 'Создайте Свой Персонализированный План Путешествия',
-    step1Title: 'Основная Информация о Поездке',
+    step1Title: 'Основная Информация о Путешествии',
     step2Title: 'Направления',
     step3Title: 'Предпочтения в Путешествии',
-    step4Title: 'Предпочтения в Еде',
+    step4Title: 'Предпочтения в Питании',
     step5Title: 'Особые Требования',
     travellerType: 'Тип Путешественника',
     travellerTypes: ['Соло', 'Пара', 'Семья', 'Друзья', 'Бизнес', 'Другое'],
@@ -572,13 +386,13 @@ const translations: Record<Language, any> = {
     travelPace: 'Темп Путешествия',
     accommodation: 'Предпочтения по Размещению',
     accommodationTypes: ['Бюджетные Отели', 'Отели Среднего Класса', 'Роскошные Отели', 'Характерные Гостевые Дома', 'Хостелы'],
-    diningTitle: 'Предпочтения в Еде',
-    tastePreference: 'Предпочтения по Вкусу',
+    diningTitle: 'Предпочтения в Питании',
+    tastePreference: 'Предпочтения Вкуса',
     foodTypes: 'Типы Еды',
     foodTypePref: ['Морепродукты', 'Мясные Блюда', 'Вегетарианская', 'Лапша', 'На Основе Риса'],
     diningEnvironment: 'Среда Питания',
-    diningEnvOptions: ['Популярные Местные Рестораны', 'Изысканная Кухня', 'Уличная Еда', 'Тематические Рестораны', 'Быстрое Питание'],
-    spiciness: 'Предпочтения по Остроте',
+    diningEnvOptions: ['Популярные Местные Рестораны', 'Рестораны Высокой Кухни', 'Уличная Еда', 'Тематические Рестораны', 'Быстрые Приемы Пищи'],
+    spiciness: 'Предпочтение Остроты',
     dietaryRestrictions: 'Диетические Ограничения',
     additionalRequests: 'Дополнительные Запросы',
     requestsPlaceholder: 'Пожалуйста, расскажите нам о любых особых требованиях или ожиданиях...',
@@ -592,39 +406,35 @@ const translations: Record<Language, any> = {
     fast: 'Быстрый Темп',
     light: 'Очень Мягкий',
     medium: 'Средний',
-    spicy: 'Очень Острый',
-    hints: {
-      travellerType: "Выберите тип, который лучше всего соответствует вашему путешествию",
-      travellers: "Введите количество людей в вашей туристической группе (1-20)",
-      dates: "Спланируйте даты вашего путешествия",
-      budget: "Выберите диапазон бюджета, который соответствует вашим ожиданиям",
-      routes: "Выберите рекомендуемый маршрут или настройте свой собственный",
-      destinations: "Нажмите, чтобы выбрать города, которые вы хотите посетить",
-      travelStyle: "Выберите стиль, соответствующий вашим предпочтениям в путешествии",
-      pace: "1-2 достопримечательности в день | 3-5 достопримечательностей в день",
-      accommodation: "Выберите предпочитаемый тип жилья",
-      spiciness: "Без острого или слегка острого | Острая кухня Сычуани и Хунани",
-      foodTypes: "Выберите типы еды, которые вам нравятся",
-      diningEnv: "Выберите предпочитаемую среду для приема пищи",
-      dietaryRestr: "Введите любые ограничения в питании или требования",
-      additionalReq: "Пожалуйста, укажите любые особые требования для вашего маршрута",
-      formSummary: "Сводка Плана Путешествия",
-      savedData: "Данные успешно сохранены",
-      restored: "Прогресс успешно восстановлен",
-      clearData: "Данные успешно очищены",
-      loading: "Обработка...",
-      selectedCities: "Выберите хотя бы один",
-      multiSelection: "Множественный выбор",
-      submittingData: "Отправка Данных",
-      submissionError: "Ошибка Отправки",
-      submitSuccess: "Ваш план путешествия успешно отправлен! Перенаправление к результатам..."
-    }
+    spicy: 'Очень Острый'
   }
 };
 
 // 默认使用英文，如果找不到对应的语言
 const getTranslation = (language: Language, key: string): any => {
-  return translations[language]?.[key] || translations.en[key];
+  try {
+    // 首先检查该语言是否存在
+    if (!translations[language]) {
+      console.warn(`Language '${language}' not supported, falling back to English`);
+      language = 'en';
+    }
+    
+    // 然后检查该语言下是否有对应的key
+    if (translations[language][key] === undefined) {
+      console.warn(`Key '${key}' not found in language '${language}', falling back to English`);
+      return translations.en[key];
+    }
+    
+    return translations[language][key];
+  } catch (error) {
+    console.error(`Error in getTranslation for language '${language}' and key '${key}':`, error);
+    
+    // 确保至少返回一个安全的默认值
+    if (key.includes('Types') || key.includes('cities') || key.includes('Ranges') || key.includes('Options')) {
+      return [];  // 返回空数组给数组类型的翻译
+    }
+    return '';  // 返回空字符串给字符串类型的翻译
+  }
 };
 
 type FormData = {
@@ -723,60 +533,6 @@ export default function PlannerPage() {
   const totalSteps = 5;
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  
-  // 步骤标题数组
-  const steps = ['step1Title', 'step2Title', 'step3Title', 'step4Title', 'step5Title'];
-  
-  // 允许直接跳转到指定步骤的函数
-  const goToStep = (step: number) => {
-    if (step >= 1 && step <= totalSteps) {
-      setCurrentStep(step);
-    }
-  };
-  
-  // 初始化表单的函数
-  const initializeForm = () => {
-    if (typeof window === 'undefined') return {
-      travellerType: '',
-      travellers: 2,
-      departureDate: '',
-      returnDate: '',
-      budget: '',
-      selectedDestinations: [],
-      selectedRoute: '',
-      travelStyle: '',
-      travelPace: 50,
-      accommodation: '',
-      tastePreference: 50,
-      foodTypes: [],
-      diningEnvironment: '',
-      dietaryRestrictions: '',
-      additionalRequests: ''
-    };
-    
-    // 使用当前语言初始化表单
-    const defaultFormData = {
-      travellerType: getTranslation(currentLanguage, 'travellerTypes')[0] || '',
-      travellers: 2,
-      departureDate: '',
-      returnDate: '',
-      budget: getTranslation(currentLanguage, 'budgetRanges')[0] || '',
-      selectedDestinations: [],
-      selectedRoute: '',
-      travelStyle: getTranslation(currentLanguage, 'travelStyles')[0] || '',
-      travelPace: 50,
-      accommodation: getTranslation(currentLanguage, 'accommodationTypes')[0] || '',
-      tastePreference: 50,
-      foodTypes: [],
-      diningEnvironment: getTranslation(currentLanguage, 'diningEnvOptions')[0] || '',
-      dietaryRestrictions: '',
-      additionalRequests: ''
-    };
-    
-    return defaultFormData;
-  };
   
   // 表单数据状态
   const [formData, setFormData] = useState<FormData>({
@@ -809,34 +565,58 @@ export default function PlannerPage() {
 
   // 初始化表单默认值
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    
-    // 设置语言
-    setT(translations[currentLanguage] || translations.en);
-    
-    // 尝试从localStorage恢复数据
-    try {
-      const savedFormData = localStorage.getItem(FORM_DATA_KEY);
-      const savedStep = localStorage.getItem(CURRENT_STEP_KEY);
+    const initializeForm = () => {
+      if (typeof window === 'undefined') return;
       
-      if (savedFormData) {
-        const parsedData = JSON.parse(savedFormData) as FormData;
-        setFormData(parsedData);
-      } else {
-        setFormData(initializeForm());
-      }
+      // 设置语言并确保它是受支持的语言
+      const supportedLanguage = translations[currentLanguage] ? currentLanguage : 'en';
+      setT(translations[supportedLanguage]);
       
-      if (savedStep) {
-        const step = parseInt(savedStep);
-        if (step >= 1 && step <= totalSteps) {
-          setCurrentStep(step);
+      // 使用当前语言初始化表单
+      const defaultFormData = {
+        travellerType: getTranslation(supportedLanguage, 'travellerTypes')[0] || '',
+        travellers: 2,
+        departureDate: '',
+        returnDate: '',
+        budget: getTranslation(supportedLanguage, 'budgetRanges')[0] || '',
+        selectedDestinations: [],
+        selectedRoute: getTranslation(supportedLanguage, 'routeTypes')[0] || '',
+        travelStyle: getTranslation(supportedLanguage, 'travelStyles')[0] || '',
+        travelPace: 50,
+        accommodation: getTranslation(supportedLanguage, 'accommodationTypes')[0] || '',
+        tastePreference: 50,
+        foodTypes: [],
+        diningEnvironment: getTranslation(supportedLanguage, 'diningEnvOptions')[0] || '',
+        dietaryRestrictions: '',
+        additionalRequests: ''
+      };
+      
+      // 尝试从localStorage恢复数据
+      try {
+        const savedFormData = localStorage.getItem(FORM_DATA_KEY);
+        const savedStep = localStorage.getItem(CURRENT_STEP_KEY);
+        
+        if (savedFormData) {
+          const parsedData = JSON.parse(savedFormData) as FormData;
+          setFormData(parsedData);
+        } else {
+          setFormData(defaultFormData);
         }
+        
+        if (savedStep) {
+          const step = parseInt(savedStep);
+          if (step >= 1 && step <= totalSteps) {
+            setCurrentStep(step);
+          }
+        }
+      } catch (error) {
+        console.error('加载保存的表单数据时出错:', error);
+        setFormData(defaultFormData);
       }
-    } catch (error) {
-      console.error('加载保存的表单数据时出错:', error);
-      setFormData(initializeForm());
-    }
-  }, [currentLanguage, initializeForm]);
+    };
+
+    initializeForm();
+  }, [currentLanguage]);
 
   // 保存表单数据到localStorage
   useEffect(() => {
@@ -962,23 +742,23 @@ export default function PlannerPage() {
     switch (step) {
       case 1:
         if (!formData.departureDate) {
-          newErrors.departureDate = currentLanguage === 'zh' ? '请选择出发日期' : 'Please select departure date';
+          newErrors.departureDate = '请选择出发日期';
         }
         if (!formData.returnDate) {
-          newErrors.returnDate = currentLanguage === 'zh' ? '请选择返回日期' : 'Please select return date';
+          newErrors.returnDate = '请选择返回日期';
         }
         if (formData.departureDate && formData.returnDate && new Date(formData.departureDate) > new Date(formData.returnDate)) {
-          newErrors.returnDate = currentLanguage === 'zh' ? '返回日期不能早于出发日期' : 'Return date cannot be earlier than departure date';
+          newErrors.returnDate = '返回日期不能早于出发日期';
         }
         break;
       case 2:
         if (formData.selectedDestinations.length === 0) {
-          newErrors.selectedDestinations = currentLanguage === 'zh' ? '请至少选择一个目的地' : 'Please select at least one destination';
+          newErrors.selectedDestinations = '请至少选择一个目的地';
         }
         break;
       case 4:
         if (formData.foodTypes.length === 0) {
-          newErrors.foodTypes = currentLanguage === 'zh' ? '请至少选择一种食物类型' : 'Please select at least one food type';
+          newErrors.foodTypes = '请至少选择一种食物类型';
         }
         break;
     }
@@ -1038,58 +818,49 @@ export default function PlannerPage() {
 
   // 提交表单
   const submitForm = async () => {
-    // 验证当前步骤
     if (!validateStep(currentStep)) {
       return;
     }
-    
-    // 设置加载状态
+
     setIsSubmitting(true);
     
     try {
-      // 模拟API调用
-      console.log('提交数据:', formData);
+      // 这里在实际项目中应该添加向后端API提交数据的逻辑
+      console.log('Form submitted:', formData);
       
-      // 延迟一下，模拟API请求时间
+      // 模拟API延迟
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // 显示成功消息，根据语言显示不同的文本
-      const successMessage = currentLanguage === 'zh' 
-        ? '您的旅行计划已成功提交！正在跳转到结果页面...' 
-        : 'Your travel plan has been submitted successfully! Redirecting to results page...';
+      // 显示成功消息
+      alert('您的旅行计划已成功提交！即将生成您的个性化行程。');
       
-      alert(successMessage);
+      // 这里不清除表单数据，因为结果页面需要
+      // clearFormData();
       
-      // 不清除表单数据，以便在结果页面使用
-      // setFormData(initializeForm(currentLanguage));
-      // setCurrentStep(1);
-      
-      // 跳转到结果页面
+      // 重定向到结果页面
       router.push('/planner/result');
     } catch (error) {
-      console.error('提交出错:', error);
-      
-      // 显示错误消息，根据语言显示不同的文本
-      const errorMessage = currentLanguage === 'zh'
-        ? '提交失败，请稍后再试。'
-        : 'Failed to submit. Please try again later.';
-      
-      alert(errorMessage);
+      console.error('提交表单时出错:', error);
+      alert('提交失败，请稍后再试');
     } finally {
-      // 取消加载状态
       setIsSubmitting(false);
     }
   };
 
   // 渲染步骤标题
   const renderStepTitle = (step: number) => {
-    switch (step) {
-      case 1: return getTranslation(currentLanguage, 'step1Title');
-      case 2: return getTranslation(currentLanguage, 'step2Title');
-      case 3: return getTranslation(currentLanguage, 'step3Title');
-      case 4: return getTranslation(currentLanguage, 'step4Title');
-      case 5: return getTranslation(currentLanguage, 'step5Title');
-      default: return '';
+    try {
+      switch (step) {
+        case 1: return getTranslation(currentLanguage, 'step1Title') || 'Step 1';
+        case 2: return getTranslation(currentLanguage, 'step2Title') || 'Step 2';
+        case 3: return getTranslation(currentLanguage, 'step3Title') || 'Step 3';
+        case 4: return getTranslation(currentLanguage, 'step4Title') || 'Step 4';
+        case 5: return getTranslation(currentLanguage, 'step5Title') || 'Step 5';
+        default: return `Step ${step}`;
+      }
+    } catch (error) {
+      console.error(`Error rendering step title for step ${step}:`, error);
+      return `Step ${step}`;
     }
   };
 
@@ -1175,402 +946,410 @@ export default function PlannerPage() {
 
   // 渲染当前步骤内容
   const renderStepContent = () => {
-    switch (currentStep) {
-      case 1:
-        return (
-          <div className="space-y-6">
-            {/* 旅行者类型 */}
-            <div>
-              <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                <UserGroupIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'travellerType')}
-              </label>
-              <select 
-                name="travellerType"
-                value={formData.travellerType}
-                onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
-              >
-                {getTranslation(currentLanguage, 'travellerTypes').map((type: string, index: number) => (
-                  <option key={index} value={type}>{type}</option>
-                ))}
-              </select>
-              <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'hints.travellerType')}</p>
-            </div>
-
-            {/* 旅行人数 */}
-            <div>
-              <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                <UserGroupIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'travellers')}
-              </label>
-              <div className="flex items-center">
-                <button 
-                  type="button"
-                  onClick={() => {
-                    if (formData.travellers > 1) {
-                      handleSliderChange('travellers', formData.travellers - 1);
-                    }
-                  }}
-                  className="p-2 rounded-l-lg bg-gray-200 hover:bg-gray-300 text-gray-700"
-                >
-                  <MinusCircleIcon className="w-5 h-5" />
-                </button>
-                <input 
-                  type="number" 
-                  name="travellers"
-                  value={formData.travellers}
-                  onChange={handleInputChange}
-                  min="1" 
-                  max="20"
-                  className="w-full p-3 border-y border-gray-300 focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors text-center"
-                />
-                <button 
-                  type="button"
-                  onClick={() => handleSliderChange('travellers', formData.travellers + 1)}
-                  className="p-2 rounded-r-lg bg-gray-200 hover:bg-gray-300 text-gray-700"
-                >
-                  <PlusCircleIcon className="w-5 h-5" />
-                </button>
-              </div>
-              <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'hints.travellers')}</p>
-            </div>
-
-            {/* 旅行时间 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    try {
+      switch (currentStep) {
+        case 1:
+          return (
+            <div className="space-y-6">
+              {/* 旅行者类型 */}
               <div>
                 <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                  <CalendarDaysIcon className="w-5 h-5 mr-2 text-china-red" />
-                  {getTranslation(currentLanguage, 'departureDate')}
+                  <UserGroupIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {getTranslation(currentLanguage, 'travellerType') || 'Traveller Type'}
                 </label>
-                <input 
-                  type="date" 
-                  name="departureDate"
-                  value={formData.departureDate}
+                <select 
+                  name="travellerType"
+                  value={formData.travellerType}
                   onChange={handleInputChange}
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors 
-                    ${errors.departureDate ? 'border-red-500' : 'border-gray-300'}`}
-                />
-                {renderError('departureDate')}
-                <p className="mt-1 text-sm text-gray-500">计划出发的日期</p>
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
+                >
+                  {(getTranslation(currentLanguage, 'travellerTypes') || []).map((type: string, index: number) => (
+                    <option key={index} value={type}>{type}</option>
+                  ))}
+                </select>
+                <p className="mt-1 text-sm text-gray-500">选择最符合您此次旅行的类型</p>
               </div>
+
+              {/* 旅行人数 */}
               <div>
                 <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                  <CalendarDaysIcon className="w-5 h-5 mr-2 text-china-red" />
-                  {getTranslation(currentLanguage, 'returnDate')}
+                  <UserGroupIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {getTranslation(currentLanguage, 'travellers') || 'Number of Travellers'}
                 </label>
-                <input 
-                  type="date" 
-                  name="returnDate"
-                  value={formData.returnDate}
-                  onChange={handleInputChange}
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors
-                    ${errors.returnDate ? 'border-red-500' : 'border-gray-300'}`}
-                />
-                {renderError('returnDate')}
-                <p className="mt-1 text-sm text-gray-500">计划返回的日期</p>
-              </div>
-            </div>
-
-            {/* 预算 */}
-            <div>
-              <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                <CurrencyYenIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'budget')}
-              </label>
-              <select 
-                name="budget"
-                value={formData.budget}
-                onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
-              >
-                {getTranslation(currentLanguage, 'budgetRanges').map((range: string, index: number) => (
-                  <option key={index} value={range}>{range}</option>
-                ))}
-              </select>
-              <p className="mt-1 text-sm text-gray-500">选择符合您期望的预算范围</p>
-            </div>
-          </div>
-        );
-      
-      case 2:
-        return (
-          <div className="space-y-6">
-            {/* 推荐路线 */}
-            <div>
-              <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                <MapIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'suggestedRoutes')}
-              </label>
-              <select 
-                name="selectedRoute"
-                value={formData.selectedRoute}
-                onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
-              >
-                {getTranslation(currentLanguage, 'routeTypes').map((route: string, index: number) => (
-                  <option key={index} value={route}>{route}</option>
-                ))}
-              </select>
-              <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'hints.routes')}</p>
-            </div>
-
-            {/* 目的地选择 */}
-            <div>
-              <label className="block text-gray-700 mb-4 font-medium flex items-center">
-                <GlobeAsiaAustraliaIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'destinations')}
-                <span className="ml-2 inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
-                  <QuestionMarkCircleIcon className="w-3 h-3 mr-1" />
-                  {getTranslation(currentLanguage, 'hints.selectedCities')}
-                </span>
-              </label>
-              <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 ${errors.selectedDestinations ? 'border border-red-500 p-2 rounded-lg' : ''}`}>
-                {getTranslation(currentLanguage, 'cities').map((city: string) => (
-                  <div 
-                    key={city} 
-                    className={`border-2 rounded-lg p-4 text-center cursor-pointer transition-all duration-200 ${
-                      formData.selectedDestinations.includes(city)
-                        ? 'border-china-red bg-red-50 shadow-md'
-                        : 'border-gray-200 hover:border-red-300 hover:bg-red-50'
-                    }`}
-                    onClick={() => toggleDestination(city)}
+                <div className="flex items-center">
+                  <button 
+                    type="button"
+                    onClick={() => {
+                      if (formData.travellers > 1) {
+                        handleSliderChange('travellers', formData.travellers - 1);
+                      }
+                    }}
+                    className="p-2 rounded-l-lg bg-gray-200 hover:bg-gray-300 text-gray-700"
                   >
-                    <div className="flex items-center justify-center">
-                      {formData.selectedDestinations.includes(city) && (
-                        <svg className="w-5 h-5 mr-1 text-china-red" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                      )}
-                      {city}
+                    <MinusCircleIcon className="w-5 h-5" />
+                  </button>
+                  <input 
+                    type="number" 
+                    name="travellers"
+                    value={formData.travellers}
+                    onChange={handleInputChange}
+                    min="1" 
+                    max="20"
+                    className="w-full p-3 border-y border-gray-300 focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors text-center"
+                  />
+                  <button 
+                    type="button"
+                    onClick={() => handleSliderChange('travellers', formData.travellers + 1)}
+                    className="p-2 rounded-r-lg bg-gray-200 hover:bg-gray-300 text-gray-700"
+                  >
+                    <PlusCircleIcon className="w-5 h-5" />
+                  </button>
+                </div>
+                <p className="mt-1 text-sm text-gray-500">请输入旅行团队的人数 (1-20人)</p>
+              </div>
+
+              {/* 旅行时间 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                    <CalendarDaysIcon className="w-5 h-5 mr-2 text-china-red" />
+                    {t.departureDate}
+                  </label>
+                  <input 
+                    type="date" 
+                    name="departureDate"
+                    value={formData.departureDate}
+                    onChange={handleInputChange}
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors 
+                      ${errors.departureDate ? 'border-red-500' : 'border-gray-300'}`}
+                  />
+                  {renderError('departureDate')}
+                  <p className="mt-1 text-sm text-gray-500">计划出发的日期</p>
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                    <CalendarDaysIcon className="w-5 h-5 mr-2 text-china-red" />
+                    {t.returnDate}
+                  </label>
+                  <input 
+                    type="date" 
+                    name="returnDate"
+                    value={formData.returnDate}
+                    onChange={handleInputChange}
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors
+                      ${errors.returnDate ? 'border-red-500' : 'border-gray-300'}`}
+                  />
+                  {renderError('returnDate')}
+                  <p className="mt-1 text-sm text-gray-500">计划返回的日期</p>
+                </div>
+              </div>
+
+              {/* 预算 */}
+              <div>
+                <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                  <CurrencyYenIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {t.budget}
+                </label>
+                <select 
+                  name="budget"
+                  value={formData.budget}
+                  onChange={handleInputChange}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
+                >
+                  {t.budgetRanges.map((range: string, index: number) => (
+                    <option key={index} value={range}>{range}</option>
+                  ))}
+                </select>
+                <p className="mt-1 text-sm text-gray-500">选择符合您期望的预算范围</p>
+              </div>
+            </div>
+          );
+        
+        case 2:
+          return (
+            <div className="space-y-6">
+              {/* 推荐路线 */}
+              <div>
+                <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                  <MapIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {t.suggestedRoutes}
+                </label>
+                <select 
+                  name="selectedRoute"
+                  value={formData.selectedRoute}
+                  onChange={handleInputChange}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
+                >
+                  {t.routeTypes.map((route: string, index: number) => (
+                    <option key={index} value={route}>{route}</option>
+                  ))}
+                </select>
+                <p className="mt-1 text-sm text-gray-500">选择一个推荐路线或自定义您的行程</p>
+              </div>
+
+              {/* 目的地选择 */}
+              <div>
+                <label className="block text-gray-700 mb-4 font-medium flex items-center">
+                  <GlobeAsiaAustraliaIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {t.destinations}
+                  <span className="ml-2 inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
+                    <QuestionMarkCircleIcon className="w-3 h-3 mr-1" />
+                    至少选择一个
+                  </span>
+                </label>
+                <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 ${errors.selectedDestinations ? 'border border-red-500 p-2 rounded-lg' : ''}`}>
+                  {t.cities.map((city: string) => (
+                    <div 
+                      key={city} 
+                      className={`border-2 rounded-lg p-4 text-center cursor-pointer transition-all duration-200 ${
+                        formData.selectedDestinations.includes(city)
+                          ? 'border-china-red bg-red-50 shadow-md'
+                          : 'border-gray-200 hover:border-red-300 hover:bg-red-50'
+                      }`}
+                      onClick={() => toggleDestination(city)}
+                    >
+                      <div className="flex items-center justify-center">
+                        {formData.selectedDestinations.includes(city) && (
+                          <svg className="w-5 h-5 mr-1 text-china-red" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                        )}
+                        {city}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                {renderError('selectedDestinations')}
+                <p className="mt-2 text-sm text-gray-500">点击选择您想要游览的城市</p>
               </div>
-              {renderError('selectedDestinations')}
-              <p className="mt-2 text-sm text-gray-500">{getTranslation(currentLanguage, 'hints.destinations')}</p>
             </div>
-          </div>
-        );
-      
-      case 3:
-        return (
-          <div className="space-y-6">
-            {/* 旅行风格 */}
-            <div>
-              <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                <HeartIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'travelStyle')}
-              </label>
-              <select 
-                name="travelStyle"
-                value={formData.travelStyle}
-                onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
-              >
-                {getTranslation(currentLanguage, 'travelStyles').map((style: string, index: number) => (
-                  <option key={index} value={style}>{style}</option>
-                ))}
-              </select>
-              <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'hints.travelStyle')}</p>
-            </div>
+          );
+        
+        case 3:
+          return (
+            <div className="space-y-6">
+              {/* 旅行风格 */}
+              <div>
+                <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                  <HeartIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {t.travelStyle}
+                </label>
+                <select 
+                  name="travelStyle"
+                  value={formData.travelStyle}
+                  onChange={handleInputChange}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
+                >
+                  {t.travelStyles.map((style: string, index: number) => (
+                    <option key={index} value={style}>{style}</option>
+                  ))}
+                </select>
+                <p className="mt-1 text-sm text-gray-500">选择与您的旅行喜好最匹配的风格</p>
+              </div>
 
-            {/* 旅行节奏 */}
-            <div>
-              <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                <ArrowPathIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'travelPace')}
-              </label>
-              <div className="flex items-center space-x-2">
-                <span className="text-sm text-gray-500 min-w-[80px]">{getTranslation(currentLanguage, 'slow')}</span>
-                <input 
-                  type="range" 
-                  min="0" 
-                  max="100" 
-                  value={formData.travelPace}
-                  onChange={(e) => handleSliderChange('travelPace', parseInt(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-china-red"
-                />
-                <span className="text-sm text-gray-500 min-w-[80px]">{getTranslation(currentLanguage, 'fast')}</span>
+              {/* 旅行节奏 */}
+              <div>
+                <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                  <ArrowPathIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {t.travelPace}
+                </label>
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm text-gray-500 min-w-[80px]">{t.slow}</span>
+                  <input 
+                    type="range" 
+                    min="0" 
+                    max="100" 
+                    value={formData.travelPace}
+                    onChange={(e) => handleSliderChange('travelPace', parseInt(e.target.value))}
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-china-red"
+                  />
+                  <span className="text-sm text-gray-500 min-w-[80px]">{t.fast}</span>
+                </div>
+                <div className="mt-2 flex justify-between">
+                  <p className="text-xs text-gray-500">每天游览1-2个景点</p>
+                  <p className="text-xs text-gray-500">每天游览3-5个景点</p>
+                </div>
               </div>
-              <div className="mt-2 flex justify-between">
-                <p className="text-xs text-gray-500">{getTranslation(currentLanguage, 'hints.pace').split(' | ')[0]}</p>
-                <p className="text-xs text-gray-500">{getTranslation(currentLanguage, 'hints.pace').split(' | ')[1]}</p>
-              </div>
-            </div>
 
-            {/* 住宿偏好 */}
-            <div>
-              <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                <BuildingOfficeIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'accommodation')}
-              </label>
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-2 mb-3">
-                {getTranslation(currentLanguage, 'accommodationTypes').map((type: string, index: number) => (
-                  <div 
-                    key={index} 
-                    className={`border-2 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 ${
-                      formData.accommodation === type
-                        ? 'border-china-red bg-red-50 shadow-md'
-                        : 'border-gray-200 hover:border-red-300 hover:bg-red-50'
-                    }`}
-                    onClick={() => setFormData(prev => ({ ...prev, accommodation: type }))}
-                  >
-                    {type}
-                  </div>
-                ))}
-              </div>
-              <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'hints.accommodation')}</p>
-            </div>
-
-            {/* 显示基于当前选择的推荐 */}
-            {renderRecommendations()}
-          </div>
-        );
-      
-      case 4:
-        return (
-          <div className="space-y-6">
-            {/* 辣度偏好 */}
-            <div>
-              <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                <FireIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'spiciness')}
-              </label>
-              <div className="flex items-center space-x-2">
-                <span className="text-sm text-gray-500 min-w-[80px]">{getTranslation(currentLanguage, 'light')}</span>
-                <input 
-                  type="range" 
-                  min="0" 
-                  max="100" 
-                  value={formData.tastePreference}
-                  onChange={(e) => handleSliderChange('tastePreference', parseInt(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-china-red"
-                />
-                <span className="text-sm text-gray-500 min-w-[80px]">{getTranslation(currentLanguage, 'spicy')}</span>
-              </div>
-              <div className="flex justify-between mt-2">
-                <p className="text-xs text-gray-500">{getTranslation(currentLanguage, 'hints.spiciness').split(' | ')[0]}</p>
-                <p className="text-xs text-gray-500">{getTranslation(currentLanguage, 'hints.spiciness').split(' | ')[1]}</p>
-              </div>
-            </div>
-
-            {/* 食物类型 */}
-            <div>
-              <label className="block text-gray-700 mb-4 font-medium flex items-center">
-                <FireIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'foodTypes')}
-                <span className="ml-2 inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
-                  <QuestionMarkCircleIcon className="w-3 h-3 mr-1" />
-                  {getTranslation(currentLanguage, 'hints.multiSelection')}
-                </span>
-              </label>
-              <div className={`grid grid-cols-2 md:grid-cols-5 gap-4 ${errors.foodTypes ? 'border border-red-500 p-2 rounded-lg' : ''}`}>
-                {getTranslation(currentLanguage, 'foodTypePref').map((type: string, index: number) => (
-                  <div 
-                    key={index} 
-                    className={`border-2 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 ${
-                      formData.foodTypes.includes(type)
-                        ? 'border-china-red bg-red-50 shadow-md'
-                        : 'border-gray-200 hover:border-red-300 hover:bg-red-50'
-                    }`}
-                    onClick={() => toggleFoodType(type)}
-                  >
-                    <div className="flex items-center justify-center">
-                      {formData.foodTypes.includes(type) && (
-                        <svg className="w-5 h-5 mr-1 text-china-red" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                      )}
+              {/* 住宿偏好 */}
+              <div>
+                <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                  <BuildingOfficeIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {t.accommodation}
+                </label>
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-2 mb-3">
+                  {t.accommodationTypes.map((type: string, index: number) => (
+                    <div 
+                      key={index} 
+                      className={`border-2 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 ${
+                        formData.accommodation === type
+                          ? 'border-china-red bg-red-50 shadow-md'
+                          : 'border-gray-200 hover:border-red-300 hover:bg-red-50'
+                      }`}
+                      onClick={() => setFormData(prev => ({ ...prev, accommodation: type }))}
+                    >
                       {type}
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                <p className="mt-1 text-sm text-gray-500">选择您在旅行中偏好的住宿类型</p>
               </div>
-              {renderError('foodTypes')}
-              <p className="mt-2 text-sm text-gray-500">{getTranslation(currentLanguage, 'hints.foodTypes')}</p>
-            </div>
 
-            {/* 用餐环境 */}
-            <div>
-              <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                <FireIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'diningEnvironment')}
-              </label>
-              <select 
-                name="diningEnvironment"
-                value={formData.diningEnvironment}
-                onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
-              >
-                {getTranslation(currentLanguage, 'diningEnvOptions').map((env: string, index: number) => (
-                  <option key={index} value={env}>{env}</option>
-                ))}
-              </select>
-              <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'hints.diningEnv')}</p>
+              {/* 显示基于当前选择的推荐 */}
+              {renderRecommendations()}
             </div>
-
-            {/* 饮食限制 */}
-            <div>
-              <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                <FireIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'dietaryRestrictions')}
-              </label>
-              <input 
-                type="text" 
-                name="dietaryRestrictions"
-                value={formData.dietaryRestrictions}
-                onChange={handleInputChange}
-                placeholder={getTranslation(currentLanguage, 'requestsPlaceholder')}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
-              />
-              <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'hints.dietaryRestr')}</p>
-            </div>
-          </div>
-        );
-      
-      case 5:
-        return (
-          <div className="space-y-6">
-            {/* 额外要求 */}
-            <div>
-              <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                <DocumentTextIcon className="w-5 h-5 mr-2 text-china-red" />
-                {getTranslation(currentLanguage, 'additionalRequests')}
-              </label>
-              <textarea 
-                name="additionalRequests"
-                value={formData.additionalRequests}
-                onChange={handleInputChange}
-                placeholder={getTranslation(currentLanguage, 'requestsPlaceholder')}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors h-32"
-              />
-              <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'hints.additionalReq')}</p>
-            </div>
-
-            {/* 旅行计划摘要 */}
-            <div className="bg-amber-50 p-4 rounded-lg border border-amber-200">
-              <h3 className="text-lg font-medium text-amber-800 mb-3">{getTranslation(currentLanguage, 'travelPlanSummary')}</h3>
-              <div className="space-y-2">
-                <p><span className="font-medium">{getTranslation(currentLanguage, 'travellerType')}:</span> {formData.travellerType}</p>
-                <p><span className="font-medium">{getTranslation(currentLanguage, 'travellers')}:</span> {formData.travellers}</p>
-                <p><span className="font-medium">{getTranslation(currentLanguage, 'departureDate')}:</span> {formData.departureDate}</p>
-                <p><span className="font-medium">{getTranslation(currentLanguage, 'returnDate')}:</span> {formData.returnDate}</p>
-                <p><span className="font-medium">{getTranslation(currentLanguage, 'budget')}:</span> {formData.budget} {getTranslation(currentLanguage, 'currency')}</p>
-                <p><span className="font-medium">{getTranslation(currentLanguage, 'selectedRoute')}:</span> {formData.selectedRoute}</p>
-                <p><span className="font-medium">{getTranslation(currentLanguage, 'destinations')}:</span> {formData.selectedDestinations.join(', ')}</p>
-                <p><span className="font-medium">{getTranslation(currentLanguage, 'travelStyle')}:</span> {formData.travelStyle}</p>
-                <p><span className="font-medium">{getTranslation(currentLanguage, 'accommodation')}:</span> {formData.accommodation}</p>
-                <p><span className="font-medium">{getTranslation(currentLanguage, 'foodTypes')}:</span> {formData.foodTypes.join(', ')}</p>
-                <p><span className="font-medium">{getTranslation(currentLanguage, 'diningEnvironment')}:</span> {formData.diningEnvironment}</p>
+          );
+        
+        case 4:
+          return (
+            <div className="space-y-6">
+              {/* 辣度偏好 */}
+              <div>
+                <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                  <FireIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {t.spiciness}
+                </label>
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm text-gray-500 min-w-[80px]">{t.light}</span>
+                  <input 
+                    type="range" 
+                    min="0" 
+                    max="100" 
+                    value={formData.tastePreference}
+                    onChange={(e) => handleSliderChange('tastePreference', parseInt(e.target.value))}
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-china-red"
+                  />
+                  <span className="text-sm text-gray-500 min-w-[80px]">{t.spicy}</span>
+                </div>
+                <div className="flex justify-between mt-2">
+                  <p className="text-xs text-gray-500">不吃辣或微辣</p>
+                  <p className="text-xs text-gray-500">川菜、湘菜等重辣美食</p>
+                </div>
               </div>
-              <p className="mt-3 text-sm text-amber-700">{getTranslation(currentLanguage, 'hints.formSummary')}</p>
+
+              {/* 食物类型 */}
+              <div>
+                <label className="block text-gray-700 mb-4 font-medium flex items-center">
+                  <FireIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {t.foodTypes}
+                  <span className="ml-2 inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-medium text-yellow-800">
+                    <QuestionMarkCircleIcon className="w-3 h-3 mr-1" />
+                    可多选
+                  </span>
+                </label>
+                <div className={`grid grid-cols-2 md:grid-cols-5 gap-4 ${errors.foodTypes ? 'border border-red-500 p-2 rounded-lg' : ''}`}>
+                  {t.foodTypePref.map((type: string, index: number) => (
+                    <div 
+                      key={index} 
+                      className={`border-2 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 ${
+                        formData.foodTypes.includes(type)
+                          ? 'border-china-red bg-red-50 shadow-md'
+                          : 'border-gray-200 hover:border-red-300 hover:bg-red-50'
+                      }`}
+                      onClick={() => toggleFoodType(type)}
+                    >
+                      <div className="flex items-center justify-center">
+                        {formData.foodTypes.includes(type) && (
+                          <svg className="w-5 h-5 mr-1 text-china-red" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                        )}
+                        {type}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {renderError('foodTypes')}
+                <p className="mt-2 text-sm text-gray-500">选择您喜欢的食物类型</p>
+              </div>
+
+              {/* 用餐环境 */}
+              <div>
+                <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                  <FireIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {t.diningEnvironment}
+                </label>
+                <select 
+                  name="diningEnvironment"
+                  value={formData.diningEnvironment}
+                  onChange={handleInputChange}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
+                >
+                  {t.diningEnvOptions.map((env: string, index: number) => (
+                    <option key={index} value={env}>{env}</option>
+                  ))}
+                </select>
+                <p className="mt-1 text-sm text-gray-500">选择您偏好的用餐环境</p>
+              </div>
+
+              {/* 饮食限制 */}
+              <div>
+                <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                  <FireIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {t.dietaryRestrictions}
+                </label>
+                <input 
+                  type="text" 
+                  name="dietaryRestrictions"
+                  value={formData.dietaryRestrictions}
+                  onChange={handleInputChange}
+                  placeholder="如食物过敏、宗教禁忌等"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
+                />
+                <p className="mt-1 text-sm text-gray-500">请输入任何饮食方面的限制或需求</p>
+              </div>
             </div>
-          </div>
-        );
-      
-      default:
-        return null;
+          );
+        
+        case 5:
+          return (
+            <div className="space-y-6">
+              {/* 额外需求 */}
+              <div>
+                <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                  <PencilSquareIcon className="w-5 h-5 mr-2 text-china-red" />
+                  {getTranslation(currentLanguage, 'additionalRequests') || 'Additional Requests'}
+                </label>
+                <textarea 
+                  name="additionalRequests"
+                  value={formData.additionalRequests}
+                  onChange={handleInputChange}
+                  className="w-full p-4 border border-gray-300 rounded-lg h-32 focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
+                  placeholder={getTranslation(currentLanguage, 'requestsPlaceholder') || 'Please tell us any special requirements...'}
+                ></textarea>
+                <p className="mt-1 text-sm text-gray-500">对行程有任何特殊需求请在此说明</p>
+              </div>
+
+              {/* 显示表单摘要 */}
+              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h3 className="text-lg font-semibold mb-4 text-gray-700 flex items-center">
+                  <FaceSmileIcon className="w-5 h-5 mr-2 text-china-red" />
+                  旅行计划摘要
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div><span className="font-medium">旅行类型:</span> {formData.travellerType}</div>
+                  <div><span className="font-medium">人数:</span> {formData.travellers}</div>
+                  <div><span className="font-medium">出发日期:</span> {formData.departureDate}</div>
+                  <div><span className="font-medium">返回日期:</span> {formData.returnDate}</div>
+                  <div><span className="font-medium">预算:</span> {formData.budget}</div>
+                  <div><span className="font-medium">目的地:</span> {formData.selectedDestinations.length > 0 ? formData.selectedDestinations.join(', ') : '未选择'}</div>
+                  <div className="col-span-2"><span className="font-medium">路线类型:</span> {formData.selectedRoute}</div>
+                  <div><span className="font-medium">旅行风格:</span> {formData.travelStyle}</div>
+                  <div><span className="font-medium">住宿偏好:</span> {formData.accommodation}</div>
+                  <div className="col-span-2"><span className="font-medium">食物类型:</span> {formData.foodTypes.length > 0 ? formData.foodTypes.join(', ') : '未选择'}</div>
+                  <div className="col-span-2"><span className="font-medium">用餐环境:</span> {formData.diningEnvironment}</div>
+                  <div className="col-span-2"><span className="font-medium">饮食限制:</span> {formData.dietaryRestrictions || '无'}</div>
+                </div>
+              </div>
+            </div>
+          );
+        
+        default:
+          return null;
+      }
+    } catch (error) {
+      console.error(`Error rendering step content for step ${currentStep}:`, error);
+      return null;
     }
   };
 
@@ -1582,224 +1361,190 @@ export default function PlannerPage() {
     return null;
   };
 
-  // 通知状态
-  const [showSavedMessage, setShowSavedMessage] = useState(false);
-  const [showRestoredMessage, setShowRestoredMessage] = useState(false);
-  const [showClearedMessage, setShowClearedMessage] = useState(false);
-  
-  /* 保存表单到本地存储 */
-  const saveFormToLocalStorage = () => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('travelPlannerForm', JSON.stringify(formData));
-      localStorage.setItem('travelPlannerStep', currentStep.toString());
-      
-      // 显示保存成功提示
-      setShowSavedMessage(true);
-      setTimeout(() => setShowSavedMessage(false), 2000);
+  // 当语言变化时重新加载翻译
+  useEffect(() => {
+    console.log('Language changed to:', currentLanguage);
+    
+    // 使用最新的翻译
+    if (translations[currentLanguage]) {
+      setT(translations[currentLanguage]);
+    } else {
+      console.warn(`No translations found for language: ${currentLanguage}, using English as fallback`);
+      setT(translations.en);
     }
-  };
+    
+    // 刷新表单显示
+    setErrors({});
+  }, [currentLanguage]);
 
-  /* 从本地存储恢复表单 */
-  const restoreFormFromLocalStorage = () => {
-    if (typeof window !== 'undefined') {
-      const savedForm = localStorage.getItem('travelPlannerForm');
-      const savedStep = localStorage.getItem('travelPlannerStep');
-      
-      if (savedForm) {
-        setFormData(JSON.parse(savedForm));
-        if (savedStep) {
-          setCurrentStep(parseInt(savedStep));
-        }
-        
-        // 显示恢复成功提示
-        setShowRestoredMessage(true);
-        setTimeout(() => setShowRestoredMessage(false), 2000);
-      }
-    }
-  };
-
-  /* 清除本地存储的表单数据 */
-  const clearLocalStorage = () => {
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('travelPlannerForm');
-      localStorage.removeItem('travelPlannerStep');
-      setFormData(initializeForm());
-      setCurrentStep(1);
-      
-      // 显示清除成功提示
-      setShowClearedMessage(true);
-      setTimeout(() => setShowClearedMessage(false), 2000);
-    }
-  };
-  
   return (
-    <div className="min-h-screen max-w-4xl mx-auto px-4 py-10">
-      <h1 className="text-2xl md:text-3xl font-bold text-center mb-8 text-china-red">{getTranslation(currentLanguage, 'questionnaire')}</h1>
-      
-      {/* 步骤指示器 */}
-      <div className="mb-8">
-        <div className="flex justify-between items-center">
-          {steps.map((step, i) => (
-            <div 
-              key={i} 
-              className={`flex-1 ${i > 0 ? 'ml-2' : ''}`}
-            >
-              <div 
-                className={`text-center rounded-lg p-2 transition-colors text-sm md:text-base cursor-pointer
-                  ${currentStep === i + 1 ? 'bg-china-red text-white' : 'bg-gray-100 text-gray-600 hover:bg-red-100'}`}
-                onClick={() => goToStep(i + 1)}
-              >
-                {getTranslation(currentLanguage, step)}
-              </div>
-            </div>
-          ))}
+    <div className="min-h-screen bg-gray-50">
+      {/* 顶部导航 */}
+      <header className="bg-china-red text-white p-4 shadow-md">
+        <div className="container mx-auto flex justify-between items-center">
+          <h1 className="text-2xl font-bold">{getTranslation(currentLanguage, 'title') || 'Travel Planning'}</h1>
+          <div className="flex items-center">
+            <span className="mr-3 text-sm bg-white text-china-red px-2 py-1 rounded">
+              当前语言: {currentLanguage}
+            </span>
+            <Link href="/" className="hover:underline transition-colors">
+              {getTranslation(currentLanguage, 'backToHome') || 'Back to Home'}
+            </Link>
+          </div>
         </div>
-        <div className="h-1 bg-gray-200 rounded-full mt-2">
-          <div 
-            className="h-2 bg-china-red rounded-full transition-all duration-500 ease-in-out"
-            style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
-          ></div>
-        </div>
-      </div>
-      
-      {/* 表单内容 */}
-      <div className="bg-white rounded-lg shadow-lg p-6 mb-6 relative">
-        {/* 当前步骤内容 */}
-        {renderStepContent()}
-        
-        {/* 导航按钮 */}
-        <div className="flex justify-between mt-8">
-          <button
-            onClick={prevStep}
-            className={`px-6 py-2 rounded-lg border border-china-red text-china-red hover:bg-red-50 transition-colors ${currentStep === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
-            disabled={currentStep === 1}
-          >
-            {getTranslation(currentLanguage, 'previous')}
-          </button>
+      </header>
+
+      {/* 主要内容 */}
+      <main className="container mx-auto py-10 px-4">
+        <div className="bg-white rounded-xl shadow-lg p-8 max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+            {getTranslation(currentLanguage, 'createPlan') || 'Create Your Personalized Travel Plan'}
+          </h2>
           
-          <div className="flex gap-2">
-            {/* 数据管理操作 */}
-            <div className="flex space-x-1">
-              <button 
-                onClick={saveFormToLocalStorage}
-                className="px-2 py-2 rounded-lg bg-jade-green text-white hover:bg-green-700 transition-colors text-xs flex items-center"
-                title={getTranslation(currentLanguage, 'saveData')}
-              >
-                <DocumentArrowDownIcon className="w-4 h-4" />
-              </button>
-              
-              <button 
-                onClick={restoreFormFromLocalStorage}
-                className="px-2 py-2 rounded-lg bg-china-gold text-white hover:bg-yellow-600 transition-colors text-xs flex items-center"
-                title={getTranslation(currentLanguage, 'restoreData')}
-              >
-                <ArrowUturnLeftIcon className="w-4 h-4" />
-              </button>
-              
-              <button 
-                onClick={clearLocalStorage}
-                className="px-2 py-2 rounded-lg bg-red-500 text-white hover:bg-red-700 transition-colors text-xs flex items-center"
-                title={getTranslation(currentLanguage, 'clearData')}
-              >
-                <TrashIcon className="w-4 h-4" />
-              </button>
+          {/* 步骤指示器 */}
+          <div className="mb-10">
+            <div className="flex items-center justify-between">
+              {Array.from({ length: totalSteps }).map((_, index) => (
+                <div key={index} className="flex flex-col items-center">
+                  <div className={`rounded-full w-10 h-10 flex items-center justify-center border-2 ${
+                    currentStep > index + 1 
+                      ? 'bg-china-red border-china-red text-white' 
+                      : currentStep === index + 1
+                        ? 'border-china-red text-china-red'
+                        : 'border-gray-300 text-gray-300'
+                  }`}>
+                    {renderStepIcon(index + 1)}
+                  </div>
+                  <span className={`text-xs mt-2 font-medium ${
+                    currentStep >= index + 1 ? 'text-gray-700' : 'text-gray-400'
+                  }`}>
+                    {renderStepTitle(index + 1)}
+                  </span>
+                </div>
+              ))}
             </div>
+            <div className="relative mt-2">
+              <div className="absolute top-0 h-1 bg-gray-200 w-full rounded"></div>
+              <div 
+                className="absolute top-0 h-1 bg-china-red rounded transition-all duration-300" 
+                style={{ width: `${(currentStep - 1) / (totalSteps - 1) * 100}%` }}
+              ></div>
+            </div>
+          </div>
+          
+          {/* 表单卡片 */}
+          <div className="bg-white rounded-lg shadow-md p-6">
+            {/* 恢复保存数据提示 */}
+            {typeof window !== 'undefined' && localStorage.getItem(FORM_DATA_KEY) && currentStep === 1 && (
+              <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg flex justify-between items-center">
+                <div>
+                  <p className="text-blue-800 font-medium">发现您之前填写的数据</p>
+                  <p className="text-sm text-blue-600">我们已为您恢复之前的填写进度</p>
+                </div>
+                <button 
+                  onClick={clearFormData}
+                  className="px-3 py-1 bg-white text-blue-700 rounded border border-blue-300 text-sm hover:bg-blue-100 transition-colors"
+                >
+                  清除数据
+                </button>
+              </div>
+            )}
             
-            {currentStep < steps.length ? (
+            {/* 步骤内容 */}
+            <div className="mb-8">
+              {renderStepContent()}
+            </div>
+          </div>
+          
+          {/* 导航按钮 */}
+          <div className="flex justify-between mt-10">
+            <button
+              onClick={prevStep}
+              className={`px-6 py-2 rounded-lg transition-all duration-200 flex items-center ${
+                currentStep === 1 
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
+              disabled={currentStep === 1 || isSubmitting}
+            >
+              <svg 
+                className="mr-2 w-4 h-4"
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              {getTranslation(currentLanguage, 'prevStep') || 'Previous'}
+            </button>
+            
+            {currentStep < totalSteps ? (
               <button
                 onClick={nextStep}
-                className="px-6 py-2 rounded-lg bg-china-red text-white hover:bg-red-700 transition-colors"
+                className="group relative inline-flex items-center bg-china-red text-white px-6 py-2 rounded-lg 
+                         hover:bg-red-700 hover:scale-105 transition-all duration-300 ease-out"
+                disabled={isSubmitting}
               >
-                {getTranslation(currentLanguage, 'next')}
+                <span className="relative z-10 flex items-center">
+                  {getTranslation(currentLanguage, 'nextStep') || 'Next Step'}
+                  <svg 
+                    className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
               </button>
             ) : (
               <button
                 onClick={submitForm}
-                className={`px-6 py-2 rounded-lg bg-china-red text-white hover:bg-red-700 transition-colors flex items-center ${isSubmitting ? 'opacity-75 cursor-wait' : ''}`}
                 disabled={isSubmitting}
+                className="group relative inline-flex items-center bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
+                         hover:bg-red-700 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(220,38,38,0.7)]
+                         transition-all duration-300 ease-out disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? (
-                  <>
-                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    {getTranslation(currentLanguage, 'hints.loading')}
-                  </>
-                ) : (
-                  getTranslation(currentLanguage, 'submit')
-                )}
+                <span className="relative z-10 flex items-center justify-center">
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      处理中...
+                    </>
+                  ) : (
+                    <>
+                      {getTranslation(currentLanguage, 'generatePlan') || 'Generate Travel Plan'}
+                      <svg 
+                        className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </>
+                  )}
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0 rounded-lg"></span>
+                <span className="absolute inset-0 rounded-lg animate-pulse-red opacity-0 group-hover:opacity-70"></span>
               </button>
             )}
           </div>
         </div>
-      </div>
-      
-      {/* 通知提示 */}
-      {showSavedMessage && (
-        <div className="fixed bottom-4 right-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded shadow-md">
-          <div className="flex">
-            <div className="py-1">
-              <svg className="h-6 w-6 text-green-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>{currentLanguage === 'zh' ? '数据保存成功' : 'Data saved successfully'}</div>
-          </div>
+      </main>
+
+      {/* 页脚 */}
+      <footer className="bg-gray-800 text-white py-6 mt-12">
+        <div className="container mx-auto text-center">
+          <p>{getTranslation(currentLanguage, 'footer') || '© 2023 China Travel Guide. All rights reserved.'}</p>
         </div>
-      )}
-      
-      {showRestoredMessage && (
-        <div className="fixed bottom-4 right-4 bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 rounded shadow-md">
-          <div className="flex">
-            <div className="py-1">
-              <svg className="h-6 w-6 text-blue-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-            </div>
-            <div>{currentLanguage === 'zh' ? '进度恢复成功' : 'Progress restored successfully'}</div>
-          </div>
-        </div>
-      )}
-      
-      {showClearedMessage && (
-        <div className="fixed bottom-4 right-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded shadow-md">
-          <div className="flex">
-            <div className="py-1">
-              <svg className="h-6 w-6 text-red-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
-            </div>
-            <div>{currentLanguage === 'zh' ? '数据清除成功' : 'Data cleared successfully'}</div>
-          </div>
-        </div>
-      )}
-      
-      {showSuccessMessage && (
-        <div className="fixed bottom-4 right-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded shadow-md">
-          <div className="flex">
-            <div className="py-1">
-              <svg className="h-6 w-6 text-green-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>{currentLanguage === 'zh' ? '提交成功！' : 'Submitted successfully!'}</div>
-          </div>
-        </div>
-      )}
-      
-      {error && (
-        <div className="fixed bottom-4 right-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded shadow-md">
-          <div className="flex">
-            <div className="py-1">
-              <svg className="h-6 w-6 text-red-500 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </div>
-            <div>{error}</div>
-          </div>
-        </div>
-      )}
+      </footer>
     </div>
   );
 } 
