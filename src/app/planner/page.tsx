@@ -1102,7 +1102,7 @@ export default function PlannerPage() {
         }
       }
     }
-  }, []);
+  }, [currentLanguage]); // 添加currentLanguage作为依赖
 
   // 生成推荐
   useEffect(() => {
@@ -3281,8 +3281,8 @@ export default function PlannerPage() {
     const originalHandleInputChange = handleInputChange;
     
     // 使用一个新的增强版handleInputChange覆盖原有的函数
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).__safeHandleDateInput = function(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
+    // 先将window转换为unknown，再转换为索引类型
+    ((window as unknown) as Record<string, unknown>).__safeHandleDateInput = function(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
       try {
         const target = e.target;
         const type = (target as HTMLInputElement).type;
@@ -3360,7 +3360,7 @@ export default function PlannerPage() {
           } as unknown as React.ChangeEvent<HTMLInputElement>;
           
           // 处理日期变更
-          (window as any).__safeHandleDateInput(syntheticEvent);
+          (((window as unknown) as Record<string, unknown>).__safeHandleDateInput as Function)(syntheticEvent);
         } catch (error) {
           console.error('日期变更事件处理错误:', error);
         }
@@ -3401,7 +3401,7 @@ export default function PlannerPage() {
                       } as unknown as React.ChangeEvent<HTMLInputElement>;
                       
                       // 处理日期变更
-                      (window as any).__safeHandleDateInput(syntheticEvent);
+                      (((window as unknown) as Record<string, unknown>).__safeHandleDateInput as Function)(syntheticEvent);
                     } catch (error) {
                       console.error('日期变更事件处理错误:', error);
                     }
@@ -3422,10 +3422,10 @@ export default function PlannerPage() {
     
     return () => {
       // 清理函数
-      delete (window as any).__safeHandleDateInput;
+      delete ((window as unknown) as Record<string, unknown>).__safeHandleDateInput;
       observer.disconnect();
     };
-  }, []);
+  }, [handleInputChange, validateDates, currentLanguage]);
 
   return (
     <div className="min-h-screen bg-gray-50">
