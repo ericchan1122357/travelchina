@@ -1270,9 +1270,53 @@ export default function PlannerPage() {
     if (validateStep(currentStep) && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
       window.scrollTo(0, 0);
+    } else {
+      // 当验证失败时，滚动到第一个错误字段
+      scrollToFirstError();
     }
   };
-
+  
+  // 滚动到第一个错误字段并添加高亮动画效果
+  const scrollToFirstError = () => {
+    // 给浏览器一点时间来更新DOM和错误信息
+    setTimeout(() => {
+      // 获取所有带有错误的字段
+      const errorFields = Object.keys(errors);
+      
+      if (errorFields.length > 0) {
+        // 尝试针对不同的字段类型查找对应的元素
+        const firstErrorField = errorFields[0];
+        let element: HTMLElement | null = null;
+        
+        // 查找对应字段的输入元素
+        if (firstErrorField === 'selectedDestinations') {
+          // 对于目的地选择，滚动到整个目的地区域
+          element = document.querySelector('[name="selectedDestinations"], [data-field="selectedDestinations"]');
+        } else if (firstErrorField === 'foodTypes') {
+          // 对于食物类型，滚动到食物类型区域
+          element = document.querySelector('[name="foodTypes"], [data-field="foodTypes"]');
+        } else {
+          // 对于其他常规字段，尝试根据名称查找
+          element = document.querySelector(`[name="${firstErrorField}"]`);
+        }
+        
+        // 如果找到了元素
+        if (element) {
+          // 滚动到元素位置，保持在视图的顶部位置
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          // 添加引起注意的动画效果
+          element.classList.add('error-highlight');
+          
+          // 动画结束后移除高亮效果
+          setTimeout(() => {
+            element?.classList.remove('error-highlight');
+          }, 2000);
+        }
+      }
+    }, 100);
+  };
+  
   // 导航到上一步
   const prevStep = () => {
     if (currentStep > 1) {
@@ -1665,7 +1709,7 @@ export default function PlannerPage() {
                   {getTranslation(currentLanguage, 'selectAtLeastOne')}
                 </span>
               </label>
-              <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 ${errors.selectedDestinations ? 'border border-red-500 p-2 rounded-lg' : ''}`}>
+              <div data-field="selectedDestinations" className={`grid grid-cols-2 md:grid-cols-4 gap-4 ${errors.selectedDestinations ? 'border border-red-500 p-2 rounded-lg' : ''}`}>
                 {t.cities.map((city: string) => (
                   <div 
                     key={city} 
@@ -1805,11 +1849,11 @@ export default function PlannerPage() {
                   {getTranslation(currentLanguage, 'multipleSelections')}
                 </span>
               </label>
-              <div className={`grid grid-cols-2 md:grid-cols-5 gap-4 ${errors.foodTypes ? 'border border-red-500 p-2 rounded-lg' : ''}`}>
-                {t.foodTypePref.map((type: string, index: number) => (
+              <div data-field="foodTypes" className={`grid grid-cols-2 md:grid-cols-4 gap-4 ${errors.foodTypes ? 'border border-red-500 p-2 rounded-lg' : ''}`}>
+                {t.foodTypePref.map((type: string) => (
                   <div 
-                    key={index} 
-                    className={`border-2 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 ${
+                    key={type} 
+                    className={`border-2 rounded-lg p-4 text-center cursor-pointer transition-all duration-200 ${
                       formData.foodTypes.includes(type)
                         ? 'border-china-red bg-red-50 shadow-md'
                         : 'border-gray-200 hover:border-red-300 hover:bg-red-50'
@@ -2122,6 +2166,52 @@ export default function PlannerPage() {
         updateValueClass(input as HTMLInputElement);
       });
     });
+  }, []);
+
+  // 添加错误高亮动画样式
+  useEffect(() => {
+    // 创建动态样式标签
+    const styleElement = document.createElement('style');
+    styleElement.id = 'error-highlight-styles';
+    document.head.appendChild(styleElement);
+    
+    // 添加错误高亮动画CSS
+    styleElement.textContent = `
+      @keyframes errorPulse {
+        0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+        50% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+      }
+      
+      .error-highlight {
+        animation: errorPulse 1s ease-out infinite;
+        border-color: #dc2626 !important;
+        background-color: rgba(254, 226, 226, 0.5) !important;
+        transition: all 0.3s ease;
+      }
+      
+      /* 特殊字段处理 */
+      select.error-highlight,
+      textarea.error-highlight,
+      input.error-highlight {
+        border-width: 2px !important;
+      }
+      
+      /* 目的地和食物类型卡片特殊处理 */
+      [data-field="selectedDestinations"].error-highlight,
+      [data-field="foodTypes"].error-highlight {
+        padding: 8px !important;
+        border-radius: 8px !important;
+        border: 2px solid #dc2626 !important;
+      }
+    `;
+    
+    // 清理函数
+    return () => {
+      if (document.getElementById('error-highlight-styles')) {
+        document.getElementById('error-highlight-styles')?.remove();
+      }
+    };
   }, []);
 
   return (
