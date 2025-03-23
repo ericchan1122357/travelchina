@@ -1158,10 +1158,30 @@ export default function PlannerPage() {
   // 处理输入变化
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    
+    // 根据旅行者类型自动调整旅行人数
+    if (name === 'travellerType') {
+      // 根据不同的旅行者类型设置默认人数
+      let defaultTravellers = formData.travellers; // 保持原值作为默认
+      
+      // t.travellerTypes 数组中的索引：0通常是单独旅行，1通常是情侣旅行
+      if (value === t.travellerTypes[0]) { // 单独旅行
+        defaultTravellers = 1;
+      } else if (value === t.travellerTypes[1]) { // 情侣旅行
+        defaultTravellers = 2;
+      }
+      
+      setFormData(prev => ({
+        ...prev,
+        [name]: value,
+        travellers: defaultTravellers
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
     
     // 如果修改了日期字段，进行日期验证
     if (name === 'departureDate' || name === 'returnDate') {
