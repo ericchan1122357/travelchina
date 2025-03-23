@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@sentry/nextjs": "^9.5.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/react-datepicker": "^6.2.0",

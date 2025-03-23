@@ -8,10 +8,20 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
       colors: {
-        'china-red': '#c41e3a',
-        'jade-green': '#00a86b',
+        'china-red': '#E60012',
+        'china-gold': '#FFCC00',
+        'jade-green': '#00A650',
+        'porcelain-blue': '#1D3F8C',
         'celadon-blue': '#2f95a7',
+      },
+      boxShadow: {
+        'red-glow': '0 0 15px rgba(230, 0, 18, 0.7)',
       },
       animation: {
         'fade-in': 'fadeIn 1s ease-in forwards',
@@ -19,6 +29,7 @@ module.exports = {
         'fade-in-delay-2': 'fadeIn 1s ease-in 1s forwards',
         'pulse-shadow': 'pulseShadow 2s infinite',
         'wiggle': 'wiggle 1s ease-in-out infinite',
+        'bounce-slow': 'bounce 3s infinite',
       },
       keyframes: {
         fadeIn: {
