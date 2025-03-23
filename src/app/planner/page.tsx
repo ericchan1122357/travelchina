@@ -1513,10 +1513,11 @@ export default function PlannerPage() {
                     name="departureDate"
                     value={formData.departureDate}
                     onChange={handleInputChange}
-                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors 
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors appearance-none
                       ${errors.departureDate ? 'border-red-500' : 'border-gray-300'}`}
                     lang={currentLanguage}
                     data-date-format={`${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`}
+                    placeholder=""
                   />
                   <div className={`pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ${formData.departureDate ? 'hidden' : 'block'}`}>
                     <span className="text-gray-500">
@@ -1555,10 +1556,11 @@ export default function PlannerPage() {
                     name="returnDate"
                     value={formData.returnDate}
                     onChange={handleInputChange}
-                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors appearance-none
                       ${errors.returnDate ? 'border-red-500' : 'border-gray-300'}`}
                     lang={currentLanguage}
                     data-date-format={`${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`}
+                    placeholder=""
                   />
                   <div className={`pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ${formData.returnDate ? 'hidden' : 'block'}`}>
                     <span className="text-gray-500">
@@ -2017,6 +2019,17 @@ export default function PlannerPage() {
         // 更新日期格式显示
         const format = `${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`;
         input.setAttribute('data-date-format', format);
+        
+        // 清除默认占位符
+        input.setAttribute('placeholder', '');
+        
+        // 添加点击事件监听器，在日期选择器打开时修改其内容
+        input.addEventListener('click', () => {
+          // 使用setTimeout确保选择器DOM已经生成
+          setTimeout(() => {
+            localizeDatePicker(currentLanguage);
+          }, 100);
+        });
       });
       
       // 清除任何可能的错误信息，以避免旧语言的错误信息停留
@@ -2025,6 +2038,60 @@ export default function PlannerPage() {
       console.warn(`不支持的语言：${currentLanguage}，回退到英文`);
     }
   }, [currentLanguage]);
+  
+  // 本地化日期选择器的函数
+  const localizeDatePicker = (language: Language) => {
+    // 获取当前打开的日期选择器元素
+    // 不同浏览器实现不同，尝试多种选择器
+    const datePickers = [
+      ...Array.from(document.querySelectorAll('.calendar-container')),  // 一般选择器
+      ...Array.from(document.querySelectorAll('[role="dialog"]')),      // ARIA 角色
+      ...Array.from(document.querySelectorAll('.date-picker')),         // 常见类名
+      ...Array.from(document.querySelectorAll('input[type="date"]:focus + div')), // 相邻元素
+    ];
+    
+    if (datePickers.length === 0) {
+      console.log('未找到日期选择器DOM元素');
+      return;
+    }
+    
+    datePickers.forEach(picker => {
+      try {
+        // 尝试找到并修改星期几标题
+        const weekdayElements = picker.querySelectorAll('th, .weekday, [data-day]');
+        if (weekdayElements.length) {
+          const weekdays = [
+            getTranslation(language, 'sunday'),
+            getTranslation(language, 'monday'),
+            getTranslation(language, 'tuesday'),
+            getTranslation(language, 'wednesday'),
+            getTranslation(language, 'thursday'),
+            getTranslation(language, 'friday'),
+            getTranslation(language, 'saturday')
+          ];
+          
+          weekdayElements.forEach((el, i) => {
+            if (i < 7) { // 确保只修改7天的标题
+              el.textContent = weekdays[i] || el.textContent;
+            }
+          });
+        }
+        
+        // 尝试找到并修改按钮文本
+        const todayButton = picker.querySelector('[data-action="today"], .today-button, button:contains("Today")');
+        const clearButton = picker.querySelector('[data-action="clear"], .clear-button, button:contains("Clear")');
+        
+        if (todayButton) {
+          todayButton.textContent = getTranslation(language, 'today');
+        }
+        if (clearButton) {
+          clearButton.textContent = getTranslation(language, 'clear');
+        }
+      } catch (error) {
+        console.error('修改日期选择器元素时出错:', error);
+      }
+    });
+  };
 
   // 添加自定义样式以支持日期选择器的多语言显示
   useEffect(() => {
@@ -2035,64 +2102,28 @@ export default function PlannerPage() {
     
     // 根据当前语言设置样式
     const language = currentLanguage;
-    const mondayText = getTranslation(language, 'monday');
-    const tuesdayText = getTranslation(language, 'tuesday');
-    const wednesdayText = getTranslation(language, 'wednesday');
-    const thursdayText = getTranslation(language, 'thursday');
-    const fridayText = getTranslation(language, 'friday');
-    const saturdayText = getTranslation(language, 'saturday');
-    const sundayText = getTranslation(language, 'sunday');
-    const todayText = getTranslation(language, 'today');
-    const clearText = getTranslation(language, 'clear');
-
-    // 添加自定义CSS，尝试覆盖日期选择器的默认文本
-    // 注意：这些选择器可能需要根据实际浏览器的实现进行调整
+    
+    // 添加自定义CSS，隐藏原生占位符并设置日期选择器样式
     styleElement.textContent = `
-      /* 星期几标题 */
-      :lang(${language}) .calendar-header th:nth-child(1)::before,
-      :lang(${language}) .calendar-day:nth-child(1)::before,
-      :lang(${language}) [data-day="0"]::before {
-        content: "${sundayText}" !important;
-      }
-      :lang(${language}) .calendar-header th:nth-child(2)::before,
-      :lang(${language}) .calendar-day:nth-child(2)::before,
-      :lang(${language}) [data-day="1"]::before {
-        content: "${mondayText}" !important;
-      }
-      :lang(${language}) .calendar-header th:nth-child(3)::before,
-      :lang(${language}) .calendar-day:nth-child(3)::before,
-      :lang(${language}) [data-day="2"]::before {
-        content: "${tuesdayText}" !important;
-      }
-      :lang(${language}) .calendar-header th:nth-child(4)::before,
-      :lang(${language}) .calendar-day:nth-child(4)::before,
-      :lang(${language}) [data-day="3"]::before {
-        content: "${wednesdayText}" !important;
-      }
-      :lang(${language}) .calendar-header th:nth-child(5)::before,
-      :lang(${language}) .calendar-day:nth-child(5)::before,
-      :lang(${language}) [data-day="4"]::before {
-        content: "${thursdayText}" !important;
-      }
-      :lang(${language}) .calendar-header th:nth-child(6)::before,
-      :lang(${language}) .calendar-day:nth-child(6)::before,
-      :lang(${language}) [data-day="5"]::before {
-        content: "${fridayText}" !important;
-      }
-      :lang(${language}) .calendar-header th:nth-child(7)::before,
-      :lang(${language}) .calendar-day:nth-child(7)::before,
-      :lang(${language}) [data-day="6"]::before {
-        content: "${saturdayText}" !important;
+      /* 隐藏原生日期选择器中的默认占位符 */
+      input[type="date"]::-webkit-datetime-edit-text,
+      input[type="date"]::-webkit-datetime-edit-month-field,
+      input[type="date"]::-webkit-datetime-edit-day-field,
+      input[type="date"]::-webkit-datetime-edit-year-field {
+        color: transparent;
       }
       
-      /* 按钮文本 */
-      :lang(${language}) .today-button::before,
-      :lang(${language}) [data-action="today"]::before {
-        content: "${todayText}" !important;
+      /* 当有值时显示文本 */
+      input[type="date"].has-value::-webkit-datetime-edit-text,
+      input[type="date"].has-value::-webkit-datetime-edit-month-field,
+      input[type="date"].has-value::-webkit-datetime-edit-day-field,
+      input[type="date"].has-value::-webkit-datetime-edit-year-field {
+        color: inherit;
       }
-      :lang(${language}) .clear-button::before,
-      :lang(${language}) [data-action="clear"]::before {
-        content: "${clearText}" !important;
+      
+      /* 确保日期选择器中的所有文本使用与lang属性匹配的语言 */
+      :lang(${language}) * {
+        font-family: system-ui, -apple-system, sans-serif;
       }
     `;
     
@@ -2103,6 +2134,27 @@ export default function PlannerPage() {
       }
     };
   }, [currentLanguage]);
+  
+  // 监听输入框值变化，添加有值的类
+  useEffect(() => {
+    const dateInputs = document.querySelectorAll('input[type="date"]');
+    
+    const updateValueClass = (input: HTMLInputElement) => {
+      if (input.value) {
+        input.classList.add('has-value');
+      } else {
+        input.classList.remove('has-value');
+      }
+    };
+    
+    dateInputs.forEach(input => {
+      updateValueClass(input as HTMLInputElement);
+      
+      input.addEventListener('change', () => {
+        updateValueClass(input as HTMLInputElement);
+      });
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
