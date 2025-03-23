@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -63,6 +63,7 @@ const translations: Record<Language, any> = {
       "Guangzhou",
       "Shenzhen",
     ],
+    dateError: "Please note: Return date must be later than departure date"
   },
   zh: {
     title: "旅行规划",
@@ -103,6 +104,7 @@ const translations: Record<Language, any> = {
     generatePlan: "生成旅行计划",
     footer: "© 2023 中国旅游攻略. 保留所有权利.",
     cities: ["北京", "上海", "西安", "成都", "杭州", "桂林", "广州", "深圳"],
+    dateError: "请注意：返回日期必须晚于出发日期"
   },
   fr: {
     title: "Planification de Voyage",
@@ -159,6 +161,7 @@ const translations: Record<Language, any> = {
       "Guangzhou",
       "Shenzhen",
     ],
+    dateError: "Attention : La date de retour doit être postérieure à la date de départ"
   },
   de: {
     title: "Reiseplanung",
@@ -215,6 +218,7 @@ const translations: Record<Language, any> = {
       "Guangzhou",
       "Shenzhen",
     ],
+    dateError: "Bitte beachten Sie: Das Rückreisedatum muss nach dem Abreisedatum liegen"
   },
   ja: {
     title: "旅行プランニング",
@@ -261,6 +265,7 @@ const translations: Record<Language, any> = {
     generatePlan: "旅行プランを生成",
     footer: "© 2023 中国旅行ガイド. 全著作権所有.",
     cities: ["北京", "上海", "西安", "成都", "杭州", "桂林", "広州", "深セン"],
+    dateError: "注意：帰国日は出発日より後でなければなりません"
   },
   ko: {
     title: "여행 계획",
@@ -310,6 +315,7 @@ const translations: Record<Language, any> = {
       "광저우",
       "선전",
     ],
+    dateError: "참고: 귀국 날짜는 출발 날짜보다 나중이어야 합니다"
   },
   es: {
     title: "Planificación de Viajes",
@@ -366,6 +372,7 @@ const translations: Record<Language, any> = {
       "Guangzhou",
       "Shenzhen",
     ],
+    dateError: "Tenga en cuenta: La fecha de regreso debe ser posterior a la fecha de salida"
   },
   ru: {
     title: "Планирование Путешествия",
@@ -422,6 +429,7 @@ const translations: Record<Language, any> = {
       "Гуанчжоу",
       "Шэньчжэнь",
     ],
+    dateError: "Обратите внимание: Дата возвращения должна быть позже даты отправления"
   },
 };
 
@@ -437,11 +445,72 @@ export default function PlannerPage() {
   const [selectedDestinations, setSelectedDestinations] = useState<string[]>(
     [],
   );
+  // 添加缺失的表单数据状态
+  interface FormData {
+    travellerType: string;
+    travellers: number;
+    departureDate: string;
+    returnDate: string;
+    departureTime: string;
+    returnTime: string;
+    budget: string;
+    selectedDestinations: string[];
+    selectedRoute: string;
+    travelStyle: string;
+    travelPace: number;
+    accommodation: string;
+    tastePreference: number;
+    foodTypes: string[];
+    diningEnvironment: string;
+    dietaryRestrictions: string;
+    additionalRequests: string;
+  }
+
+  const [formData, setFormData] = useState<FormData>({
+    travellerType: t.travelStyles?.[0] || '',
+    travellers: 2,
+    departureDate: '',
+    returnDate: '',
+    departureTime: '',
+    returnTime: '',
+    budget: t.budgetRanges?.[0] || '',
+    selectedDestinations: [],
+    selectedRoute: '',
+    travelStyle: t.travelStyles?.[0] || '',
+    travelPace: 50,
+    accommodation: t.accommodationTypes?.[0] || '',
+    tastePreference: 50,
+    foodTypes: [],
+    diningEnvironment: t.diningPreferences?.[0] || '',
+    dietaryRestrictions: '',
+    additionalRequests: ''
+  });
+  // 添加表单错误状态
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   // 语言变化时更新翻译
   useEffect(() => {
     setT(translations[currentLanguage] || translations.en);
   }, [currentLanguage]);
+
+  // 语言变化时更新表单默认值
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      travelStyle: t.travelStyles?.[0] || '',
+      budget: t.budgetRanges?.[0] || '',
+      accommodation: t.accommodationTypes?.[0] || '',
+      diningEnvironment: t.diningPreferences?.[0] || ''
+    }));
+  }, [t]);
+
+  // 确保selectedDestinations和formData.selectedDestinations保持同步
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      selectedDestinations
+    }));
+  }, [selectedDestinations]);
 
   // 处理目的地选择
   const toggleDestination = (city: string) => {
@@ -469,12 +538,12 @@ export default function PlannerPage() {
               const returnDate = new Date(newData.returnDate);
 
               if (deptDate > returnDate) {
-                setValidationErrors((prev) => ({
+                setErrors((prev) => ({
                   ...prev,
-                  returnDate: getTranslation("returnDateError", language),
+                  returnDate: getTranslation(currentLanguage, "dateError"),
                 }));
               } else {
-                setValidationErrors((prev) => {
+                setErrors((prev) => {
                   const newErrors = { ...prev };
                   delete newErrors.returnDate;
                   return newErrors;
@@ -485,12 +554,12 @@ export default function PlannerPage() {
               const returnDate = new Date(newData.returnDate);
 
               if (returnDate < deptDate) {
-                setValidationErrors((prev) => ({
+                setErrors((prev) => ({
                   ...prev,
-                  returnDate: getTranslation("returnDateError", language),
+                  returnDate: getTranslation(currentLanguage, "dateError"),
                 }));
               } else {
-                setValidationErrors((prev) => {
+                setErrors((prev) => {
                   const newErrors = { ...prev };
                   delete newErrors.returnDate;
                   return newErrors;
@@ -522,6 +591,12 @@ export default function PlannerPage() {
       // 简单备份处理方式
       setFormData((prev) => ({ ...prev, [field]: value }));
     }
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    // 在这里处理表单提交逻辑
+    console.log("Form submitted:", formData);
   };
 
   return (
@@ -581,19 +656,31 @@ export default function PlannerPage() {
                 <label className="block text-gray-700 mb-2 font-medium">
                   {t.departureDate}
                 </label>
-                <input
-                  type="date"
+                <input 
+                  type="date" 
+                  name="departureDate"
+                  value={formData.departureDate}
+                  onChange={(e) => handleInputChange("departureDate", e.target.value)}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
                 />
+                {errors.departureDate && (
+                  <p className="text-red-500 text-sm mt-1">{errors.departureDate}</p>
+                )}
               </div>
               <div>
                 <label className="block text-gray-700 mb-2 font-medium">
                   {t.returnDate}
                 </label>
-                <input
-                  type="date"
+                <input 
+                  type="date" 
+                  name="returnDate"
+                  value={formData.returnDate}
+                  onChange={(e) => handleInputChange("returnDate", e.target.value)}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
                 />
+                {errors.returnDate && (
+                  <p className="text-red-500 text-sm mt-1">{errors.returnDate}</p>
+                )}
               </div>
             </div>
           </section>
@@ -612,9 +699,13 @@ export default function PlannerPage() {
                 <label className="block text-gray-700 mb-2 font-medium">
                   {t.travelStyle}
                 </label>
-                <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors">
+                <select 
+                  name="travelStyle"
+                  value={formData.travelStyle}
+                  onChange={(e) => handleInputChange("travelStyle", e.target.value)}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors">
                   {t.travelStyles.map((style: string, index: number) => (
-                    <option key={index}>{style}</option>
+                    <option key={index} value={style}>{style}</option>
                   ))}
                 </select>
               </div>
@@ -623,9 +714,13 @@ export default function PlannerPage() {
                 <label className="block text-gray-700 mb-2 font-medium">
                   {t.budget}
                 </label>
-                <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors">
+                <select 
+                  name="budget"
+                  value={formData.budget}
+                  onChange={(e) => handleInputChange("budget", e.target.value)}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors">
                   {t.budgetRanges.map((range: string, index: number) => (
-                    <option key={index}>{range}</option>
+                    <option key={index} value={range}>{range}</option>
                   ))}
                 </select>
               </div>
@@ -634,9 +729,13 @@ export default function PlannerPage() {
                 <label className="block text-gray-700 mb-2 font-medium">
                   {t.accommodation}
                 </label>
-                <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors">
+                <select 
+                  name="accommodation"
+                  value={formData.accommodation}
+                  onChange={(e) => handleInputChange("accommodation", e.target.value)}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors">
                   {t.accommodationTypes.map((type: string, index: number) => (
-                    <option key={index}>{type}</option>
+                    <option key={index} value={type}>{type}</option>
                   ))}
                 </select>
               </div>
@@ -645,9 +744,13 @@ export default function PlannerPage() {
                 <label className="block text-gray-700 mb-2 font-medium">
                   {t.dining}
                 </label>
-                <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors">
+                <select 
+                  name="diningEnvironment"
+                  value={formData.diningEnvironment}
+                  onChange={(e) => handleInputChange("diningEnvironment", e.target.value)}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors">
                   {t.diningPreferences.map((pref: string, index: number) => (
-                    <option key={index}>{pref}</option>
+                    <option key={index} value={pref}>{pref}</option>
                   ))}
                 </select>
               </div>
@@ -662,7 +765,10 @@ export default function PlannerPage() {
               </span>
               {t.additionalRequests}
             </h3>
-            <textarea
+            <textarea 
+              name="additionalRequests"
+              value={formData.additionalRequests}
+              onChange={(e) => handleInputChange("additionalRequests", e.target.value)}
               className="w-full p-4 border border-gray-300 rounded-lg h-32 focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
               placeholder={t.requestsPlaceholder}
             ></textarea>
@@ -671,6 +777,7 @@ export default function PlannerPage() {
           {/* 提交按钮 */}
           <div className="flex justify-center">
             <button
+              onClick={handleSubmit}
               className="group relative inline-flex items-center bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
                      hover:bg-red-700 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(220,38,38,0.7)]
                      transition-all duration-300 ease-out
