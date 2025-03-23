@@ -1158,14 +1158,23 @@ export default function PlannerPage() {
   // 处理输入变化
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
     
-    // 如果修改了日期字段，进行日期验证
+    // 特殊处理日期输入，确保使用英文格式
     if (name === 'departureDate' || name === 'returnDate') {
+      // 先设置值
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+      
+      // 然后进行日期验证
       setTimeout(() => validateDates(), 100);
+    } else {
+      // 非日期字段正常处理
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
     }
   };
 
@@ -1510,20 +1519,29 @@ export default function PlannerPage() {
                   {getTranslation(currentLanguage, 'departureDate')}
                 </label>
                 <div className="relative">
-                  <input 
-                    type="date" 
+                  <input
+                    type="date"
                     name="departureDate"
                     value={formData.departureDate}
                     onChange={handleInputChange}
                     className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors appearance-none
                       ${errors.departureDate ? 'border-red-500' : 'border-gray-300'}`}
                     lang="en"
-                    data-date-format={`${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`}
+                    data-locale="en-US"
+                    data-date-format="YYYY/MM/DD"
                     placeholder=""
+                    onFocus={() => {
+                      document.documentElement.lang = 'en-US';
+                    }}
+                    onBlur={() => {
+                      setTimeout(() => {
+                        document.documentElement.lang = localStorage.getItem('language') || 'en';
+                      }, 100);
+                    }}
                   />
                   <div className={`pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ${formData.departureDate ? 'hidden' : 'block'}`}>
                     <span className="text-gray-500">
-                      {getTranslation(currentLanguage, 'year')}/{getTranslation(currentLanguage, 'month')}/{getTranslation(currentLanguage, 'day')}
+                      YYYY/MM/DD
                     </span>
                   </div>
                 </div>
@@ -1541,9 +1559,10 @@ export default function PlannerPage() {
                     onChange={handleInputChange}
                     className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
                   >
-                    <option value={getTranslation(currentLanguage, 'morning')}>{getTranslation(currentLanguage, 'morning')}</option>
-                    <option value={getTranslation(currentLanguage, 'noon')}>{getTranslation(currentLanguage, 'noon')}</option>
-                    <option value={getTranslation(currentLanguage, 'evening')}>{getTranslation(currentLanguage, 'evening')}</option>
+                    <option value="">{getTranslation(currentLanguage, 'selectTime')}</option>
+                    <option value="morning">{getTranslation(currentLanguage, 'morning')}</option>
+                    <option value="noon">{getTranslation(currentLanguage, 'noon')}</option>
+                    <option value="evening">{getTranslation(currentLanguage, 'evening')}</option>
                   </select>
                 </div>
               </div>
@@ -1553,20 +1572,29 @@ export default function PlannerPage() {
                   {getTranslation(currentLanguage, 'returnDate')}
                 </label>
                 <div className="relative">
-                  <input 
-                    type="date" 
+                  <input
+                    type="date"
                     name="returnDate"
                     value={formData.returnDate}
                     onChange={handleInputChange}
                     className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors appearance-none
                       ${errors.returnDate ? 'border-red-500' : 'border-gray-300'}`}
                     lang="en"
-                    data-date-format={`${getTranslation(currentLanguage, 'year')}/${getTranslation(currentLanguage, 'month')}/${getTranslation(currentLanguage, 'day')}`}
+                    data-locale="en-US"
+                    data-date-format="YYYY/MM/DD"
                     placeholder=""
+                    onFocus={() => {
+                      document.documentElement.lang = 'en-US';
+                    }}
+                    onBlur={() => {
+                      setTimeout(() => {
+                        document.documentElement.lang = localStorage.getItem('language') || 'en';
+                      }, 100);
+                    }}
                   />
                   <div className={`pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ${formData.returnDate ? 'hidden' : 'block'}`}>
                     <span className="text-gray-500">
-                      {getTranslation(currentLanguage, 'year')}/{getTranslation(currentLanguage, 'month')}/{getTranslation(currentLanguage, 'day')}
+                      YYYY/MM/DD
                     </span>
                   </div>
                 </div>
@@ -1584,9 +1612,10 @@ export default function PlannerPage() {
                     onChange={handleInputChange}
                     className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
                   >
-                    <option value={getTranslation(currentLanguage, 'morning')}>{getTranslation(currentLanguage, 'morning')}</option>
-                    <option value={getTranslation(currentLanguage, 'noon')}>{getTranslation(currentLanguage, 'noon')}</option>
-                    <option value={getTranslation(currentLanguage, 'evening')}>{getTranslation(currentLanguage, 'evening')}</option>
+                    <option value="">{getTranslation(currentLanguage, 'selectTime')}</option>
+                    <option value="morning">{getTranslation(currentLanguage, 'morning')}</option>
+                    <option value="noon">{getTranslation(currentLanguage, 'noon')}</option>
+                    <option value="evening">{getTranslation(currentLanguage, 'evening')}</option>
                   </select>
                 </div>
               </div>
@@ -2034,12 +2063,6 @@ export default function PlannerPage() {
         datePickers.forEach(picker => {
           picker.setAttribute('lang', 'en');
           picker.classList.add('force-english');
-          
-          // 递归处理所有子元素，确保它们都使用英文
-          const allElements = picker.querySelectorAll('*');
-          allElements.forEach(el => {
-            el.setAttribute('lang', 'en');
-          });
         });
       }
     });
@@ -2048,8 +2071,7 @@ export default function PlannerPage() {
     observer.observe(document.body, { 
       childList: true, 
       subtree: true,
-      attributes: true,
-      attributeFilter: ['style', 'class', 'lang']
+      attributes: false  // 关闭属性监听，减少触发次数
     });
     
     return () => {
@@ -2059,7 +2081,7 @@ export default function PlannerPage() {
     };
   }, []);
 
-  // 添加一个 useEffect 钩子，处理日期输入事件
+  // 添加一个更简化的事件处理方法，避免频繁操作DOM
   useEffect(() => {
     // 创建处理日期输入焦点的函数
     const handleDateFocus = (e: Event) => {
@@ -2067,26 +2089,6 @@ export default function PlannerPage() {
       if (input.type === 'date') {
         // 立即设置文档语言为英文
         document.documentElement.lang = 'en';
-        
-        // 添加一个延时任务，确保在日期选择器出现后再设置语言
-        setTimeout(() => {
-          // 查找所有可能的日期选择器元素
-          const datePopups = document.querySelectorAll(
-            '.calendar-popup, .date-picker, [role="dialog"], .ui-datepicker'
-          );
-          
-          // 设置所有找到的日期选择器元素为英文
-          datePopups.forEach(popup => {
-            popup.setAttribute('lang', 'en');
-            popup.classList.add('force-english');
-            
-            // 查找日期选择器中的所有元素并设置为英文
-            const elements = popup.querySelectorAll('*');
-            elements.forEach(el => {
-              el.setAttribute('lang', 'en');
-            });
-          });
-        }, 50);
       }
     };
     
@@ -2099,33 +2101,19 @@ export default function PlannerPage() {
     };
   }, []);
 
-  // 添加一个 useEffect 钩子，定时检查和纠正页面上所有日期输入框的语言设置
+  // 简化定时检查逻辑，减少不必要的DOM操作
   useEffect(() => {
-    // 检查并强制所有日期输入框使用英文
-    const enforceDateInputsLanguage = () => {
-      const dateInputs = document.querySelectorAll('input[type="date"]');
-      dateInputs.forEach(input => {
-        input.setAttribute('lang', 'en');
-        
-        // 检查是否有值，设置相应的类
-        if ((input as HTMLInputElement).value) {
-          input.classList.add('has-value');
-        } else {
-          input.classList.remove('has-value');
-        }
-      });
-    };
-    
-    // 初次执行
-    enforceDateInputsLanguage();
-    
-    // 设置定时器定期检查
-    const intervalId = setInterval(enforceDateInputsLanguage, 1000);
-    
-    // 清理函数
-    return () => {
-      clearInterval(intervalId);
-    };
+    // 一次性设置所有日期输入框
+    const dateInputs = document.querySelectorAll('input[type="date"]');
+    dateInputs.forEach(input => {
+      input.setAttribute('lang', 'en');
+      
+      // 移除任何可能的事件监听器，避免事件堆积
+      const newInput = input.cloneNode(true) as HTMLElement;
+      if (input.parentNode) {
+        input.parentNode.replaceChild(newInput, input);
+      }
+    });
   }, []);
 
   // 添加自定义样式以支持日期选择器的英文显示
@@ -2137,6 +2125,16 @@ export default function PlannerPage() {
     
     // 添加自定义CSS，隐藏原生占位符并设置日期选择器样式
     styleElement.textContent = `
+      /* 设置强制英文显示的格式化规则 */
+      input[type="date"]::-webkit-datetime-edit {
+        color: black;
+      }
+      
+      /* 强制日期选择器显示英文 */
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 1;
+      }
+      
       /* 隐藏原生日期选择器中的默认占位符 */
       input[type="date"]::-webkit-datetime-edit-text,
       input[type="date"]::-webkit-datetime-edit-month-field,
@@ -2213,14 +2211,6 @@ export default function PlannerPage() {
         font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
       }
       
-      /* 确保手机和平板上的原生日期选择器也显示英文 */
-      @media (max-width: 1024px) {
-        input[type="date"] {
-          -webkit-appearance: none;
-          appearance: none;
-        }
-      }
-      
       /* Safari 特定样式 */
       .safari-date-input::-webkit-calendar-picker-indicator {
         display: block;
@@ -2252,6 +2242,44 @@ export default function PlannerPage() {
         transform: translateZ(0);
         backface-visibility: hidden;
         -webkit-font-smoothing: antialiased;
+      }
+      
+      /* 重写默认的日期显示格式 */
+      input[type="date"]::before {
+        content: attr(data-date-format);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        padding-left: 12px;
+        color: #6b7280;
+        pointer-events: none;
+        z-index: 1;
+      }
+      
+      input[type="date"]:valid::before {
+        display: none;
+      }
+      
+      /* 强制日期选择器应用英文区域设置 */
+      html:lang(en-US) {
+        -webkit-locale: "en-US";
+      }
+      
+      /* 禁用本地化处理，强制使用英文 */
+      * {
+        unicode-bidi: isolate !important;
+      }
+      
+      /* 修复Chrome中的日期选择器语言问题 */
+      @supports (-webkit-appearance: none) {
+        input[type="date"]::-webkit-calendar-picker-indicator::after {
+          content: "";
+          -webkit-appearance: none;
+        }
       }
     `;
     
@@ -2387,6 +2415,174 @@ export default function PlannerPage() {
     
     // 由于是一次性设置，不需要清理函数
   }, [currentLanguage]);
+
+  // 替换旧的MutationObserver逻辑，使用更高效的方式强制日期选择器使用英文
+  useEffect(() => {
+    // 设置更精确的选择器追踪逻辑，简化DOM操作
+    const enforceDateInputsEnglish = () => {
+      try {
+        // 设置文档语言为英文
+        document.documentElement.lang = 'en-US';
+        document.documentElement.setAttribute('lang', 'en-US');
+        
+        // 设置所有日期输入框的区域设置为英文
+        const dateInputs = document.querySelectorAll('input[type="date"]');
+        dateInputs.forEach(input => {
+          input.setAttribute('lang', 'en');
+          input.setAttribute('data-locale', 'en-US');
+          
+          // 防止触发额外的DOM事件
+          if (!input.classList.contains('date-initialized')) {
+            input.classList.add('date-initialized');
+            
+            // 简化事件处理，避免浏览器卡死
+            input.addEventListener('focus', () => {
+              document.documentElement.lang = 'en-US';
+            }, { passive: true });
+            
+            // 重置文档语言的操作延迟执行，避免与其他UI操作冲突
+            input.addEventListener('blur', () => {
+              setTimeout(() => {
+                if (!document.activeElement || document.activeElement.tagName !== 'INPUT' || 
+                    document.activeElement.getAttribute('type') !== 'date') {
+                  // 恢复用户设置的语言
+                  document.documentElement.lang = localStorage.getItem('language') || 'en';
+                }
+              }, 100);
+            }, { passive: true });
+          }
+        });
+      } catch (error) {
+        console.error('日期选择器语言设置出错:', error);
+      }
+    };
+    
+    // 创建性能优化的MutationObserver
+    const datePickerObserver = new MutationObserver((mutations) => {
+      // 检查是否有日期选择器相关变化
+      const shouldUpdate = mutations.some(mutation => {
+        // 仅处理添加节点的情况
+        if (mutation.type === 'childList' && mutation.addedNodes.length) {
+          for (const node of mutation.addedNodes) {
+            if (node.nodeType === 1) { // 元素节点
+              const element = node as HTMLElement; // 添加类型断言
+              // 检查是否是日期选择器或其容器
+              if (element.tagName === 'INPUT' && element.getAttribute('type') === 'date' ||
+                  element.querySelector && element.querySelector('input[type="date"]') ||
+                  element.className && (
+                    element.className.includes('date') || 
+                    element.className.includes('calendar') || 
+                    element.className.includes('picker')
+                  )
+              ) {
+                return true;
+              }
+            }
+          }
+        }
+        return false;
+      });
+      
+      // 只在必要时执行DOM操作
+      if (shouldUpdate) {
+        enforceDateInputsEnglish();
+      }
+    });
+    
+    // 配置观察器，优化性能
+    const observerConfig = { 
+      childList: true, 
+      subtree: true,
+      attributes: false,
+      characterData: false
+    };
+    
+    // 立即执行一次
+    enforceDateInputsEnglish();
+    
+    // 开始观察文档变化
+    datePickerObserver.observe(document.body, observerConfig);
+    
+    // 初始化时检查现有的日期选择器
+    window.addEventListener('load', enforceDateInputsEnglish, { once: true, passive: true });
+    
+    // 清理函数
+    return () => {
+      datePickerObserver.disconnect();
+      window.removeEventListener('load', enforceDateInputsEnglish);
+    };
+  }, []);
+  
+  // 覆盖原有的handleInputChange函数，优化日期输入处理逻辑
+  // 修改handleInputChange函数，优化日期输入处理逻辑
+  const handleInputChange = (field: string, value: string) => {
+    // 防止不必要的重渲染和复杂计算导致的卡顿
+    try {
+      if (field.includes('date')) {
+        // 对日期字段特殊处理
+        setFormData(prev => {
+          const newData = { ...prev, [field]: value };
+          
+          // 使用setTimeout避免阻塞UI渲染
+          setTimeout(() => {
+            // 验证日期
+            if (field === 'departureDate' && newData.returnDate) {
+              const deptDate = new Date(newData.departureDate);
+              const returnDate = new Date(newData.returnDate);
+              
+              if (deptDate > returnDate) {
+                setValidationErrors(prev => ({
+                  ...prev,
+                  returnDate: getTranslation('returnDateError', language)
+                }));
+              } else {
+                setValidationErrors(prev => {
+                  const newErrors = { ...prev };
+                  delete newErrors.returnDate;
+                  return newErrors;
+                });
+              }
+            } else if (field === 'returnDate' && newData.departureDate) {
+              const deptDate = new Date(newData.departureDate);
+              const returnDate = new Date(newData.returnDate);
+              
+              if (returnDate < deptDate) {
+                setValidationErrors(prev => ({
+                  ...prev,
+                  returnDate: getTranslation('returnDateError', language)
+                }));
+              } else {
+                setValidationErrors(prev => {
+                  const newErrors = { ...prev };
+                  delete newErrors.returnDate;
+                  return newErrors;
+                });
+              }
+            }
+          }, 0);
+          
+          return newData;
+        });
+        
+        // 更新日期输入框的可视状态
+        setTimeout(() => {
+          const input = document.querySelector(`input[name="${field}"]`) as HTMLInputElement;
+          if (input && value) {
+            input.classList.add('has-value');
+          } else if (input) {
+            input.classList.remove('has-value');
+          }
+        }, 0);
+      } else {
+        // 正常处理非日期字段
+        setFormData(prev => ({ ...prev, [field]: value }));
+      }
+    } catch (error) {
+      console.error('处理输入变化时出错:', error);
+      // 简单备份处理方式
+      setFormData(prev => ({ ...prev, [field]: value }));
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
