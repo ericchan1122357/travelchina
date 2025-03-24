@@ -1290,6 +1290,8 @@ export default function PlannerPage() {
   // 导航到下一步
   const nextStep = () => {
     if (validateStep(currentStep) && currentStep < totalSteps) {
+      // 确保在导航前保存当前表单数据
+      saveFormToLocalStorage(formData);
       setCurrentStep(currentStep + 1);
       window.scrollTo(0, 0);
     } else {
@@ -1342,6 +1344,8 @@ export default function PlannerPage() {
   // 导航到上一步
   const prevStep = () => {
     if (currentStep > 1) {
+      // 确保在导航前保存当前表单数据
+      saveFormToLocalStorage(formData);
       setCurrentStep(currentStep - 1);
       window.scrollTo(0, 0);
     }
@@ -1735,7 +1739,7 @@ export default function PlannerPage() {
                 {t.cities.map((city: string) => (
                   <div 
                     key={city} 
-                    className={`border-2 rounded-lg p-4 text-center cursor-pointer transition-all duration-200 ${
+                    className={`border-2 rounded-lg p-4 text-center cursor-pointer transition-all duration-200 flex items-center justify-center ${
                       formData.selectedDestinations.includes(city)
                         ? 'border-china-red bg-red-50 shadow-md'
                         : 'border-gray-200 hover:border-red-300 hover:bg-red-50'
@@ -1815,7 +1819,7 @@ export default function PlannerPage() {
                 {t.accommodationTypes.map((type: string, index: number) => (
                   <div 
                     key={index} 
-                    className={`border-2 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 ${
+                    className={`border-2 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 flex items-center justify-center ${
                       formData.accommodation === type
                         ? 'border-china-red bg-red-50 shadow-md'
                         : 'border-gray-200 hover:border-red-300 hover:bg-red-50'
@@ -1875,7 +1879,7 @@ export default function PlannerPage() {
                 {t.foodTypePref.map((type: string) => (
                   <div 
                     key={type} 
-                    className={`border-2 rounded-lg p-4 text-center cursor-pointer transition-all duration-200 ${
+                    className={`border-2 rounded-lg p-4 text-center cursor-pointer transition-all duration-200 flex items-center justify-center ${
                       formData.foodTypes.includes(type)
                         ? 'border-china-red bg-red-50 shadow-md'
                         : 'border-gray-200 hover:border-red-300 hover:bg-red-50'
@@ -1974,28 +1978,6 @@ export default function PlannerPage() {
                 placeholder={getTranslation(currentLanguage, 'requestsPlaceholder') || 'Please tell us any special requirements...'}
               ></textarea>
               <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'additionalRequestsHint')}</p>
-            </div>
-
-            {/* 提交按钮 */}
-            <div className="mt-8 flex justify-end">
-              <button
-                type="button"
-                onClick={submitForm}
-                disabled={isSubmitting}
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-china-red hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
-              >
-                {isSubmitting ? (
-                  <>
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    {getTranslation(currentLanguage, 'processing')}
-                  </>
-                ) : (
-                  t.submit
-                )}
-              </button>
             </div>
           </div>
         );
@@ -2188,7 +2170,16 @@ export default function PlannerPage() {
         updateValueClass(input as HTMLInputElement);
       });
     });
-  }, []);
+    
+    // 清理函数
+    return () => {
+      dateInputs.forEach(input => {
+        input.removeEventListener('change', () => {
+          updateValueClass(input as HTMLInputElement);
+        });
+      });
+    };
+  }, [currentStep]); // 添加currentStep作为依赖项，确保步骤变化时更新日期显示
 
   // 添加错误高亮动画样式
   useEffect(() => {
