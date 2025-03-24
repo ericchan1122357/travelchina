@@ -6,21 +6,51 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Language } from '@/homepage/types';
 import { 
+  CalendarIcon, 
+  MapPinIcon, 
   UserGroupIcon, 
-  MapIcon, 
-  HeartIcon, 
-  FireIcon, 
+  ClockIcon, 
+  CurrencyDollarIcon,
+  BuildingOfficeIcon,
+  FireIcon,
+  BoltIcon,
+  ArrowPathIcon,
+  BeakerIcon,
+  GlobeAsiaAustraliaIcon,
+  HeartIcon,
   PencilSquareIcon,
   CalendarDaysIcon,
   CurrencyYenIcon,
-  BuildingOfficeIcon,
-  GlobeAsiaAustraliaIcon,
-  FaceSmileIcon,
-  ArrowPathIcon,
+  MapIcon,
   PlusCircleIcon,
   MinusCircleIcon,
-  QuestionMarkCircleIcon
+  QuestionMarkCircleIcon,
+  FaceSmileIcon
 } from '@heroicons/react/24/outline';
+
+// 国家列表数据，用于国籍自动完成
+const countriesList = [
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", 
+  "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", 
+  "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", 
+  "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", 
+  "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", 
+  "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", 
+  "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", 
+  "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", 
+  "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kosovo", 
+  "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", 
+  "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", 
+  "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", 
+  "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", 
+  "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", 
+  "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", 
+  "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", 
+  "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", 
+  "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", 
+  "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", 
+  "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+];
 
 // 翻译数据
 const translations: Record<Language, any> = {
@@ -36,6 +66,7 @@ const translations: Record<Language, any> = {
     travellerType: 'Traveller Type',
     travellerTypes: ['Solo', 'Couple', 'Family', 'Friends', 'Business', 'Other'],
     travellers: 'Number of Travellers',
+    nationality: 'Nationality',
     travelDates: 'Travel Dates',
     departureDate: 'Departure Date',
     returnDate: 'Return Date',
@@ -77,6 +108,7 @@ const translations: Record<Language, any> = {
     clearData: 'Clear saved data',
     selectTravellerType: 'Select the type that best matches your travel',
     enterTravellerCount: 'Enter the number of people in your travel group',
+    enterNationality: 'Please enter your nationality',
     departureDateHint: 'Planned departure date',
     returnDateHint: 'Planned return date',
     budgetRangeHint: 'Select the budget range that meets your expectations (excluding airfare)',
@@ -93,7 +125,7 @@ const translations: Record<Language, any> = {
     multipleSelections: 'Multiple selections',
     diningEnvironmentHint: 'Choose your preferred dining environment',
     dietaryRestrictionsHint: 'Please enter any dietary restrictions or requirements',
-    additionalRequestsHint: 'Please specify any special requirements for the trip here',
+    additionalRequestsHint: 'Please specify any special requirements for the trip here (food/accommodation/transportation/attraction preferences, etc. Please do not enter information unrelated to travel, as it may cause generation failure)',
     travelSummary: 'Travel Plan Summary',
     travelTypeSummary: 'Travel Type',
     travellerCountSummary: 'Number of Travellers',
@@ -149,6 +181,7 @@ const translations: Record<Language, any> = {
     travellerType: '旅行者类型',
     travellerTypes: ['单独旅行', '情侣出行', '家庭旅行', '朋友团体', '商务旅行', '其他'],
     travellers: '旅行人数',
+    nationality: '国籍',
     travelDates: '旅行时间',
     departureDate: '出发日期',
     returnDate: '返回日期',
@@ -190,6 +223,7 @@ const translations: Record<Language, any> = {
     clearData: '清除保存的数据',
     selectTravellerType: '选择最符合您此次旅行的类型',
     enterTravellerCount: '请输入旅行团队的人数',
+    enterNationality: '请输入您的国籍',
     departureDateHint: '计划出发的日期',
     returnDateHint: '计划返回的日期',
     budgetRangeHint: '选择符合您期望的预算范围（不包含机票费用）',
@@ -206,7 +240,7 @@ const translations: Record<Language, any> = {
     multipleSelections: '可多选',
     diningEnvironmentHint: '选择您偏好的用餐环境',
     dietaryRestrictionsHint: '请输入任何饮食方面的限制或需求',
-    additionalRequestsHint: '对行程有任何特殊需求请在此说明',
+    additionalRequestsHint: '对行程有任何特殊需求请在此说明（饮食/住宿/出行/景点偏好等等，请勿输入与旅行无关的信息，可能导致生成失败）',
     travelSummary: '旅行计划摘要',
     travelTypeSummary: '旅行类型',
     travellerCountSummary: '人数',
@@ -262,6 +296,7 @@ const translations: Record<Language, any> = {
     travellerType: 'Type de Voyageur',
     travellerTypes: ['Solo', 'Couple', 'Famille', 'Amis', 'Affaires', 'Autre'],
     travellers: 'Nombre de Voyageurs',
+    nationality: 'Nationalité',
     travelDates: 'Dates de Voyage',
     departureDate: 'Date de Départ',
     returnDate: 'Date de Retour',
@@ -303,6 +338,7 @@ const translations: Record<Language, any> = {
     clearData: 'Effacer les données',
     selectTravellerType: 'Choisissez le type qui convient le mieux à votre voyage',
     enterTravellerCount: 'Veuillez entrer le nombre de voyageurs (1-20 personnes)',
+    enterNationality: 'Veuillez entrer votre nationalité',
     departureDateHint: 'Date de départ prévue',
     returnDateHint: 'Date de retour prévue',
     budgetRangeHint: 'Choisissez une gamme de budget qui correspond à vos attentes',
@@ -319,7 +355,7 @@ const translations: Record<Language, any> = {
     multipleSelections: 'Sélections multiples',
     diningEnvironmentHint: 'Choisissez votre environnement de repas préféré',
     dietaryRestrictionsHint: 'Veuillez indiquer toute restriction ou exigence alimentaire',
-    additionalRequestsHint: 'Veuillez préciser toute exigence particulière pour l\'itinéraire',
+    additionalRequestsHint: 'Veuillez préciser toute exigence particulière pour l\'itinéraire (préférences alimentaires/hébergement/transport/attractions, etc. Veuillez ne pas saisir d\'informations sans rapport avec le voyage, car cela pourrait entraîner un échec de génération)',
     travelSummary: 'Résumé du Plan de Voyage',
     travelTypeSummary: 'Type de Voyage',
     travellerCountSummary: 'Nombre de Voyageurs',
@@ -368,6 +404,7 @@ const translations: Record<Language, any> = {
     travellerType: 'Reisetyp',
     travellerTypes: ['Alleinreisender', 'Paar', 'Familie', 'Freunde', 'Geschäftsreise', 'Andere'],
     travellers: 'Anzahl der Reisenden',
+    nationality: 'Nationalität',
     travelDates: 'Reisedaten',
     departureDate: 'Abreisedatum',
     returnDate: 'Rückreisedatum',
@@ -409,6 +446,7 @@ const translations: Record<Language, any> = {
     clearData: 'Gespeicherte Daten löschen',
     selectTravellerType: 'Wählen Sie den Typ, der am besten zu Ihrer Reise passt',
     enterTravellerCount: 'Bitte geben Sie die Anzahl der Reisenden ein (1-20 Personen)',
+    enterNationality: 'Bitte geben Sie Ihre Nationalität ein',
     departureDateHint: 'Geplantes Abreisedatum',
     returnDateHint: 'Geplantes Rückkehrdatum',
     budgetRangeHint: 'Wählen Sie einen Budgetbereich, der Ihren Erwartungen entspricht',
@@ -425,7 +463,7 @@ const translations: Record<Language, any> = {
     multipleSelections: 'Mehrfachauswahl möglich',
     diningEnvironmentHint: 'Wählen Sie Ihre bevorzugte Speiseumgebung',
     dietaryRestrictionsHint: 'Bitte geben Sie alle Ernährungseinschränkungen oder -anforderungen ein',
-    additionalRequestsHint: 'Bitte geben Sie hier besondere Anforderungen für die Reise an',
+    additionalRequestsHint: 'Bitte geben Sie hier besondere Anforderungen für die Reise an (Essen/Unterkunft/Transport/Attraktionspräferenzen usw. Bitte geben Sie keine reiseunbezogenen Informationen ein, da dies zu Generierungsfehlern führen kann)',
     travelSummary: 'Reiseplan Zusammenfassung',
     travelTypeSummary: 'Reisetyp',
     travellerCountSummary: 'Anzahl der Reisenden',
@@ -474,6 +512,7 @@ const translations: Record<Language, any> = {
     travellerType: '旅行者タイプ',
     travellerTypes: ['ソロ', 'カップル', '家族', '友人', 'ビジネス', 'その他'],
     travellers: '旅行者数',
+    nationality: '国籍',
     travelDates: '旅行日程',
     departureDate: '出発日',
     returnDate: '帰国日',
@@ -515,7 +554,8 @@ const translations: Record<Language, any> = {
     clearData: '保存されたデータをクリア',
     selectTravellerType: 'あなたの旅行タイプに最も適したものを選択してください',
     enterTravellerCount: '旅行グループの人数を入力してください（1〜20人）',
-    departureDateHint: '出発予定日',
+    enterNationality: '国籍を入力してください',
+    departureDateHint: '予定出発日',
     returnDateHint: '帰国予定日',
     budgetRangeHint: 'ご希望の予算範囲を選択してください',
     selectRouteHint: 'おすすめルートを選択するか、独自の旅程をカスタマイズしてください',
@@ -531,7 +571,7 @@ const translations: Record<Language, any> = {
     multipleSelections: '複数選択可能',
     diningEnvironmentHint: '希望する食事環境を選択してください',
     dietaryRestrictionsHint: '食事制限や要件を入力してください',
-    additionalRequestsHint: '旅程に関する特別な要件を指定してください',
+    additionalRequestsHint: '旅程に関する特別な要件を指定してください（食事/宿泊/交通/観光スポットの好みなど、旅行に関連しない情報は入力しないでください。生成に失敗する可能性があります）',
     travelSummary: '旅行計画の概要',
     travelTypeSummary: '旅行タイプ',
     travellerCountSummary: '人数',
@@ -580,6 +620,7 @@ const translations: Record<Language, any> = {
     travellerType: '여행자 유형',
     travellerTypes: ['솔로', '커플', '가족', '친구', '비즈니스', '기타'],
     travellers: '여행자 수',
+    nationality: '국적',
     travelDates: '여행 날짜',
     departureDate: '출발 날짜',
     returnDate: '귀국 날짜',
@@ -621,6 +662,7 @@ const translations: Record<Language, any> = {
     clearData: '저장된 데이터 지우기',
     selectTravellerType: '여행에 가장 적합한 유형을 선택하세요',
     enterTravellerCount: '여행 그룹의 인원 수를 입력하세요(1-20명)',
+    enterNationality: '국적을 입력하세요',
     departureDateHint: '계획된 출발 날짜',
     returnDateHint: '계획된 귀국 날짜',
     budgetRangeHint: '원하는 예산 범위를 선택하세요',
@@ -637,7 +679,7 @@ const translations: Record<Language, any> = {
     multipleSelections: '다중 선택 가능',
     diningEnvironmentHint: '선호하는 식사 환경을 선택하세요',
     dietaryRestrictionsHint: '식이 제한이나 요구 사항을 입력하세요',
-    additionalRequestsHint: '여행 일정에 대한 특별한 요구 사항을 지정하세요',
+    additionalRequestsHint: '여행 일정에 대한 특별한 요구 사항을 지정하세요 (음식/숙박/교통/명소 선호도 등. 여행과 관련 없는 정보는 입력하지 마세요. 생성 실패의 원인이 될 수 있습니다)',
     travelSummary: '여행 계획 요약',
     travelTypeSummary: '여행 유형',
     travellerCountSummary: '여행자 수',
@@ -686,6 +728,7 @@ const translations: Record<Language, any> = {
     travellerType: 'Tipo de Viajero',
     travellerTypes: ['Solo', 'Pareja', 'Familia', 'Amigos', 'Negocios', 'Otro'],
     travellers: 'Número de Viajeros',
+    nationality: 'Nacionalidad',
     travelDates: 'Fechas de Viaje',
     departureDate: 'Fecha de Salida',
     returnDate: 'Fecha de Regreso',
@@ -727,6 +770,7 @@ const translations: Record<Language, any> = {
     clearData: 'Borrar datos',
     selectTravellerType: 'Elija el tipo que mejor se adapte a su viaje',
     enterTravellerCount: 'Por favor, introduzca el número de viajeros (1-20 personas)',
+    enterNationality: 'Por favor ingrese su nacionalidad',
     departureDateHint: 'Fecha de salida prevista',
     returnDateHint: 'Fecha de regreso prevista',
     budgetRangeHint: 'Elija un rango de presupuesto que se ajuste a sus expectativas',
@@ -743,7 +787,7 @@ const translations: Record<Language, any> = {
     multipleSelections: 'Selecciones múltiples',
     diningEnvironmentHint: 'Elija su entorno de comida preferido',
     dietaryRestrictionsHint: 'Por favor, introduzca cualquier restricción o requisito dietético',
-    additionalRequestsHint: 'Por favor, especifique cualquier requisito especial para el itinerario',
+    additionalRequestsHint: 'Por favor, especifique cualquier requisito especial para el itinerario (preferencias de comida/alojamiento/transporte/atracciones, etc. No ingrese información no relacionada con el viaje, ya que puede causar fallas en la generación)',
     travelSummary: 'Resumen del Plan de Viaje',
     travelTypeSummary: 'Tipo de Viaje',
     travellerCountSummary: 'Número de Viajeros',
@@ -792,6 +836,7 @@ const translations: Record<Language, any> = {
     travellerType: 'Тип Путешественника',
     travellerTypes: ['Соло', 'Пара', 'Семья', 'Друзья', 'Бизнес', 'Другое'],
     travellers: 'Количество Путешественников',
+    nationality: 'Национальность',
     travelDates: 'Даты Путешествия',
     departureDate: 'Дата Отправления',
     returnDate: 'Дата Возвращения',
@@ -833,6 +878,7 @@ const translations: Record<Language, any> = {
     clearData: 'Очистить данные',
     selectTravellerType: 'Выберите тип, который лучше всего подходит для вашего путешествия',
     enterTravellerCount: 'Пожалуйста, введите количество путешественников (1-20 человек)',
+    enterNationality: 'Пожалуйста, укажите вашу национальность',
     departureDateHint: 'Планируемая дата отправления',
     returnDateHint: 'Планируемая дата возвращения',
     budgetRangeHint: 'Выберите диапазон бюджета, соответствующий вашим ожиданиям',
@@ -849,7 +895,7 @@ const translations: Record<Language, any> = {
     multipleSelections: 'Возможен множественный выбор',
     diningEnvironmentHint: 'Выберите предпочтительную среду для приема пищи',
     dietaryRestrictionsHint: 'Пожалуйста, укажите любые диетические ограничения или требования',
-    additionalRequestsHint: 'Пожалуйста, укажите любые особые требования к маршруту',
+    additionalRequestsHint: 'Пожалуйста, укажите любые особые требования к маршруту (предпочтения по еде/проживанию/транспорту/достопримечательностям и т.д. Не вводите информацию, не связанную с путешествием, так как это может привести к сбою генерации)',
     travelSummary: 'Сводка Плана Путешествия',
     travelTypeSummary: 'Тип Путешествия',
     travellerCountSummary: 'Количество Путешественников',
@@ -936,6 +982,7 @@ const getTranslation = (language: Language, key: string): any => {
 type FormData = {
   travellerType: string;
   travellers: number;
+  nationality: string; // 新增国籍字段
   departureDate: string;
   returnDate: string;
   departureTime: string; // 新增出发时间
@@ -1031,11 +1078,13 @@ export default function PlannerPage() {
   const totalSteps = 5;
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [filteredCountries, setFilteredCountries] = useState<string[]>([]);
   
   // 表单数据状态
   const [formData, setFormData] = useState<FormData>({
     travellerType: '',
     travellers: 1,
+    nationality: '', // 新增国籍字段
     departureDate: '',
     returnDate: '',
     departureTime: t.morning || 'Morning', // 默认选择上午
@@ -1362,6 +1411,7 @@ export default function PlannerPage() {
         setFormData({
           travellerType: t.travellerTypes[0],
           travellers: 1,
+          nationality: '', // 新增国籍字段
           departureDate: '',
           returnDate: '',
           departureTime: t.morning || 'Morning', // 默认选择上午
@@ -1554,6 +1604,39 @@ export default function PlannerPage() {
               <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'selectTravellerType')}</p>
             </div>
 
+            {/* 国籍信息 - 新增 */}
+            <div>
+              <label className="block text-gray-700 mb-2 font-medium flex items-center">
+                <GlobeAsiaAustraliaIcon className="w-5 h-5 mr-2 text-china-red" />
+                {getTranslation(currentLanguage, 'nationality') || 'Nationality'}
+              </label>
+              <div className="relative">
+                <input 
+                  type="text" 
+                  name="nationality"
+                  value={formData.nationality}
+                  onChange={handleNationalityChange}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
+                  placeholder={getTranslation(currentLanguage, 'enterNationality') || 'Please enter your nationality'}
+                  autoComplete="off"
+                />
+                {filteredCountries.length > 0 && (
+                  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-auto">
+                    {filteredCountries.map((country, index) => (
+                      <div 
+                        key={index} 
+                        className="p-2 hover:bg-gray-100 cursor-pointer"
+                        onClick={() => handleSelectNationality(country)}
+                      >
+                        {country}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'enterNationality')}</p>
+            </div>
+
             {/* 旅行人数 */}
             <div>
               <label className="block text-gray-700 mb-2 font-medium flex items-center">
@@ -1596,7 +1679,7 @@ export default function PlannerPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-gray-700 mb-2 font-medium flex items-center">
-                  <CalendarDaysIcon className="w-5 h-5 mr-2 text-china-red" />
+                  <CalendarIcon className="w-5 h-5 mr-2 text-china-red" />
                   {getTranslation(currentLanguage, 'departureDate')}
                 </label>
                 <div className="relative">
@@ -2026,6 +2109,7 @@ export default function PlannerPage() {
       const defaultFormData = {
         travellerType: getTranslation(supportedLanguage, 'travellerTypes')[0] || '',
         travellers: 1,  // 修改默认值为1
+        nationality: '', // 新增国籍字段
         departureDate: '',
         returnDate: '',
         departureTime: getTranslation(supportedLanguage, 'morning') || 'Morning',
@@ -2226,6 +2310,28 @@ export default function PlannerPage() {
       }
     };
   }, []);
+
+  // 添加处理国籍输入框变化的函数
+  const handleNationalityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setFormData(prev => ({ ...prev, nationality: value }));
+    
+    // 根据输入过滤国家列表
+    if (value.trim() === '') {
+      setFilteredCountries([]);
+    } else {
+      const filtered = countriesList.filter(country =>
+        country.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredCountries(filtered.slice(0, 10)); // 限制只显示前10个结果
+    }
+  };
+
+  // 处理选择国籍的函数
+  const handleSelectNationality = (country: string) => {
+    setFormData(prev => ({ ...prev, nationality: country }));
+    setFilteredCountries([]);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
