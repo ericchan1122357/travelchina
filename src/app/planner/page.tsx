@@ -55,13 +55,14 @@ const translations: Record<Language, any> = {
     foodTypes: 'Food Types',
     foodTypePref: ['Seafood', 'Meat Dishes', 'Vegetarian', 'Noodles', 'Rice-based'],
     diningEnvironment: 'Dining Environment',
-    diningEnvOptions: ['Local Popular Restaurants', 'Fine Dining', 'Street Food', 'Theme Restaurants', 'Quick Meals'],
+    diningEnvOptions: ['Local Popular Restaurants', 'Fine Dining', 'Street Food', 'Western Restaurants', 'Quick Meals'],
     spiciness: 'Spiciness Preference',
     dietaryRestrictions: 'Dietary Restrictions',
     additionalRequests: 'Additional Requests',
     requestsPlaceholder: 'Please tell us any special requirements or expectations...',
     nextStep: 'Next Step',
     prevStep: 'Previous',
+    submit: 'Submit',
     generatePlan: 'Generate Travel Plan',
     footer: '© 2023 China Travel Guide. All rights reserved.',
     cities: ['Beijing', 'Shanghai', "Xi'an", 'Chengdu', 'Hangzhou', 'Guilin', 'Hong Kong', 'Taiwan'],
@@ -167,13 +168,14 @@ const translations: Record<Language, any> = {
     foodTypes: '食物类型偏好',
     foodTypePref: ['海鲜', '肉类', '素食', '面食', '米饭类'],
     diningEnvironment: '用餐环境',
-    diningEnvOptions: ['本地热门餐厅', '高档餐厅', '街边小吃', '特色主题餐厅', '快餐'],
+    diningEnvOptions: ['本地热门餐厅', '高档餐厅', '街边小吃', '西餐厅', '快餐'],
     spiciness: '辣度偏好',
     dietaryRestrictions: '饮食限制',
     additionalRequests: '额外需求',
     requestsPlaceholder: '请告诉我们您的任何特殊需求或期望...',
     nextStep: '下一步',
     prevStep: '上一步',
+    submit: '提交',
     generatePlan: '生成旅行计划',
     footer: '© 2023 中国旅游攻略. 保留所有权利.',
     cities: ['北京', '上海', '西安', '成都', '杭州', '桂林', '香港', '台湾'],
@@ -286,6 +288,7 @@ const translations: Record<Language, any> = {
     requestsPlaceholder: 'Veuillez nous indiquer vos exigences ou attentes particulières...',
     nextStep: 'Étape Suivante',
     prevStep: 'Précédent',
+    submit: 'Soumettre',
     generatePlan: 'Générer le Plan de Voyage',
     footer: '© 2023 Guide de Voyage en Chine. Tous droits réservés.',
     cities: ['Pékin', 'Shanghai', 'Xi\'an', 'Chengdu', 'Hangzhou', 'Guilin', 'Guangzhou', 'Shenzhen'],
@@ -391,6 +394,7 @@ const translations: Record<Language, any> = {
     requestsPlaceholder: 'Bitte teilen Sie uns besondere Anforderungen oder Erwartungen mit...',
     nextStep: 'Nächster Schritt',
     prevStep: 'Zurück',
+    submit: 'Absenden',
     generatePlan: 'Reiseplan generieren',
     footer: '© 2023 China-Reiseführer. Alle Rechte vorbehalten.',
     cities: ['Peking', 'Shanghai', 'Xi\'an', 'Chengdu', 'Hangzhou', 'Guilin', 'Guangzhou', 'Shenzhen'],
@@ -496,6 +500,7 @@ const translations: Record<Language, any> = {
     requestsPlaceholder: '特別な要件や期待をお知らせください...',
     nextStep: '次のステップ',
     prevStep: '前へ',
+    submit: '提出',
     generatePlan: '旅行プランを生成',
     footer: '© 2023 中国旅行ガイド. 全著作権所有.',
     cities: ['北京', '上海', '西安', '成都', '杭州', '桂林', '香港', '台湾'],
@@ -601,6 +606,7 @@ const translations: Record<Language, any> = {
     requestsPlaceholder: '특별한 요구 사항이나 기대를 알려주세요...',
     nextStep: '다음 단계',
     prevStep: '이전',
+    submit: '제출',
     generatePlan: '여행 계획 생성',
     footer: '© 2023 중국 여행 가이드. 모든 권리 보유.',
     cities: ['베이징', '상하이', '시안', '청두', '항저우', '구이린', '광저우', '선전'],
@@ -706,6 +712,7 @@ const translations: Record<Language, any> = {
     requestsPlaceholder: 'Por favor, díganos cualquier requisito o expectativa especial...',
     nextStep: 'Siguiente Paso',
     prevStep: 'Anterior',
+    submit: 'Enviar',
     generatePlan: 'Generar Plan de Viaje',
     footer: '© 2023 Guía de Viajes de China. Todos los derechos reservados.',
     cities: ['Pekín', 'Shanghái', "Xi'an", 'Chengdu', 'Hangzhou', 'Guilin', 'Guangzhou', 'Shenzhen'],
@@ -811,6 +818,7 @@ const translations: Record<Language, any> = {
     requestsPlaceholder: 'Пожалуйста, расскажите нам о любых особых требованиях или ожиданиях...',
     nextStep: 'Следующий Шаг',
     prevStep: 'Предыдущий',
+    submit: 'Отправить',
     generatePlan: 'Сгенерировать План Путешествия',
     footer: '© 2023 Путеводитель по Китаю. Все права защищены.',
     cities: ['Пекин', 'Шанхай', 'Сиань', 'Чэнду', 'Ханчжоу', 'Гуйлинь', 'Гуанчжоу', 'Шэньчжэнь'],
@@ -1027,7 +1035,7 @@ export default function PlannerPage() {
   // 表单数据状态
   const [formData, setFormData] = useState<FormData>({
     travellerType: '',
-    travellers: 2,
+    travellers: 1,
     departureDate: '',
     returnDate: '',
     departureTime: t.morning || 'Morning', // 默认选择上午
@@ -1349,7 +1357,7 @@ export default function PlannerPage() {
         // 重置表单为默认值
         setFormData({
           travellerType: t.travellerTypes[0],
-          travellers: 2,
+          travellers: 1,
           departureDate: '',
           returnDate: '',
           departureTime: t.morning || 'Morning', // 默认选择上午
@@ -1919,7 +1927,7 @@ export default function PlannerPage() {
                 name="dietaryRestrictions"
                 value={formData.dietaryRestrictions}
                 onChange={handleInputChange}
-                placeholder="如食物过敏、宗教禁忌等"
+                placeholder={getTranslation(currentLanguage, 'dietaryRestrictionsHint') || '如食物过敏、宗教禁忌等'}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-200 focus:border-china-red transition-colors"
               />
               <p className="mt-1 text-sm text-gray-500">{getTranslation(currentLanguage, 'dietaryRestrictionsHint')}</p>
