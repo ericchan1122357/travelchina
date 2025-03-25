@@ -16,7 +16,7 @@ export const frTranslations: TranslationValue = {
   'value.1.title': 'Itinéraires personnalisés',
   'value.1.desc': 'Personnalisez votre voyage parfait selon vos intérêts',
   'value.2.title': 'Guides experts',
-  'value.2.desc': 'Guidage basé sur les données de 70 millions de passionnés de voyage',
+  'value.2.desc': 'Guidage de données massives de 70 millions d\'amateurs de voyages',
   'value.3.title': 'Recommandations intelligentes',
   'value.3.desc': 'Découvrez la beauté de la Chine sans barrières',
   destinationsTitle: 'Destinations populaires',

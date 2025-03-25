@@ -94,7 +94,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
 
       {/* 在这里渲染子组件 */}
       {children && (
-        <div className="absolute bottom-16 left-0 right-0 mx-auto max-w-6xl px-3 sm:px-4">
+        <div className="absolute bottom-16 left-0 right-0 mx-auto max-w-7xl px-3 sm:px-4">
           {children}
         </div>
       )}

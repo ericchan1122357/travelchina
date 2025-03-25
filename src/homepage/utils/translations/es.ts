@@ -30,7 +30,7 @@ export const esTranslations: TranslationValue = {
   'value.1.title': 'Viajes Personalizados',
   'value.1.desc': 'Itinerarios adaptados a sus preferencias',
   'value.2.title': 'Experiencias Locales',
-  'value.2.desc': 'Recomendaciones de 70 millones de entusiastas de viajes',
+  'value.2.desc': 'Recomendaciones de big data de 70 millones de amantes de viajes',
   'value.3.title': 'Soporte 24/7',
   'value.3.desc': 'Experimente la belleza de China sin barreras',
 
