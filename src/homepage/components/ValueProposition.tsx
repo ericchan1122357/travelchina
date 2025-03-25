@@ -31,10 +31,10 @@ const ValueProposition = ({ values }: ValuePropositionProps) => {
                 animationDelay: `${index * 200}ms`
               }}
             >
-              <h3 className="text-lg font-bold text-black mb-2 hover:scale-105 transition-transform duration-300">
+              <h3 className="text-[#1d1d1f] text-lg font-bold mb-2 hover:scale-105 transition-transform duration-300">
                 {value.title}
               </h3>
-              <p className="text-black text-sm mx-auto break-words hover:text-china-red transition-colors duration-300">
+              <p className="text-[#86868b] text-sm mx-auto break-words hover:text-china-red transition-colors duration-300">
                 {value.description}
               </p>
             </div>

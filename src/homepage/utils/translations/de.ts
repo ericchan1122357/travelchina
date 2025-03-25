@@ -44,9 +44,9 @@ export const deTranslations: TranslationValue = {
   // 价值主张
   'value.1.title': 'Maßgeschneiderte Reise',
   'value.1.desc': 'Erstellen Sie Ihren eigenen Reiseplan',
-  'value.2.title': 'Lokale Erfahrung',
-  'value.2.desc': 'Big-Data-Empfehlungen von 70 Millionen Reiseliebhabern',
-  'value.3.title': '24/7 Support',
+  'value.2.title': 'Big-Data-Führung',
+  'value.2.desc': 'Empfohlen von 70 Millionen Reisebegeisterten',
+  'value.3.title': 'Sorgenfreies Erlebnis',
   'value.3.desc': 'Entdecken Sie China ohne Hindernisse',
 
   // 目的地相关

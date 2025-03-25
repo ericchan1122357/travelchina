@@ -29,9 +29,9 @@ export const koTranslations: TranslationValue = {
 
   'value.1.title': '맞춤형 여행',
   'value.1.desc': '나만의 여행 계획하기',
-  'value.2.title': '현지 경험',
-  'value.2.desc': '7000만 여행 애호가의 빅데이터 추천',
-  'value.3.title': '24시간 지원',
+  'value.2.title': '빅데이터 가이드',
+  'value.2.desc': '7000만 여행 애호가의 추천',
+  'value.3.title': '걱정 없는 체험',
   'value.3.desc': '장벽 없이 중국의 아름다움을 경험하세요',
 
   destinationsTitle: '인기 목적지',
