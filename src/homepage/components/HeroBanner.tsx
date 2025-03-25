@@ -32,7 +32,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
 
   return (
     <div 
-      className="relative h-[70vh] overflow-hidden"
+      className="relative h-[85vh] overflow-hidden"
       role="banner"
       aria-label="主页横幅"
     >
