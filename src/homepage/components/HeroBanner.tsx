@@ -32,7 +32,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
 
   return (
     <div 
-      className="relative h-[75vh] overflow-hidden"
+      className="relative h-[70vh] overflow-hidden"
       role="banner"
       aria-label="主页横幅"
     >
@@ -52,13 +52,13 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
       <div className="relative h-full flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
           <h1 
-            className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in"
+            className="text-3xl md:text-5xl font-bold mb-3 animate-fade-in"
             aria-label={data.title}
           >
             {data.title}
           </h1>
           <p 
-            className="text-xl md:text-2xl mb-8 max-w-2xl animate-fade-in-delay"
+            className="text-lg md:text-xl mb-6 max-w-2xl animate-fade-in-delay"
             aria-label={data.subtitle}
           >
             {data.subtitle}
@@ -66,7 +66,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
           <div className="relative" style={{ zIndex: 100 }}>
             <a
               href={plannerUrl}
-              className="group relative inline-flex items-center bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
+              className="group relative inline-flex items-center bg-china-red text-white px-6 py-2.5 rounded-lg text-base font-semibold 
                      hover:bg-red-700 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(220,38,38,0.7)]
                      transition-all duration-300 ease-out
                      focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent 
@@ -94,8 +94,8 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
 
       {/* 在这里渲染子组件 */}
       {children && (
-        <div className="absolute bottom-20 left-0 right-0 mx-auto max-w-2xl px-4 sm:px-6">
-          <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-md py-4 px-3">
+        <div className="absolute bottom-24 left-0 right-0 mx-auto max-w-xl px-3 sm:px-4">
+          <div className="bg-white/95 backdrop-blur-sm rounded-md shadow-sm py-2 px-2 border border-gray-100">
             {children}
           </div>
         </div>
@@ -103,13 +103,13 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
 
       {/* 向下滚动指示器 */}
       <div 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce"
         role="presentation"
         aria-hidden="true"
         style={{ zIndex: 50 }}
       >
         <svg
-          className="w-6 h-6 text-white"
+          className="w-5 h-5 text-white opacity-70"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
