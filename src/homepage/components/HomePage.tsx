@@ -48,15 +48,15 @@ const HomePage = () => {
               subtitle: t('heroSubtitle') as string,
               ctaText: t('startPlanning') as string
             }}
-          />
-          
-          <ValueProposition 
-            values={valueProps.map((prop: ValueProp, index: number) => ({
-              ...prop,
-              title: t(`value.${index + 1}.title` as keyof TranslationValue) as string,
-              description: t(`value.${index + 1}.desc` as keyof TranslationValue) as string
-            }))} 
-          />
+          >
+            <ValueProposition 
+              values={valueProps.map((prop: ValueProp, index: number) => ({
+                ...prop,
+                title: t(`value.${index + 1}.title` as keyof TranslationValue) as string,
+                description: t(`value.${index + 1}.desc` as keyof TranslationValue) as string
+              }))} 
+            />
+          </HeroBanner>
           
           <DestinationSection 
             title={t('destinationsTitle') as string}

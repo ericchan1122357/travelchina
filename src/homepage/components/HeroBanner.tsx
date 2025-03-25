@@ -1,14 +1,16 @@
 'use client';
 
+import { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 import { HeroBannerData } from '../types';
 import OptimizedImage from './common/OptimizedImage';
 
 interface HeroBannerProps {
   data: HeroBannerData;
+  children?: ReactNode;
 }
 
-const HeroBanner = ({ data }: HeroBannerProps) => {
+const HeroBanner = ({ data, children }: HeroBannerProps) => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
 
   return (
     <div 
-      className="relative h-screen overflow-hidden"
+      className="relative h-[75vh] overflow-hidden"
       role="banner"
       aria-label="主页横幅"
     >
@@ -89,6 +91,15 @@ const HeroBanner = ({ data }: HeroBannerProps) => {
           </div>
         </div>
       </div>
+
+      {/* 在这里渲染子组件 */}
+      {children && (
+        <div className="absolute bottom-24 left-0 right-0 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-lg py-8 px-4">
+            {children}
+          </div>
+        </div>
+      )}
 
       {/* 向下滚动指示器 */}
       <div 
