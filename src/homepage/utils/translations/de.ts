@@ -45,7 +45,7 @@ export const deTranslations: TranslationValue = {
   'value.1.title': 'Maßgeschneiderte Reise',
   'value.1.desc': 'Erstellen Sie Ihren eigenen Reiseplan',
   'value.2.title': 'Lokale Erfahrung',
-  'value.2.desc': 'Big-Data-Beratung von 70 Millionen Reisebegeisterten',
+  'value.2.desc': 'Empfehlungen auf Basis von Daten von 70 Millionen Reisebegeisterten',
   'value.3.title': '24/7 Support',
   'value.3.desc': 'Entdecken Sie China ohne Hindernisse',
 

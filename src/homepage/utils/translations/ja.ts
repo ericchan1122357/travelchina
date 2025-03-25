@@ -59,7 +59,7 @@ export const jaTranslations: TranslationValue = {
   'value.1.title': 'パーソナライズされたおすすめ',
   'value.1.desc': 'あなたの好みに合わせた旅程をカスタマイズ',
   'value.2.title': 'プロフェッショナルなガイダンス',
-  'value.2.desc': '7000万人の旅行愛好家からのビッグデータガイダンス',
+  'value.2.desc': '7000万人の旅行愛好家からのおすすめ',
   'value.3.title': '安心な体験',
   'value.3.desc': 'バリアフリーで中国の美しさを体験',
   'main.features.title': '特徴',

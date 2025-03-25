@@ -52,7 +52,7 @@ export const zhTranslations: TranslationValue = {
   'value.1.title': '个性化推荐',
   'value.1.desc': '根据您的喜好定制行程',
   'value.2.title': '专业指导',
-  'value.2.desc': '大数据指导 7000万旅游发烧友的选择',
+  'value.2.desc': '大数据指导 7000万旅游发烧友的推荐',
   'value.3.title': '无忧体验',
   'value.3.desc': '无障碍体验中国之美',
   'main.features.title': '特色功能',
