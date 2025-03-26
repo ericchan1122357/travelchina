@@ -28,16 +28,24 @@ import {
   whyUs
 } from '@/homepage/utils/mockData';
 
+// 缓存视频加载状态，确保页面间导航不会重新加载视频
+let globalVideoPreloaded = false;
+
 const HomePage = () => {
   const router = useRouter();
   const { currentLanguage, setCurrentLanguage } = useLanguage();
-  const [isVideoPreloaded, setIsVideoPreloaded] = useState(false);
+  const [isVideoPreloaded, setIsVideoPreloaded] = useState(globalVideoPreloaded);
 
   // 获取当前语言的翻译
   const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
   // 优化的视频预加载
   useEffect(() => {
+    // 如果视频已全局预加载，则无需再次加载
+    if (globalVideoPreloaded) {
+      return;
+    }
+
     const preloadVideo = () => {
       // 创建一个link预加载标签
       const link = document.createElement('link');
@@ -66,11 +74,19 @@ const HomePage = () => {
       // 设置视频加载事件
       video.onloadeddata = () => {
         setIsVideoPreloaded(true);
+        globalVideoPreloaded = true;  // 设置全局状态
+        
+        // 保存在sessionStorage中，确保页面刷新后也能使用缓存
+        try {
+          sessionStorage.setItem('videoPreloaded', 'true');
+        } catch (e) {
+          console.warn('无法在sessionStorage中存储视频加载状态');
+        }
+        
         // 暂停预加载的视频
         video.pause();
         // 清理DOM
         document.body.removeChild(video);
-        document.head.removeChild(link);
       };
 
       // 开始加载
@@ -78,6 +94,19 @@ const HomePage = () => {
       video.load();
     };
 
+    // 检查sessionStorage中是否有缓存状态
+    try {
+      const cached = sessionStorage.getItem('videoPreloaded');
+      if (cached === 'true') {
+        setIsVideoPreloaded(true);
+        globalVideoPreloaded = true;
+        return;
+      }
+    } catch (e) {
+      console.warn('无法读取sessionStorage');
+    }
+
+    // 没有缓存，开始预加载
     if (!isVideoPreloaded) {
       preloadVideo();
     }
@@ -89,7 +118,9 @@ const HomePage = () => {
     document.head.appendChild(hint);
 
     return () => {
-      document.head.removeChild(hint);
+      if (hint.parentNode) {
+        document.head.removeChild(hint);
+      }
     };
   }, [isVideoPreloaded]);
 
@@ -153,6 +184,7 @@ const HomePage = () => {
               subtitle: t('heroSubtitle') as string,
               ctaText: t('startPlanning') as string
             }}
+            videoPreloaded={isVideoPreloaded}
           >
             <ValueProposition 
               values={valueProps.map((prop: ValueProp, index: number) => ({

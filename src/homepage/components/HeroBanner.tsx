@@ -8,11 +8,12 @@ import OptimizedImage from './common/OptimizedImage';
 interface HeroBannerProps {
   data: HeroBannerData;
   children?: ReactNode;
+  videoPreloaded?: boolean;  // 新增属性，标识视频是否已预加载
 }
 
-const HeroBanner = ({ data, children }: HeroBannerProps) => {
+const HeroBanner = ({ data, children, videoPreloaded = false }: HeroBannerProps) => {
   const [scrollY, setScrollY] = useState(0);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(videoPreloaded);
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -25,16 +26,17 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
       // 控制按钮固定位置
       if (containerRef.current && ctaButtonRef.current) {
         const containerRect = containerRef.current.getBoundingClientRect();
+        const navbarHeight = 64; // 导航栏高度，约为16rem = 64px
         
         // 确保在横幅可见时，按钮保持在横幅区域内的固定位置
-        if (containerRect.bottom > 0) {
+        if (containerRect.bottom > navbarHeight) {
           // 使按钮固定在横幅内合适位置
           ctaButtonRef.current.style.position = 'absolute';
           ctaButtonRef.current.style.transform = 'none';
           ctaButtonRef.current.style.top = '60%'; // 位于英雄横幅的60%位置
           ctaButtonRef.current.style.left = '8%'; // 距离左侧8%
         } else {
-          // 当横幅不可见时，隐藏按钮
+          // 当横幅不可见或被导航栏遮挡时，隐藏按钮
           ctaButtonRef.current.style.position = 'absolute';
           ctaButtonRef.current.style.top = '-9999px';
         }
@@ -42,11 +44,36 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    // 初始调用一次，确保页面加载时正确设置
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // 优化的视频预加载和播放控制
   useEffect(() => {
+    // 如果视频已经预加载，不需要重新加载
+    if (videoPreloaded && videoRef.current) {
+      videoRef.current.src = '/videos/banner-video.mp4';
+      videoRef.current.loop = true;
+      videoRef.current.muted = true;
+      videoRef.current.playsInline = true;
+      videoRef.current.autoplay = true;
+      videoRef.current.defaultMuted = true;
+      
+      // 尝试播放预加载的视频
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.warn('预加载视频播放失败:', error);
+        });
+      }
+      
+      // 标记为已加载
+      setIsVideoLoaded(true);
+      return;
+    }
+    
     const preloadVideo = async () => {
       try {
         if (videoRef.current) {
@@ -107,7 +134,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
         videoRef.current.load();
       }
     };
-  }, []);
+  }, [videoPreloaded]);
 
   // 计算视差效果
   const parallaxOffset = Math.min(scrollY * 0.5, 100); // 限制最大偏移
@@ -124,16 +151,31 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
       style={{ 
         backgroundColor: '#000', 
         gridTemplate: 'none',
-        display: 'block'
+        display: 'block',
+        border: 'none', // 防止边框产生网格
+        outline: 'none',
+        backgroundImage: 'none' // 移除任何可能的背景图像
       }}
     >
+      {/* 纯黑色背景层 - 用于防止任何网格透过 */}
+      <div 
+        className="absolute inset-0"
+        style={{ 
+          backgroundColor: '#000',
+          zIndex: 1
+        }}
+      />
+
       {/* 背景层 */}
       <div 
         className="absolute inset-0 video-container"
         style={{ 
           backgroundColor: '#000',
           backgroundImage: 'none',
-          display: 'block'
+          display: 'block',
+          zIndex: 2,
+          border: 'none',
+          outline: 'none'
         }}
       >
         {!videoError ? (
@@ -142,7 +184,9 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             style={{ 
               backgroundColor: '#000',
               backgroundImage: 'none',
-              display: 'block'
+              display: 'block',
+              border: 'none',
+              outline: 'none'
             }}
           >
             <div 
@@ -152,7 +196,8 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
                 backgroundImage: 'none',
                 display: 'block',
                 border: 'none',
-                outline: 'none'
+                outline: 'none',
+                boxShadow: 'none'
               }}
             >
               <video
@@ -169,7 +214,8 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
                   border: 'none',
                   outline: 'none',
                   opacity: isVideoLoaded ? 1 : 0,
-                  transition: 'opacity 1000ms ease-in-out'
+                  transition: 'opacity 1000ms ease-in-out',
+                  boxShadow: 'none'
                 }}
                 onLoadedData={() => setIsVideoLoaded(true)}
                 onError={() => {
@@ -189,7 +235,10 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             style={{ 
               backgroundImage: `url(${data.backgroundImageUrl})`,
               transform: `translate3d(0, ${parallaxOffset}px, 0)`,
-              filter: 'brightness(1.2) contrast(1.1)' // 增加亮度和对比度
+              filter: 'brightness(1.2) contrast(1.1)', // 增加亮度和对比度
+              border: 'none',
+              outline: 'none',
+              boxShadow: 'none'
             }}
           />
         )}
@@ -198,13 +247,17 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
           className="absolute inset-0 pointer-events-none gradient-overlay"
           style={{
             backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.7), transparent)',
-            display: 'block'
+            display: 'block',
+            zIndex: 3,
+            border: 'none',
+            outline: 'none',
+            boxShadow: 'none'
           }}
         ></div>
       </div>
 
       {/* 内容 */}
-      <div className="relative h-full flex flex-col justify-center items-start">
+      <div className="relative h-full flex flex-col justify-center items-start" style={{ zIndex: 4 }}>
         <div className="max-w-7xl mx-auto px-8 w-full text-white">
           <h1 
             className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in"
@@ -223,7 +276,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             className="inline-block hero-cta-button"
             style={{
               position: 'absolute',
-              zIndex: 100,
+              zIndex: 5, // 降低z-index，确保导航栏可以覆盖它
               transform: 'none'
             }}
           >
@@ -256,7 +309,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
 
       {/* 在这里渲染子组件 */}
       {children && (
-        <div className="absolute bottom-16 left-0 right-0 mx-auto max-w-7xl px-3 sm:px-4">
+        <div className="absolute bottom-16 left-0 right-0 mx-auto max-w-7xl px-3 sm:px-4" style={{ zIndex: 4 }}>
           {children}
         </div>
       )}
@@ -266,7 +319,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
         className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce"
         role="presentation"
         aria-hidden="true"
-        style={{ zIndex: 50 }}
+        style={{ zIndex: 4 }} // 降低z-index确保不会超过导航栏
       >
         <svg
           className="w-5 h-5 text-white opacity-70"
