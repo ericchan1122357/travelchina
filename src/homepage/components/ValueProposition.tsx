@@ -16,8 +16,8 @@ const ValueProposition = ({ values }: ValuePropositionProps) => {
   }, []);
 
   return (
-    <section className="py-3">
-      <div className="mx-auto">
+    <section className="absolute top-4 left-0 right-0 z-10 py-3">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {values.map((value, index) => (
             <div 
@@ -31,10 +31,10 @@ const ValueProposition = ({ values }: ValuePropositionProps) => {
                 animationDelay: `${index * 200}ms`
               }}
             >
-              <h3 className="text-[#1d1d1f] text-lg font-bold mb-2 hover:scale-105 transition-transform duration-300">
+              <h3 className="text-white text-lg font-bold mb-2 hover:scale-105 transition-transform duration-300">
                 {value.title}
               </h3>
-              <p className="text-[#86868b] text-sm mx-auto break-words hover:text-china-red transition-colors duration-300">
+              <p className="text-white/80 text-sm mx-auto break-words hover:text-white transition-colors duration-300">
                 {value.description}
               </p>
             </div>
