@@ -13,7 +13,7 @@ import CallToAction from './CallToAction';
 import Footer from './Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ValueProp } from '@/homepage/types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // 示例数据
 import { 
@@ -28,18 +28,58 @@ import {
 const HomePage = () => {
   const router = useRouter();
   const { currentLanguage, setCurrentLanguage } = useLanguage();
+  const [isVideoPreloaded, setIsVideoPreloaded] = useState(false);
 
   // 获取当前语言的翻译
   const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
-  // 预加载视频
+  // 优化的视频预加载
   useEffect(() => {
-    const preloadVideo = () => {
-      const video = new Audio();
-      video.src = '/videos/banner-video.mp4';
+    const preloadVideo = async () => {
+      try {
+        // 创建一个link预加载标签
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'video';
+        link.href = '/videos/banner-video.mp4';
+        document.head.appendChild(link);
+
+        // 使用Fetch API预加载视频
+        const response = await fetch('/videos/banner-video.mp4', {
+          method: 'GET',
+          headers: {
+            'Accept': 'video/mp4'
+          },
+          cache: 'force-cache'
+        });
+        
+        if (response.ok) {
+          const blob = await response.blob();
+          // 创建一个视频元素来预热视频
+          const video = document.createElement('video');
+          video.style.display = 'none';
+          video.preload = 'auto';
+          video.src = URL.createObjectURL(blob);
+          document.body.appendChild(video);
+          
+          // 开始加载视频
+          await video.load();
+          setIsVideoPreloaded(true);
+
+          // 清理
+          URL.revokeObjectURL(video.src);
+          document.body.removeChild(video);
+          document.head.removeChild(link);
+        }
+      } catch (error) {
+        console.error('视频预加载失败:', error);
+      }
     };
-    preloadVideo();
-  }, []);
+
+    if (!isVideoPreloaded) {
+      preloadVideo();
+    }
+  }, [isVideoPreloaded]);
 
   // 错误边界
   try {

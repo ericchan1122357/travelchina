@@ -15,6 +15,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,26 +26,46 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 预加载视频
+  // 优化的视频预加载
   useEffect(() => {
-    const preloadVideo = () => {
-      if (videoRef.current) {
-        videoRef.current.load();
+    const preloadVideo = async () => {
+      try {
+        if (videoRef.current) {
+          // 设置视频加载优先级
+          videoRef.current.preload = 'auto';
+          
+          // 使用Fetch API预加载视频
+          const response = await fetch('/videos/banner-video.mp4');
+          const blob = await response.blob();
+          const videoUrl = URL.createObjectURL(blob);
+          
+          if (videoRef.current) {
+            videoRef.current.src = videoUrl;
+            // 开始加载视频
+            await videoRef.current.load();
+            
+            // 清理URL对象
+            URL.revokeObjectURL(videoUrl);
+          }
+        }
+      } catch (error) {
+        console.error('视频预加载失败:', error);
+        setVideoError(true);
       }
     };
+
     preloadVideo();
   }, []);
 
-  const parallaxStyle = {
-    transform: `translateY(${scrollY * 0.5}px)`,
-    transition: 'transform 0.1s ease-out'
-  };
+  // 计算视差效果
+  const parallaxOffset = Math.min(scrollY * 0.5, 100); // 限制最大偏移
 
   // 使用相对路径而不是绝对URL
   const plannerUrl = `/planner`;
 
   return (
     <div 
+      ref={containerRef}
       className="relative h-[56.25vw] max-h-[85vh] overflow-hidden bg-black"
       role="banner"
       aria-label="主页横幅"
@@ -52,42 +73,45 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
       {/* 背景层 */}
       <div className="absolute inset-0 bg-black">
         {!videoError ? (
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              isVideoLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{ 
-              ...parallaxStyle,
-              objectFit: 'cover',
-              objectPosition: 'center center',
-              background: 'none',
-              backfaceVisibility: 'hidden',
-              transform: `translateY(${scrollY * 0.5}px) translateZ(0)`,
-              willChange: 'transform'
-            }}
-            onLoadedData={() => setIsVideoLoaded(true)}
-            onError={() => {
-              console.error('视频加载失败，切换到图片背景');
-              setVideoError(true);
-            }}
-          >
-            <source src="/videos/banner-video.mp4" type="video/mp4" />
-          </video>
+          <div className="absolute inset-0 overflow-hidden">
+            <video
+              ref={videoRef}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                isVideoLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{ 
+                objectFit: 'cover',
+                objectPosition: 'center center',
+                transform: `translate3d(0, ${parallaxOffset}px, 0)`,
+                willChange: 'transform',
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden'
+              }}
+              onLoadedData={() => setIsVideoLoaded(true)}
+              onError={() => {
+                console.error('视频加载失败，切换到图片背景');
+                setVideoError(true);
+              }}
+            >
+              <source 
+                src="/videos/banner-video.mp4" 
+                type="video/mp4"
+              />
+            </video>
+          </div>
         ) : (
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ 
               backgroundImage: `url(${data.backgroundImageUrl})`,
-              ...parallaxStyle,
+              transform: `translate3d(0, ${parallaxOffset}px, 0)`,
+              willChange: 'transform',
               backfaceVisibility: 'hidden',
-              transform: `translateY(${scrollY * 0.5}px) translateZ(0)`,
-              willChange: 'transform'
+              WebkitBackfaceVisibility: 'hidden'
             }}
           />
         )}
@@ -110,7 +134,15 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
           >
             {data.subtitle}
           </p>
-          <div className="relative" style={{ zIndex: 100 }}>
+          <div 
+            className="sticky"
+            style={{ 
+              position: 'relative',
+              zIndex: 100,
+              transform: `translate3d(0, ${-scrollY * 0.1}px, 0)`,
+              willChange: 'transform'
+            }}
+          >
             <a
               href={plannerUrl}
               className="group relative inline-flex items-center bg-china-red text-white px-8 py-3 rounded-lg text-lg font-semibold 
@@ -119,7 +151,6 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
                      focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent 
                      cursor-pointer text-center no-underline overflow-hidden animate-fade-in-delay-2"
               aria-label={data.ctaText}
-              style={{ position: 'relative', zIndex: 999 }}
             >
               <span className="relative z-10 flex items-center justify-center">
                 {data.ctaText}
