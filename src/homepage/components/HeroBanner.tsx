@@ -23,29 +23,11 @@ const HeroBanner = ({ data, children, videoPreloaded = false }: HeroBannerProps)
     const handleScroll = () => {
       setScrollY(window.scrollY);
       
-      // 控制按钮固定位置
-      if (containerRef.current && ctaButtonRef.current) {
-        const containerRect = containerRef.current.getBoundingClientRect();
-        const navbarHeight = 64; // 导航栏高度，约为16rem = 64px
-        
-        // 确保在横幅可见时，按钮保持在横幅区域内的固定位置
-        if (containerRect.bottom > navbarHeight) {
-          // 使按钮固定在横幅内合适位置
-          ctaButtonRef.current.style.position = 'absolute';
-          ctaButtonRef.current.style.transform = 'none';
-          ctaButtonRef.current.style.top = '60%'; // 位于英雄横幅的60%位置
-          ctaButtonRef.current.style.left = '0%'; // 与副标题左对齐
-        } else {
-          // 当横幅不可见或被导航栏遮挡时，隐藏按钮
-          ctaButtonRef.current.style.position = 'absolute';
-          ctaButtonRef.current.style.top = '-9999px';
-        }
-      }
+      // 不再需要在此调整按钮位置，因为按钮现在使用相对定位
+      // 只保留视差效果的滚动处理
     };
 
     window.addEventListener('scroll', handleScroll);
-    // 初始调用一次，确保页面加载时正确设置
-    handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -257,8 +239,8 @@ const HeroBanner = ({ data, children, videoPreloaded = false }: HeroBannerProps)
       </div>
 
       {/* 内容 */}
-      <div className="relative h-full flex flex-col justify-center items-start" style={{ zIndex: 4 }}>
-        <div className="max-w-7xl mx-auto px-8 w-full text-white">
+      <div className="relative h-full flex flex-col justify-center items-center" style={{ zIndex: 4 }}>
+        <div className="max-w-7xl mx-auto px-8 w-full text-white text-center">
           <h1 
             className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in"
             aria-label={data.title}
@@ -266,7 +248,7 @@ const HeroBanner = ({ data, children, videoPreloaded = false }: HeroBannerProps)
             {data.title}
           </h1>
           <p 
-            className="text-xl md:text-2xl mb-12 max-w-2xl animate-fade-in-delay"
+            className="text-xl md:text-2xl mb-12 max-w-2xl mx-auto animate-fade-in-delay"
             aria-label={data.subtitle}
           >
             {data.subtitle}
@@ -275,9 +257,9 @@ const HeroBanner = ({ data, children, videoPreloaded = false }: HeroBannerProps)
             ref={ctaButtonRef}
             className="inline-block hero-cta-button"
             style={{
-              position: 'absolute',
-              zIndex: 5, // 降低z-index，确保导航栏可以覆盖它
-              transform: 'none'
+              position: 'relative', // 改为相对定位，不再使用绝对定位
+              zIndex: 5,
+              marginTop: '1rem' // 添加顶部边距，与副标题分开
             }}
           >
             <a
