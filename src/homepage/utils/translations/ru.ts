@@ -308,5 +308,23 @@ export const ruTranslations: TranslationValue = {
   'community.guides.title': 'Гиды',
   'community.guides.connect': 'Связаться',
   'community.guides.search': 'Поиск',
-  'community.guides.book': 'Забронировать'
+  'community.guides.book': 'Забронировать',
+
+  // Why China секция
+  'why.china.title': 'Почему Китай',
+  'why.china.culture.title': 'Богатая культура',
+  'why.china.culture.desc': 'Тысячелетия истории и разнообразные культурные традиции',
+  'why.china.landscapes.title': 'Захватывающие пейзажи',
+  'why.china.landscapes.desc': 'От величественных гор до идиллических водных городов',
+  'why.china.cuisine.title': 'Восхитительная кухня',
+  'why.china.cuisine.desc': 'Откройте для себя разнообразный кулинарный ландшафт Китая',
+  
+  // Why Us секция
+  'why.us.title': 'Почему путешествовать с нами',
+  'why.us.personalization.title': 'Индивидуальные путешествия',
+  'why.us.personalization.desc': 'Маршруты, адаптированные к вашим желаниям и интересам',
+  'why.us.data.title': 'Рекомендации на основе данных',
+  'why.us.data.desc': 'Наши предложения основаны на данных миллионов путешественников',
+  'why.us.worryfree.title': 'Беззаботный опыт',
+  'why.us.worryfree.desc': 'Мы заботимся о деталях, чтобы вы могли наслаждаться путешествием',
 }; 

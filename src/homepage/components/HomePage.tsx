@@ -163,40 +163,50 @@ const HomePage = () => {
             />
           </HeroBanner>
           
-          <WhySection 
-            whyChina={whyChinaData}
-            whyUs={whyUsData}
-          />
+          <div style={{ order: 1, position: 'relative', zIndex: 1 }}>
+            <WhySection 
+              whyChina={whyChinaData}
+              whyUs={whyUsData}
+            />
+          </div>
           
-          <DestinationSection 
-            title={t('destinationsTitle') as string}
-            destinations={featuredDestinations}
-            currentLanguage={currentLanguage}
-          />
+          <div style={{ order: 2, position: 'relative', zIndex: 1 }}>
+            <DestinationSection 
+              title={t('destinationsTitle') as string}
+              destinations={featuredDestinations}
+              currentLanguage={currentLanguage}
+            />
+          </div>
           
-          <TravelStoriesSection 
-            title={t('storiesTitle') as string}
-            stories={travelStories} 
-            onReadMoreClick={(storyId: string) => {
-              window.location.href = `/stories/${storyId}`;
-            }}
-            currentLanguage={currentLanguage}
-          />
+          <div style={{ order: 3, position: 'relative', zIndex: 1 }}>
+            <TravelStoriesSection 
+              title={t('storiesTitle') as string}
+              stories={travelStories} 
+              onReadMoreClick={(storyId: string) => {
+                window.location.href = `/stories/${storyId}`;
+              }}
+              currentLanguage={currentLanguage}
+            />
+          </div>
           
-          <GuidesSection 
-            title={t('guidesTitle') as string}
-            guides={travelGuides}
-            currentLanguage={currentLanguage}
-          />
+          <div style={{ order: 4, position: 'relative', zIndex: 1 }}>
+            <GuidesSection 
+              title={t('guidesTitle') as string}
+              guides={travelGuides}
+              currentLanguage={currentLanguage}
+            />
+          </div>
           
-          <CallToAction 
-            data={{
-              ...ctaData,
-              title: t('ctaTitle') as string,
-              subtitle: t('ctaSubtitle') as string,
-              buttonText: t('startPlanning') as string
-            }}
-          />
+          <div style={{ order: 5, position: 'relative', zIndex: 1 }}>
+            <CallToAction 
+              data={{
+                ...ctaData,
+                title: t('ctaTitle') as string,
+                subtitle: t('ctaSubtitle') as string,
+                buttonText: t('startPlanning') as string
+              }}
+            />
+          </div>
         </main>
         
         <Footer 

@@ -263,20 +263,21 @@ export const enTranslations: TranslationValue = {
   'destination.3.description': 'Land of Abundance',
   'destination.3.activities.food': 'Food',
 
-  // Why China and Why Us
+  // Why China section
   'why.china.title': 'Why China',
-  'why.china.culture.title': 'Cultural Treasures',
-  'why.china.culture.desc': 'Experience 5,000 years of history through ancient wonders like the Great Wall, Terra-cotta Warriors, traditional Beijing Opera, and exquisite gardens, among the cultural riches of 56 diverse ethnic groups.',
+  'why.china.culture.title': 'Rich Culture',
+  'why.china.culture.desc': 'Millennia of history and diverse cultural traditions',
   'why.china.landscapes.title': 'Breathtaking Landscapes',
-  'why.china.landscapes.desc': 'From dramatic karst formations to the vast Tibetan Plateau, from bustling modern metropolises to serene ancient water towns, China\'s diverse geography ensures every journey brings new discoveries.',
-  'why.china.cuisine.title': 'Culinary Paradise',
-  'why.china.cuisine.desc': 'Explore eight major culinary traditions and countless regional specialties. Whether it\'s Beijing duck, Sichuan hotpot, or Cantonese dim sum, there\'s always something to delight your palate.',
+  'why.china.landscapes.desc': 'From majestic mountains to idyllic water towns',
+  'why.china.cuisine.title': 'Delicious Cuisine',
+  'why.china.cuisine.desc': 'Explore China\'s diverse culinary landscape',
   
-  'why.us.title': 'Why Choose Us',
-  'why.us.personalization.title': 'Personalized Itineraries',
-  'why.us.personalization.desc': 'Custom travel plans based on your interests, budget, and schedule - creating unique experiences that perfectly match your expectations.',
-  'why.us.data.title': 'Data-Driven Insights',
-  'why.us.data.desc': 'Recommendations powered by 70 million travelers\' real experiences and reviews, ensuring quality attractions, accommodations, and dining options.',
+  // Why Us section
+  'why.us.title': 'Why Travel With Us',
+  'why.us.personalization.title': 'Personalized Travel',
+  'why.us.personalization.desc': 'Itineraries tailored to your wishes and interests',
+  'why.us.data.title': 'Data-Driven Recommendations',
+  'why.us.data.desc': 'Our suggestions are based on data from millions of travelers',
   'why.us.worryfree.title': 'Worry-Free Experience',
-  'why.us.worryfree.desc': 'Comprehensive solutions for language barriers and cultural differences, with detailed cultural guides and practical tips making your China journey effortless.'
+  'why.us.worryfree.desc': 'We handle the details so you can enjoy your journey',
 }; 

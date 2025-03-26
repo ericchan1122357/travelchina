@@ -320,5 +320,23 @@ export const esTranslations: TranslationValue = {
   'community.guides.title': 'Guías locales',
   'community.guides.connect': 'Conectar',
   'community.guides.search': 'Buscar',
-  'community.guides.book': 'Reservar'
+  'community.guides.book': 'Reservar',
+
+  // Why China parte
+  'why.china.title': 'Por qué China',
+  'why.china.culture.title': 'Cultura rica',
+  'why.china.culture.desc': 'Milenios de historia y diversas tradiciones culturales',
+  'why.china.landscapes.title': 'Paisajes impresionantes',
+  'why.china.landscapes.desc': 'Desde majestuosas montañas hasta idílicas ciudades acuáticas',
+  'why.china.cuisine.title': 'Deliciosa gastronomía',
+  'why.china.cuisine.desc': 'Descubra el variado panorama culinario de China',
+  
+  // Why Us parte
+  'why.us.title': 'Por qué viajar con nosotros',
+  'why.us.personalization.title': 'Viajes personalizados',
+  'why.us.personalization.desc': 'Itinerarios adaptados a sus deseos e intereses',
+  'why.us.data.title': 'Recomendaciones basadas en datos',
+  'why.us.data.desc': 'Nuestras sugerencias se basan en datos de millones de viajeros',
+  'why.us.worryfree.title': 'Experiencia sin preocupaciones',
+  'why.us.worryfree.desc': 'Nos ocupamos de los detalles para que pueda disfrutar de su viaje',
 }; 

@@ -10,7 +10,6 @@
 
 /* 重置所有可能导致白色网格的属性 */
 body, div, section, article, header, footer, nav, main, video {
-  background-image: none !important; /* 防止默认背景图像 */
   grid-template-columns: initial !important; /* 重置网格列 */
   grid-template-rows: initial !important; /* 重置网格行 */
   grid-template-areas: initial !important; /* 重置网格区域 */
@@ -22,7 +21,6 @@ body, div, section, article, header, footer, nav, main, video {
 /* 专门针对视频容器的重置 */
 .video-container, .hero-container, [id^="hero"], [class*="hero"] {
   display: block !important; /* 强制使用块显示而不是网格 */
-  background-image: none !important;
   grid-template: none !important;
   border: none !important;
   outline: none !important;
@@ -37,9 +35,8 @@ video {
   box-shadow: none !important;
 }
 
-/* 确保渐变效果正常显示 */
-[class*="gradient"], [class*="overlay"] {
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent) !important;
+/* 确保渐变效果正常显示 - 但不覆盖原有背景 */
+.gradient-overlay {
   display: block !important;
 }
 

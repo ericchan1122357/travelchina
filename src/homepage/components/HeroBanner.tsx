@@ -26,15 +26,16 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
       if (containerRef.current && ctaButtonRef.current) {
         const containerRect = containerRef.current.getBoundingClientRect();
         
-        // 当横幅仍然在视口中时，固定按钮位置
+        // 确保在横幅可见时，按钮保持在横幅区域内的固定位置
         if (containerRect.bottom > 0) {
+          // 使按钮固定在横幅内合适位置
           ctaButtonRef.current.style.position = 'absolute';
-          ctaButtonRef.current.style.bottom = 'auto';
-          ctaButtonRef.current.style.top = 'auto';
+          ctaButtonRef.current.style.transform = 'none';
+          ctaButtonRef.current.style.top = '60%'; // 位于英雄横幅的60%位置
+          ctaButtonRef.current.style.left = '8%'; // 距离左侧8%
         } else {
-          // 当横幅离开视口时，不显示按钮
+          // 当横幅不可见时，隐藏按钮
           ctaButtonRef.current.style.position = 'absolute';
-          ctaButtonRef.current.style.bottom = 'auto';
           ctaButtonRef.current.style.top = '-9999px';
         }
       }
@@ -44,29 +45,51 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 优化的视频预加载
+  // 优化的视频预加载和播放控制
   useEffect(() => {
     const preloadVideo = async () => {
       try {
         if (videoRef.current) {
+          // 设置视频预加载
           videoRef.current.preload = 'auto';
           videoRef.current.src = '/videos/banner-video.mp4';
           
-          // 设置视频属性
+          // 强制设置视频属性
           videoRef.current.loop = true;
           videoRef.current.muted = true;
           videoRef.current.playsInline = true;
+          videoRef.current.autoplay = true;
           
-          // 开始加载视频
+          // 确保视频可以自动播放
+          videoRef.current.defaultMuted = true;
+
+          // 监听是否可以播放
+          videoRef.current.addEventListener('canplaythrough', () => {
+            // 尝试播放
+            const playPromise = videoRef.current!.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(error => {
+                console.error('自动播放失败，尝试另一种方式:', error);
+                
+                // 监听用户交互，然后尝试播放
+                const handleUserInteraction = () => {
+                  videoRef.current!.play().catch(e => 
+                    console.error('交互后播放仍失败:', e)
+                  );
+                  
+                  // 移除事件监听
+                  document.removeEventListener('click', handleUserInteraction);
+                  document.removeEventListener('touchstart', handleUserInteraction);
+                };
+                
+                document.addEventListener('click', handleUserInteraction);
+                document.addEventListener('touchstart', handleUserInteraction);
+              });
+            }
+          });
+          
+          // 确保正确加载
           await videoRef.current.load();
-          
-          // 确保视频自动播放
-          const playPromise = videoRef.current.play();
-          if (playPromise !== undefined) {
-            playPromise.catch(error => {
-              console.error('视频自动播放失败:', error);
-            });
-          }
         }
       } catch (error) {
         console.error('视频预加载失败:', error);
@@ -75,6 +98,15 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
     };
 
     preloadVideo();
+
+    // 组件卸载时清理
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.src = '';
+        videoRef.current.load();
+      }
+    };
   }, []);
 
   // 计算视差效果
@@ -86,7 +118,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
   return (
     <div 
       ref={containerRef}
-      className="relative h-[56.25vw] max-h-[85vh] overflow-hidden"
+      className="relative h-[56.25vw] max-h-[85vh] overflow-hidden hero-container"
       role="banner"
       aria-label="主页横幅"
       style={{ 
@@ -97,7 +129,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
     >
       {/* 背景层 */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 video-container"
         style={{ 
           backgroundColor: '#000',
           backgroundImage: 'none',
@@ -106,7 +138,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
       >
         {!videoError ? (
           <div 
-            className="absolute inset-0" 
+            className="absolute inset-0 video-container" 
             style={{ 
               backgroundColor: '#000',
               backgroundImage: 'none',
@@ -114,7 +146,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             }}
           >
             <div 
-              className="absolute inset-0 overflow-hidden" 
+              className="absolute inset-0 overflow-hidden video-container" 
               style={{ 
                 backgroundColor: '#000',
                 backgroundImage: 'none',
@@ -125,7 +157,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             >
               <video
                 ref={videoRef}
-                className="absolute inset-0 w-full h-full"
+                className="absolute inset-0 w-full h-full video-background"
                 style={{ 
                   objectFit: 'cover',
                   objectPosition: 'center center',
@@ -144,6 +176,10 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
                   console.error('视频加载失败，切换到图片背景');
                   setVideoError(true);
                 }}
+                muted
+                autoPlay
+                loop
+                playsInline
               />
             </div>
           </div>
@@ -159,7 +195,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
         )}
         {/* 渐变遮罩 */}
         <div 
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none gradient-overlay"
           style={{
             backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.7), transparent)',
             display: 'block'
@@ -168,8 +204,8 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
       </div>
 
       {/* 内容 */}
-      <div className="relative h-full flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <div className="relative h-full flex flex-col justify-center items-start">
+        <div className="max-w-7xl mx-auto px-8 w-full text-white">
           <h1 
             className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in"
             aria-label={data.title}
@@ -177,17 +213,18 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             {data.title}
           </h1>
           <p 
-            className="text-xl md:text-2xl mb-8 max-w-2xl animate-fade-in-delay"
+            className="text-xl md:text-2xl mb-12 max-w-2xl animate-fade-in-delay"
             aria-label={data.subtitle}
           >
             {data.subtitle}
           </p>
           <div 
             ref={ctaButtonRef}
-            className="inline-block"
+            className="inline-block hero-cta-button"
             style={{
-              position: 'relative',
-              zIndex: 100
+              position: 'absolute',
+              zIndex: 100,
+              transform: 'none'
             }}
           >
             <a

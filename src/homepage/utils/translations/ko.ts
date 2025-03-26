@@ -320,5 +320,23 @@ export const koTranslations: TranslationValue = {
   'community.guides.title': '현지 가이드',
   'community.guides.connect': '연결',
   'community.guides.search': '검색',
-  'community.guides.book': '예약'
+  'community.guides.book': '예약',
+
+  // Why China 부분
+  'why.china.title': '중국을 선택하는 이유',
+  'why.china.culture.title': '풍부한 문화',
+  'why.china.culture.desc': '수천 년의 역사와 다양한 문화적 전통',
+  'why.china.landscapes.title': '숨막히는 경관',
+  'why.china.landscapes.desc': '웅장한 산맥부터 아름다운 수향마을까지',
+  'why.china.cuisine.title': '맛있는 요리',
+  'why.china.cuisine.desc': '중국의 다양한 요리 문화를 탐험하세요',
+  
+  // Why Us 부분
+  'why.us.title': '저희를 선택하는 이유',
+  'why.us.personalization.title': '맞춤형 여행',
+  'why.us.personalization.desc': '당신의 희망과 관심에 맞춘 여행 계획',
+  'why.us.data.title': '데이터 기반 추천',
+  'why.us.data.desc': '수백만 여행자의 데이터를 기반으로 한 추천',
+  'why.us.worryfree.title': '걱정 없는 경험',
+  'why.us.worryfree.desc': '세부 사항은 저희가 처리하니 당신은 여행을 즐기세요',
 }; 

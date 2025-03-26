@@ -209,5 +209,19 @@ export const frTranslations: TranslationValue = {
   'planner.interests.history': 'Histoire',
   'planner.accommodation.hotel': 'Hôtel',
   'planner.dining.spiciness.mild': 'Doux',
-  'planner.dining.types.chinese': 'Chinois'
+  'planner.dining.types.chinese': 'Chinois',
+  'why.china.title': 'Pourquoi la Chine',
+  'why.china.culture.title': 'Culture riche',
+  'why.china.culture.desc': 'Des millénaires d\'histoire et de traditions culturelles diversifiées',
+  'why.china.landscapes.title': 'Paysages à couper le souffle',
+  'why.china.landscapes.desc': 'Des montagnes majestueuses aux villes d\'eau idylliques',
+  'why.china.cuisine.title': 'Cuisine délicieuse',
+  'why.china.cuisine.desc': 'Découvrez le paysage culinaire varié de la Chine',
+  'why.us.title': 'Pourquoi voyager avec nous',
+  'why.us.personalization.title': 'Voyages personnalisés',
+  'why.us.personalization.desc': 'Itinéraires adaptés à vos souhaits et intérêts',
+  'why.us.data.title': 'Recommandations basées sur des données',
+  'why.us.data.desc': 'Nos suggestions sont basées sur les données de millions de voyageurs',
+  'why.us.worryfree.title': 'Expérience sans souci',
+  'why.us.worryfree.desc': 'Nous nous occupons des détails pour que vous puissiez profiter de votre voyage'
 }; 
