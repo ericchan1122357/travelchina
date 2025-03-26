@@ -16,10 +16,27 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const ctaButtonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
+      
+      // 手动控制按钮跟随效果
+      if (containerRef.current && ctaButtonRef.current) {
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const containerTop = containerRect.top;
+        const containerHeight = containerRect.height;
+        
+        // 当横幅在视口中时，使按钮保持在合适位置
+        if (containerTop <= 0 && containerTop > -containerHeight) {
+          // 计算按钮的相对位置（距离横幅底部的距离）
+          const relativePosition = Math.min(Math.abs(containerTop) / 2, containerHeight / 2);
+          ctaButtonRef.current.style.transform = `translateY(${relativePosition}px)`;
+        } else {
+          ctaButtonRef.current.style.transform = 'translateY(0)';
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -71,17 +88,32 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
       className="relative h-[56.25vw] max-h-[85vh] overflow-hidden bg-black"
       role="banner"
       aria-label="主页横幅"
+      style={{ 
+        gridTemplateColumns: 'none',  // 清除任何网格设置
+        backgroundImage: 'none',       // 清除背景图像
+      }}
     >
       {/* 背景层 */}
-      <div className="absolute inset-0 bg-black">
+      <div className="absolute inset-0 bg-black" style={{ background: 'black', backgroundImage: 'none' }}>
         {!videoError ? (
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
+          <div className="absolute inset-0" style={{ background: 'black', backgroundImage: 'none' }}>
+            <div 
+              className="absolute inset-0 overflow-hidden" 
+              style={{ 
+                transform: 'translateZ(0)',
+                background: 'black',
+                backgroundImage: 'none',
+                border: 'none',
+                outline: 'none',
+                gridTemplateColumns: 'none',
+                gridTemplateRows: 'none',
+                gridGap: '0',
+                gap: '0'
+              }}
+            >
               <video
                 ref={videoRef}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                  isVideoLoaded ? 'opacity-100' : 'opacity-0'
-                }`}
+                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
                 style={{ 
                   objectFit: 'cover',
                   objectPosition: 'center center',
@@ -89,7 +121,14 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
                   backfaceVisibility: 'hidden',
                   WebkitBackfaceVisibility: 'hidden',
                   perspective: 1000,
-                  WebkitPerspective: 1000
+                  WebkitPerspective: 1000,
+                  background: 'black',
+                  backgroundImage: 'none',
+                  filter: 'brightness(1.2) contrast(1.1)', // 增加亮度和对比度
+                  boxShadow: 'none',
+                  border: 'none',
+                  outline: 'none',
+                  opacity: isVideoLoaded ? 1 : 0
                 }}
                 onLoadedData={() => setIsVideoLoaded(true)}
                 onError={() => {
@@ -108,7 +147,8 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
               perspective: 1000,
-              WebkitPerspective: 1000
+              WebkitPerspective: 1000,
+              filter: 'brightness(1.2) contrast(1.1)' // 增加亮度和对比度
             }}
           />
         )}
@@ -132,11 +172,12 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             {data.subtitle}
           </p>
           <div 
-            className="sticky top-0"
+            ref={ctaButtonRef}
+            className="relative" 
             style={{ 
-              position: 'sticky',
-              top: '50%',
-              zIndex: 100
+              position: 'relative',
+              zIndex: 100,
+              transition: 'transform 0.2s ease-out'
             }}
           >
             <a
