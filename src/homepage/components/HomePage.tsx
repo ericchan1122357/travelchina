@@ -35,50 +35,59 @@ const HomePage = () => {
 
   // 优化的视频预加载
   useEffect(() => {
-    const preloadVideo = async () => {
-      try {
-        // 创建一个link预加载标签
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'video';
-        link.href = '/videos/banner-video.mp4';
-        document.head.appendChild(link);
+    const preloadVideo = () => {
+      // 创建一个link预加载标签
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'video';
+      link.href = '/videos/banner-video.mp4';
+      link.type = 'video/mp4';
+      
+      // 添加高优先级提示
+      link.setAttribute('importance', 'high');
+      
+      // 添加fetchpriority属性
+      link.setAttribute('fetchpriority', 'high');
+      
+      document.head.appendChild(link);
 
-        // 使用Fetch API预加载视频
-        const response = await fetch('/videos/banner-video.mp4', {
-          method: 'GET',
-          headers: {
-            'Accept': 'video/mp4'
-          },
-          cache: 'force-cache'
-        });
-        
-        if (response.ok) {
-          const blob = await response.blob();
-          // 创建一个视频元素来预热视频
-          const video = document.createElement('video');
-          video.style.display = 'none';
-          video.preload = 'auto';
-          video.src = URL.createObjectURL(blob);
-          document.body.appendChild(video);
-          
-          // 开始加载视频
-          await video.load();
-          setIsVideoPreloaded(true);
+      // 创建一个隐藏的video元素进行预加载
+      const video = document.createElement('video');
+      video.style.display = 'none';
+      video.preload = 'auto';
+      video.muted = true;
+      video.playsInline = true;
+      video.loop = true;
+      video.src = '/videos/banner-video.mp4';
+      
+      // 设置视频加载事件
+      video.onloadeddata = () => {
+        setIsVideoPreloaded(true);
+        // 暂停预加载的视频
+        video.pause();
+        // 清理DOM
+        document.body.removeChild(video);
+        document.head.removeChild(link);
+      };
 
-          // 清理
-          URL.revokeObjectURL(video.src);
-          document.body.removeChild(video);
-          document.head.removeChild(link);
-        }
-      } catch (error) {
-        console.error('视频预加载失败:', error);
-      }
+      // 开始加载
+      document.body.appendChild(video);
+      video.load();
     };
 
     if (!isVideoPreloaded) {
       preloadVideo();
     }
+
+    // 添加资源提示
+    const hint = document.createElement('link');
+    hint.rel = 'preconnect';
+    hint.href = window.location.origin;
+    document.head.appendChild(hint);
+
+    return () => {
+      document.head.removeChild(hint);
+    };
   }, [isVideoPreloaded]);
 
   // 错误边界

@@ -31,21 +31,23 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
     const preloadVideo = async () => {
       try {
         if (videoRef.current) {
-          // 设置视频加载优先级
           videoRef.current.preload = 'auto';
+          videoRef.current.src = '/videos/banner-video.mp4';
           
-          // 使用Fetch API预加载视频
-          const response = await fetch('/videos/banner-video.mp4');
-          const blob = await response.blob();
-          const videoUrl = URL.createObjectURL(blob);
+          // 设置视频属性
+          videoRef.current.loop = true;
+          videoRef.current.muted = true;
+          videoRef.current.playsInline = true;
           
-          if (videoRef.current) {
-            videoRef.current.src = videoUrl;
-            // 开始加载视频
-            await videoRef.current.load();
-            
-            // 清理URL对象
-            URL.revokeObjectURL(videoUrl);
+          // 开始加载视频
+          await videoRef.current.load();
+          
+          // 确保视频自动播放
+          const playPromise = videoRef.current.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(error => {
+              console.error('视频自动播放失败:', error);
+            });
           }
         }
       } catch (error) {
@@ -73,35 +75,29 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
       {/* 背景层 */}
       <div className="absolute inset-0 bg-black">
         {!videoError ? (
-          <div className="absolute inset-0 overflow-hidden">
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                isVideoLoaded ? 'opacity-100' : 'opacity-0'
-              }`}
-              style={{ 
-                objectFit: 'cover',
-                objectPosition: 'center center',
-                transform: `translate3d(0, ${parallaxOffset}px, 0)`,
-                willChange: 'transform',
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden'
-              }}
-              onLoadedData={() => setIsVideoLoaded(true)}
-              onError={() => {
-                console.error('视频加载失败，切换到图片背景');
-                setVideoError(true);
-              }}
-            >
-              <source 
-                src="/videos/banner-video.mp4" 
-                type="video/mp4"
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
+              <video
+                ref={videoRef}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                  isVideoLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{ 
+                  objectFit: 'cover',
+                  objectPosition: 'center center',
+                  transform: `translate3d(0, ${parallaxOffset}px, 0)`,
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  perspective: 1000,
+                  WebkitPerspective: 1000
+                }}
+                onLoadedData={() => setIsVideoLoaded(true)}
+                onError={() => {
+                  console.error('视频加载失败，切换到图片背景');
+                  setVideoError(true);
+                }}
               />
-            </video>
+            </div>
           </div>
         ) : (
           <div 
@@ -109,9 +105,10 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             style={{ 
               backgroundImage: `url(${data.backgroundImageUrl})`,
               transform: `translate3d(0, ${parallaxOffset}px, 0)`,
-              willChange: 'transform',
               backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden'
+              WebkitBackfaceVisibility: 'hidden',
+              perspective: 1000,
+              WebkitPerspective: 1000
             }}
           />
         )}
@@ -135,12 +132,11 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             {data.subtitle}
           </p>
           <div 
-            className="sticky"
+            className="sticky top-0"
             style={{ 
-              position: 'relative',
-              zIndex: 100,
-              transform: `translate3d(0, ${-scrollY * 0.1}px, 0)`,
-              willChange: 'transform'
+              position: 'sticky',
+              top: '50%',
+              zIndex: 100
             }}
           >
             <a
