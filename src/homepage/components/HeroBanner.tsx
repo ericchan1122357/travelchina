@@ -46,12 +46,12 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             muted
             loop
             playsInline
-            className={`object-cover w-full h-full transition-opacity duration-1000 filter brightness-[0.85] contrast-[1.1] ${
+            className={`object-cover w-full h-full transition-opacity duration-1000 ${
               isVideoLoaded ? 'opacity-100' : 'opacity-0'
             }`}
-            style={{
+            style={{ 
               ...parallaxStyle,
-              backdropFilter: 'blur(1px)'
+              objectPosition: 'center 20%'
             }}
             onLoadedData={() => setIsVideoLoaded(true)}
             onError={() => {
@@ -66,12 +66,13 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ 
               backgroundImage: `url(${data.backgroundImageUrl})`,
-              ...parallaxStyle
+              ...parallaxStyle,
+              backgroundPosition: 'center 20%'
             }}
           />
         )}
-        {/* 渐变遮罩 - 加强效果 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-transparent"></div>
+        {/* 渐变遮罩 */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent"></div>
       </div>
 
       {/* 内容 */}

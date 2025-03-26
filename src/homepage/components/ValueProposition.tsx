@@ -16,8 +16,8 @@ const ValueProposition = ({ values }: ValuePropositionProps) => {
   }, []);
 
   return (
-    <section className="absolute top-4 left-0 right-0 z-10 py-3">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-3">
+      <div className="mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {values.map((value, index) => (
             <div 
