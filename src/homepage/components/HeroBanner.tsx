@@ -34,7 +34,7 @@ const HeroBanner = ({ data, children, videoPreloaded = false }: HeroBannerProps)
           ctaButtonRef.current.style.position = 'absolute';
           ctaButtonRef.current.style.transform = 'none';
           ctaButtonRef.current.style.top = '60%'; // 位于英雄横幅的60%位置
-          ctaButtonRef.current.style.left = '8%'; // 距离左侧8%
+          ctaButtonRef.current.style.left = '0'; // 与标题文本左对齐，而不是使用百分比偏移
         } else {
           // 当横幅不可见或被导航栏遮挡时，隐藏按钮
           ctaButtonRef.current.style.position = 'absolute';
