@@ -12,6 +12,8 @@ interface HeroBannerProps {
 
 const HeroBanner = ({ data, children }: HeroBannerProps) => {
   const [scrollY, setScrollY] = useState(0);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,16 +38,37 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
       role="banner"
       aria-label="主页横幅"
     >
-      {/* 背景图片 */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: `url(${data.backgroundImageUrl})`,
-          ...parallaxStyle
-        }}
-      >
+      {/* 背景层 */}
+      <div className="absolute inset-0">
+        {!videoError ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className={`object-cover w-full h-full transition-opacity duration-1000 ${
+              isVideoLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={parallaxStyle}
+            onLoadedData={() => setIsVideoLoaded(true)}
+            onError={() => {
+              console.error('视频加载失败，切换到图片背景');
+              setVideoError(true);
+            }}
+          >
+            <source src="/videos/banner-video.mp4" type="video/mp4" />
+          </video>
+        ) : (
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ 
+              backgroundImage: `url(${data.backgroundImageUrl})`,
+              ...parallaxStyle
+            }}
+          />
+        )}
         {/* 渐变遮罩 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-transparent"></div>
       </div>
 
       {/* 内容 */}
