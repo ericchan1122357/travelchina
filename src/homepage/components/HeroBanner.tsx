@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { HeroBannerData } from '../types';
 import OptimizedImage from './common/OptimizedImage';
 
@@ -14,6 +14,7 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
   const [scrollY, setScrollY] = useState(0);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +23,16 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // 预加载视频
+  useEffect(() => {
+    const preloadVideo = () => {
+      if (videoRef.current) {
+        videoRef.current.load();
+      }
+    };
+    preloadVideo();
   }, []);
 
   const parallaxStyle = {
@@ -34,24 +45,31 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
 
   return (
     <div 
-      className="relative h-[85vh] overflow-hidden"
+      className="relative h-[56.25vw] max-h-[85vh] overflow-hidden bg-black"
       role="banner"
       aria-label="主页横幅"
     >
       {/* 背景层 */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-black">
         {!videoError ? (
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
-            className={`object-cover w-full h-full transition-opacity duration-1000 ${
+            preload="auto"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               isVideoLoaded ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ 
               ...parallaxStyle,
-              objectPosition: 'center 20%'
+              objectFit: 'cover',
+              objectPosition: 'center center',
+              background: 'none',
+              backfaceVisibility: 'hidden',
+              transform: `translateY(${scrollY * 0.5}px) translateZ(0)`,
+              willChange: 'transform'
             }}
             onLoadedData={() => setIsVideoLoaded(true)}
             onError={() => {
@@ -67,12 +85,14 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             style={{ 
               backgroundImage: `url(${data.backgroundImageUrl})`,
               ...parallaxStyle,
-              backgroundPosition: 'center 20%'
+              backfaceVisibility: 'hidden',
+              transform: `translateY(${scrollY * 0.5}px) translateZ(0)`,
+              willChange: 'transform'
             }}
           />
         )}
         {/* 渐变遮罩 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent pointer-events-none"></div>
       </div>
 
       {/* 内容 */}

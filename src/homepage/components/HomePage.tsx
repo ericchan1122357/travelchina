@@ -13,6 +13,7 @@ import CallToAction from './CallToAction';
 import Footer from './Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ValueProp } from '@/homepage/types';
+import { useEffect } from 'react';
 
 // 示例数据
 import { 
@@ -31,6 +32,15 @@ const HomePage = () => {
   // 获取当前语言的翻译
   const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
+  // 预加载视频
+  useEffect(() => {
+    const preloadVideo = () => {
+      const video = new Audio();
+      video.src = '/videos/banner-video.mp4';
+    };
+    preloadVideo();
+  }, []);
+
   // 错误边界
   try {
     return (
@@ -40,7 +50,7 @@ const HomePage = () => {
           onLanguageChange={setCurrentLanguage} 
         />
         
-        <main className="flex-grow pt-16">
+        <main className="flex-grow">
           <HeroBanner 
             data={{
               ...heroData,
