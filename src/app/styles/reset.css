@@ -1,0 +1,60 @@
+/* 重置CSS - 用于清除默认样式并修复白色网格问题 */
+
+/* 通用重置 */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* 重置所有可能导致白色网格的属性 */
+body, div, section, article, header, footer, nav, main, video {
+  background-image: none !important; /* 防止默认背景图像 */
+  grid-template-columns: initial !important; /* 重置网格列 */
+  grid-template-rows: initial !important; /* 重置网格行 */
+  grid-template-areas: initial !important; /* 重置网格区域 */
+  grid-template: none !important; /* 完全禁用网格模板 */
+  grid-gap: 0 !important; /* 删除网格间隙 */
+  gap: 0 !important; /* 删除任何间隙 */
+}
+
+/* 专门针对视频容器的重置 */
+.video-container, .hero-container, [id^="hero"], [class*="hero"] {
+  display: block !important; /* 强制使用块显示而不是网格 */
+  background-image: none !important;
+  grid-template: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* 针对视频元素的特殊处理 */
+video {
+  display: block !important;
+  object-fit: cover !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 确保渐变效果正常显示 */
+[class*="gradient"], [class*="overlay"] {
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent) !important;
+  display: block !important;
+}
+
+/* 修复HeroBanner中的按钮位置 */
+.hero-cta-button {
+  position: relative !important;
+  z-index: 100 !important;
+}
+
+/* 确保所有视频背景正确显示 */
+.video-background, [class*="video-bg"] {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+} 

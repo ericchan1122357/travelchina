@@ -220,4 +220,22 @@ export interface TranslationValue {
   'community.guides.connect': string;
   'community.guides.search': string;
   'community.guides.book': string;
+
+  // Why China 部分
+  'why.china.title': string;
+  'why.china.culture.title': string;
+  'why.china.culture.desc': string;
+  'why.china.landscapes.title': string;
+  'why.china.landscapes.desc': string;
+  'why.china.cuisine.title': string;
+  'why.china.cuisine.desc': string;
+  
+  // Why Us 部分
+  'why.us.title': string;
+  'why.us.personalization.title': string;
+  'why.us.personalization.desc': string;
+  'why.us.data.title': string;
+  'why.us.data.desc': string;
+  'why.us.worryfree.title': string;
+  'why.us.worryfree.desc': string;
 }

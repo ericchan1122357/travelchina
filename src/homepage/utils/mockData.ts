@@ -30,6 +30,50 @@ export const valueProps: ValueProp[] = [
   }
 ];
 
+// Why China 数据
+export const whyChina = {
+  title: 'Why China',
+  points: [
+    {
+      id: 'culture',
+      title: '文化瑰宝',
+      description: '五千年历史孕育的丰富文化遗产，从古老的长城到精美的兵马俑，从传统京剧到精致园林，中国拥有56个民族的独特文化。'
+    },
+    {
+      id: 'landscapes',
+      title: '壮美风景',
+      description: '从壮丽的喀斯特地貌到辽阔的青藏高原，从繁华的现代都市到宁静的古镇水乡，中国多元的地理景观让每次旅行都充满惊喜。'
+    },
+    {
+      id: 'cuisine',
+      title: '美食天堂',
+      description: '八大菜系，无数地方特色，中国的饮食文化丰富多样。无论是北京烤鸭、四川火锅还是粤式点心，总有一种美食能打动您的味蕾。'
+    }
+  ]
+};
+
+// Why Us 数据
+export const whyUs = {
+  title: 'Why Us',
+  points: [
+    {
+      id: 'personalization',
+      title: '个性化行程',
+      description: '根据您的兴趣、预算和时间定制专属旅行计划，让每一次旅行都完美契合您的期待，创造属于您的独特体验。'
+    },
+    {
+      id: 'data',
+      title: '大数据支持',
+      description: '基于7000万旅行者的真实体验和评价，我们的推荐系统能为您筛选出最适合的景点、住宿和美食，确保行程质量。'
+    },
+    {
+      id: 'worry-free',
+      title: '无忧体验',
+      description: '从语言障碍到文化差异，我们全方位解决旅行中的各种挑战，提供详尽的文化指南和实用贴士，让您的中国之旅轻松无忧。'
+    }
+  ]
+};
+
 // 精选目的地数据
 export const featuredDestinations: Destination[] = [
   {

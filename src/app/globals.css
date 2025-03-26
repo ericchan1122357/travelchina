@@ -1,3 +1,6 @@
+/* 导入重置CSS来修复白色网格问题 */
+@import './styles/reset.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -225,5 +225,19 @@ export const zhTranslations: TranslationValue = {
   'destination.2.activities.shopping': '购物',
   'destination.3.name': '成都',
   'destination.3.description': '天府之国',
-  'destination.3.activities.food': '美食'
+  'destination.3.activities.food': '美食',
+  'why.china.title': '为何选择中国',
+  'why.china.culture.title': '文化瑰宝',
+  'why.china.culture.desc': '五千年历史孕育的丰富文化遗产，从古老的长城到精美的兵马俑，从传统京剧到精致园林，中国拥有56个民族的独特文化。',
+  'why.china.landscapes.title': '壮美风景',
+  'why.china.landscapes.desc': '从壮丽的喀斯特地貌到辽阔的青藏高原，从繁华的现代都市到宁静的古镇水乡，中国多元的地理景观让每次旅行都充满惊喜。',
+  'why.china.cuisine.title': '美食天堂',
+  'why.china.cuisine.desc': '八大菜系，无数地方特色，中国的饮食文化丰富多样。无论是北京烤鸭、四川火锅还是粤式点心，总有一种美食能打动您的味蕾。',
+  'why.us.title': '为何选择我们',
+  'why.us.personalization.title': '个性化行程',
+  'why.us.personalization.desc': '根据您的兴趣、预算和时间定制专属旅行计划，让每一次旅行都完美契合您的期待，创造属于您的独特体验。',
+  'why.us.data.title': '大数据支持',
+  'why.us.data.desc': '基于7000万旅行者的真实体验和评价，我们的推荐系统能为您筛选出最适合的景点、住宿和美食，确保行程质量。',
+  'why.us.worryfree.title': '无忧体验',
+  'why.us.worryfree.desc': '从语言障碍到文化差异，我们全方位解决旅行中的各种挑战，提供详尽的文化指南和实用贴士，让您的中国之旅轻松无忧。'
 }; 

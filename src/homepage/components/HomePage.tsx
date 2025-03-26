@@ -11,6 +11,7 @@ import TravelStoriesSection from './TravelStoriesSection';
 import GuidesSection from './GuidesSection';
 import CallToAction from './CallToAction';
 import Footer from './Footer';
+import WhySection from './WhySection';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ValueProp } from '@/homepage/types';
 import { useEffect, useState } from 'react';
@@ -22,7 +23,9 @@ import {
   featuredDestinations,
   travelStories,
   travelGuides,
-  ctaData
+  ctaData,
+  whyChina,
+  whyUs
 } from '@/homepage/utils/mockData';
 
 const HomePage = () => {
@@ -90,6 +93,49 @@ const HomePage = () => {
     };
   }, [isVideoPreloaded]);
 
+  // 准备WhySection数据
+  const whyChinaData = {
+    title: t('why.china.title') as string,
+    points: [
+      {
+        id: 'culture',
+        title: t('why.china.culture.title') as string,
+        description: t('why.china.culture.desc') as string
+      },
+      {
+        id: 'landscapes',
+        title: t('why.china.landscapes.title') as string,
+        description: t('why.china.landscapes.desc') as string
+      },
+      {
+        id: 'cuisine',
+        title: t('why.china.cuisine.title') as string,
+        description: t('why.china.cuisine.desc') as string
+      }
+    ]
+  };
+
+  const whyUsData = {
+    title: t('why.us.title') as string,
+    points: [
+      {
+        id: 'personalization',
+        title: t('why.us.personalization.title') as string,
+        description: t('why.us.personalization.desc') as string
+      },
+      {
+        id: 'data',
+        title: t('why.us.data.title') as string,
+        description: t('why.us.data.desc') as string
+      },
+      {
+        id: 'worryfree',
+        title: t('why.us.worryfree.title') as string,
+        description: t('why.us.worryfree.desc') as string
+      }
+    ]
+  };
+
   // 错误边界
   try {
     return (
@@ -116,6 +162,11 @@ const HomePage = () => {
               }))} 
             />
           </HeroBanner>
+          
+          <WhySection 
+            whyChina={whyChinaData}
+            whyUs={whyUsData}
+          />
           
           <DestinationSection 
             title={t('destinationsTitle') as string}

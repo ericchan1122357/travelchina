@@ -22,19 +22,20 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
       
-      // 手动控制按钮跟随效果
+      // 控制按钮固定位置
       if (containerRef.current && ctaButtonRef.current) {
         const containerRect = containerRef.current.getBoundingClientRect();
-        const containerTop = containerRect.top;
-        const containerHeight = containerRect.height;
         
-        // 当横幅在视口中时，使按钮保持在合适位置
-        if (containerTop <= 0 && containerTop > -containerHeight) {
-          // 计算按钮的相对位置（距离横幅底部的距离）
-          const relativePosition = Math.min(Math.abs(containerTop) / 2, containerHeight / 2);
-          ctaButtonRef.current.style.transform = `translateY(${relativePosition}px)`;
+        // 当横幅仍然在视口中时，固定按钮位置
+        if (containerRect.bottom > 0) {
+          ctaButtonRef.current.style.position = 'absolute';
+          ctaButtonRef.current.style.bottom = 'auto';
+          ctaButtonRef.current.style.top = 'auto';
         } else {
-          ctaButtonRef.current.style.transform = 'translateY(0)';
+          // 当横幅离开视口时，不显示按钮
+          ctaButtonRef.current.style.position = 'absolute';
+          ctaButtonRef.current.style.bottom = 'auto';
+          ctaButtonRef.current.style.top = '-9999px';
         }
       }
     };
@@ -85,50 +86,58 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
   return (
     <div 
       ref={containerRef}
-      className="relative h-[56.25vw] max-h-[85vh] overflow-hidden bg-black"
+      className="relative h-[56.25vw] max-h-[85vh] overflow-hidden"
       role="banner"
       aria-label="主页横幅"
       style={{ 
-        gridTemplateColumns: 'none',  // 清除任何网格设置
-        backgroundImage: 'none',       // 清除背景图像
+        backgroundColor: '#000', 
+        gridTemplate: 'none',
+        display: 'block'
       }}
     >
       {/* 背景层 */}
-      <div className="absolute inset-0 bg-black" style={{ background: 'black', backgroundImage: 'none' }}>
+      <div 
+        className="absolute inset-0"
+        style={{ 
+          backgroundColor: '#000',
+          backgroundImage: 'none',
+          display: 'block'
+        }}
+      >
         {!videoError ? (
-          <div className="absolute inset-0" style={{ background: 'black', backgroundImage: 'none' }}>
+          <div 
+            className="absolute inset-0" 
+            style={{ 
+              backgroundColor: '#000',
+              backgroundImage: 'none',
+              display: 'block'
+            }}
+          >
             <div 
               className="absolute inset-0 overflow-hidden" 
               style={{ 
-                transform: 'translateZ(0)',
-                background: 'black',
+                backgroundColor: '#000',
                 backgroundImage: 'none',
+                display: 'block',
                 border: 'none',
-                outline: 'none',
-                gridTemplateColumns: 'none',
-                gridTemplateRows: 'none',
-                gridGap: '0',
-                gap: '0'
+                outline: 'none'
               }}
             >
               <video
                 ref={videoRef}
-                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+                className="absolute inset-0 w-full h-full"
                 style={{ 
                   objectFit: 'cover',
                   objectPosition: 'center center',
                   transform: `translate3d(0, ${parallaxOffset}px, 0)`,
-                  backfaceVisibility: 'hidden',
-                  WebkitBackfaceVisibility: 'hidden',
-                  perspective: 1000,
-                  WebkitPerspective: 1000,
-                  background: 'black',
+                  display: 'block',
+                  backgroundColor: '#000',
                   backgroundImage: 'none',
                   filter: 'brightness(1.2) contrast(1.1)', // 增加亮度和对比度
-                  boxShadow: 'none',
                   border: 'none',
                   outline: 'none',
-                  opacity: isVideoLoaded ? 1 : 0
+                  opacity: isVideoLoaded ? 1 : 0,
+                  transition: 'opacity 1000ms ease-in-out'
                 }}
                 onLoadedData={() => setIsVideoLoaded(true)}
                 onError={() => {
@@ -144,16 +153,18 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
             style={{ 
               backgroundImage: `url(${data.backgroundImageUrl})`,
               transform: `translate3d(0, ${parallaxOffset}px, 0)`,
-              backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden',
-              perspective: 1000,
-              WebkitPerspective: 1000,
               filter: 'brightness(1.2) contrast(1.1)' // 增加亮度和对比度
             }}
           />
         )}
         {/* 渐变遮罩 */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-transparent pointer-events-none"></div>
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.7), transparent)',
+            display: 'block'
+          }}
+        ></div>
       </div>
 
       {/* 内容 */}
@@ -173,11 +184,10 @@ const HeroBanner = ({ data, children }: HeroBannerProps) => {
           </p>
           <div 
             ref={ctaButtonRef}
-            className="relative" 
-            style={{ 
+            className="inline-block"
+            style={{
               position: 'relative',
-              zIndex: 100,
-              transition: 'transform 0.2s ease-out'
+              zIndex: 100
             }}
           >
             <a
