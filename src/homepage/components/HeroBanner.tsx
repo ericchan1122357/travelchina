@@ -30,11 +30,11 @@ const HeroBanner = ({ data, children, videoPreloaded = false }: HeroBannerProps)
         
         // 确保在横幅可见时，按钮保持在横幅区域内的固定位置
         if (containerRect.bottom > navbarHeight) {
-          // 使按钮固定在横幅内合适位置，根据红色方框所示位置
+          // 使按钮固定在横幅内合适位置
           ctaButtonRef.current.style.position = 'absolute';
           ctaButtonRef.current.style.transform = 'none';
           ctaButtonRef.current.style.top = '60%'; // 位于英雄横幅的60%位置
-          ctaButtonRef.current.style.left = '32%'; // 将按钮放置在红色方框所示位置
+          ctaButtonRef.current.style.left = '0%'; // 与副标题左对齐
         } else {
           // 当横幅不可见或被导航栏遮挡时，隐藏按钮
           ctaButtonRef.current.style.position = 'absolute';
