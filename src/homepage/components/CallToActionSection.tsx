@@ -51,15 +51,15 @@ const CallToActionSection: React.FC<CallToActionSectionProps> = ({
         <div 
           className="mt-16 text-center"
           role="region"
-          aria-label={t('main.partners.title')}
+          aria-label={currentLanguage === 'zh' ? '合作伙伴' : 'Partners'}
         >
           <p className="text-white/60 text-sm mb-4">
-            {t('main.partners.description')}
+            {currentLanguage === 'zh' ? '值得信赖的合作伙伴' : 'Trusted Partners'}
           </p>
           <div 
             className="flex justify-center items-center space-x-8"
             role="list"
-            aria-label={t('main.partners.title')}
+            aria-label={currentLanguage === 'zh' ? '合作伙伴列表' : 'Partner List'}
           >
             <div 
               className="w-24 h-12 bg-white/10 rounded flex items-center justify-center"

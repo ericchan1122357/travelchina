@@ -20,10 +20,12 @@ const ValuePropsSection: React.FC<ValuePropsSectionProps> = ({ valueProps, curre
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            {t('why.us.title')}
+            {currentLanguage === 'zh' ? '为什么选择我们' : 'Why Choose Us'}
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            {t('why.us.description')}
+            {currentLanguage === 'zh' 
+              ? '我们提供专业的旅游攻略和个性化服务，让您的中国之旅更加完美'
+              : 'We provide professional travel guides and personalized services to make your China journey perfect'}
           </p>
         </div>
 
@@ -43,10 +45,10 @@ const ValuePropsSection: React.FC<ValuePropsSectionProps> = ({ valueProps, curre
                 />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {t(`why.us.${prop.id}.title` as keyof TranslationValue) as string}
+                {t(`valueProp${index + 1}Title` as keyof TranslationValue) as string}
               </h3>
               <p className="text-gray-600">
-                {t(`why.us.${prop.id}.desc` as keyof TranslationValue) as string}
+                {t(`valueProp${index + 1}Desc` as keyof TranslationValue) as string}
               </p>
             </div>
           ))}

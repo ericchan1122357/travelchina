@@ -149,13 +149,13 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
           {/* 语言和联系方式 */}
           <div>
             <h3 className="text-lg font-semibold mb-4">
-              {t('nav.language')}
+              {currentLanguage === 'zh' ? '语言选择' : 'Language'}
             </h3>
             <select
               value={currentLanguage}
               onChange={(e) => onLanguageChange(e.target.value as Language)}
               className="bg-gray-800 text-white border border-gray-700 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-china-red"
-              aria-label={t('nav.selectLanguage')}
+              aria-label={currentLanguage === 'zh' ? '选择语言' : 'Select Language'}
             >
               {languageOptions.map((option) => (
                 <option key={option.code} value={option.code}>
@@ -221,7 +221,7 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
           className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
           role="contentinfo"
         >
-          <p>© {year} {t('nav.logo')}. {t('nav.copyright')}.</p>
+          <p>© {year} {currentLanguage === 'zh' ? '中国旅游' : 'China Travel'}. {currentLanguage === 'zh' ? '保留所有权利' : 'All rights reserved'}.</p>
         </div>
       </div>
     </footer>

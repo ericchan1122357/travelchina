@@ -50,14 +50,6 @@ export interface TranslationValue {
   'nav.community': string;
   'nav.login': string;
   'nav.signup': string;
-  'nav.logo': string;
-  'nav.backToHome': string;
-  'nav.quickLinks': string;
-  'nav.language': string;
-  'nav.selectLanguage': string;
-  'nav.socialMedia': string;
-  'nav.visitFacebook': string;
-  'nav.copyright': string;
 
   // 主要内容
   'main.title': string;
@@ -131,32 +123,6 @@ export interface TranslationValue {
   [key: `planner.dining.adventurous.${string}`]: string;
   'planner.error.general': string;
 
-  // 活动相关
-  'planner.activities.default.morning': string;
-  'planner.activities.default.afternoon': string;
-  'planner.activities.default.evening': string;
-  [key: `planner.activities.${string}.morning.${number}`]: string;
-  [key: `planner.activities.${string}.afternoon.${number}`]: string;
-  [key: `planner.activities.${string}.evening.${number}`]: string;
-
-  // 住宿类型
-  'planner.accommodation.economy': string;
-  'planner.accommodation.standard': string;
-  'planner.accommodation.premium': string;
-  'planner.accommodation.luxury': string;
-  'planner.accommodation.hostel': string;
-  'planner.accommodation.guesthouse': string;
-
-  // 天气状况
-  'planner.weather.sunny': string;
-  'planner.weather.cloudy': string;
-  'planner.weather.rainy': string;
-  'planner.weather.snowy': string;
-  'planner.weather.windy': string;
-  'planner.weather.foggy': string;
-  'planner.weather.thunderstorm': string;
-  'planner.weather.overcast': string;
-
   // 规划器基础键
   'planner.title': string;
   'planner.subtitle': string;
@@ -193,10 +159,6 @@ export interface TranslationValue {
   'planner.basicInfo.budget': string;
   'planner.basicInfo.travelDuration': string;
   'planner.basicInfo.travelBudget': string;
-  'planner.basicInfo.travelBudget.economy': string;
-  'planner.basicInfo.travelBudget.standard': string;
-  'planner.basicInfo.travelBudget.premium': string;
-  'planner.basicInfo.travelBudget.luxury': string;
 
   // 规划器特殊需求
   'planner.special.accessibility.title': string;
@@ -270,176 +232,10 @@ export interface TranslationValue {
   
   // Why Us 部分
   'why.us.title': string;
-  'why.us.description': string;
   'why.us.personalization.title': string;
   'why.us.personalization.desc': string;
   'why.us.data.title': string;
   'why.us.data.desc': string;
   'why.us.worryfree.title': string;
   'why.us.worryfree.desc': string;
-
-  // 规划器活动
-  'planner.activities.beijing.morning.1': string;
-  'planner.activities.beijing.morning.2': string;
-  'planner.activities.beijing.morning.3': string;
-  'planner.activities.beijing.morning.4': string;
-  'planner.activities.beijing.morning.5': string;
-  'planner.activities.beijing.afternoon.1': string;
-  'planner.activities.beijing.afternoon.2': string;
-  'planner.activities.beijing.afternoon.3': string;
-  'planner.activities.beijing.afternoon.4': string;
-  'planner.activities.beijing.afternoon.5': string;
-  'planner.activities.beijing.evening.1': string;
-  'planner.activities.beijing.evening.2': string;
-  'planner.activities.beijing.evening.3': string;
-  'planner.activities.beijing.evening.4': string;
-  'planner.activities.beijing.evening.5': string;
-  'planner.activities.shanghai.morning.1': string;
-  'planner.activities.shanghai.morning.2': string;
-  'planner.activities.shanghai.morning.3': string;
-  'planner.activities.shanghai.morning.4': string;
-  'planner.activities.shanghai.morning.5': string;
-  'planner.activities.shanghai.afternoon.1': string;
-  'planner.activities.shanghai.afternoon.2': string;
-  'planner.activities.shanghai.afternoon.3': string;
-  'planner.activities.shanghai.afternoon.4': string;
-  'planner.activities.shanghai.afternoon.5': string;
-  'planner.activities.shanghai.evening.1': string;
-  'planner.activities.shanghai.evening.2': string;
-  'planner.activities.shanghai.evening.3': string;
-  'planner.activities.shanghai.evening.4': string;
-  'planner.activities.shanghai.evening.5': string;
-  'planner.activities.xian.morning.1': string;
-  'planner.activities.xian.morning.2': string;
-  'planner.activities.xian.morning.3': string;
-  'planner.activities.xian.morning.4': string;
-  'planner.activities.xian.morning.5': string;
-  'planner.activities.xian.afternoon.1': string;
-  'planner.activities.xian.afternoon.2': string;
-  'planner.activities.xian.afternoon.3': string;
-  'planner.activities.xian.afternoon.4': string;
-  'planner.activities.xian.afternoon.5': string;
-  'planner.activities.xian.evening.1': string;
-  'planner.activities.xian.evening.2': string;
-  'planner.activities.xian.evening.3': string;
-  'planner.activities.xian.evening.4': string;
-  'planner.activities.xian.evening.5': string;
-  'planner.activities.chengdu.morning.1': string;
-  'planner.activities.chengdu.morning.2': string;
-  'planner.activities.chengdu.morning.3': string;
-  'planner.activities.chengdu.morning.4': string;
-  'planner.activities.chengdu.morning.5': string;
-  'planner.activities.chengdu.afternoon.1': string;
-  'planner.activities.chengdu.afternoon.2': string;
-  'planner.activities.chengdu.afternoon.3': string;
-  'planner.activities.chengdu.afternoon.4': string;
-  'planner.activities.chengdu.afternoon.5': string;
-  'planner.activities.chengdu.evening.1': string;
-  'planner.activities.chengdu.evening.2': string;
-  'planner.activities.chengdu.evening.3': string;
-  'planner.activities.chengdu.evening.4': string;
-  'planner.activities.chengdu.evening.5': string;
-  'planner.activities.hangzhou.morning.1': string;
-  'planner.activities.hangzhou.morning.2': string;
-  'planner.activities.hangzhou.morning.3': string;
-  'planner.activities.hangzhou.morning.4': string;
-  'planner.activities.hangzhou.morning.5': string;
-  'planner.activities.hangzhou.afternoon.1': string;
-  'planner.activities.hangzhou.afternoon.2': string;
-  'planner.activities.hangzhou.afternoon.3': string;
-  'planner.activities.hangzhou.afternoon.4': string;
-  'planner.activities.hangzhou.afternoon.5': string;
-  'planner.activities.hangzhou.evening.1': string;
-  'planner.activities.hangzhou.evening.2': string;
-  'planner.activities.hangzhou.evening.3': string;
-  'planner.activities.hangzhou.evening.4': string;
-  'planner.activities.hangzhou.evening.5': string;
-  'planner.activities.guilin.morning.1': string;
-  'planner.activities.guilin.morning.2': string;
-  'planner.activities.guilin.morning.3': string;
-  'planner.activities.guilin.morning.4': string;
-  'planner.activities.guilin.morning.5': string;
-  'planner.activities.guilin.afternoon.1': string;
-  'planner.activities.guilin.afternoon.2': string;
-  'planner.activities.guilin.afternoon.3': string;
-  'planner.activities.guilin.afternoon.4': string;
-  'planner.activities.guilin.afternoon.5': string;
-  'planner.activities.guilin.evening.1': string;
-  'planner.activities.guilin.evening.2': string;
-  'planner.activities.guilin.evening.3': string;
-  'planner.activities.guilin.evening.4': string;
-  'planner.activities.guilin.evening.5': string;
-  'planner.activities.food.taste': string;
-
-  // 规划器天气
-  [key: `planner.weather.${string}`]: string;
-
-  // 规划器结果
-  'planner.result.title': string;
-  'planner.result.subtitle': string;
-  'planner.result.overview': string;
-  'planner.result.destinations': string;
-  'planner.result.dates': string;
-  'planner.result.duration': string;
-  'planner.result.days': string;
-  'planner.result.preferences': string;
-  'planner.result.travelStyle': string;
-  'planner.result.accommodation': string;
-  'planner.result.dailyPlans': string;
-  'planner.result.day': string;
-  'planner.result.morning': string;
-  'planner.result.afternoon': string;
-  'planner.result.evening': string;
-  'planner.result.weather': string;
-  'planner.result.share': string;
-  'planner.result.download': string;
-  'planner.result.print': string;
-
-  // 规划器分享
-  'planner.share.title': string;
-  'planner.share.itinerary': string;
-  'planner.share.dates': string;
-  'planner.share.to': string;
-  'planner.share.totalDays': string;
-  'planner.share.days': string;
-  'planner.share.copied': string;
-
-  // 规划器下载
-  'planner.download.title': string;
-  'planner.download.itinerary': string;
-  'planner.download.dates': string;
-  'planner.download.to': string;
-  'planner.download.totalDays': string;
-  'planner.download.days': string;
-  'planner.download.day': string;
-  'planner.download.morning': string;
-  'planner.download.afternoon': string;
-  'planner.download.evening': string;
-  'planner.download.accommodation': string;
-  'planner.download.weather': string;
-  'planner.download.filename': string;
-  'planner.download.button': string;
-
-  // 规划器打印
-  'planner.print.button': string;
-
-  // 规划器加载
-  'planner.generating': string;
-
-  // 页脚相关
-  'footer.email': string;
-  'footer.phone': string;
-  'footer.address': string;
-  'footer.addressDetail': string;
-  'footer.openMenu': string;
-
-  // 语言相关
-  'language.zh': string;
-  'language.en': string;
-  'language.ja': string;
-  'language.ko': string;
-  'language.fr': string;
-  'language.de': string;
-  'language.es': string;
-  'language.ru': string;
 }

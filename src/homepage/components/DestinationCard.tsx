@@ -2,22 +2,23 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Destination, Language } from '../types';
-import { TranslationValue } from '../utils/translations/types';
+import { Destination } from '../types';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { getTranslation } from '../utils/translations';
+import { TranslationValue } from '../utils/translations/types';
 
 interface DestinationCardProps {
   destination: Destination;
-  currentLanguage: Language;
 }
 
 type SeasonType = 'spring' | 'summer' | 'autumn' | 'winter' | 'all-season';
 
-const DestinationCard: React.FC<DestinationCardProps> = ({ destination, currentLanguage }) => {
+const DestinationCard: React.FC<DestinationCardProps> = ({ destination }) => {
   const { name, description, imageUrl, season, activities } = destination;
-
+  const { currentLanguage } = useLanguage();
+  
   // 获取当前语言的翻译
-  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key) as string;
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
   const seasonColors: Record<SeasonType, string> = {
     spring: 'bg-green-100 text-green-800',

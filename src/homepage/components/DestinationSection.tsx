@@ -3,16 +3,17 @@
 import { useState, useRef } from 'react';
 import { Destination, Language } from '../types';
 import DestinationCard from './DestinationCard';
-import { getTranslation, getCurrentSeasonTitle } from '../utils/translations';
+import { getTranslation } from '../utils/translations';
 import { TranslationValue } from '../utils/translations/types';
 
 interface DestinationSectionProps {
-  title?: string;
+  title: string;
   destinations: Destination[];
   currentLanguage: Language;
 }
 
 const DestinationSection: React.FC<DestinationSectionProps> = ({
+  title,
   destinations,
   currentLanguage
 }) => {
@@ -23,15 +24,17 @@ const DestinationSection: React.FC<DestinationSectionProps> = ({
   // 获取当前语言的翻译
   const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key) as string;
 
-  const handleScroll = () => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    setShowLeftArrow(container.scrollLeft > 0);
-    setShowRightArrow(
-      container.scrollLeft < container.scrollWidth - container.clientWidth - 10
-    );
+  // 获取当前季节
+  const getCurrentSeason = () => {
+    const month = new Date().getMonth();
+    if (month >= 2 && month <= 4) return 'spring';
+    if (month >= 5 && month <= 7) return 'summer';
+    if (month >= 8 && month <= 10) return 'autumn';
+    return 'winter';
   };
+
+  const currentSeason = getCurrentSeason();
+  const currentYear = new Date().getFullYear();
 
   const scroll = (direction: 'left' | 'right') => {
     const container = scrollContainerRef.current;
@@ -48,12 +51,24 @@ const DestinationSection: React.FC<DestinationSectionProps> = ({
     });
   };
 
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    // 检查是否可以向左滚动
+    setShowLeftArrow(container.scrollLeft > 0);
+    
+    // 检查是否可以向右滚动
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    setShowRightArrow(container.scrollLeft < maxScrollLeft - 10); // 添加容差值
+  };
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold text-gray-800">
-            {getCurrentSeasonTitle(currentLanguage)}
+            {t('destinationsTitle')}
           </h2>
           
           {/* 桌面端显示的查看全部链接 */}
@@ -86,8 +101,15 @@ const DestinationSection: React.FC<DestinationSectionProps> = ({
             {destinations.map((destination) => (
               <div key={destination.id} className="flex-shrink-0 w-full sm:w-80">
                 <DestinationCard 
-                  destination={destination}
-                  currentLanguage={currentLanguage}
+                  destination={{
+                    ...destination,
+                    name: t(`destination.${destination.id}.name` as keyof TranslationValue) as string,
+                    description: t(`destination.${destination.id}.description` as keyof TranslationValue) as string,
+                    season: t(`season.${destination.season}` as keyof TranslationValue) as string,
+                    activities: destination.activities.map(activity => 
+                      t(`destination.${destination.id}.activities.${activity}` as keyof TranslationValue) as string
+                    )
+                  }}
                 />
               </div>
             ))}
@@ -121,11 +143,11 @@ const DestinationSection: React.FC<DestinationSectionProps> = ({
       {/* 自定义样式以隐藏滚动条但保留功能 */}
       <style jsx>{`
         .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
         }
         .hide-scrollbar::-webkit-scrollbar {
-          display: none;
+          display: none; /* Chrome, Safari, Opera */
         }
       `}</style>
     </section>
