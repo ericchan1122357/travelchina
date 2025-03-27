@@ -316,15 +316,15 @@ export const ruTranslations: TranslationValue = {
   'why.china.culture.desc': 'Тысячелетия истории и разнообразные культурные традиции',
   'why.china.landscapes.title': 'Захватывающие пейзажи',
   'why.china.landscapes.desc': 'От величественных гор до идиллических водных городов',
-  'why.china.cuisine.title': 'Восхитительная кухня',
-  'why.china.cuisine.desc': 'Откройте для себя разнообразный кулинарный ландшафт Китая',
+  'why.china.accessibility.title': 'Легкий доступ',
+  'why.china.accessibility.desc': 'Безвизовый режим 2025 года делает это идеальным временем для посещения',
   
   // Why Us секция
-  'why.us.title': 'Почему путешествовать с нами',
+  'why.us.title': 'Почему Мы',
   'why.us.personalization.title': 'Индивидуальные путешествия',
   'why.us.personalization.desc': 'Маршруты, адаптированные к вашим желаниям и интересам',
   'why.us.data.title': 'Рекомендации на основе данных',
   'why.us.data.desc': 'Наши предложения основаны на данных миллионов путешественников',
   'why.us.worryfree.title': 'Беззаботный опыт',
-  'why.us.worryfree.desc': 'Мы заботимся о деталях, чтобы вы могли наслаждаться путешествием',
+  'why.us.worryfree.desc': 'Полное руководство по путешествию на вашем смартфоне'
 }; 

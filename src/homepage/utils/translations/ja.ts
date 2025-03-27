@@ -271,15 +271,15 @@ export const jaTranslations: TranslationValue = {
   'why.china.culture.desc': '何千年もの歴史と多様な文化的伝統',
   'why.china.landscapes.title': '息をのむような風景',
   'why.china.landscapes.desc': '雄大な山脈から水の都市まで',
-  'why.china.cuisine.title': '美味しい料理',
-  'why.china.cuisine.desc': '中国の多様な食文化を探索',
+  'why.china.accessibility.title': '便利なアクセス',
+  'why.china.accessibility.desc': '2025年のビザ免除政策で、今が訪問のベストタイミング',
   
   // Why Us 部分
-  'why.us.title': '私たちを選ぶ理由',
+  'why.us.title': '私たちの特徴',
   'why.us.personalization.title': 'パーソナライズされた旅行',
   'why.us.personalization.desc': 'あなたの希望と興味に合わせたプラン',
   'why.us.data.title': 'データに基づく推奨',
   'why.us.data.desc': '何百万もの旅行者のデータに基づくおすすめ',
   'why.us.worryfree.title': '心配のない体験',
-  'why.us.worryfree.desc': '詳細を私たちが処理し、あなたは旅行を楽しむだけ',
+  'why.us.worryfree.desc': 'スマートフォン一台で完全な旅行ガイドを提供'
 }; 

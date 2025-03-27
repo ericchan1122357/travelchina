@@ -231,13 +231,13 @@ export const zhTranslations: TranslationValue = {
   'why.china.culture.desc': '数千年的历史和多样的文化传统',
   'why.china.landscapes.title': '壮丽的风景',
   'why.china.landscapes.desc': '从雄伟的山脉到田园诗般的水乡',
-  'why.china.cuisine.title': '美味的美食',
-  'why.china.cuisine.desc': '探索中国多样的烹饪文化',
+  'why.china.accessibility.title': '出行便捷',
+  'why.china.accessibility.desc': '25年中国免签政策放宽，是前往旅游的绝佳时机',
   'why.us.title': '为什么选择我们',
   'why.us.personalization.title': '个性化旅行',
   'why.us.personalization.desc': '根据您的喜好和兴趣定制行程',
   'why.us.data.title': '数据驱动推荐',
   'why.us.data.desc': '我们的建议基于数百万旅行者的数据',
   'why.us.worryfree.title': '无忧体验',
-  'why.us.worryfree.desc': '我们处理细节，让您尽情享受旅程'
+  'why.us.worryfree.desc': '全流程攻略，一部智能手机即可畅游中国'
 }; 

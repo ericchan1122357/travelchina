@@ -55,17 +55,17 @@ export const deTranslations: TranslationValue = {
   'why.china.culture.desc': 'Jahrtausende alte Geschichte und vielfältige kulturelle Traditionen',
   'why.china.landscapes.title': 'Atemberaubende Landschaften',
   'why.china.landscapes.desc': 'Von majestätischen Bergen bis hin zu idyllischen Wasserstädten',
-  'why.china.cuisine.title': 'Köstliche Küche',
-  'why.china.cuisine.desc': 'Entdecken Sie die vielfältige kulinarische Landschaft Chinas',
+  'why.china.accessibility.title': 'Einfache Einreise',
+  'why.china.accessibility.desc': 'Die Visafreiheit 2025 macht es zum perfekten Zeitpunkt für einen Besuch',
   
   // Why Us 部分
-  'why.us.title': 'Warum mit uns reisen',
+  'why.us.title': 'Warum Wir',
   'why.us.personalization.title': 'Personalisierte Reisen',
   'why.us.personalization.desc': 'Auf Ihre Wünsche und Interessen zugeschnittene Reisepläne',
   'why.us.data.title': 'Datengestützte Empfehlungen',
   'why.us.data.desc': 'Unsere Vorschläge basieren auf Daten von Millionen von Reisenden',
   'why.us.worryfree.title': 'Sorgenfreies Erlebnis',
-  'why.us.worryfree.desc': 'Wir kümmern uns um die Details, damit Sie Ihre Reise genießen können',
+  'why.us.worryfree.desc': 'Kompletter Reiseführer auf Ihrem Smartphone',
 
   // 目的地相关
   destinationsTitle: 'Beliebte Reiseziele',

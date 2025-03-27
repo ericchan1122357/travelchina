@@ -227,8 +227,8 @@ export interface TranslationValue {
   'why.china.culture.desc': string;
   'why.china.landscapes.title': string;
   'why.china.landscapes.desc': string;
-  'why.china.cuisine.title': string;
-  'why.china.cuisine.desc': string;
+  'why.china.accessibility.title': string;
+  'why.china.accessibility.desc': string;
   
   // Why Us 部分
   'why.us.title': string;

@@ -269,15 +269,15 @@ export const enTranslations: TranslationValue = {
   'why.china.culture.desc': 'Millennia of history and diverse cultural traditions',
   'why.china.landscapes.title': 'Breathtaking Landscapes',
   'why.china.landscapes.desc': 'From majestic mountains to idyllic water towns',
-  'why.china.cuisine.title': 'Delicious Cuisine',
-  'why.china.cuisine.desc': 'Explore China\'s diverse culinary landscape',
+  'why.china.accessibility.title': 'Easy Access',
+  'why.china.accessibility.desc': '2025 visa-free policy expansion makes it the perfect time to visit',
   
   // Why Us section
-  'why.us.title': 'Why Travel With Us',
+  'why.us.title': 'Why Us',
   'why.us.personalization.title': 'Personalized Travel',
   'why.us.personalization.desc': 'Itineraries tailored to your wishes and interests',
   'why.us.data.title': 'Data-Driven Recommendations',
   'why.us.data.desc': 'Our suggestions are based on data from millions of travelers',
   'why.us.worryfree.title': 'Worry-Free Experience',
-  'why.us.worryfree.desc': 'We handle the details so you can enjoy your journey',
+  'why.us.worryfree.desc': 'Complete travel guide at your fingertips with just a smartphone',
 }; 

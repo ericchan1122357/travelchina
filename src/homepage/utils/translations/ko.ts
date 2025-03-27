@@ -328,15 +328,15 @@ export const koTranslations: TranslationValue = {
   'why.china.culture.desc': '수천 년의 역사와 다양한 문화적 전통',
   'why.china.landscapes.title': '숨막히는 경관',
   'why.china.landscapes.desc': '웅장한 산맥부터 아름다운 수향마을까지',
-  'why.china.cuisine.title': '맛있는 요리',
-  'why.china.cuisine.desc': '중국의 다양한 요리 문화를 탐험하세요',
+  'why.china.accessibility.title': '편리한 접근성',
+  'why.china.accessibility.desc': '2025년 비자면제 정책으로 방문하기 가장 좋은 시기',
   
   // Why Us 부분
-  'why.us.title': '저희를 선택하는 이유',
+  'why.us.title': '우리의 장점',
   'why.us.personalization.title': '맞춤형 여행',
   'why.us.personalization.desc': '당신의 희망과 관심에 맞춘 여행 계획',
   'why.us.data.title': '데이터 기반 추천',
   'why.us.data.desc': '수백만 여행자의 데이터를 기반으로 한 추천',
   'why.us.worryfree.title': '걱정 없는 경험',
-  'why.us.worryfree.desc': '세부 사항은 저희가 처리하니 당신은 여행을 즐기세요',
+  'why.us.worryfree.desc': '스마트폰 하나로 완벽한 여행 가이드 제공'
 }; 

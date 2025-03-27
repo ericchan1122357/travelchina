@@ -328,15 +328,15 @@ export const esTranslations: TranslationValue = {
   'why.china.culture.desc': 'Milenios de historia y diversas tradiciones culturales',
   'why.china.landscapes.title': 'Paisajes impresionantes',
   'why.china.landscapes.desc': 'Desde majestuosas montañas hasta idílicas ciudades acuáticas',
-  'why.china.cuisine.title': 'Deliciosa gastronomía',
-  'why.china.cuisine.desc': 'Descubra el variado panorama culinario de China',
+  'why.china.accessibility.title': 'Fácil acceso',
+  'why.china.accessibility.desc': 'La exención de visado en 2025 hace que sea el momento perfecto para visitar',
   
   // Why Us parte
-  'why.us.title': 'Por qué viajar con nosotros',
+  'why.us.title': 'Por qué Nosotros',
   'why.us.personalization.title': 'Viajes personalizados',
   'why.us.personalization.desc': 'Itinerarios adaptados a sus deseos e intereses',
   'why.us.data.title': 'Recomendaciones basadas en datos',
   'why.us.data.desc': 'Nuestras sugerencias se basan en datos de millones de viajeros',
   'why.us.worryfree.title': 'Experiencia sin preocupaciones',
-  'why.us.worryfree.desc': 'Nos ocupamos de los detalles para que pueda disfrutar de su viaje',
+  'why.us.worryfree.desc': 'Guía completa de viaje en su teléfono inteligente'
 }; 
