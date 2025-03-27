@@ -139,9 +139,9 @@ const HomePage = () => {
         description: t('why.china.landscapes.desc') as string
       },
       {
-        id: 'cuisine',
-        title: t('why.china.cuisine.title') as string,
-        description: t('why.china.cuisine.desc') as string
+        id: 'accessibility',
+        title: t('why.china.accessibility.title') as string,
+        description: t('why.china.accessibility.desc') as string
       }
     ]
   };
