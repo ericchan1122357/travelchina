@@ -126,12 +126,12 @@ export default function ResultPage() {
   // 根据城市和天数生成上午活动
   const getMorningActivity = (city: string, day: number) => {
     const activities: Record<string, string[]> = {
-      '北京': [t('planner.activities.beijing.morning.1'), t('planner.activities.beijing.morning.2'), t('planner.activities.beijing.morning.3'), t('planner.activities.beijing.morning.4'), t('planner.activities.beijing.morning.5')],
-      '上海': [t('planner.activities.shanghai.morning.1'), t('planner.activities.shanghai.morning.2'), t('planner.activities.shanghai.morning.3'), t('planner.activities.shanghai.morning.4'), t('planner.activities.shanghai.morning.5')],
-      '西安': [t('planner.activities.xian.morning.1'), t('planner.activities.xian.morning.2'), t('planner.activities.xian.morning.3'), t('planner.activities.xian.morning.4'), t('planner.activities.xian.morning.5')],
-      '成都': [t('planner.activities.chengdu.morning.1'), t('planner.activities.chengdu.morning.2'), t('planner.activities.chengdu.morning.3'), t('planner.activities.chengdu.morning.4'), t('planner.activities.chengdu.morning.5')],
-      '杭州': [t('planner.activities.hangzhou.morning.1'), t('planner.activities.hangzhou.morning.2'), t('planner.activities.hangzhou.morning.3'), t('planner.activities.hangzhou.morning.4'), t('planner.activities.hangzhou.morning.5')],
-      '桂林': [t('planner.activities.guilin.morning.1'), t('planner.activities.guilin.morning.2'), t('planner.activities.guilin.morning.3'), t('planner.activities.guilin.morning.4'), t('planner.activities.guilin.morning.5')]
+      '北京': [t('planner.activities.beijing.morning.1'), t('planner.activities.beijing.morning.2')],
+      '上海': [t('planner.activities.shanghai.morning.1'), t('planner.activities.shanghai.morning.2')],
+      '西安': [t('planner.activities.xian.morning.1'), t('planner.activities.xian.morning.2')],
+      '成都': [t('planner.activities.chengdu.morning.1'), t('planner.activities.chengdu.morning.2')],
+      '杭州': [t('planner.activities.hangzhou.morning.1'), t('planner.activities.hangzhou.morning.2')],
+      '桂林': [t('planner.activities.guilin.morning.1'), t('planner.activities.guilin.morning.2')]
     };
 
     const cityActivities = activities[city] || [t('planner.activities.default.morning')];
@@ -141,12 +141,12 @@ export default function ResultPage() {
   // 根据城市和天数生成下午活动
   const getAfternoonActivity = (city: string, day: number) => {
     const activities: Record<string, string[]> = {
-      '北京': [t('planner.activities.beijing.afternoon.1'), t('planner.activities.beijing.afternoon.2'), t('planner.activities.beijing.afternoon.3'), t('planner.activities.beijing.afternoon.4'), t('planner.activities.beijing.afternoon.5')],
-      '上海': [t('planner.activities.shanghai.afternoon.1'), t('planner.activities.shanghai.afternoon.2'), t('planner.activities.shanghai.afternoon.3'), t('planner.activities.shanghai.afternoon.4'), t('planner.activities.shanghai.afternoon.5')],
-      '西安': [t('planner.activities.xian.afternoon.1'), t('planner.activities.xian.afternoon.2'), t('planner.activities.xian.afternoon.3'), t('planner.activities.xian.afternoon.4'), t('planner.activities.xian.afternoon.5')],
-      '成都': [t('planner.activities.chengdu.afternoon.1'), t('planner.activities.chengdu.afternoon.2'), t('planner.activities.chengdu.afternoon.3'), t('planner.activities.chengdu.afternoon.4'), t('planner.activities.chengdu.afternoon.5')],
-      '杭州': [t('planner.activities.hangzhou.afternoon.1'), t('planner.activities.hangzhou.afternoon.2'), t('planner.activities.hangzhou.afternoon.3'), t('planner.activities.hangzhou.afternoon.4'), t('planner.activities.hangzhou.afternoon.5')],
-      '桂林': [t('planner.activities.guilin.afternoon.1'), t('planner.activities.guilin.afternoon.2'), t('planner.activities.guilin.afternoon.3'), t('planner.activities.guilin.afternoon.4'), t('planner.activities.guilin.afternoon.5')]
+      '北京': [t('planner.activities.beijing.afternoon.1'), t('planner.activities.beijing.afternoon.2')],
+      '上海': [t('planner.activities.shanghai.afternoon.1'), t('planner.activities.shanghai.afternoon.2')],
+      '西安': [t('planner.activities.xian.afternoon.1'), t('planner.activities.xian.afternoon.2')],
+      '成都': [t('planner.activities.chengdu.afternoon.1'), t('planner.activities.chengdu.afternoon.2')],
+      '杭州': [t('planner.activities.hangzhou.afternoon.1'), t('planner.activities.hangzhou.afternoon.2')],
+      '桂林': [t('planner.activities.guilin.afternoon.1'), t('planner.activities.guilin.afternoon.2')]
     };
 
     const cityActivities = activities[city] || [t('planner.activities.default.afternoon')];
@@ -156,12 +156,12 @@ export default function ResultPage() {
   // 根据城市、天数和食物偏好生成晚间活动
   const getEveningActivity = (city: string, day: number, foodTypes: string[]) => {
     const activities: Record<string, string[]> = {
-      '北京': [t('planner.activities.beijing.evening.1'), t('planner.activities.beijing.evening.2'), t('planner.activities.beijing.evening.3'), t('planner.activities.beijing.evening.4'), t('planner.activities.beijing.evening.5')],
-      '上海': [t('planner.activities.shanghai.evening.1'), t('planner.activities.shanghai.evening.2'), t('planner.activities.shanghai.evening.3'), t('planner.activities.shanghai.evening.4'), t('planner.activities.shanghai.evening.5')],
-      '西安': [t('planner.activities.xian.evening.1'), t('planner.activities.xian.evening.2'), t('planner.activities.xian.evening.3'), t('planner.activities.xian.evening.4'), t('planner.activities.xian.evening.5')],
-      '成都': [t('planner.activities.chengdu.evening.1'), t('planner.activities.chengdu.evening.2'), t('planner.activities.chengdu.evening.3'), t('planner.activities.chengdu.evening.4'), t('planner.activities.chengdu.evening.5')],
-      '杭州': [t('planner.activities.hangzhou.evening.1'), t('planner.activities.hangzhou.evening.2'), t('planner.activities.hangzhou.evening.3'), t('planner.activities.hangzhou.evening.4'), t('planner.activities.hangzhou.evening.5')],
-      '桂林': [t('planner.activities.guilin.evening.1'), t('planner.activities.guilin.evening.2'), t('planner.activities.guilin.evening.3'), t('planner.activities.guilin.evening.4'), t('planner.activities.guilin.evening.5')]
+      '北京': [t('planner.activities.beijing.evening.1'), t('planner.activities.beijing.evening.2')],
+      '上海': [t('planner.activities.shanghai.evening.1'), t('planner.activities.shanghai.evening.2')],
+      '西安': [t('planner.activities.xian.evening.1'), t('planner.activities.xian.evening.2')],
+      '成都': [t('planner.activities.chengdu.evening.1'), t('planner.activities.chengdu.evening.2')],
+      '杭州': [t('planner.activities.hangzhou.evening.1'), t('planner.activities.hangzhou.evening.2')],
+      '桂林': [t('planner.activities.guilin.evening.1'), t('planner.activities.guilin.evening.2')]
     };
 
     // 根据食物偏好调整晚间活动
@@ -169,7 +169,7 @@ export default function ResultPage() {
     
     // 如果有食物偏好，将其插入第一天的活动中
     if (foodTypes && foodTypes.length > 0 && day === 0) {
-      cityActivities[0] = t('planner.activities.food.taste', { foodType: foodTypes[0] });
+      cityActivities[0] = t('planner.activities.default.evening');
     }
     
     return cityActivities[day % cityActivities.length];
@@ -178,12 +178,14 @@ export default function ResultPage() {
   // 随机生成天气预报
   const getRandomWeather = () => {
     const weathers = [
-      t('weather.sunny'),
-      t('weather.cloudy'),
-      t('weather.lightRain'),
-      t('weather.shower'),
-      t('weather.overcast'),
-      t('weather.sunnyToCloudy')
+      t('planner.weather.sunny'),
+      t('planner.weather.cloudy'),
+      t('planner.weather.rainy'),
+      t('planner.weather.snowy'),
+      t('planner.weather.windy'),
+      t('planner.weather.foggy'),
+      t('planner.weather.thunderstorm'),
+      t('planner.weather.overcast')
     ];
     const temperatures = [18, 20, 22, 24, 26, 28, 30];
     
@@ -227,11 +229,11 @@ export default function ResultPage() {
 
     dailyPlans.forEach(plan => {
       planText += `${t('planner.download.day')}${plan.day} (${plan.date}) - ${plan.city}\n`;
-      planText += `${t('planner.download.morning')}: ${t(`planner.activities.${plan.city.toLowerCase()}.morning`)}\n`;
-      planText += `${t('planner.download.afternoon')}: ${t(`planner.activities.${plan.city.toLowerCase()}.afternoon`)}\n`;
-      planText += `${t('planner.download.evening')}: ${t(`planner.activities.${plan.city.toLowerCase()}.evening`)}\n`;
+      planText += `${t('planner.download.morning')}: ${plan.morning}\n`;
+      planText += `${t('planner.download.afternoon')}: ${plan.afternoon}\n`;
+      planText += `${t('planner.download.evening')}: ${plan.evening}\n`;
       planText += `${t('planner.download.accommodation')}: ${t(`planner.accommodation.${plan.accommodation.toLowerCase()}`)}\n`;
-      planText += `${t('planner.download.weather')}: ${t(`planner.weather.${plan.weatherForecast.condition.toLowerCase()}`)}，${plan.weatherForecast.low}-${plan.weatherForecast.high}℃\n\n`;
+      planText += `${t('planner.download.weather')}: ${plan.weatherForecast.condition}，${plan.weatherForecast.low}-${plan.weatherForecast.high}℃\n\n`;
     });
 
     // 创建下载链接
@@ -318,15 +320,15 @@ export default function ResultPage() {
                   <div>
                     <div className="mb-4">
                       <p className="font-medium mb-2">{t('planner.result.morning')}:</p>
-                      <p>{t(`planner.activities.${plan.city.toLowerCase()}.morning`)}</p>
+                      <p>{plan.morning}</p>
                     </div>
                     <div className="mb-4">
                       <p className="font-medium mb-2">{t('planner.result.afternoon')}:</p>
-                      <p>{t(`planner.activities.${plan.city.toLowerCase()}.afternoon`)}</p>
+                      <p>{plan.afternoon}</p>
                     </div>
                     <div>
                       <p className="font-medium mb-2">{t('planner.result.evening')}:</p>
-                      <p>{t(`planner.activities.${plan.city.toLowerCase()}.evening`)}</p>
+                      <p>{plan.evening}</p>
                     </div>
                   </div>
                   <div>
@@ -337,7 +339,7 @@ export default function ResultPage() {
                     <div>
                       <p className="font-medium mb-2">{t('planner.result.weather')}:</p>
                       <p>
-                        {t(`planner.weather.${plan.weatherForecast.condition.toLowerCase()}`)}，
+                        {plan.weatherForecast.condition}，
                         {plan.weatherForecast.low}-{plan.weatherForecast.high}℃
                       </p>
                     </div>

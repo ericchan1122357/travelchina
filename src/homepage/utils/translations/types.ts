@@ -131,6 +131,32 @@ export interface TranslationValue {
   [key: `planner.dining.adventurous.${string}`]: string;
   'planner.error.general': string;
 
+  // 活动相关
+  'planner.activities.default.morning': string;
+  'planner.activities.default.afternoon': string;
+  'planner.activities.default.evening': string;
+  [key: `planner.activities.${string}.morning.${number}`]: string;
+  [key: `planner.activities.${string}.afternoon.${number}`]: string;
+  [key: `planner.activities.${string}.evening.${number}`]: string;
+
+  // 住宿类型
+  'planner.accommodation.economy': string;
+  'planner.accommodation.standard': string;
+  'planner.accommodation.premium': string;
+  'planner.accommodation.luxury': string;
+  'planner.accommodation.hostel': string;
+  'planner.accommodation.guesthouse': string;
+
+  // 天气状况
+  'planner.weather.sunny': string;
+  'planner.weather.cloudy': string;
+  'planner.weather.rainy': string;
+  'planner.weather.snowy': string;
+  'planner.weather.windy': string;
+  'planner.weather.foggy': string;
+  'planner.weather.thunderstorm': string;
+  'planner.weather.overcast': string;
+
   // 规划器基础键
   'planner.title': string;
   'planner.subtitle': string;
@@ -253,9 +279,97 @@ export interface TranslationValue {
   'why.us.worryfree.desc': string;
 
   // 规划器活动
-  [key: `planner.activities.${string}.morning`]: string;
-  [key: `planner.activities.${string}.afternoon`]: string;
-  [key: `planner.activities.${string}.evening`]: string;
+  'planner.activities.beijing.morning.1': string;
+  'planner.activities.beijing.morning.2': string;
+  'planner.activities.beijing.morning.3': string;
+  'planner.activities.beijing.morning.4': string;
+  'planner.activities.beijing.morning.5': string;
+  'planner.activities.beijing.afternoon.1': string;
+  'planner.activities.beijing.afternoon.2': string;
+  'planner.activities.beijing.afternoon.3': string;
+  'planner.activities.beijing.afternoon.4': string;
+  'planner.activities.beijing.afternoon.5': string;
+  'planner.activities.beijing.evening.1': string;
+  'planner.activities.beijing.evening.2': string;
+  'planner.activities.beijing.evening.3': string;
+  'planner.activities.beijing.evening.4': string;
+  'planner.activities.beijing.evening.5': string;
+  'planner.activities.shanghai.morning.1': string;
+  'planner.activities.shanghai.morning.2': string;
+  'planner.activities.shanghai.morning.3': string;
+  'planner.activities.shanghai.morning.4': string;
+  'planner.activities.shanghai.morning.5': string;
+  'planner.activities.shanghai.afternoon.1': string;
+  'planner.activities.shanghai.afternoon.2': string;
+  'planner.activities.shanghai.afternoon.3': string;
+  'planner.activities.shanghai.afternoon.4': string;
+  'planner.activities.shanghai.afternoon.5': string;
+  'planner.activities.shanghai.evening.1': string;
+  'planner.activities.shanghai.evening.2': string;
+  'planner.activities.shanghai.evening.3': string;
+  'planner.activities.shanghai.evening.4': string;
+  'planner.activities.shanghai.evening.5': string;
+  'planner.activities.xian.morning.1': string;
+  'planner.activities.xian.morning.2': string;
+  'planner.activities.xian.morning.3': string;
+  'planner.activities.xian.morning.4': string;
+  'planner.activities.xian.morning.5': string;
+  'planner.activities.xian.afternoon.1': string;
+  'planner.activities.xian.afternoon.2': string;
+  'planner.activities.xian.afternoon.3': string;
+  'planner.activities.xian.afternoon.4': string;
+  'planner.activities.xian.afternoon.5': string;
+  'planner.activities.xian.evening.1': string;
+  'planner.activities.xian.evening.2': string;
+  'planner.activities.xian.evening.3': string;
+  'planner.activities.xian.evening.4': string;
+  'planner.activities.xian.evening.5': string;
+  'planner.activities.chengdu.morning.1': string;
+  'planner.activities.chengdu.morning.2': string;
+  'planner.activities.chengdu.morning.3': string;
+  'planner.activities.chengdu.morning.4': string;
+  'planner.activities.chengdu.morning.5': string;
+  'planner.activities.chengdu.afternoon.1': string;
+  'planner.activities.chengdu.afternoon.2': string;
+  'planner.activities.chengdu.afternoon.3': string;
+  'planner.activities.chengdu.afternoon.4': string;
+  'planner.activities.chengdu.afternoon.5': string;
+  'planner.activities.chengdu.evening.1': string;
+  'planner.activities.chengdu.evening.2': string;
+  'planner.activities.chengdu.evening.3': string;
+  'planner.activities.chengdu.evening.4': string;
+  'planner.activities.chengdu.evening.5': string;
+  'planner.activities.hangzhou.morning.1': string;
+  'planner.activities.hangzhou.morning.2': string;
+  'planner.activities.hangzhou.morning.3': string;
+  'planner.activities.hangzhou.morning.4': string;
+  'planner.activities.hangzhou.morning.5': string;
+  'planner.activities.hangzhou.afternoon.1': string;
+  'planner.activities.hangzhou.afternoon.2': string;
+  'planner.activities.hangzhou.afternoon.3': string;
+  'planner.activities.hangzhou.afternoon.4': string;
+  'planner.activities.hangzhou.afternoon.5': string;
+  'planner.activities.hangzhou.evening.1': string;
+  'planner.activities.hangzhou.evening.2': string;
+  'planner.activities.hangzhou.evening.3': string;
+  'planner.activities.hangzhou.evening.4': string;
+  'planner.activities.hangzhou.evening.5': string;
+  'planner.activities.guilin.morning.1': string;
+  'planner.activities.guilin.morning.2': string;
+  'planner.activities.guilin.morning.3': string;
+  'planner.activities.guilin.morning.4': string;
+  'planner.activities.guilin.morning.5': string;
+  'planner.activities.guilin.afternoon.1': string;
+  'planner.activities.guilin.afternoon.2': string;
+  'planner.activities.guilin.afternoon.3': string;
+  'planner.activities.guilin.afternoon.4': string;
+  'planner.activities.guilin.afternoon.5': string;
+  'planner.activities.guilin.evening.1': string;
+  'planner.activities.guilin.evening.2': string;
+  'planner.activities.guilin.evening.3': string;
+  'planner.activities.guilin.evening.4': string;
+  'planner.activities.guilin.evening.5': string;
+  'planner.activities.food.taste': string;
 
   // 规划器天气
   [key: `planner.weather.${string}`]: string;
