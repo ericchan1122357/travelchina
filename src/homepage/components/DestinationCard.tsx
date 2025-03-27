@@ -2,16 +2,22 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Destination } from '../types';
+import { Destination, Language } from '../types';
+import { TranslationValue } from '../utils/translations/types';
+import { getTranslation } from '../utils/translations';
 
 interface DestinationCardProps {
   destination: Destination;
+  currentLanguage: Language;
 }
 
 type SeasonType = 'spring' | 'summer' | 'autumn' | 'winter' | 'all-season';
 
-const DestinationCard: React.FC<DestinationCardProps> = ({ destination }) => {
+const DestinationCard: React.FC<DestinationCardProps> = ({ destination, currentLanguage }) => {
   const { name, description, imageUrl, season, activities } = destination;
+
+  // 获取当前语言的翻译
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key) as string;
 
   const seasonColors: Record<SeasonType, string> = {
     spring: 'bg-green-100 text-green-800',
@@ -67,7 +73,7 @@ const DestinationCard: React.FC<DestinationCardProps> = ({ destination }) => {
           href={`/destinations/${name.toLowerCase()}`}
           className="inline-flex items-center text-china-red hover:text-red-700"
         >
-          了解更多
+          {t('readMore')}
           <svg
             className="ml-2 w-4 h-4"
             fill="none"

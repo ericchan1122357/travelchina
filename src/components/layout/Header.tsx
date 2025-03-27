@@ -1,16 +1,26 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Language } from '../../homepage/types';
+import { getTranslation } from '../../homepage/utils/translations';
+import { TranslationValue } from '../../homepage/utils/translations/types';
 
-const Header = () => {
+interface HeaderProps {
+  currentLanguage: Language;
+  onLanguageChange: (language: Language) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
+  
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
   const navigation = [
-    { name: '首页', href: '/' },
-    { name: '目的地', href: '/destinations' },
-    { name: '文化洞察', href: '/culture' },
-    { name: '实用信息', href: '/guides' },
+    { name: t('nav.home'), href: '/' },
+    { name: t('nav.destinations'), href: '/destinations' },
+    { name: t('nav.guides'), href: '/guides' },
+    { name: t('nav.stories'), href: '/stories' },
   ];
 
   return (
@@ -20,7 +30,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="text-2xl font-bold text-red-600">
-              中国旅游攻略
+              {t('nav.logo')}
             </Link>
           </div>
 
@@ -45,21 +55,32 @@ const Header = () => {
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
             <select
               className="block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"
-              defaultValue="zh"
+              value={currentLanguage}
+              onChange={(e) => onLanguageChange(e.target.value as Language)}
             >
-              <option value="zh">中文</option>
-              <option value="en">English</option>
+              <option value="zh">{t('language.zh')}</option>
+              <option value="en">{t('language.en')}</option>
+              <option value="ja">{t('language.ja')}</option>
+              <option value="ko">{t('language.ko')}</option>
+              <option value="fr">{t('language.fr')}</option>
+              <option value="de">{t('language.de')}</option>
+              <option value="es">{t('language.es')}</option>
+              <option value="ru">{t('language.ru')}</option>
             </select>
           </div>
 
           {/* 移动端菜单按钮 */}
-          <div className="flex items-center sm:hidden">
+          <div className="sm:hidden flex items-center">
             <button
               type="button"
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <span className="sr-only">打开主菜单</span>
+              <span className="sr-only">
+                {t('footer.openMenu')}
+              </span>
               {/* 菜单图标 */}
               <svg
                 className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
@@ -67,6 +88,7 @@ const Header = () => {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -82,6 +104,7 @@ const Header = () => {
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -93,37 +116,44 @@ const Header = () => {
             </button>
           </div>
         </div>
-      </nav>
 
-      {/* 移动端菜单 */}
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
-        <div className="pt-2 pb-3 space-y-1">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
-                router.pathname === item.href
-                  ? 'bg-red-50 border-red-500 text-red-700'
-                  : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-        <div className="pt-4 pb-3 border-t border-gray-200">
-          <div className="px-4">
-            <select
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"
-              defaultValue="zh"
-            >
-              <option value="zh">中文</option>
-              <option value="en">English</option>
-            </select>
+        {/* 移动端菜单 */}
+        <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
+          <div className="pt-2 pb-3 space-y-1">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`block pl-3 pr-4 py-2 border-l-4 text-base font-medium ${
+                  router.pathname === item.href
+                    ? 'bg-red-50 border-red-500 text-red-700'
+                    : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+          <div className="pt-4 pb-3 border-t border-gray-200">
+            <div className="px-4">
+              <select
+                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 sm:text-sm"
+                value={currentLanguage}
+                onChange={(e) => onLanguageChange(e.target.value as Language)}
+              >
+                <option value="zh">{t('language.zh')}</option>
+                <option value="en">{t('language.en')}</option>
+                <option value="ja">{t('language.ja')}</option>
+                <option value="ko">{t('language.ko')}</option>
+                <option value="fr">{t('language.fr')}</option>
+                <option value="de">{t('language.de')}</option>
+                <option value="es">{t('language.es')}</option>
+                <option value="ru">{t('language.ru')}</option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 };

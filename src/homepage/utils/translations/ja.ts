@@ -59,7 +59,7 @@ export const jaTranslations: TranslationValue = {
   'value.1.title': 'パーソナライズされたおすすめ',
   'value.1.desc': 'あなたの好みに合わせた旅程をカスタマイズ',
   'value.2.title': 'ビッグデータガイド',
-  'value.2.desc': '7000万人の旅行愛好家からの推薦',
+  'value.2.desc': '数百万人の旅行愛好家からの推薦',
   'value.3.title': '安心な体験',
   'value.3.desc': 'バリアフリーで中国の美しさを体験',
   'main.features.title': '特徴',
@@ -281,5 +281,5 @@ export const jaTranslations: TranslationValue = {
   'why.us.data.title': 'データに基づく推奨',
   'why.us.data.desc': '何百万もの旅行者のデータに基づくおすすめ',
   'why.us.worryfree.title': '心配のない体験',
-  'why.us.worryfree.desc': 'スマートフォン一台で完全な旅行ガイドを提供'
+  'why.us.worryfree.desc': '私たちのサポートがあれば、スマートフォン1台で中国旅行が楽しめます'
 }; 

@@ -16,7 +16,7 @@ export const frTranslations: TranslationValue = {
   'value.1.title': 'Itinéraires personnalisés',
   'value.1.desc': 'Personnalisez votre voyage parfait selon vos intérêts',
   'value.2.title': 'Guidage par Big Data',
-  'value.2.desc': 'Recommandé par 70 millions de passionnés de voyage',
+  'value.2.desc': 'Recommandé par des millions de passionnés de voyage',
   'value.3.title': 'Expérience sans souci',
   'value.3.desc': 'Découvrez la beauté de la Chine sans barrières',
   destinationsTitle: 'Destinations populaires',
@@ -223,5 +223,5 @@ export const frTranslations: TranslationValue = {
   'why.us.data.title': 'Recommandations basées sur des données',
   'why.us.data.desc': 'Nos suggestions sont basées sur les données de millions de voyageurs',
   'why.us.worryfree.title': 'Expérience sans souci',
-  'why.us.worryfree.desc': 'Guide complet de voyage sur votre smartphone'
+  'why.us.worryfree.desc': 'Avec notre aide, un smartphone suffit pour voyager en Chine',
 }; 

@@ -28,11 +28,11 @@ export const koTranslations: TranslationValue = {
   'main.partners.description': '함께 협력합니다',
 
   'value.1.title': '맞춤형 여행',
-  'value.1.desc': '나만의 여행 계획하기',
+  'value.1.desc': '당신의 취향에 맞는 여행 일정 맞춤 제작',
   'value.2.title': '빅데이터 가이드',
-  'value.2.desc': '7000만 여행 애호가의 추천',
+  'value.2.desc': '수백만 여행 애호가의 추천',
   'value.3.title': '걱정 없는 체험',
-  'value.3.desc': '장벽 없이 중국의 아름다움을 경험하세요',
+  'value.3.desc': '장벽 없이 중국의 아름다움을 경험',
 
   destinationsTitle: '인기 목적지',
   destinationDescription: '목적지 설명',
@@ -338,5 +338,5 @@ export const koTranslations: TranslationValue = {
   'why.us.data.title': '데이터 기반 추천',
   'why.us.data.desc': '수백만 여행자의 데이터를 기반으로 한 추천',
   'why.us.worryfree.title': '걱정 없는 경험',
-  'why.us.worryfree.desc': '스마트폰 하나로 완벽한 여행 가이드 제공'
+  'why.us.worryfree.desc': '저희의 도움으로 스마트폰 하나만으로 중국 여행이 가능합니다',
 }; 

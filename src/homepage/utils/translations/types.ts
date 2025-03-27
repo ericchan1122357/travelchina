@@ -50,6 +50,14 @@ export interface TranslationValue {
   'nav.community': string;
   'nav.login': string;
   'nav.signup': string;
+  'nav.logo': string;
+  'nav.backToHome': string;
+  'nav.quickLinks': string;
+  'nav.language': string;
+  'nav.selectLanguage': string;
+  'nav.socialMedia': string;
+  'nav.visitFacebook': string;
+  'nav.copyright': string;
 
   // 主要内容
   'main.title': string;
@@ -159,6 +167,10 @@ export interface TranslationValue {
   'planner.basicInfo.budget': string;
   'planner.basicInfo.travelDuration': string;
   'planner.basicInfo.travelBudget': string;
+  'planner.basicInfo.travelBudget.economy': string;
+  'planner.basicInfo.travelBudget.standard': string;
+  'planner.basicInfo.travelBudget.premium': string;
+  'planner.basicInfo.travelBudget.luxury': string;
 
   // 规划器特殊需求
   'planner.special.accessibility.title': string;
@@ -232,10 +244,88 @@ export interface TranslationValue {
   
   // Why Us 部分
   'why.us.title': string;
+  'why.us.description': string;
   'why.us.personalization.title': string;
   'why.us.personalization.desc': string;
   'why.us.data.title': string;
   'why.us.data.desc': string;
   'why.us.worryfree.title': string;
   'why.us.worryfree.desc': string;
+
+  // 规划器活动
+  [key: `planner.activities.${string}.morning`]: string;
+  [key: `planner.activities.${string}.afternoon`]: string;
+  [key: `planner.activities.${string}.evening`]: string;
+
+  // 规划器天气
+  [key: `planner.weather.${string}`]: string;
+
+  // 规划器结果
+  'planner.result.title': string;
+  'planner.result.subtitle': string;
+  'planner.result.overview': string;
+  'planner.result.destinations': string;
+  'planner.result.dates': string;
+  'planner.result.duration': string;
+  'planner.result.days': string;
+  'planner.result.preferences': string;
+  'planner.result.travelStyle': string;
+  'planner.result.accommodation': string;
+  'planner.result.dailyPlans': string;
+  'planner.result.day': string;
+  'planner.result.morning': string;
+  'planner.result.afternoon': string;
+  'planner.result.evening': string;
+  'planner.result.weather': string;
+  'planner.result.share': string;
+  'planner.result.download': string;
+  'planner.result.print': string;
+
+  // 规划器分享
+  'planner.share.title': string;
+  'planner.share.itinerary': string;
+  'planner.share.dates': string;
+  'planner.share.to': string;
+  'planner.share.totalDays': string;
+  'planner.share.days': string;
+  'planner.share.copied': string;
+
+  // 规划器下载
+  'planner.download.title': string;
+  'planner.download.itinerary': string;
+  'planner.download.dates': string;
+  'planner.download.to': string;
+  'planner.download.totalDays': string;
+  'planner.download.days': string;
+  'planner.download.day': string;
+  'planner.download.morning': string;
+  'planner.download.afternoon': string;
+  'planner.download.evening': string;
+  'planner.download.accommodation': string;
+  'planner.download.weather': string;
+  'planner.download.filename': string;
+  'planner.download.button': string;
+
+  // 规划器打印
+  'planner.print.button': string;
+
+  // 规划器加载
+  'planner.generating': string;
+
+  // 页脚相关
+  'footer.email': string;
+  'footer.phone': string;
+  'footer.address': string;
+  'footer.addressDetail': string;
+  'footer.openMenu': string;
+
+  // 语言相关
+  'language.zh': string;
+  'language.en': string;
+  'language.ja': string;
+  'language.ko': string;
+  'language.fr': string;
+  'language.de': string;
+  'language.es': string;
+  'language.ru': string;
 }

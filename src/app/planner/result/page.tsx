@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Language } from '@/homepage/types';
+import { getTranslation } from '@/homepage/utils/translations';
+import { TranslationValue } from '@/homepage/utils/translations/types';
 import { ShareIcon, PrinterIcon, ArrowDownTrayIcon, ArrowLeftIcon, CalendarDaysIcon } from '@heroicons/react/24/outline';
 
 // localStorage Key
@@ -19,6 +21,9 @@ export default function ResultPage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [travelDays, setTravelDays] = useState(0);
   const [dailyPlans, setDailyPlans] = useState<any[]>([]);
+
+  // 获取当前语言的翻译
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
 
   // 页面加载时获取表单数据
   useEffect(() => {
@@ -94,7 +99,7 @@ export default function ResultPage() {
 
           const dayPlan = {
             day: currentDay,
-            date: date.toLocaleDateString('zh-CN', {
+            date: date.toLocaleDateString(currentLanguage === 'zh' ? 'zh-CN' : 'en-US', {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
@@ -121,56 +126,50 @@ export default function ResultPage() {
   // 根据城市和天数生成上午活动
   const getMorningActivity = (city: string, day: number) => {
     const activities: Record<string, string[]> = {
-      '北京': ['参观故宫博物院', '游览颐和园', '漫步什刹海', '探索798艺术区', '长城徒步之旅'],
-      '上海': ['游览外滩', '参观上海博物馆', '探索田子坊', '漫步豫园', '迪士尼早间体验'],
-      '西安': ['参观兵马俑', '游览大雁塔', '探索回民街', '骑行西安城墙', '游览华清宫'],
-      '成都': ['参观大熊猫基地', '游览宽窄巷子', '探索锦里古街', '漫步青城山', '参观武侯祠'],
-      '杭州': ['西湖游船', '游览灵隐寺', '探索西溪湿地', '漫步南宋御街', '参观雷峰塔'],
-      '桂林': ['漓江漂流', '游览象鼻山', '探索七星公园', '漫步两江四湖', '参观芦笛岩'],
-      '广州': ['游览白云山', '参观陈家祠', '探索沙面', '漫步北京路步行街', '参观中山纪念堂'],
-      '深圳': ['参观大梅沙', '游览世界之窗', '探索东部华侨城', '漫步深圳湾', '参观深圳博物馆']
+      '北京': [t('planner.activities.beijing.morning.1'), t('planner.activities.beijing.morning.2'), t('planner.activities.beijing.morning.3'), t('planner.activities.beijing.morning.4'), t('planner.activities.beijing.morning.5')],
+      '上海': [t('planner.activities.shanghai.morning.1'), t('planner.activities.shanghai.morning.2'), t('planner.activities.shanghai.morning.3'), t('planner.activities.shanghai.morning.4'), t('planner.activities.shanghai.morning.5')],
+      '西安': [t('planner.activities.xian.morning.1'), t('planner.activities.xian.morning.2'), t('planner.activities.xian.morning.3'), t('planner.activities.xian.morning.4'), t('planner.activities.xian.morning.5')],
+      '成都': [t('planner.activities.chengdu.morning.1'), t('planner.activities.chengdu.morning.2'), t('planner.activities.chengdu.morning.3'), t('planner.activities.chengdu.morning.4'), t('planner.activities.chengdu.morning.5')],
+      '杭州': [t('planner.activities.hangzhou.morning.1'), t('planner.activities.hangzhou.morning.2'), t('planner.activities.hangzhou.morning.3'), t('planner.activities.hangzhou.morning.4'), t('planner.activities.hangzhou.morning.5')],
+      '桂林': [t('planner.activities.guilin.morning.1'), t('planner.activities.guilin.morning.2'), t('planner.activities.guilin.morning.3'), t('planner.activities.guilin.morning.4'), t('planner.activities.guilin.morning.5')]
     };
 
-    const cityActivities = activities[city] || ['城市观光'];
+    const cityActivities = activities[city] || [t('planner.activities.default.morning')];
     return cityActivities[day % cityActivities.length];
   };
 
   // 根据城市和天数生成下午活动
   const getAfternoonActivity = (city: string, day: number) => {
     const activities: Record<string, string[]> = {
-      '北京': ['参观天坛公园', '逛王府井大街', '游览北海公园', '参观国家博物馆', '南锣鼓巷品尝小吃'],
-      '上海': ['游览城隍庙', '徐家汇购物', '参观中华艺术宫', '漫步新天地', '环球港品尝美食'],
-      '西安': ['大唐不夜城', '小雁塔游览', '陕西历史博物馆', '钟鼓楼广场', '半坡博物馆'],
-      '成都': ['参观杜甫草堂', '逛太古里', '游览春熙路', '参观四川博物院', '金沙遗址博物馆'],
-      '杭州': ['漫步河坊街', '游览岳庙', '苏堤漫步', '参观浙江博物馆', '龙井茶园品茶'],
-      '桂林': ['参观阳朔西街', '游览十里画廊', '遇龙河漂流', '攀登老寨山', '蝴蝶泉公园'],
-      '广州': ['参观广州塔', '游览越秀公园', '逛北京路步行街', '海珠湿地公园', '长隆欢乐世界'],
-      '深圳': ['逛华强北', '参观欢乐谷', '游览红树林', '深圳湾公园', '参观海洋世界']
+      '北京': [t('planner.activities.beijing.afternoon.1'), t('planner.activities.beijing.afternoon.2'), t('planner.activities.beijing.afternoon.3'), t('planner.activities.beijing.afternoon.4'), t('planner.activities.beijing.afternoon.5')],
+      '上海': [t('planner.activities.shanghai.afternoon.1'), t('planner.activities.shanghai.afternoon.2'), t('planner.activities.shanghai.afternoon.3'), t('planner.activities.shanghai.afternoon.4'), t('planner.activities.shanghai.afternoon.5')],
+      '西安': [t('planner.activities.xian.afternoon.1'), t('planner.activities.xian.afternoon.2'), t('planner.activities.xian.afternoon.3'), t('planner.activities.xian.afternoon.4'), t('planner.activities.xian.afternoon.5')],
+      '成都': [t('planner.activities.chengdu.afternoon.1'), t('planner.activities.chengdu.afternoon.2'), t('planner.activities.chengdu.afternoon.3'), t('planner.activities.chengdu.afternoon.4'), t('planner.activities.chengdu.afternoon.5')],
+      '杭州': [t('planner.activities.hangzhou.afternoon.1'), t('planner.activities.hangzhou.afternoon.2'), t('planner.activities.hangzhou.afternoon.3'), t('planner.activities.hangzhou.afternoon.4'), t('planner.activities.hangzhou.afternoon.5')],
+      '桂林': [t('planner.activities.guilin.afternoon.1'), t('planner.activities.guilin.afternoon.2'), t('planner.activities.guilin.afternoon.3'), t('planner.activities.guilin.afternoon.4'), t('planner.activities.guilin.afternoon.5')]
     };
 
-    const cityActivities = activities[city] || ['休闲购物'];
+    const cityActivities = activities[city] || [t('planner.activities.default.afternoon')];
     return cityActivities[day % cityActivities.length];
   };
 
   // 根据城市、天数和食物偏好生成晚间活动
   const getEveningActivity = (city: string, day: number, foodTypes: string[]) => {
     const activities: Record<string, string[]> = {
-      '北京': ['品尝北京烤鸭', '欣赏京剧表演', '夜游什刹海', '鸟巢水立方夜景', '大栅栏夜市'],
-      '上海': ['外滩夜景观赏', '南京路夜游', '豫园灯会', '品尝本帮菜', '陆家嘴夜景'],
-      '西安': ['大唐芙蓉园夜景', '品尝羊肉泡馍', '钟楼鼓楼夜景', '回民街美食', '大雁塔喷泉'],
-      '成都': ['品尝四川火锅', '锦里夜市', '观看川剧变脸', '九眼桥酒吧街', '太古里夜景'],
-      '杭州': ['西湖音乐喷泉', '品尝杭帮菜', '南宋御街夜市', '清河坊夜游', '湖滨夜市'],
-      '桂林': ['两江四湖夜游', '品尝桂林米粉', '象山夜景', '西街酒吧', '叠彩山夜景'],
-      '广州': ['珠江夜游', '品尝广州早茶', '北京路夜市', '广州塔夜景', '沙面夜景'],
-      '深圳': ['深圳湾夜景', '欢乐海岸灯光秀', '品尝客家菜', '东门老街夜市', '世界之窗夜景']
+      '北京': [t('planner.activities.beijing.evening.1'), t('planner.activities.beijing.evening.2'), t('planner.activities.beijing.evening.3'), t('planner.activities.beijing.evening.4'), t('planner.activities.beijing.evening.5')],
+      '上海': [t('planner.activities.shanghai.evening.1'), t('planner.activities.shanghai.evening.2'), t('planner.activities.shanghai.evening.3'), t('planner.activities.shanghai.evening.4'), t('planner.activities.shanghai.evening.5')],
+      '西安': [t('planner.activities.xian.evening.1'), t('planner.activities.xian.evening.2'), t('planner.activities.xian.evening.3'), t('planner.activities.xian.evening.4'), t('planner.activities.xian.evening.5')],
+      '成都': [t('planner.activities.chengdu.evening.1'), t('planner.activities.chengdu.evening.2'), t('planner.activities.chengdu.evening.3'), t('planner.activities.chengdu.evening.4'), t('planner.activities.chengdu.evening.5')],
+      '杭州': [t('planner.activities.hangzhou.evening.1'), t('planner.activities.hangzhou.evening.2'), t('planner.activities.hangzhou.evening.3'), t('planner.activities.hangzhou.evening.4'), t('planner.activities.hangzhou.evening.5')],
+      '桂林': [t('planner.activities.guilin.evening.1'), t('planner.activities.guilin.evening.2'), t('planner.activities.guilin.evening.3'), t('planner.activities.guilin.evening.4'), t('planner.activities.guilin.evening.5')]
     };
 
     // 根据食物偏好调整晚间活动
-    let cityActivities = activities[city] || ['享用晚餐'];
+    let cityActivities = activities[city] || [t('planner.activities.default.evening')];
     
     // 如果有食物偏好，将其插入第一天的活动中
     if (foodTypes && foodTypes.length > 0 && day === 0) {
-      cityActivities[0] = `品尝${foodTypes[0]}美食`;
+      cityActivities[0] = t('planner.activities.food.taste', { foodType: foodTypes[0] });
     }
     
     return cityActivities[day % cityActivities.length];
@@ -178,7 +177,14 @@ export default function ResultPage() {
 
   // 随机生成天气预报
   const getRandomWeather = () => {
-    const weathers = ['晴朗', '多云', '小雨', '阵雨', '阴天', '晴转多云'];
+    const weathers = [
+      t('weather.sunny'),
+      t('weather.cloudy'),
+      t('weather.lightRain'),
+      t('weather.shower'),
+      t('weather.overcast'),
+      t('weather.sunnyToCloudy')
+    ];
     const temperatures = [18, 20, 22, 24, 26, 28, 30];
     
     const weather = weathers[Math.floor(Math.random() * weathers.length)];
@@ -194,34 +200,38 @@ export default function ResultPage() {
 
   // 分享行程计划
   const sharePlan = () => {
+    const shareText = `${t('planner.share.title')}\n` +
+      `${t('planner.share.itinerary')}: ${planData.selectedDestinations.join(', ')}\n` +
+      `${t('planner.share.dates')}: ${planData.departureDate} ${t('planner.share.to')} ${planData.returnDate}\n` +
+      `${t('planner.share.totalDays')}: ${travelDays}${t('planner.share.days')}`;
+    
     if (navigator.share) {
       navigator.share({
-        title: '我的中国旅行计划',
-        text: `我计划了一次${planData.selectedDestinations.join('、')}之旅，共${travelDays}天`,
-        url: window.location.href
-      }).catch(error => {
-        console.error('分享失败:', error);
-      });
+        title: t('planner.share.title'),
+        text: shareText,
+      }).catch((error) => console.log('分享失败:', error));
     } else {
-      alert('您的浏览器不支持原生分享功能');
+      navigator.clipboard.writeText(shareText).then(() => {
+        alert(t('planner.share.copied'));
+      });
     }
   };
 
   // 下载行程计划
   const downloadPlan = () => {
     // 创建计划文本
-    let planText = `我的中国旅行计划\n`;
-    planText += `行程：${planData.selectedDestinations.join(', ')}\n`;
-    planText += `日期：${planData.departureDate} 到 ${planData.returnDate}\n`;
-    planText += `总天数：${travelDays}天\n\n`;
+    let planText = `${t('planner.download.title')}\n`;
+    planText += `${t('planner.download.itinerary')}: ${planData.selectedDestinations.join(', ')}\n`;
+    planText += `${t('planner.download.dates')}: ${planData.departureDate} ${t('planner.download.to')} ${planData.returnDate}\n`;
+    planText += `${t('planner.download.totalDays')}: ${travelDays}${t('planner.download.days')}\n\n`;
 
     dailyPlans.forEach(plan => {
-      planText += `第${plan.day}天 (${plan.date}) - ${plan.city}\n`;
-      planText += `上午：${plan.morning}\n`;
-      planText += `下午：${plan.afternoon}\n`;
-      planText += `晚上：${plan.evening}\n`;
-      planText += `住宿：${plan.accommodation}\n`;
-      planText += `天气预报：${plan.weatherForecast.condition}，${plan.weatherForecast.low}-${plan.weatherForecast.high}℃\n\n`;
+      planText += `${t('planner.download.day')}${plan.day} (${plan.date}) - ${plan.city}\n`;
+      planText += `${t('planner.download.morning')}: ${t(`planner.activities.${plan.city.toLowerCase()}.morning`)}\n`;
+      planText += `${t('planner.download.afternoon')}: ${t(`planner.activities.${plan.city.toLowerCase()}.afternoon`)}\n`;
+      planText += `${t('planner.download.evening')}: ${t(`planner.activities.${plan.city.toLowerCase()}.evening`)}\n`;
+      planText += `${t('planner.download.accommodation')}: ${t(`planner.accommodation.${plan.accommodation.toLowerCase()}`)}\n`;
+      planText += `${t('planner.download.weather')}: ${t(`planner.weather.${plan.weatherForecast.condition.toLowerCase()}`)}，${plan.weatherForecast.low}-${plan.weatherForecast.high}℃\n\n`;
     });
 
     // 创建下载链接
@@ -229,7 +239,7 @@ export default function ResultPage() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = '我的中国旅行计划.txt';
+    a.download = t('planner.download.filename');
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -247,190 +257,119 @@ export default function ResultPage() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-china-red mx-auto"></div>
-          <p className="mt-4 text-lg text-gray-600">正在加载您的旅行计划...</p>
+          <p className="mt-4 text-lg text-gray-600">{t('planner.loading')}</p>
+        </div>
+      </div>
+    );
+  }
+
+  // 生成中状态
+  if (isGenerating) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-china-red mx-auto"></div>
+          <p className="mt-4 text-lg text-gray-600">{t('planner.generating')}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* 顶部导航 */}
-      <header className="bg-china-red text-white p-4 shadow-md print:hidden">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold">旅行计划</h1>
-          <div className="flex space-x-4">
-            <button 
-              onClick={() => router.push('/planner')}
-              className="flex items-center text-sm hover:underline"
-            >
-              <ArrowLeftIcon className="w-4 h-4 mr-1" />
-              返回表单
-            </button>
-            <Link href="/" className="hover:underline transition-colors">
-              返回首页
-            </Link>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          {/* 行程标题 */}
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-900">{t('planner.result.title')}</h1>
+            <p className="mt-2 text-gray-600">
+              {t('planner.result.subtitle')}
+            </p>
           </div>
-        </div>
-      </header>
 
-      {/* 主要内容 */}
-      <main className="container mx-auto py-8 px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* 行程摘要 */}
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-8 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-40 h-40 -mt-10 -mr-10 bg-red-100 rounded-full opacity-40"></div>
-            <div className="absolute bottom-0 left-0 w-32 h-32 -mb-10 -ml-10 bg-yellow-100 rounded-full opacity-40"></div>
-            
-            <div className="relative">
-              <h2 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-2 border-gray-200">您的个性化旅行计划</h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <p className="text-gray-600 mb-2">旅行类型: <span className="font-medium text-gray-800">{planData.travellerType}</span></p>
-                  <p className="text-gray-600 mb-2">旅行人数: <span className="font-medium text-gray-800">{planData.travellers} 人</span></p>
-                  <p className="text-gray-600 mb-2">预算范围: <span className="font-medium text-gray-800">{planData.budget}</span></p>
-                  <p className="text-gray-600 mb-2">旅行风格: <span className="font-medium text-gray-800">{planData.travelStyle}</span></p>
-                </div>
-                <div>
-                  <p className="text-gray-600 mb-2">出发日期: <span className="font-medium text-gray-800">{planData.departureDate}</span></p>
-                  <p className="text-gray-600 mb-2">返回日期: <span className="font-medium text-gray-800">{planData.returnDate}</span></p>
-                  <p className="text-gray-600 mb-2">旅行天数: <span className="font-medium text-gray-800">{travelDays} 天</span></p>
-                  <p className="text-gray-600 mb-2">住宿偏好: <span className="font-medium text-gray-800">{planData.accommodation}</span></p>
-                </div>
+          {/* 行程概览 */}
+          <div className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">{t('planner.result.overview')}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <p><span className="font-medium">{t('planner.result.destinations')}:</span> {planData.selectedDestinations.join(', ')}</p>
+                <p><span className="font-medium">{t('planner.result.dates')}:</span> {planData.departureDate} - {planData.returnDate}</p>
+                <p><span className="font-medium">{t('planner.result.duration')}:</span> {travelDays} {t('planner.result.days')}</p>
               </div>
-            
-              <div className="mb-6">
-                <p className="text-gray-600 mb-2">目的地:</p>
-                <div className="flex flex-wrap gap-2">
-                  {planData.selectedDestinations.map((city: string, index: number) => (
-                    <span key={index} className="bg-red-50 text-china-red px-3 py-1 rounded-full text-sm border border-red-100">
-                      {city}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              
-              {/* 操作按钮 */}
-              <div className="flex space-x-3 print:hidden">
-                <button 
-                  onClick={sharePlan}
-                  className="flex items-center text-sm bg-china-red text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
-                >
-                  <ShareIcon className="w-4 h-4 mr-2" />
-                  分享
-                </button>
-                <button 
-                  onClick={printPlan}
-                  className="flex items-center text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  <PrinterIcon className="w-4 h-4 mr-2" />
-                  打印
-                </button>
-                <button 
-                  onClick={downloadPlan}
-                  className="flex items-center text-sm bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
-                >
-                  <ArrowDownTrayIcon className="w-4 h-4 mr-2" />
-                  下载
-                </button>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <p><span className="font-medium">{t('planner.result.preferences')}:</span></p>
+                <ul className="list-disc list-inside">
+                  <li>{t('planner.result.travelStyle')}: {planData.travelStyle}</li>
+                  <li>{t('planner.result.accommodation')}: {planData.accommodation}</li>
+                </ul>
               </div>
             </div>
           </div>
 
           {/* 每日行程 */}
-          <h3 className="text-xl font-bold mb-4 text-gray-800">详细行程安排</h3>
-          
-          {isGenerating ? (
-            <div className="text-center py-8">
-              <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-china-red mx-auto"></div>
-              <p className="mt-4 text-gray-600">正在生成您的详细行程...</p>
-            </div>
-          ) : (
-            <div className="space-y-6">
-              {dailyPlans.map((plan, index) => (
-                <div key={index} className="bg-white rounded-lg shadow p-5 border-l-4 border-china-red relative overflow-hidden">
-                  {/* 日期和天数 */}
-                  <div className="flex justify-between items-start mb-4">
+          <div className="space-y-6">
+            <h2 className="text-2xl font-semibold mb-4">{t('planner.result.dailyPlans')}</h2>
+            {dailyPlans.map((plan) => (
+              <div key={plan.day} className="bg-gray-50 p-6 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4">
+                  {t('planner.result.day')} {plan.day} - {plan.date} - {plan.city}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <div className="mb-4">
+                      <p className="font-medium mb-2">{t('planner.result.morning')}:</p>
+                      <p>{t(`planner.activities.${plan.city.toLowerCase()}.morning`)}</p>
+                    </div>
+                    <div className="mb-4">
+                      <p className="font-medium mb-2">{t('planner.result.afternoon')}:</p>
+                      <p>{t(`planner.activities.${plan.city.toLowerCase()}.afternoon`)}</p>
+                    </div>
                     <div>
-                      <h4 className="text-lg font-bold text-gray-800">第 {plan.day} 天</h4>
-                      <p className="text-sm text-gray-500 flex items-center">
-                        <CalendarDaysIcon className="w-4 h-4 mr-1" />
-                        {plan.date}
+                      <p className="font-medium mb-2">{t('planner.result.evening')}:</p>
+                      <p>{t(`planner.activities.${plan.city.toLowerCase()}.evening`)}</p>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="mb-4">
+                      <p className="font-medium mb-2">{t('planner.result.accommodation')}:</p>
+                      <p>{t(`planner.accommodation.${plan.accommodation.toLowerCase()}`)}</p>
+                    </div>
+                    <div>
+                      <p className="font-medium mb-2">{t('planner.result.weather')}:</p>
+                      <p>
+                        {t(`planner.weather.${plan.weatherForecast.condition.toLowerCase()}`)}，
+                        {plan.weatherForecast.low}-{plan.weatherForecast.high}℃
                       </p>
                     </div>
-                    <div className="flex items-center bg-amber-50 px-3 py-1 rounded-lg border border-amber-100">
-                      <span className="text-amber-700 font-medium mr-2">
-                        {plan.city}
-                      </span>
-                      <span className="text-xs text-gray-500">
-                        {plan.weatherForecast.condition} {plan.weatherForecast.low}-{plan.weatherForecast.high}℃
-                      </span>
-                    </div>
                   </div>
-                  
-                  {/* 每日活动 */}
-                  <div className="space-y-3 ml-2">
-                    <div className="flex">
-                      <div className="min-w-[80px] font-medium text-gray-700">上午:</div>
-                      <div className="text-gray-600">{plan.morning}</div>
-                    </div>
-                    <div className="flex">
-                      <div className="min-w-[80px] font-medium text-gray-700">下午:</div>
-                      <div className="text-gray-600">{plan.afternoon}</div>
-                    </div>
-                    <div className="flex">
-                      <div className="min-w-[80px] font-medium text-gray-700">晚上:</div>
-                      <div className="text-gray-600">{plan.evening}</div>
-                    </div>
-                    <div className="flex">
-                      <div className="min-w-[80px] font-medium text-gray-700">住宿:</div>
-                      <div className="text-gray-600">{plan.accommodation}</div>
-                    </div>
-                  </div>
-                  
-                  {/* 视觉装饰 */}
-                  <div className="absolute top-0 right-0 w-20 h-20 -mt-5 -mr-5 bg-red-50 rounded-full opacity-30"></div>
                 </div>
-              ))}
-            </div>
-          )}
-          
-          {/* 行程建议 */}
-          <div className="mt-10 bg-blue-50 p-6 rounded-lg border border-blue-100">
-            <h3 className="text-lg font-bold text-blue-800 mb-3">旅行小贴士</h3>
-            <ul className="space-y-2 text-blue-700">
-              <li className="flex items-start">
-                <span className="mr-2">•</span>
-                <span>行程可能会因天气和实际情况有所调整，建议保持灵活性</span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">•</span>
-                <span>请提前预订热门景点的门票，特别是在旅游旺季</span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">•</span>
-                <span>准备舒适的步行鞋，中国的许多景点需要大量步行</span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">•</span>
-                <span>多携带现金，虽然移动支付普及，但游客可能无法轻松使用</span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-2">•</span>
-                <span>下载离线地图和翻译应用，以防网络连接不畅</span>
-              </li>
-            </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* 操作按钮 */}
+          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <button
+              onClick={sharePlan}
+              className="bg-china-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
+            >
+              {t('planner.result.share')}
+            </button>
+            <button
+              onClick={downloadPlan}
+              className="bg-china-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
+            >
+              {t('planner.result.download')}
+            </button>
+            <button
+              onClick={printPlan}
+              className="bg-china-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
+            >
+              {t('planner.result.print')}
+            </button>
           </div>
         </div>
-      </main>
-
-      {/* 页脚 */}
-      <footer className="bg-gray-800 text-white py-6 mt-12 print:hidden">
-        <div className="container mx-auto text-center">
-          <p>© 2023 中国旅游攻略. 保留所有权利.</p>
-        </div>
-      </footer>
+      </div>
     </div>
   );
 } 

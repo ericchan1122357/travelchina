@@ -28,11 +28,11 @@ export const esTranslations: TranslationValue = {
   'main.partners.description': 'Trabajamos con los mejores',
 
   'value.1.title': 'Viajes Personalizados',
-  'value.1.desc': 'Itinerarios adaptados a sus preferencias',
+  'value.1.desc': 'Personalice su viaje perfecto según sus intereses',
   'value.2.title': 'Guía de Big Data',
-  'value.2.desc': 'Recomendado por 70 millones de entusiastas de viajes',
+  'value.2.desc': 'Recomendado por millones de entusiastas de viajes',
   'value.3.title': 'Experiencia sin preocupaciones',
-  'value.3.desc': 'Experimente la belleza de China sin barreras',
+  'value.3.desc': 'Descubra la belleza de China sin barreras',
 
   destinationsTitle: 'Destinos Populares',
   destinationDescription: 'Descripción del destino',
@@ -338,5 +338,5 @@ export const esTranslations: TranslationValue = {
   'why.us.data.title': 'Recomendaciones basadas en datos',
   'why.us.data.desc': 'Nuestras sugerencias se basan en datos de millones de viajeros',
   'why.us.worryfree.title': 'Experiencia sin preocupaciones',
-  'why.us.worryfree.desc': 'Guía completa de viaje en su teléfono inteligente'
+  'why.us.worryfree.desc': 'Con nuestra ayuda, un smartphone es todo lo que necesitas para viajar por China',
 }; 

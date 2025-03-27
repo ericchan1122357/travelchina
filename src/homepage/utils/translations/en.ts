@@ -57,9 +57,9 @@ export const enTranslations: TranslationValue = {
   'main.cta.start': 'Start Planning',
   'main.cta.learn': 'Learn More',
   'value.1.title': 'Personalized Recommendations',
-  'value.1.desc': 'Customize itineraries based on your preferences',
+  'value.1.desc': 'Customize your perfect journey based on your interests',
   'value.2.title': 'Big Data Guidance',
-  'value.2.desc': 'Recommended by 70 million travel enthusiasts',
+  'value.2.desc': 'Recommended by millions of travel enthusiasts',
   'value.3.title': 'Worry-free Experience',
   'value.3.desc': 'Experience China\'s beauty without barriers',
   'main.features.title': 'Features',
@@ -279,5 +279,5 @@ export const enTranslations: TranslationValue = {
   'why.us.data.title': 'Data-Driven Recommendations',
   'why.us.data.desc': 'Our suggestions are based on data from millions of travelers',
   'why.us.worryfree.title': 'Worry-Free Experience',
-  'why.us.worryfree.desc': 'Complete travel guide at your fingertips with just a smartphone',
+  'why.us.worryfree.desc': 'With our help, a smartphone is all you need to travel around China',
 }; 

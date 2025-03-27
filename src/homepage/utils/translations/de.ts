@@ -45,7 +45,7 @@ export const deTranslations: TranslationValue = {
   'value.1.title': 'Maßgeschneiderte Reise',
   'value.1.desc': 'Erstellen Sie Ihren eigenen Reiseplan',
   'value.2.title': 'Big-Data-Führung',
-  'value.2.desc': 'Empfohlen von 70 Millionen Reisebegeisterten',
+  'value.2.desc': 'Empfohlen von Millionen von Reisebegeisterten',
   'value.3.title': 'Sorgenfreies Erlebnis',
   'value.3.desc': 'Entdecken Sie China ohne Hindernisse',
 
@@ -65,7 +65,7 @@ export const deTranslations: TranslationValue = {
   'why.us.data.title': 'Datengestützte Empfehlungen',
   'why.us.data.desc': 'Unsere Vorschläge basieren auf Daten von Millionen von Reisenden',
   'why.us.worryfree.title': 'Sorgenfreies Erlebnis',
-  'why.us.worryfree.desc': 'Kompletter Reiseführer auf Ihrem Smartphone',
+  'why.us.worryfree.desc': 'Mit unserer Hilfe reicht ein Smartphone für Ihre Chinareise',
 
   // 目的地相关
   destinationsTitle: 'Beliebte Reiseziele',

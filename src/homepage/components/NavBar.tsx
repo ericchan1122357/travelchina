@@ -20,7 +20,9 @@ const NavBar: React.FC<NavBarProps> = ({ currentLanguage, onLanguageChange }) =>
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-china-red">China Travel Guide</span>
+            <span className="text-2xl font-bold text-china-red">
+              {t('nav.logo')}
+            </span>
           </Link>
 
           {/* Navigation Links */}
