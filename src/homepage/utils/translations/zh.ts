@@ -297,5 +297,8 @@ export const zhTranslations: TranslationValue = {
   'beijing.nav.attractions': '必游景点',
   'beijing.nav.experiences': '特色体验',
   'beijing.nav.back': '返回目的地列表',
-  'beijing.nav.plan': '开始规划行程'
+  'beijing.nav.plan': '开始规划行程',
+  'error.notFound': '页面未找到',
+  'error.guideNotFound': '未找到请求的指南内容',
+  'guide.content': '指南内容'
 }; 

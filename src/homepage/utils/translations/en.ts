@@ -353,4 +353,8 @@ export const enTranslations: TranslationValue = {
   'beijing.nav.experiences': 'Experiences',
   'beijing.nav.back': 'Back to Destinations',
   'beijing.nav.plan': 'Start Planning',
+
+  'error.notFound': 'Page Not Found',
+  'error.guideNotFound': 'The requested guide could not be found.',
+  'guide.content': 'Guide Content',
 }; 

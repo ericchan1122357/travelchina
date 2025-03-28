@@ -144,7 +144,8 @@ export const travelGuides: TravelGuide[] = [
     category: '基础攻略',
     content: '关于签证、交通、住宿等基本信息...',
     imageUrl: '/images/guides/first-time.jpg',
-    publishDate: '2024-01-15'
+    publishDate: '2024-01-15',
+    url: '/guides/basic/first-time-guide'
   },
   {
     id: '2',
@@ -153,7 +154,8 @@ export const travelGuides: TravelGuide[] = [
     category: '美食攻略',
     content: '各地特色美食推荐与饮食文化解读...',
     imageUrl: '/images/guides/food.jpg',
-    publishDate: '2024-01-20'
+    publishDate: '2024-01-20',
+    url: '/guides/food/chinese-cuisine-guide'
   }
 ];
 

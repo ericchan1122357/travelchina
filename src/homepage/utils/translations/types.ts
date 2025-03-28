@@ -298,4 +298,7 @@ export interface TranslationValue {
   'beijing.nav.experiences': string;
   'beijing.nav.back': string;
   'beijing.nav.plan': string;
+  'error.notFound': string;
+  'error.guideNotFound': string;
+  'guide.content': string;
 }
