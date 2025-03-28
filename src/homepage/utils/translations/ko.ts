@@ -412,4 +412,7 @@ export const koTranslations: TranslationValue = {
   'beijing.nav.experiences': '체험',
   'beijing.nav.back': '목적지 목록으로 돌아가기',
   'beijing.nav.plan': '여행 계획 시작하기',
+  'error.notFound': '페이지를 찾을 수 없습니다',
+  'error.guideNotFound': '요청하신 가이드를 찾을 수 없습니다',
+  'guide.content': '가이드 내용'
 }; 

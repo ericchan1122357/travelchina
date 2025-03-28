@@ -353,6 +353,10 @@ export const jaTranslations: TranslationValue = {
   'beijing.nav.culture': '文化と歴史',
   'beijing.nav.attractions': '観光スポット',
   'beijing.nav.experiences': '体験',
-  'beijing.nav.back': '目的地一覧に戻る',
-  'beijing.nav.plan': '旅程作成を開始',
+  'beijing.nav.back': '目的地リストに戻る',
+  'beijing.nav.plan': '旅行プランを始める',
+
+  'error.notFound': 'ページが見つかりません',
+  'error.guideNotFound': 'リクエストされたガイドが見つかりません',
+  'guide.content': 'ガイドの内容'
 }; 

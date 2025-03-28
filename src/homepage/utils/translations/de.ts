@@ -372,6 +372,10 @@ export const deTranslations: TranslationValue = {
   'beijing.nav.culture': 'Kultur & Geschichte',
   'beijing.nav.attractions': 'Sehenswürdigkeiten',
   'beijing.nav.experiences': 'Erlebnisse',
-  'beijing.nav.back': 'Zurück zu Reisezielen',
-  'beijing.nav.plan': 'Planung beginnen',
+  'beijing.nav.back': 'Zurück zur Destinationsliste',
+  'beijing.nav.plan': 'Reiseplanung starten',
+
+  'error.notFound': 'Seite nicht gefunden',
+  'error.guideNotFound': 'Der angeforderte Reiseführer wurde nicht gefunden.',
+  'guide.content': 'Reiseführer Inhalt'
 };

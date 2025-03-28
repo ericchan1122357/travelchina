@@ -399,5 +399,9 @@ export const ruTranslations: TranslationValue = {
   'beijing.nav.attractions': 'Достопримечательности',
   'beijing.nav.experiences': 'Впечатления',
   'beijing.nav.back': 'Вернуться к списку направлений',
-  'beijing.nav.plan': 'Начать планирование путешествия',
+  'beijing.nav.plan': 'Начать планирование',
+
+  'error.notFound': 'Страница не найдена',
+  'error.guideNotFound': 'Запрошенный путеводитель не найден',
+  'guide.content': 'Содержание путеводителя'
 }; 
