@@ -280,4 +280,77 @@ export const enTranslations: TranslationValue = {
   'why.us.data.desc': 'Our suggestions are based on data from millions of travelers',
   'why.us.worryfree.title': 'Worry-Free Experience',
   'why.us.worryfree.desc': 'With our help, a smartphone is all you need to travel around China',
+
+  // Beijing Page Translations
+  'beijing.title': 'Beijing: Symphony of Ancient and Modern',
+  'beijing.subtitle': 'Explore the Capital in Spring, Experience the Charm of History and Modernity',
+  'beijing.overview': 'The golden tiles of the majestic Forbidden City glisten in the sun, the Great Wall winds through mountain ranges, bicycle bells chime in hutongs, and CBD skyscrapers reflect the sunset... This is Beijing, a city that seamlessly blends ancient and modern, tradition and innovation. As a capital with 3,000 years of history and 800 years as a seat of power, Beijing embodies the essence of Chinese civilization while showcasing the vitality of modern China.',
+  
+  'beijing.basicInfo.title': 'Essential Information',
+  'beijing.basicInfo.bestSeason.title': 'Best Time to Visit',
+  'beijing.basicInfo.bestSeason.spring': 'Spring (Mar-May): Pleasant weather, flowers in bloom',
+  'beijing.basicInfo.bestSeason.autumn': 'Autumn (Sep-Oct): Clear skies, vibrant foliage',
+  
+  'beijing.basicInfo.climate.title': 'Climate',
+  'beijing.basicInfo.climate.spring': 'Spring: Mild and comfortable, occasional sandstorms',
+  'beijing.basicInfo.climate.summer': 'Summer: Hot and rainy',
+  'beijing.basicInfo.climate.autumn': 'Autumn: Cool and dry',
+  'beijing.basicInfo.climate.winter': 'Winter: Cold and dry',
+  
+  'beijing.basicInfo.transport.title': 'Local Transportation',
+  'beijing.basicInfo.transport.subway': 'Extensive subway network covering major attractions',
+  'beijing.basicInfo.transport.bus': 'Dense bus routes reaching remote sites',
+  'beijing.basicInfo.transport.taxi': 'Taxi starting fare: 13 yuan',
+  'beijing.basicInfo.transport.bike': 'Shared bikes available throughout the city',
+  
+  'beijing.culture.title': 'Culture and History Overview',
+  'beijing.culture.history.title': 'Historical Evolution',
+  'beijing.culture.history.ancient': 'Shang-Zhou Period: Establishment of Ji City',
+  'beijing.culture.history.yuan': 'Yuan Dynasty: Official capital, known as Dadu',
+  'beijing.culture.history.ming': 'Ming-Qing Dynasties: Capital of Beijing, construction of the Forbidden City',
+  'beijing.culture.history.modern': 'Modern Era: Development into an international metropolis',
+  
+  'beijing.culture.features.title': 'Cultural Characteristics',
+  'beijing.culture.features.royal': 'Imperial Culture: Reflected in palaces and gardens',
+  'beijing.culture.features.hutong': 'Hutong Culture: Microcosm of old Beijing life',
+  'beijing.culture.features.opera': 'Peking Opera: A gem of Chinese theatrical arts',
+  'beijing.culture.features.courtyard': 'Siheyuan Culture: Model of traditional residence',
+  
+  'beijing.attractions.title': 'Must-Visit Attractions',
+  'beijing.attractions.palace.title': 'Imperial Palaces and Gardens',
+  'beijing.attractions.palace.forbidden.title': 'The Forbidden City',
+  'beijing.attractions.palace.forbidden.desc': 'The world\'s largest palace complex, home to 24 emperors. Spring brings blooming peonies in the Imperial Garden and magnolias by the corner towers.',
+  
+  'beijing.attractions.palace.summer.title': 'Summer Palace',
+  'beijing.attractions.palace.summer.desc': 'The world\'s largest royal garden, creating a poetic landscape with spring peach blossoms, apricot flowers, and weeping willows.',
+  
+  'beijing.attractions.palace.temple.title': 'Temple of Heaven',
+  'beijing.attractions.palace.temple.desc': 'Sacred imperial worship site of Ming and Qing dynasties. Ancient cypresses and spring flowers create a magnificent scene.',
+  
+  'beijing.attractions.greatwall.title': 'Great Wall Sections',
+  'beijing.attractions.greatwall.mutianyu.title': 'Mutianyu Great Wall',
+  'beijing.attractions.greatwall.mutianyu.desc': 'One of the best-preserved sections, featuring spectacular spring mountain flowers and picturesque wall views.',
+  
+  'beijing.attractions.greatwall.badaling.title': 'Badaling Great Wall',
+  'beijing.attractions.greatwall.badaling.desc': 'The most representative section of the Great Wall, surrounded by lush greenery in spring.',
+  
+  'beijing.experiences.title': 'Special Experiences',
+  'beijing.experiences.culture.title': 'Cultural Experiences',
+  'beijing.experiences.culture.opera': 'Peking Opera performances',
+  'beijing.experiences.culture.hutong': 'Siheyuan homestay experience',
+  'beijing.experiences.culture.tea': 'Tea culture appreciation',
+  'beijing.experiences.culture.tour': 'In-depth hutong tours',
+  
+  'beijing.experiences.spring.title': 'Spring Special Activities',
+  'beijing.experiences.spring.xiangshan': 'Xiangshan Flower Festival',
+  'beijing.experiences.spring.yuyuantan': 'Yuyuantan Cherry Blossom Festival',
+  'beijing.experiences.spring.summer': 'Summer Palace Peony Cultural Festival',
+  'beijing.experiences.spring.botanical': 'Botanical Garden Flower Show',
+  
+  'beijing.nav.basicInfo': 'Basic Info',
+  'beijing.nav.culture': 'Culture & History',
+  'beijing.nav.attractions': 'Attractions',
+  'beijing.nav.experiences': 'Experiences',
+  'beijing.nav.back': 'Back to Destinations',
+  'beijing.nav.plan': 'Start Planning',
 }; 
