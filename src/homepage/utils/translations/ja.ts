@@ -281,5 +281,78 @@ export const jaTranslations: TranslationValue = {
   'why.us.data.title': 'データに基づく推奨',
   'why.us.data.desc': '何百万もの旅行者のデータに基づくおすすめ',
   'why.us.worryfree.title': '心配のない体験',
-  'why.us.worryfree.desc': '私たちのサポートがあれば、スマートフォン1台で中国旅行が楽しめます'
+  'why.us.worryfree.desc': '私たちのサポートがあれば、スマートフォン1台で中国旅行が楽しめます',
+
+  // 北京详情页
+  'beijing.title': '北京：古今が織りなす千年の都',
+  'beijing.subtitle': '春の都を訪ねて、歴史と現代が織りなす魅力を体験',
+  'beijing.overview': '壮大な紫禁城の金色の瓦が輝き、万里の長城が山々を縫うように伸び、胡同ではリキシャの鈴の音が響き、CBDのガラス張りの高層ビル群が夕焼けを映し出す...ここは北京、古代と現代、伝統と革新が融合する都市です。3000年の建都史と800年以上の首都としての歴史を持つ古都として、北京は中華文明の精髄を受け継ぎながら、現代中国の活力を体現しています。',
+
+  'beijing.basicInfo.title': '基本情報',
+  'beijing.basicInfo.bestSeason.title': 'ベストシーズン',
+  'beijing.basicInfo.bestSeason.spring': '春（3-5月）：気候が快適で、花々が咲き乱れます',
+  'beijing.basicInfo.bestSeason.autumn': '秋（9-10月）：空気が澄んで、紅葉が美しい季節です',
+
+  'beijing.basicInfo.climate.title': '気候の特徴',
+  'beijing.basicInfo.climate.spring': '春：温暖で快適、時折砂嵐があります',
+  'beijing.basicInfo.climate.summer': '夏：蒸し暑く、雨が多い',
+  'beijing.basicInfo.climate.autumn': '秋：涼しく乾燥',
+  'beijing.basicInfo.climate.winter': '冬：寒く乾燥',
+
+  'beijing.basicInfo.transport.title': '市内交通',
+  'beijing.basicInfo.transport.subway': '地下鉄網が発達し、主要観光地をカバー',
+  'beijing.basicInfo.transport.bus': 'バス路線が充実、遠方の観光地にもアクセス可能',
+  'beijing.basicInfo.transport.taxi': 'タクシーの初乗り料金は13元',
+  'beijing.basicInfo.transport.bike': 'シェアサイクルが市内全域で利用可能',
+
+  'beijing.culture.title': '文化と歴史',
+  'beijing.culture.history.title': '歴史的変遷',
+  'beijing.culture.history.ancient': '商周時代：薊城として建設',
+  'beijing.culture.history.yuan': '元朝：大都として正式に首都に',
+  'beijing.culture.history.ming': '明清時代：北京を首都とし、紫禁城を建設',
+  'beijing.culture.history.modern': '現代：国際都市として発展',
+
+  'beijing.culture.features.title': '文化的特徴',
+  'beijing.culture.features.royal': '宮廷文化：宮殿や庭園建築に反映',
+  'beijing.culture.features.hutong': '胡同文化：旧北京の生活を今に伝える',
+  'beijing.culture.features.opera': '京劇：中国伝統演劇の至宝',
+  'beijing.culture.features.courtyard': '四合院文化：伝統的な住居様式の典型',
+
+  'beijing.attractions.title': '必見スポット',
+  'beijing.attractions.palace.title': '宮殿と庭園',
+  'beijing.attractions.palace.forbidden.title': '故宮博物院',
+  'beijing.attractions.palace.forbidden.desc': '世界最大の宮殿建築群で、24人の皇帝が居住。春には御花園で牡丹が咲き誇り、角楼付近では木蓮が開花します。',
+
+  'beijing.attractions.palace.summer.title': '頤和園',
+  'beijing.attractions.palace.summer.desc': '世界最大の皇家庭園。春には桃の花、杏の花、柳が詩情豊かな景観を作り出します。',
+
+  'beijing.attractions.palace.temple.title': '天壇公園',
+  'beijing.attractions.palace.temple.desc': '明清時代の皇帝が天を祭った神聖な場所。春には古い柏と花々が見事な景観を作り出します。',
+
+  'beijing.attractions.greatwall.title': '万里の長城',
+  'beijing.attractions.greatwall.mutianyu.title': '慕田峪長城',
+  'beijing.attractions.greatwall.mutianyu.desc': '最も保存状態の良い長城の一つ。春には山の花々が咲き乱れ、絵のような景観を作り出します。',
+
+  'beijing.attractions.greatwall.badaling.title': '八達嶺長城',
+  'beijing.attractions.greatwall.badaling.desc': '万里の長城の代表的な区間。春には周囲の緑が生い茂ります。',
+
+  'beijing.experiences.title': '特別な体験',
+  'beijing.experiences.culture.title': '文化体験',
+  'beijing.experiences.culture.opera': '京劇鑑賞',
+  'beijing.experiences.culture.hutong': '四合院での宿泊体験',
+  'beijing.experiences.culture.tea': '茶文化体験',
+  'beijing.experiences.culture.tour': '胡同散策ツアー',
+
+  'beijing.experiences.spring.title': '春のイベント',
+  'beijing.experiences.spring.xiangshan': '香山花まつり',
+  'beijing.experiences.spring.yuyuantan': '玉淵潭桜まつり',
+  'beijing.experiences.spring.summer': '頤和園牡丹文化祭',
+  'beijing.experiences.spring.botanical': '植物園花展',
+
+  'beijing.nav.basicInfo': '基本情報',
+  'beijing.nav.culture': '文化と歴史',
+  'beijing.nav.attractions': '観光スポット',
+  'beijing.nav.experiences': '体験',
+  'beijing.nav.back': '目的地一覧に戻る',
+  'beijing.nav.plan': '旅程作成を開始',
 }; 

@@ -326,5 +326,78 @@ export const ruTranslations: TranslationValue = {
   'why.us.data.title': 'Рекомендации на основе данных',
   'why.us.data.desc': 'Наши предложения основаны на данных миллионов путешественников',
   'why.us.worryfree.title': 'Беззаботный опыт',
-  'why.us.worryfree.desc': 'С нашей помощью для путешествия по Китаю вам нужен только смартфон'
+  'why.us.worryfree.desc': 'С нашей помощью для путешествия по Китаю вам нужен только смартфон',
+
+  // Страница с подробной информацией о Пекине
+  'beijing.title': 'Пекин: Симфония древности и современности',
+  'beijing.subtitle': 'Посетите столицу весной и откройте для себя очарование сплетения истории и современности',
+  'beijing.overview': 'Там, где сверкают золотые крыши Запретного города, где Великая стена извивается по горным хребтам, где в хутунах звенят колокольчики рикш, а в деловом районе стеклянные небоскрёбы отражают закат... Это Пекин. Город, где древность и современность, традиции и инновации сливаются воедино, наследник 3000-летней городской истории и более 800 лет столичного статуса, хранитель квинтэссенции китайской цивилизации и витрина современного Китая.',
+
+  'beijing.basicInfo.title': 'Основная информация',
+  'beijing.basicInfo.bestSeason.title': 'Лучшее время для посещения',
+  'beijing.basicInfo.bestSeason.spring': 'Весна (март-май): комфортная погода и цветение',
+  'beijing.basicInfo.bestSeason.autumn': 'Осень (сентябрь-октябрь): ясное небо и красивая листва',
+
+  'beijing.basicInfo.climate.title': 'Климатические особенности',
+  'beijing.basicInfo.climate.spring': 'Весна: тепло и комфортно, возможны пыльные бури',
+  'beijing.basicInfo.climate.summer': 'Лето: жарко и дождливо',
+  'beijing.basicInfo.climate.autumn': 'Осень: прохладно и сухо',
+  'beijing.basicInfo.climate.winter': 'Зима: холодно и сухо',
+
+  'beijing.basicInfo.transport.title': 'Городской транспорт',
+  'beijing.basicInfo.transport.subway': 'Развитая сеть метро, соединяющая основные достопримечательности',
+  'beijing.basicInfo.transport.bus': 'Обширная сеть автобусных маршрутов, доступ к отдаленным достопримечательностям',
+  'beijing.basicInfo.transport.taxi': 'Минимальная стоимость такси 13 юаней',
+  'beijing.basicInfo.transport.bike': 'Прокат велосипедов доступен по всему городу',
+
+  'beijing.culture.title': 'Культура и история',
+  'beijing.culture.history.title': 'Историческое развитие',
+  'beijing.culture.history.ancient': 'Эпоха Шан-Чжоу: основание Цзи',
+  'beijing.culture.history.yuan': 'Династия Юань: становление официальной столицей как Даду',
+  'beijing.culture.history.ming': 'Династии Мин и Цин: установление Пекина столицей и строительство Запретного города',
+  'beijing.culture.history.modern': 'Современность: развитие международного мегаполиса',
+
+  'beijing.culture.features.title': 'Культурные особенности',
+  'beijing.culture.features.royal': 'Императорская культура: отражена в дворцах и садах',
+  'beijing.culture.features.hutong': 'Культура хутунов: миниатюра старого Пекина',
+  'beijing.culture.features.opera': 'Пекинская опера: жемчужина китайского традиционного театра',
+  'beijing.culture.features.courtyard': 'Культура сыхэюаней: образец традиционного жилища',
+
+  'beijing.attractions.title': 'Основные достопримечательности',
+  'beijing.attractions.palace.title': 'Дворцы и сады',
+  'beijing.attractions.palace.forbidden.title': 'Запретный город',
+  'beijing.attractions.palace.forbidden.desc': 'Крупнейший дворцовый комплекс в мире, где жили 24 императора. Весной во внутренних дворах цветут пионы, а вокруг павильонов - магнолии.',
+
+  'beijing.attractions.palace.summer.title': 'Летний дворец',
+  'beijing.attractions.palace.summer.desc': 'Крупнейший императорский сад в мире, весной украшенный цветущими персиками, абрикосами и ивами.',
+
+  'beijing.attractions.palace.temple.title': 'Храм Неба',
+  'beijing.attractions.palace.temple.desc': 'Место, где императоры династий Мин и Цин совершали церемонии поклонения Небу. Весной древние деревья и цветы создают великолепный пейзаж.',
+
+  'beijing.attractions.greatwall.title': 'Участки Великой стены',
+  'beijing.attractions.greatwall.mutianyu.title': 'Мутяньюй',
+  'beijing.attractions.greatwall.mutianyu.desc': 'Один из наиболее сохранившихся участков стены, весной окруженный цветущими горными цветами.',
+
+  'beijing.attractions.greatwall.badaling.title': 'Бадалин',
+  'beijing.attractions.greatwall.badaling.desc': 'Самый известный участок Великой стены, весной окруженный свежей зеленью.',
+
+  'beijing.experiences.title': 'Особые впечатления',
+  'beijing.experiences.culture.title': 'Культурный опыт',
+  'beijing.experiences.culture.opera': 'Просмотр пекинской оперы',
+  'beijing.experiences.culture.hutong': 'Проживание в традиционном сыхэюане',
+  'beijing.experiences.culture.tea': 'Знакомство с чайной культурой',
+  'beijing.experiences.culture.tour': 'Углубленное изучение хутунов',
+
+  'beijing.experiences.spring.title': 'Весенние мероприятия',
+  'beijing.experiences.spring.xiangshan': 'Фестиваль цветов в парке Сяншань',
+  'beijing.experiences.spring.yuyuantan': 'Фестиваль сакуры в парке Юйюаньтань',
+  'beijing.experiences.spring.summer': 'Фестиваль пионов в Летнем дворце',
+  'beijing.experiences.spring.botanical': 'Выставка цветов в Ботаническом саду',
+
+  'beijing.nav.basicInfo': 'Основная информация',
+  'beijing.nav.culture': 'Культура и история',
+  'beijing.nav.attractions': 'Достопримечательности',
+  'beijing.nav.experiences': 'Впечатления',
+  'beijing.nav.back': 'Вернуться к списку направлений',
+  'beijing.nav.plan': 'Начать планирование путешествия',
 }; 
