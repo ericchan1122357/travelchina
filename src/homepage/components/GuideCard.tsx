@@ -2,13 +2,16 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { TravelGuide } from '../types';
+import { TravelGuide, Language } from '../types';
+import { getTranslation } from '../utils/translations';
+import { TranslationValue } from '../utils/translations/types';
 
 interface GuideCardProps {
   guide: TravelGuide;
+  currentLanguage: Language;
 }
 
-const GuideCard: React.FC<GuideCardProps> = ({ guide }) => {
+const GuideCard: React.FC<GuideCardProps> = ({ guide, currentLanguage }) => {
   const { title, description, iconName, url, category } = guide;
   
   // 构建默认 URL
@@ -82,6 +85,9 @@ const GuideCard: React.FC<GuideCardProps> = ({ guide }) => {
 
   const { icon, bgColor, textColor } = getIconAndColor(category);
 
+  // 获取当前语言的翻译
+  const t = (key: keyof TranslationValue) => getTranslation(currentLanguage, key);
+
   return (
     <Link 
       href={guideUrl}
@@ -97,7 +103,7 @@ const GuideCard: React.FC<GuideCardProps> = ({ guide }) => {
         <p className="text-gray-600 text-sm mb-4 flex-grow">{description}</p>
         
         <div className="flex items-center text-sm font-medium mt-auto">
-          <span className={textColor}>了解更多</span>
+          <span className={textColor}>{t('readMore')}</span>
           <svg 
             className={`ml-1 w-4 h-4 ${textColor}`} 
             fill="none" 
