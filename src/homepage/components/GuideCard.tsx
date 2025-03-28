@@ -12,10 +12,10 @@ interface GuideCardProps {
 }
 
 const GuideCard: React.FC<GuideCardProps> = ({ guide, currentLanguage }) => {
-  const { title, description, iconName, url, category, id } = guide;
+  const { title, description, iconName, url, category, categorySlug, id } = guide;
   
-  // 构建默认 URL
-  const guideUrl = url || `/guides/${category.toLowerCase()}/${id}`;
+  // 构建默认 URL,使用categorySlug
+  const guideUrl = url || `/guides/${categorySlug}/${id}`;
 
   // 根据类别返回图标和颜色
   const getIconAndColor = (category: string) => {

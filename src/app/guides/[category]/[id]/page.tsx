@@ -27,7 +27,7 @@ export default function GuidePage() {
 
     // 从 mockData 中查找对应的指南
     const foundGuide = travelGuides.find(g => {
-      const matchesCategory = g.category.toLowerCase() === params.category;
+      const matchesCategory = g.categorySlug === params.category;
       const matchesId = g.id === params.id;
       const matchesUrl = g.url === `/guides/${params.category}/${params.id}`;
       return matchesCategory && (matchesId || matchesUrl);

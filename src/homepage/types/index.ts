@@ -33,6 +33,7 @@ export interface TravelGuide {
   description: string;
   content: string;
   category: string;
+  categorySlug: string; // 用于URL构建的category标识符
   imageUrl: string;
   iconName?: string;
   url?: string;
