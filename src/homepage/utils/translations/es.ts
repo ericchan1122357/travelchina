@@ -12,9 +12,9 @@ export const esTranslations: TranslationValue = {
   'season.autumn': 'Otoño',
   'season.winter': 'Invierno',
 
-  heroTitle: 'Descubre la Belleza de China',
-  heroSubtitle: 'Explora atracciones, cultura y gastronomía increíbles',
-  startPlanning: 'Empezar a planificar',
+  heroTitle: 'Planifique su viaje personalizado a China',
+  heroSubtitle: 'Descubra la belleza y cultura de China',
+  startPlanning: 'Comenzar a planificar',
 
   'main.title': 'Planifique su viaje perfecto',
   'main.subtitle': 'Creamos el itinerario ideal para su aventura en China',
@@ -28,39 +28,39 @@ export const esTranslations: TranslationValue = {
   'main.partners.description': 'Trabajamos con los mejores',
 
   'value.1.title': 'Viajes Personalizados',
-  'value.1.desc': 'Crea tu viaje perfecto según tus intereses',
+  'value.1.desc': 'Personalice su viaje perfecto según sus intereses',
   'value.2.title': 'Guía de Big Data',
   'value.2.desc': 'Recomendado por millones de entusiastas de viajes',
-  'value.3.title': 'Experiencia sin Preocupaciones',
-  'value.3.desc': 'Descubre la belleza de China sin barreras',
+  'value.3.title': 'Experiencia sin preocupaciones',
+  'value.3.desc': 'Descubra la belleza de China sin barreras',
 
   destinationsTitle: 'Destinos Populares',
-  destinationDescription: 'Explora los lugares turísticos más fascinantes de China',
-  destinationActivities: 'Actividades Destacadas',
-  destinationSeason: 'Mejor Temporada',
+  destinationDescription: 'Descripción del destino',
+  destinationActivities: 'Actividades',
+  destinationSeason: 'Mejor temporada',
 
   storiesTitle: 'Historias de Viaje',
   readMore: 'Leer más',
   storyAuthor: 'Autor',
   storyDestination: 'Destino',
-  storyDate: 'Fecha de publicación',
+  storyDate: 'Fecha',
 
   guidesTitle: 'Guías de Viaje',
   guideCategory: 'Categoría',
-  guideContent: 'Contenido de la guía',
+  guideContent: 'Contenido',
 
-  ctaTitle: 'Comienza tu Viaje por China',
-  ctaSubtitle: 'Deja que nuestro planificador cree tu itinerario perfecto',
-  ctaButton: 'Comenzar ahora',
-  ctaStats: '50+ Ciudades, 200+ Rutas, 10000+ Usuarios',
+  ctaTitle: 'Comience su aventura china hoy',
+  ctaSubtitle: 'Utilice nuestro planificador para crear el itinerario perfecto',
+  ctaButton: 'Planificar ahora',
+  ctaStats: 'Estadísticas de viaje',
 
   footerAbout: 'Acerca de',
   footerContact: 'Contacto',
-  footerPrivacy: 'Política de privacidad',
-  footerTerms: 'Términos de uso',
-  footerDescription: 'Tu experto en planificación de viajes a China',
+  footerPrivacy: 'Privacidad',
+  footerTerms: 'Términos',
+  footerDescription: 'Su guía definitiva para viajar por China',
 
-  skipToContent: 'Ir al contenido',
+  skipToContent: 'Saltar al contenido',
   scrollLeft: 'Desplazar a la izquierda',
   scrollRight: 'Desplazar a la derecha',
 
@@ -217,7 +217,6 @@ export const esTranslations: TranslationValue = {
   'nav.community': 'Comunidad',
   'nav.login': 'Iniciar sesión',
   'nav.signup': 'Registrarse',
-  'nav.back': 'Atrás',
 
   'pricing.free.title': 'Plan Gratuito',
   'pricing.free.description': 'Funciones básicas',
@@ -340,82 +339,4 @@ export const esTranslations: TranslationValue = {
   'why.us.data.desc': 'Nuestras sugerencias se basan en datos de millones de viajeros',
   'why.us.worryfree.title': 'Experiencia sin preocupaciones',
   'why.us.worryfree.desc': 'Con nuestra ayuda, un smartphone es todo lo que necesitas para viajar por China',
-
-  // Beijing Page Translations
-  'beijing.title': 'Pekín: Sinfonía de lo Antiguo y lo Moderno',
-  'beijing.subtitle': 'Explore la Capital en Primavera, Experimente el Encanto de la Historia y la Modernidad',
-  'beijing.overview': 'Las tejas doradas de la majestuosa Ciudad Prohibida brillan al sol, la Gran Muralla serpentea a través de las cadenas montañosas, las campanillas de bicicleta resuenan en los hutongs, y los rascacielos del CBD reflejan el atardecer... Esta es Pekín, una ciudad que fusiona armoniosamente lo antiguo y lo moderno, la tradición y la innovación. Como capital con 3.000 años de historia y 800 años como sede del poder, Pekín encarna la esencia de la civilización china mientras muestra la vitalidad de la China moderna.',
-  
-  'beijing.basicInfo.title': 'Información Esencial',
-  'beijing.basicInfo.bestSeason.title': 'Mejor Época para Visitar',
-  'beijing.basicInfo.bestSeason.spring': 'Primavera (marzo-mayo): Clima agradable, flores en floración',
-  'beijing.basicInfo.bestSeason.autumn': 'Otoño (sept-oct): Cielos despejados, follaje colorido',
-  
-  'beijing.basicInfo.climate.title': 'Clima',
-  'beijing.basicInfo.climate.spring': 'Primavera: Suave y agradable, tormentas de arena ocasionales',
-  'beijing.basicInfo.climate.summer': 'Verano: Caluroso y lluvioso',
-  'beijing.basicInfo.climate.autumn': 'Otoño: Fresco y seco',
-  'beijing.basicInfo.climate.winter': 'Invierno: Frío y seco',
-  
-  'beijing.basicInfo.transport.title': 'Transporte Local',
-  'beijing.basicInfo.transport.subway': 'Extensa red de metro que cubre las principales atracciones',
-  'beijing.basicInfo.transport.bus': 'Densas rutas de autobús que llegan a sitios remotos',
-  'beijing.basicInfo.transport.taxi': 'Tarifa inicial del taxi: 13 yuanes',
-  'beijing.basicInfo.transport.bike': 'Bicicletas compartidas disponibles en toda la ciudad',
-  
-  'beijing.culture.title': 'Panorama Cultural e Histórico',
-  'beijing.culture.history.title': 'Evolución Histórica',
-  'beijing.culture.history.ancient': 'Período Shang-Zhou: Establecimiento de la ciudad de Ji',
-  'beijing.culture.history.yuan': 'Dinastía Yuan: Capital oficial, conocida como Dadu',
-  'beijing.culture.history.ming': 'Dinastías Ming-Qing: Capital de Pekín, construcción de la Ciudad Prohibida',
-  'beijing.culture.history.modern': 'Era moderna: Desarrollo como metrópolis internacional',
-  
-  'beijing.culture.features.title': 'Características Culturales',
-  'beijing.culture.features.royal': 'Cultura Imperial: Reflejada en palacios y jardines',
-  'beijing.culture.features.hutong': 'Cultura Hutong: Microcosmos de la vida del antiguo Pekín',
-  'beijing.culture.features.opera': 'Ópera de Pekín: Una joya de las artes teatrales chinas',
-  'beijing.culture.features.courtyard': 'Cultura Siheyuan: Modelo de residencia tradicional',
-  
-  'beijing.attractions.title': 'Atracciones Imprescindibles',
-  'beijing.attractions.palace.title': 'Palacios y Jardines Imperiales',
-  'beijing.attractions.palace.forbidden.title': 'La Ciudad Prohibida',
-  'beijing.attractions.palace.forbidden.desc': 'El complejo palaciego más grande del mundo, hogar de 24 emperadores. La primavera trae peonías florecientes en el Jardín Imperial y magnolias junto a las torres de esquina.',
-  
-  'beijing.attractions.palace.summer.title': 'Palacio de Verano',
-  'beijing.attractions.palace.summer.desc': 'El jardín real más grande del mundo, creando un paisaje poético con flores de melocotón, albaricoque y sauces llorones en primavera.',
-  
-  'beijing.attractions.palace.temple.title': 'Templo del Cielo',
-  'beijing.attractions.palace.temple.desc': 'Sitio sagrado de culto imperial de las dinastías Ming y Qing. Los antiguos cipreses y las flores de primavera crean una escena magnífica.',
-  
-  'beijing.attractions.greatwall.title': 'Secciones de la Gran Muralla',
-  'beijing.attractions.greatwall.mutianyu.title': 'Gran Muralla de Mutianyu',
-  'beijing.attractions.greatwall.mutianyu.desc': 'Una de las secciones mejor conservadas, con espectaculares flores de montaña y vistas pintorescas en primavera.',
-  
-  'beijing.attractions.greatwall.badaling.title': 'Gran Muralla de Badaling',
-  'beijing.attractions.greatwall.badaling.desc': 'La sección más representativa de la Gran Muralla, rodeada de exuberante vegetación en primavera.',
-  
-  'beijing.experiences.title': 'Experiencias Especiales',
-  'beijing.experiences.culture.title': 'Experiencias Culturales',
-  'beijing.experiences.culture.opera': 'Espectáculos de Ópera de Pekín',
-  'beijing.experiences.culture.hutong': 'Experiencia de alojamiento en Siheyuan',
-  'beijing.experiences.culture.tea': 'Degustación de la cultura del té',
-  'beijing.experiences.culture.tour': 'Tours en profundidad por los hutongs',
-  
-  'beijing.experiences.spring.title': 'Actividades de Primavera',
-  'beijing.experiences.spring.xiangshan': 'Festival de Flores de Xiangshan',
-  'beijing.experiences.spring.yuyuantan': 'Festival de Cerezos de Yuyuantan',
-  'beijing.experiences.spring.summer': 'Festival Cultural de Peonías del Palacio de Verano',
-  'beijing.experiences.spring.botanical': 'Exposición de Flores del Jardín Botánico',
-  
-  'beijing.nav.basicInfo': 'Info Básica',
-  'beijing.nav.culture': 'Cultura e Historia',
-  'beijing.nav.attractions': 'Atracciones',
-  'beijing.nav.experiences': 'Experiencias',
-  'beijing.nav.back': 'Volver a la lista de destinos',
-  'beijing.nav.plan': 'Comenzar planificación',
-
-  'error.notFound': 'Página no encontrada',
-  'error.pageNotFound': 'Lo sentimos, la página solicitada no fue encontrada',
-  'error.guideNotFound': 'La guía solicitada no fue encontrada',
-  'guide.content': 'Contenido de la guía'
 }; 

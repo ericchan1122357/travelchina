@@ -40,7 +40,6 @@ export const deTranslations: TranslationValue = {
   'nav.community': 'Community',
   'nav.login': 'Anmelden',
   'nav.signup': 'Registrieren',
-  'nav.back': 'Zurück',
 
   // 价值主张
   'value.1.title': 'Maßgeschneiderte Reise',
@@ -302,82 +301,4 @@ export const deTranslations: TranslationValue = {
   'destination.3.name': 'Chengdu',
   'destination.3.description': 'Heimat der Pandas',
   'destination.3.activities.food': 'Sichuan-Küche genießen',
-
-  // Beijing Page Translations
-  'beijing.title': 'Peking: Symphonie aus Alt und Neu',
-  'beijing.subtitle': 'Entdecken Sie die Hauptstadt im Frühling, erleben Sie den Charme von Geschichte und Moderne',
-  'beijing.overview': 'Die goldenen Ziegel der majestätischen Verbotenen Stadt glänzen in der Sonne, die Große Mauer windet sich durch Bergketten, Fahrradklingeln läuten in den Hutongs, und die Wolkenkratzer des CBD spiegeln den Sonnenuntergang wider... Das ist Peking, eine Stadt, die nahtlos Antikes und Modernes, Tradition und Innovation verbindet. Als Hauptstadt mit 3.000 Jahren Geschichte und 800 Jahren als Machtzentrum verkörpert Peking die Essenz der chinesischen Zivilisation und zeigt gleichzeitig die Vitalität des modernen Chinas.',
-  
-  'beijing.basicInfo.title': 'Wichtige Informationen',
-  'beijing.basicInfo.bestSeason.title': 'Beste Reisezeit',
-  'beijing.basicInfo.bestSeason.spring': 'Frühling (März-Mai): Angenehmes Wetter, blühende Blumen',
-  'beijing.basicInfo.bestSeason.autumn': 'Herbst (Sept-Okt): Klarer Himmel, farbenfrohe Blätter',
-  
-  'beijing.basicInfo.climate.title': 'Klima',
-  'beijing.basicInfo.climate.spring': 'Frühling: Mild und angenehm, gelegentliche Sandstürme',
-  'beijing.basicInfo.climate.summer': 'Sommer: Heiß und regnerisch',
-  'beijing.basicInfo.climate.autumn': 'Herbst: Kühl und trocken',
-  'beijing.basicInfo.climate.winter': 'Winter: Kalt und trocken',
-  
-  'beijing.basicInfo.transport.title': 'Lokaler Transport',
-  'beijing.basicInfo.transport.subway': 'Umfangreiches U-Bahn-Netz zu allen Sehenswürdigkeiten',
-  'beijing.basicInfo.transport.bus': 'Dichtes Busnetz zu abgelegenen Orten',
-  'beijing.basicInfo.transport.taxi': 'Taxi Grundpreis: 13 Yuan',
-  'beijing.basicInfo.transport.bike': 'Leihfahrräder in der ganzen Stadt verfügbar',
-  
-  'beijing.culture.title': 'Kultur und Geschichte im Überblick',
-  'beijing.culture.history.title': 'Historische Entwicklung',
-  'beijing.culture.history.ancient': 'Shang-Zhou-Zeit: Gründung der Ji-Stadt',
-  'beijing.culture.history.yuan': 'Yuan-Dynastie: Offizielle Hauptstadt, bekannt als Dadu',
-  'beijing.culture.history.ming': 'Ming-Qing-Dynastien: Hauptstadt Peking, Bau der Verbotenen Stadt',
-  'beijing.culture.history.modern': 'Moderne Zeit: Entwicklung zur internationalen Metropole',
-  
-  'beijing.culture.features.title': 'Kulturelle Besonderheiten',
-  'beijing.culture.features.royal': 'Kaiserliche Kultur: Spiegelt sich in Palästen und Gärten wider',
-  'beijing.culture.features.hutong': 'Hutong-Kultur: Mikrokosmos des alten Pekinger Lebens',
-  'beijing.culture.features.opera': 'Peking-Oper: Ein Juwel der chinesischen Theaterkunst',
-  'beijing.culture.features.courtyard': 'Siheyuan-Kultur: Modell traditionellen Wohnens',
-  
-  'beijing.attractions.title': 'Sehenswürdigkeiten',
-  'beijing.attractions.palace.title': 'Kaiserliche Paläste und Gärten',
-  'beijing.attractions.palace.forbidden.title': 'Die Verbotene Stadt',
-  'beijing.attractions.palace.forbidden.desc': 'Der größte Palastkomplex der Welt, Heimat von 24 Kaisern. Im Frühling blühen Pfingstrosen im Kaiserlichen Garten und Magnolien an den Ecktürmen.',
-  
-  'beijing.attractions.palace.summer.title': 'Sommerpalast',
-  'beijing.attractions.palace.summer.desc': 'Der größte kaiserliche Garten der Welt, mit Pfirsichblüten, Aprikosenblüten und Trauerweiden im Frühling.',
-  
-  'beijing.attractions.palace.temple.title': 'Himmelstempel',
-  'beijing.attractions.palace.temple.desc': 'Heilige kaiserliche Kultstätte der Ming- und Qing-Dynastien. Alte Zypressen und Frühlingsblumen schaffen eine prachtvolle Szenerie.',
-  
-  'beijing.attractions.greatwall.title': 'Abschnitte der Großen Mauer',
-  'beijing.attractions.greatwall.mutianyu.title': 'Mutianyu Große Mauer',
-  'beijing.attractions.greatwall.mutianyu.desc': 'Einer der besterhaltenen Abschnitte, mit spektakulären Frühlingsblumen und malerischen Maueraussichten.',
-  
-  'beijing.attractions.greatwall.badaling.title': 'Badaling Große Mauer',
-  'beijing.attractions.greatwall.badaling.desc': 'Der repräsentativste Abschnitt der Großen Mauer, umgeben von üppigem Grün im Frühling.',
-  
-  'beijing.experiences.title': 'Besondere Erlebnisse',
-  'beijing.experiences.culture.title': 'Kulturelle Erfahrungen',
-  'beijing.experiences.culture.opera': 'Peking-Oper-Aufführungen',
-  'beijing.experiences.culture.hutong': 'Siheyuan-Übernachtungserlebnis',
-  'beijing.experiences.culture.tea': 'Teekultur-Verkostung',
-  'beijing.experiences.culture.tour': 'Ausführliche Hutong-Touren',
-  
-  'beijing.experiences.spring.title': 'Frühlingsaktivitäten',
-  'beijing.experiences.spring.xiangshan': 'Xiangshan-Blumenfestival',
-  'beijing.experiences.spring.yuyuantan': 'Yuyuantan-Kirschblütenfestival',
-  'beijing.experiences.spring.summer': 'Sommerpalast-Pfingstrosenfestival',
-  'beijing.experiences.spring.botanical': 'Botanischer Garten Blumenschau',
-  
-  'beijing.nav.basicInfo': 'Basisinfo',
-  'beijing.nav.culture': 'Kultur & Geschichte',
-  'beijing.nav.attractions': 'Sehenswürdigkeiten',
-  'beijing.nav.experiences': 'Erlebnisse',
-  'beijing.nav.back': 'Zurück zur Destinationsliste',
-  'beijing.nav.plan': 'Reiseplanung starten',
-
-  'error.notFound': 'Seite nicht gefunden',
-  'error.pageNotFound': 'Entschuldigung, die angeforderte Seite wurde nicht gefunden',
-  'error.guideNotFound': 'Der angeforderte Reiseführer wurde nicht gefunden',
-  'guide.content': 'Reiseführer Inhalt'
 };

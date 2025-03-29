@@ -12,8 +12,8 @@ export const koTranslations: TranslationValue = {
   'season.autumn': '가을',
   'season.winter': '겨울',
 
-  heroTitle: '중국의 아름다움을 발견하세요',
-  heroSubtitle: '놀라운 명소, 문화, 음식을 경험하세요',
+  heroTitle: '맞춤형 중국 여행 계획하기',
+  heroSubtitle: '특별한 중국 여행을 계획',
   startPlanning: '계획 시작하기',
 
   'main.title': '완벽한 여행 계획하세요',
@@ -28,39 +28,39 @@ export const koTranslations: TranslationValue = {
   'main.partners.description': '함께 협력합니다',
 
   'value.1.title': '맞춤형 여행',
-  'value.1.desc': '당신의 관심사에 맞는 완벽한 여행을 만드세요',
+  'value.1.desc': '당신의 취향에 맞는 여행 일정 맞춤 제작',
   'value.2.title': '빅데이터 가이드',
-  'value.2.desc': '수백만 여행 애호가들의 추천',
-  'value.3.title': '걱정 없는 경험',
-  'value.3.desc': '장벽 없이 중국의 아름다움을 발견하세요',
+  'value.2.desc': '수백만 여행 애호가의 추천',
+  'value.3.title': '걱정 없는 체험',
+  'value.3.desc': '장벽 없이 중국의 아름다움을 경험',
 
   destinationsTitle: '인기 목적지',
-  destinationDescription: '중국의 가장 매력적인 관광지를 탐험하세요',
-  destinationActivities: '주요 활동',
-  destinationSeason: '최적의 시즌',
+  destinationDescription: '목적지 설명',
+  destinationActivities: '액티비티',
+  destinationSeason: '여행 시즌',
 
   storiesTitle: '여행 이야기',
   readMore: '더 보기',
   storyAuthor: '작성자',
-  storyDestination: '목적지',
-  storyDate: '발행일',
+  storyDestination: '여행지',
+  storyDate: '작성일',
 
   guidesTitle: '여행 가이드',
   guideCategory: '카테고리',
-  guideContent: '가이드 내용',
+  guideContent: '내용',
 
-  ctaTitle: '중국 여행을 시작하세요',
-  ctaSubtitle: '우리의 플래너가 당신의 완벽한 여정을 만들어드립니다',
+  ctaTitle: '완벽 여행을 시작하세요',
+  ctaSubtitle: '우리의 플래너로 최고의 일정을 계획하세요',
   ctaButton: '지금 시작하기',
-  ctaStats: '50+ 도시, 200+ 여정, 10000+ 사용자',
+  ctaStats: '여행 통계',
 
   footerAbout: '회사 소개',
-  footerContact: '연락처',
-  footerPrivacy: '개인정보 처리방침',
+  footerContact: '연락하기',
+  footerPrivacy: '개인정보 보호정책',
   footerTerms: '이용약관',
-  footerDescription: '당신의 중국 여행 계획 전문가',
+  footerDescription: '완벽 여행 계획 서비스',
 
-  skipToContent: '콘텐츠로 건너뛰기',
+  skipToContent: '내용으로 건너뛰기',
   scrollLeft: '왼쪽으로 스크롤',
   scrollRight: '오른쪽으로 스크롤',
 
@@ -210,10 +210,9 @@ export const koTranslations: TranslationValue = {
   'planner.destinations.cities.zhangjiajie': '장자제',
 
   'nav.home': '홈',
-  'nav.back': '뒤로',
-  'nav.destinations': '목적지',
-  'nav.guides': '가이드',
+  'nav.destinations': '여행지',
   'nav.stories': '스토리',
+  'nav.guides': '가이드',
   'nav.planner': '플래너',
   'nav.community': '커뮤니티',
   'nav.login': '로그인',
@@ -340,81 +339,4 @@ export const koTranslations: TranslationValue = {
   'why.us.data.desc': '수백만 여행자의 데이터를 기반으로 한 추천',
   'why.us.worryfree.title': '걱정 없는 경험',
   'why.us.worryfree.desc': '저희의 도움으로 스마트폰 하나만으로 중국 여행이 가능합니다',
-
-  // 베이징 상세 페이지
-  'beijing.title': '베이징: 천년 수도의 고금 교향곡',
-  'beijing.subtitle': '봄날의 수도를 방문하여 역사와 현대가 어우러진 매력을 체험',
-  'beijing.overview': '웅장한 자금성의 금빛 기와가 빛나고, 만리장성이 산맥을 따라 굽이치며, 후통에서는 인력거 방울 소리가 울리고, CBD의 유리 빌딩이 석양을 비추는 곳... 이곳이 바로 베이징입니다. 고대와 현대, 전통과 혁신이 융합된 도시로서, 3000년의 도시 역사와 800년 이상의 수도 역사를 가진 고도로서 중화 문명의 정수를 계승하며 현대 중국의 활력을 보여주고 있습니다.',
-
-  'beijing.basicInfo.title': '기본 정보',
-  'beijing.basicInfo.bestSeason.title': '최적의 방문 시기',
-  'beijing.basicInfo.bestSeason.spring': '봄(3-5월): 날씨가 쾌적하고 꽃이 만발합니다',
-  'beijing.basicInfo.bestSeason.autumn': '가을(9-10월): 하늘이 맑고 단풍이 아름답습니다',
-
-  'beijing.basicInfo.climate.title': '기후 특징',
-  'beijing.basicInfo.climate.spring': '봄: 따뜻하고 쾌적, 간혹 황사 있음',
-  'beijing.basicInfo.climate.summer': '여름: 덥고 비가 많음',
-  'beijing.basicInfo.climate.autumn': '가을: 선선하고 건조',
-  'beijing.basicInfo.climate.winter': '겨울: 춥고 건조',
-
-  'beijing.basicInfo.transport.title': '시내 교통',
-  'beijing.basicInfo.transport.subway': '지하철망이 발달하여 주요 관광지 연결',
-  'beijing.basicInfo.transport.bus': '버스 노선이 풍부하여 원거리 관광지까지 접근 가능',
-  'beijing.basicInfo.transport.taxi': '택시 기본요금 13위안',
-  'beijing.basicInfo.transport.bike': '공유 자전거 전 지역 이용 가능',
-
-  'beijing.culture.title': '문화와 역사',
-  'beijing.culture.history.title': '역사적 변천',
-  'beijing.culture.history.ancient': '상주시대: 지성으로 건설',
-  'beijing.culture.history.yuan': '원나라: 대도로 정식 수도 지정',
-  'beijing.culture.history.ming': '명청시대: 베이징을 수도로 정하고 자금성 건설',
-  'beijing.culture.history.modern': '현대: 국제도시로 발전',
-
-  'beijing.culture.features.title': '문화적 특징',
-  'beijing.culture.features.royal': '궁정 문화: 궁전과 정원 건축에 반영',
-  'beijing.culture.features.hutong': '후통 문화: 옛 베이징 생활의 축소판',
-  'beijing.culture.features.opera': '경극: 중국 전통 연극의 보물',
-  'beijing.culture.features.courtyard': '사합원 문화: 전통 주거 방식의 전형',
-
-  'beijing.attractions.title': '필수 관광지',
-  'beijing.attractions.palace.title': '궁전과 정원',
-  'beijing.attractions.palace.forbidden.title': '자금성',
-  'beijing.attractions.palace.forbidden.desc': '세계 최대의 궁전 건축군으로, 24명의 황제가 거주했습니다. 봄에는 어원에 모란이 피고 각루 주변에 목련이 만발합니다.',
-
-  'beijing.attractions.palace.summer.title': '이화원',
-  'beijing.attractions.palace.summer.desc': '세계 최대의 황실 정원으로, 봄에는 복숭아꽃, 살구꽃, 버들이 시적인 풍경을 만듭니다.',
-
-  'beijing.attractions.palace.temple.title': '천단공원',
-  'beijing.attractions.palace.temple.desc': '명청 시대 황제들의 제천 의식 장소로, 봄에는 고목과 꽃들이 장관을 이룹니다.',
-
-  'beijing.attractions.greatwall.title': '만리장성 구간',
-  'beijing.attractions.greatwall.mutianyu.title': '무티엔위 장성',
-  'beijing.attractions.greatwall.mutianyu.desc': '가장 보존 상태가 좋은 장성 구간 중 하나로, 봄에는 산꽃이 만발하여 그림 같은 경관을 자랑합니다.',
-
-  'beijing.attractions.greatwall.badaling.title': '바달링 장성',
-  'beijing.attractions.greatwall.badaling.desc': '만리장성의 대표적인 구간으로, 봄에는 주변이 푸르른 녹음으로 가득합니다.',
-
-  'beijing.experiences.title': '특별 체험',
-  'beijing.experiences.culture.title': '문화 체험',
-  'beijing.experiences.culture.opera': '경극 관람',
-  'beijing.experiences.culture.hutong': '사합원 숙박 체험',
-  'beijing.experiences.culture.tea': '차 문화 체험',
-  'beijing.experiences.culture.tour': '후통 깊이 있는 탐방',
-
-  'beijing.experiences.spring.title': '봄 특별 활동',
-  'beijing.experiences.spring.xiangshan': '샹산 꽃 축제',
-  'beijing.experiences.spring.yuyuantan': '위위안탄 벚꽃 축제',
-  'beijing.experiences.spring.summer': '이화원 모란 문화제',
-  'beijing.experiences.spring.botanical': '식물원 꽃 전시회',
-
-  'beijing.nav.basicInfo': '기본 정보',
-  'beijing.nav.culture': '문화와 역사',
-  'beijing.nav.attractions': '관광지',
-  'beijing.nav.experiences': '체험',
-  'beijing.nav.back': '목적지 목록으로 돌아가기',
-  'beijing.nav.plan': '여행 계획 시작하기',
-  'error.notFound': '페이지를 찾을 수 없습니다',
-  'error.pageNotFound': '죄송합니다. 요청하신 페이지를 찾을 수 없습니다',
-  'error.guideNotFound': '요청하신 가이드를 찾을 수 없습니다',
-  'guide.content': '가이드 내용'
 }; 

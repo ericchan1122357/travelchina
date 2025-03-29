@@ -1,11 +1,6 @@
 export type Language = 'zh' | 'en' | 'fr' | 'de' | 'ja' | 'ko' | 'es' | 'ru';
 
 export interface TranslationValue {
-  // 错误相关
-  'error.notFound': string;
-  'error.pageNotFound': string;
-  'error.guideNotFound': string;
-
   // 基础键
   destinations: string;
   stories: string;
@@ -48,7 +43,6 @@ export interface TranslationValue {
 
   // 导航相关
   'nav.home': string;
-  'nav.back': string;
   'nav.destinations': string;
   'nav.guides': string;
   'nav.stories': string;
@@ -138,6 +132,7 @@ export interface TranslationValue {
   'planner.next': string;
   'planner.submit': string;
   'planner.finish': string;
+  'planner.error': string;
   'planner.loading': string;
   'planner.step': string;
   'planner.nextStep': string;
@@ -243,64 +238,4 @@ export interface TranslationValue {
   'why.us.data.desc': string;
   'why.us.worryfree.title': string;
   'why.us.worryfree.desc': string;
-
-  // 北京详情页
-  'beijing.title': string;
-  'beijing.subtitle': string;
-  'beijing.overview': string;
-  'beijing.basicInfo.title': string;
-  'beijing.basicInfo.bestSeason.title': string;
-  'beijing.basicInfo.bestSeason.spring': string;
-  'beijing.basicInfo.bestSeason.autumn': string;
-  'beijing.basicInfo.climate.title': string;
-  'beijing.basicInfo.climate.spring': string;
-  'beijing.basicInfo.climate.summer': string;
-  'beijing.basicInfo.climate.autumn': string;
-  'beijing.basicInfo.climate.winter': string;
-  'beijing.basicInfo.transport.title': string;
-  'beijing.basicInfo.transport.subway': string;
-  'beijing.basicInfo.transport.bus': string;
-  'beijing.basicInfo.transport.taxi': string;
-  'beijing.basicInfo.transport.bike': string;
-  'beijing.culture.title': string;
-  'beijing.culture.history.title': string;
-  'beijing.culture.history.ancient': string;
-  'beijing.culture.history.yuan': string;
-  'beijing.culture.history.ming': string;
-  'beijing.culture.history.modern': string;
-  'beijing.culture.features.title': string;
-  'beijing.culture.features.royal': string;
-  'beijing.culture.features.hutong': string;
-  'beijing.culture.features.opera': string;
-  'beijing.culture.features.courtyard': string;
-  'beijing.attractions.title': string;
-  'beijing.attractions.palace.title': string;
-  'beijing.attractions.palace.forbidden.title': string;
-  'beijing.attractions.palace.forbidden.desc': string;
-  'beijing.attractions.palace.summer.title': string;
-  'beijing.attractions.palace.summer.desc': string;
-  'beijing.attractions.palace.temple.title': string;
-  'beijing.attractions.palace.temple.desc': string;
-  'beijing.attractions.greatwall.title': string;
-  'beijing.attractions.greatwall.mutianyu.title': string;
-  'beijing.attractions.greatwall.mutianyu.desc': string;
-  'beijing.attractions.greatwall.badaling.title': string;
-  'beijing.attractions.greatwall.badaling.desc': string;
-  'beijing.experiences.title': string;
-  'beijing.experiences.culture.title': string;
-  'beijing.experiences.culture.opera': string;
-  'beijing.experiences.culture.hutong': string;
-  'beijing.experiences.culture.tea': string;
-  'beijing.experiences.culture.tour': string;
-  'beijing.experiences.spring.title': string;
-  'beijing.experiences.spring.xiangshan': string;
-  'beijing.experiences.spring.yuyuantan': string;
-  'beijing.experiences.spring.summer': string;
-  'beijing.experiences.spring.botanical': string;
-  'beijing.nav.basicInfo': string;
-  'beijing.nav.culture': string;
-  'beijing.nav.attractions': string;
-  'beijing.nav.experiences': string;
-  'beijing.nav.back': string;
-  'beijing.nav.plan': string;
 }

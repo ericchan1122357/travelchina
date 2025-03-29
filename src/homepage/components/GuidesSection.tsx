@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { TravelGuide, Language } from '../types';
-import GuideCard from './GuideCard';
+import OptimizedImage from './common/OptimizedImage';
 import { getTranslation } from '../utils/translations';
 import { TranslationValue } from '../utils/translations/types';
 
@@ -113,9 +113,35 @@ const GuidesSection = ({
             onScroll={checkScrollButtons}
           >
             {guides.map((guide) => (
-              <div key={guide.id} className="flex-none w-full sm:w-96">
-                <GuideCard guide={guide} currentLanguage={currentLanguage} />
-              </div>
+              <article
+                key={guide.id}
+                className="flex-none w-full sm:w-96 bg-white rounded-lg shadow-md overflow-hidden"
+              >
+                <div className="relative h-48">
+                  <OptimizedImage
+                    src={guide.imageUrl}
+                    alt={t(`guide.${guide.id}.title` as keyof TranslationValue)}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    {t(`guide.${guide.id}.title` as keyof TranslationValue)}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    {t(`guide.${guide.id}.description` as keyof TranslationValue)}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-500">
+                      {t(`guide.${guide.id}.category` as keyof TranslationValue)}
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      {guide.publishDate}
+                    </span>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>
