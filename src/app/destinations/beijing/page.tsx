@@ -17,9 +17,9 @@ export default function BeijingPage() {
       case 'zh':
         return '北京：千年帝都的古今交响';
       case 'en':
-        return 'Beijing: Ancient Capital\'s Symphony of Past and Present';
+        return 'Beijing: Ancient Capital&apos;s Symphony of Past and Present';
       case 'fr':
-        return 'Pékin: Symphonie de l\'ancien et du moderne';
+        return 'Pékin: Symphonie de l&apos;ancien et du moderne';
       case 'de':
         return 'Peking: Symphonie aus Vergangenheit und Gegenwart';
       case 'es':
@@ -31,7 +31,7 @@ export default function BeijingPage() {
       case 'ru':
         return 'Пекин: симфония древнего и современного';
       default:
-        return 'Beijing: Ancient Capital\'s Symphony of Past and Present';
+        return 'Beijing: Ancient Capital&apos;s Symphony of Past and Present';
     }
   };
   
@@ -41,9 +41,9 @@ export default function BeijingPage() {
       case 'zh':
         return '探索中国首都的皇家风韵与现代魅力';
       case 'en':
-        return 'Explore the Royal Charm and Modern Appeal of China\'s Capital';
+        return 'Explore the Royal Charm and Modern Appeal of China&apos;s Capital';
       case 'fr':
-        return 'Explorez le charme royal et l\'attrait moderne de la capitale chinoise';
+        return 'Explorez le charme royal et l&apos;attrait moderne de la capitale chinoise';
       case 'de':
         return 'Entdecken Sie den königlichen Charme und die moderne Anziehungskraft der chinesischen Hauptstadt';
       case 'es':
@@ -55,7 +55,7 @@ export default function BeijingPage() {
       case 'ru':
         return 'Исследуйте королевское очарование и современную привлекательность столицы Китая';
       default:
-        return 'Explore the Royal Charm and Modern Appeal of China\'s Capital';
+        return 'Explore the Royal Charm and Modern Appeal of China&apos;s Capital';
     }
   };
   
@@ -216,7 +216,7 @@ export default function BeijingPage() {
           
           <h3 className="text-xl font-semibold mb-3 text-gray-800">Most Representative Features:</h3>
           <ul className="list-disc pl-6 mb-8 text-gray-700 space-y-2">
-            <li>The world's largest royal palace complex - the Forbidden City</li>
+            <li>The world&apos;s largest royal palace complex - the Forbidden City</li>
             <li>One of the greatest engineering projects in human history - the Great Wall</li>
             <li>The unique courtyard house and hutong culture</li>
             <li>The prosperity and vitality of a modern international metropolis</li>

@@ -62,7 +62,7 @@ export default function DestinationPage() {
         return {
           title: 'Shanghai: The Charm of the Oriental Pearl',
           subtitle: 'An international metropolis where modern and traditional cultures blend',
-          content: 'Shanghai is China\'s largest economic center, featuring the international architectural exposition on the Bund, modern skyscrapers in Lujiazui, traditional gardens of Yu Garden, and old town life...'
+          content: 'Shanghai is China&apos;s largest economic center, featuring the international architectural exposition on the Bund, modern skyscrapers in Lujiazui, traditional gardens of Yu Garden, and old town life...'
         };
       }
     } else if (slug === 'xian') {
@@ -74,9 +74,9 @@ export default function DestinationPage() {
         };
       } else {
         return {
-          title: 'Xi\'an: Historical Imprint of an Ancient Capital',
+          title: 'Xi&apos;an: Historical Imprint of an Ancient Capital',
           subtitle: 'The starting point of the Silk Road and the cradle of Chinese civilization',
-          content: 'Xi\'an, formerly known as Chang\'an, is one of the oldest capitals in Chinese history, home to the world-famous Terracotta Warriors, magnificent ancient city walls, and rich historical and cultural heritage...'
+          content: 'Xi&apos;an, formerly known as Chang&apos;an, is one of the oldest capitals in Chinese history, home to the world-famous Terracotta Warriors, magnificent ancient city walls, and rich historical and cultural heritage...'
         };
       }
     } else if (slug === 'chengdu') {
