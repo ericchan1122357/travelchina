@@ -299,6 +299,8 @@ export const zhTranslations: TranslationValue = {
   'beijing.nav.back': '返回目的地列表',
   'beijing.nav.plan': '开始规划行程',
   'error.notFound': '页面未找到',
-  'error.guideNotFound': '未找到请求的指南内容',
-  'guide.content': '指南内容'
+  'error.pageNotFound': '抱歉，请求的页面未找到',
+  'error.guideNotFound': '请求的指南未找到',
+  'guide.content': '指南内容',
+  'nav.back': '返回'
 }; 

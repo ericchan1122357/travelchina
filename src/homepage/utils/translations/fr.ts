@@ -296,6 +296,8 @@ export const frTranslations: TranslationValue = {
   'beijing.nav.back': 'Retour à la liste des destinations',
   'beijing.nav.plan': 'Commencer la planification',
   'error.notFound': 'Page non trouvée',
-  'error.guideNotFound': 'Le guide demandé n\'a pas été trouvé.',
+  'error.pageNotFound': 'Désolé, la page demandée est introuvable',
+  'error.guideNotFound': 'Le guide demandé n\'a pas été trouvé',
+  'nav.back': 'Retour',
   'guide.content': 'Contenu du guide'
 }; 

@@ -357,6 +357,8 @@ export const jaTranslations: TranslationValue = {
   'beijing.nav.plan': '旅行プランを始める',
 
   'error.notFound': 'ページが見つかりません',
+  'error.pageNotFound': '申し訳ありません。リクエストされたページが見つかりませんでした',
   'error.guideNotFound': 'リクエストされたガイドが見つかりません',
-  'guide.content': 'ガイドの内容'
+  'guide.content': 'ガイドの内容',
+  'nav.back': '戻る',
 }; 

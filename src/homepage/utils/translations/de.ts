@@ -40,6 +40,7 @@ export const deTranslations: TranslationValue = {
   'nav.community': 'Community',
   'nav.login': 'Anmelden',
   'nav.signup': 'Registrieren',
+  'nav.back': 'Zurück',
 
   // 价值主张
   'value.1.title': 'Maßgeschneiderte Reise',
@@ -376,6 +377,7 @@ export const deTranslations: TranslationValue = {
   'beijing.nav.plan': 'Reiseplanung starten',
 
   'error.notFound': 'Seite nicht gefunden',
-  'error.guideNotFound': 'Der angeforderte Reiseführer wurde nicht gefunden.',
+  'error.pageNotFound': 'Entschuldigung, die angeforderte Seite wurde nicht gefunden',
+  'error.guideNotFound': 'Der angeforderte Reiseführer wurde nicht gefunden',
   'guide.content': 'Reiseführer Inhalt'
 };

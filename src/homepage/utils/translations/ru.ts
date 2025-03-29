@@ -198,6 +198,7 @@ export const ruTranslations: TranslationValue = {
   'planner.destinations.cities.zhangjiajie': 'Чжанцзяцзе',
 
   'nav.home': 'Главная',
+  'nav.back': 'Назад',
   'nav.destinations': 'Направления',
   'nav.guides': 'Гиды',
   'nav.stories': 'Истории',
@@ -402,6 +403,7 @@ export const ruTranslations: TranslationValue = {
   'beijing.nav.plan': 'Начать планирование',
 
   'error.notFound': 'Страница не найдена',
+  'error.pageNotFound': 'Извините, запрашиваемая страница не найдена',
   'error.guideNotFound': 'Запрошенный путеводитель не найден',
   'guide.content': 'Содержание путеводителя'
 }; 

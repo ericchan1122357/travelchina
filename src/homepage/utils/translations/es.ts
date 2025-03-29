@@ -217,6 +217,7 @@ export const esTranslations: TranslationValue = {
   'nav.community': 'Comunidad',
   'nav.login': 'Iniciar sesión',
   'nav.signup': 'Registrarse',
+  'nav.back': 'Atrás',
 
   'pricing.free.title': 'Plan Gratuito',
   'pricing.free.description': 'Funciones básicas',
@@ -414,6 +415,7 @@ export const esTranslations: TranslationValue = {
   'beijing.nav.plan': 'Comenzar planificación',
 
   'error.notFound': 'Página no encontrada',
+  'error.pageNotFound': 'Lo sentimos, la página solicitada no fue encontrada',
   'error.guideNotFound': 'La guía solicitada no fue encontrada',
   'guide.content': 'Contenido de la guía'
 }; 

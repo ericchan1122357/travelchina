@@ -1,6 +1,11 @@
 export type Language = 'zh' | 'en' | 'fr' | 'de' | 'ja' | 'ko' | 'es' | 'ru';
 
 export interface TranslationValue {
+  // 错误相关
+  'error.notFound': string;
+  'error.pageNotFound': string;
+  'error.guideNotFound': string;
+
   // 基础键
   destinations: string;
   stories: string;
@@ -43,6 +48,7 @@ export interface TranslationValue {
 
   // 导航相关
   'nav.home': string;
+  'nav.back': string;
   'nav.destinations': string;
   'nav.guides': string;
   'nav.stories': string;
@@ -132,7 +138,6 @@ export interface TranslationValue {
   'planner.next': string;
   'planner.submit': string;
   'planner.finish': string;
-  'planner.error': string;
   'planner.loading': string;
   'planner.step': string;
   'planner.nextStep': string;
@@ -298,7 +303,4 @@ export interface TranslationValue {
   'beijing.nav.experiences': string;
   'beijing.nav.back': string;
   'beijing.nav.plan': string;
-  'error.notFound': string;
-  'error.guideNotFound': string;
-  'guide.content': string;
 }

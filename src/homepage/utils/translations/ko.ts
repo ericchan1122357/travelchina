@@ -210,6 +210,7 @@ export const koTranslations: TranslationValue = {
   'planner.destinations.cities.zhangjiajie': '장자제',
 
   'nav.home': '홈',
+  'nav.back': '뒤로',
   'nav.destinations': '목적지',
   'nav.guides': '가이드',
   'nav.stories': '스토리',
@@ -413,6 +414,7 @@ export const koTranslations: TranslationValue = {
   'beijing.nav.back': '목적지 목록으로 돌아가기',
   'beijing.nav.plan': '여행 계획 시작하기',
   'error.notFound': '페이지를 찾을 수 없습니다',
+  'error.pageNotFound': '죄송합니다. 요청하신 페이지를 찾을 수 없습니다',
   'error.guideNotFound': '요청하신 가이드를 찾을 수 없습니다',
   'guide.content': '가이드 내용'
 }; 
