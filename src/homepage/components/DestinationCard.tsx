@@ -14,7 +14,7 @@ interface DestinationCardProps {
 type SeasonType = 'spring' | 'summer' | 'autumn' | 'winter' | 'all-season';
 
 const DestinationCard: React.FC<DestinationCardProps> = ({ destination }) => {
-  const { name, description, imageUrl, season, activities } = destination;
+  const { id, name, description, imageUrl, season, activities } = destination;
   const { currentLanguage } = useLanguage();
   
   // 获取当前语言的翻译
@@ -71,7 +71,7 @@ const DestinationCard: React.FC<DestinationCardProps> = ({ destination }) => {
         )}
         
         <Link
-          href={`/destinations/${name.toLowerCase()}`}
+          href={`/destinations/${id}`}
           className="inline-flex items-center text-china-red hover:text-red-700"
         >
           {t('readMore')}
