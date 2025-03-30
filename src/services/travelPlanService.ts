@@ -113,7 +113,71 @@ export class TravelPlanService {
       ru: 'Русский'
     };
 
-    return `请用${languageMap[this.language]}生成一个详细的旅行计划。基于以下信息：
+    // 根据语言选择适当的提示词模板
+    let promptTemplate = '';
+    
+    if (this.language === 'ko') {
+      promptTemplate = `다음 정보를 바탕으로 ${languageMap[this.language]}로 상세한 여행 계획을 생성해 주세요:
+
+여행 기간: ${questionnaireData.startDate}부터 ${questionnaireData.endDate}까지
+여행 유형: ${questionnaireData.travelType}
+예산 범위: ${questionnaireData.budget}
+
+목적지 선호도:
+${questionnaireData.destinationPreferences.map((pref: string) => `- ${pref}`).join('\n')}
+
+관심사:
+${questionnaireData.interests.map((interest: string) => `- ${interest}`).join('\n')}
+
+특별 요구사항:
+${questionnaireData.specialRequirements.map((req: string) => `- ${req}`).join('\n')}
+
+다음 내용을 포함하는 JSON 형식의 여행 계획을 생성해 주세요:
+1. 계획 제목 및 설명
+2. 총 예산 및 예산 내역
+3. 일일 일정 계획(숙박, 활동 및 식사 포함)
+4. 특별 참고사항
+
+생성된 JSON 형식이 다음 인터페이스를 준수하도록 해주세요:
+{
+  id: string;
+  title: string;
+  description: string;
+  duration: number;
+  budget: {
+    total: number;
+    breakdown: {
+      accommodation: number;
+      transportation: number;
+      food: number;
+      activities: number;
+      other: number;
+    };
+  };
+  dailyPlans: Array<{
+    day: number;
+    date: string;
+    activities: Array<{
+      id: string;
+      name: string;
+      type: 'attraction' | 'food' | 'culture' | 'nature' | 'shopping';
+      description: string;
+      duration: number;
+      location: string;
+      price: number;
+      tips?: string[];
+    }>;
+    accommodation: string;
+    meals: {
+      breakfast?: string;
+      lunch?: string;
+      dinner?: string;
+    };
+  }>;
+  specialNotes: string[];
+}`;
+    } else {
+      promptTemplate = `请用${languageMap[this.language]}生成一个详细的旅行计划。基于以下信息：
 
 旅行时间：${questionnaireData.startDate} 到 ${questionnaireData.endDate}
 旅行类型：${questionnaireData.travelType}
@@ -172,6 +236,9 @@ ${questionnaireData.specialRequirements.map((req: string) => `- ${req}`).join('\
   }>;
   specialNotes: string[];
 }`;
+    }
+
+    return promptTemplate;
   }
 
   // 解析API响应

@@ -1,0 +1,10 @@
+      } else if (currentLanguage === 'ko') {
+      return (
+        <>
+          <h2 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">첫인상</h2>
+          <p className="text-gray-700 mb-6 leading-relaxed">
+            화려한 자금성의 금빛 기와, 산을 따라 구불구불 뻗은 만리장성, 후통에서 울리는 세발자전거 벨소리, 해질녘의 CBD 유리 커튼월에 반사되는 석양... 이것이 베이징입니다. 고대와 현대, 전통과 혁신이 어우러진 도시입니다. 3,000년의 도시 역사와 800년의 수도 역사를 지닌 베이징은 중국 문명의 정수를 담고 있으며, 현대 중국의 활기찬 에너지를 보여줍니다.
+          </p>
+        </>
+      );
+    }

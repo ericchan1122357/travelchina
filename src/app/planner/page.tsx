@@ -1023,6 +1023,23 @@ const destinationRecommendations: Record<string, { attractions: string[], foods:
   'Chengdu': {
     attractions: ['Kuanzhai Alley', 'Jinli Street', 'Panda Base', 'Qingcheng Mountain', 'Dujiangyan'],
     foods: ['Hotpot', 'Dan Dan Noodles', 'Fuqi Feipian', 'Mapo Tofu', 'Zhong Dumplings']
+  },
+  // 添加韩语版目的地
+  '베이징': {
+    attractions: ['자금성', '만리장성', '이화원', '천단', '798 예술구'],
+    foods: ['베이징 카오야', '자장면', '두즈', '루다군', '탕후루']
+  },
+  '상하이': {
+    attractions: ['외탄', '동방명주', '예원', '디즈니랜드', '티엔쯔팡'],
+    foods: ['샤오롱바오', '생전', '게살 사자머리', '파전', '팔보반']
+  },
+  '시안': {
+    attractions: ['병마용', '고성벽', '대안탑', '화산', '회민가'],
+    foods: ['로우쟈모', '량피', '양고기 파오모', '쟈산 탕바오', '비앙비앙면']
+  },
+  '청두': {
+    attractions: ['콴자이 샹쯔', '진리', '판다 기지', '칭청산', '두장옌'],
+    foods: ['훠궈', '단단면', '푸치 페이피안', '마포두부', '중 만두']
   }
 };
 
@@ -1037,7 +1054,13 @@ const travelStyleRecommendations: Record<string, string[]> = {
   'Cultural Exploration': ['Historical Museums', 'Ancient Sites', 'Traditional Crafts', 'Theater Shows', 'Cultural Lectures'],
   'Food Tour': ['Cooking Classes', 'Food Street Exploration', 'Farmers Markets', 'Wine Tasting', 'Special Restaurants'],
   'Natural Scenery': ['Hiking', 'Photography Adventures', 'Eco Reserves', 'Mountain Exploration', 'Sunrise/Sunset Viewing'],
-  'Deep Experience': ['Homestay', 'Local Family Visits', 'Rural Experiences', 'Traditional Festivals', 'Handicraft Workshops']
+  'Deep Experience': ['Homestay', 'Local Family Visits', 'Rural Experiences', 'Traditional Festivals', 'Handicraft Workshops'],
+  // 添加韩语版旅行风格
+  '휴식': ['온천', '차가게', '공원 산책', '호숫가 피크닉', '럭셔리 스파'],
+  '문화 탐험': ['역사 박물관', '고적 방문', '전통 공예 체험', '연극 공연', '문화 강좌'],
+  '미식 여행': ['요리 교실', '음식 거리 탐험', '농산물 시장', '와이너리 시음', '특색 레스토랑'],
+  '자연 경관': ['등산', '사진 촬영', '생태 보호구역', '산악 탐험', '일출/일몰 감상'],
+  '심층 체험': ['민박', '현지 가정 방문', '농촌 체험', '전통 축제', '수공예 워크숍']
 };
 
 // 添加国家列表数据

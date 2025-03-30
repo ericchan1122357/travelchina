@@ -339,4 +339,89 @@ export const koTranslations: TranslationValue = {
   'why.us.data.desc': '수백만 여행자의 데이터를 기반으로 한 추천',
   'why.us.worryfree.title': '걱정 없는 경험',
   'why.us.worryfree.desc': '저희의 도움으로 스마트폰 하나만으로 중국 여행이 가능합니다',
+
+  // 导航和标题
+  'nav.home': '홈',
+  'nav.destinations': '목적지',
+  'nav.planner': '여행 계획',
+  'nav.about': '소개',
+  'nav.contact': '연락처',
+  'nav.login': '로그인',
+  'nav.signup': '회원가입',
+  
+  // 首页英雄区
+  'hero.title': 'AI로 맞춤형 중국 여행',
+  'hero.subtitle': '당신의 관심사와 선호도에 맞는 특별한 중국 여행 경험',
+  'hero.cta': '여행 계획 시작하기',
+  
+  // 目的地区域
+  'destinationsTitle': '추천 목적지',
+  'destinationCard.duration': '{duration}일 추천',
+  'destinationCard.season': '최적의 계절: {season}',
+  'destination.readMore': '더 알아보기',
+  
+  // 季节名称
+  'season.spring': '봄',
+  'season.summer': '여름',
+  'season.autumn': '가을',
+  'season.winter': '겨울',
+  
+  // 价值主张区
+  'valueProposition.title': '왜 우리 서비스를 선택하나요',
+  'valueProposition.item1.title': '맞춤형 설계',
+  'valueProposition.item1.desc': '당신의 선호도에 맞는 맞춤형 여행 일정',
+  'valueProposition.item2.title': '문화 가교',
+  'valueProposition.item2.desc': '진정한 중국 문화에 대한 깊은 이해',
+  'valueProposition.item3.title': '지능형 계획',
+  'valueProposition.item3.desc': 'AI 최적화 일정으로 시간과 노력 절약',
+  
+  // 用户故事区
+  'stories.title': '여행자들의 중국 이야기',
+  'stories.viewAll': '모든 이야기 보기',
+  'stories.share': '내 이야기 공유하기',
+  
+  // 实用指南区
+  'guides.title': '중국 여행 실용 가이드',
+  'guides.visa': '비자 정보',
+  'guides.transportation': '교통 가이드',
+  'guides.culture': '문화 예절',
+  'guides.payment': '결제 방법',
+  'guides.internet': '인터넷 연결',
+  'guides.safety': '안전 팁',
+  
+  // 二次转化区
+  'secondaryCta.title': '중국 문화 여행을 시작하세요',
+  'secondaryCta.button': '나의 여행 계획하기',
+  'secondaryCta.stats': '{cities}개 도시 · {itineraries}개 여행 일정 · {users}명의 여행자 도움',
+  
+  // 页脚区域
+  'footer.sitemap': '사이트맵',
+  'footer.legal': '법적 고지',
+  'footer.privacy': '개인 정보 보호 정책',
+  'footer.terms': '이용 약관',
+  'footer.copyright': '© {year} 중국 여행 가이드. 모든 권리 보유.',
+  'footer.languageSwitcher': '언어 선택',
+  
+  // 语言名称
+  'language.zh': '中文',
+  'language.en': 'English',
+  'language.ja': '日本語',
+  'language.ko': '한국어',
+  'language.fr': 'Français',
+  'language.de': 'Deutsch',
+  'language.es': 'Español',
+  'language.ru': 'Русский',
+  
+  // 常用按钮和交互
+  'button.submit': '제출',
+  'button.cancel': '취소',
+  'button.search': '검색',
+  'button.filter': '필터',
+  'button.more': '더 보기',
+  'button.less': '접기',
+  'button.close': '닫기',
+  'button.share': '공유',
+  'button.download': '다운로드',
+  'button.book': '예약',
+  'button.view': '보기'
 }; 

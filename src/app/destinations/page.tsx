@@ -113,6 +113,126 @@ export default function DestinationsIndex() {
           default: return 'Leisurely land of abundance, home of pandas';
         }
       }
+    },
+    {
+      id: 'chongqing',
+      imageUrl: '/images/destinations/chongqing.jpg',
+      getName: () => {
+        switch (currentLanguage) {
+          case 'zh': return '重庆';
+          case 'en': return 'Chongqing';
+          case 'fr': return 'Chongqing';
+          case 'de': return 'Chongqing';
+          case 'es': return 'Chongqing';
+          case 'ja': return '重慶';
+          case 'ko': return '충칭';
+          case 'ru': return 'Чунцин';
+          default: return 'Chongqing';
+        }
+      },
+      getDescription: () => {
+        switch (currentLanguage) {
+          case 'zh': return '山城雾都，火锅之都，长江三峡门户';
+          case 'en': return 'Mountain city, fog capital, hotpot paradise, gateway to the Three Gorges';
+          default: return 'Mountain city, fog capital, hotpot paradise, gateway to the Three Gorges';
+        }
+      }
+    },
+    {
+      id: 'hangzhou',
+      imageUrl: '/images/destinations/hangzhou.jpg',
+      getName: () => {
+        switch (currentLanguage) {
+          case 'zh': return '杭州';
+          case 'en': return 'Hangzhou';
+          case 'fr': return 'Hangzhou';
+          case 'de': return 'Hangzhou';
+          case 'es': return 'Hangzhou';
+          case 'ja': return '杭州';
+          case 'ko': return '항저우';
+          case 'ru': return 'Ханчжоу';
+          default: return 'Hangzhou';
+        }
+      },
+      getDescription: () => {
+        switch (currentLanguage) {
+          case 'zh': return '上有天堂，下有苏杭，西湖风景名胜';
+          case 'en': return 'Paradise on earth, home to the beautiful West Lake';
+          default: return 'Paradise on earth, home to the beautiful West Lake';
+        }
+      }
+    },
+    {
+      id: 'kunming',
+      imageUrl: '/images/destinations/kunming.jpg',
+      getName: () => {
+        switch (currentLanguage) {
+          case 'zh': return '昆明';
+          case 'en': return 'Kunming';
+          case 'fr': return 'Kunming';
+          case 'de': return 'Kunming';
+          case 'es': return 'Kunming';
+          case 'ja': return '昆明';
+          case 'ko': return '쿤밍';
+          case 'ru': return 'Куньмин';
+          default: return 'Kunming';
+        }
+      },
+      getDescription: () => {
+        switch (currentLanguage) {
+          case 'zh': return '春城花都，四季如春的高原明珠';
+          case 'en': return 'Spring City, highland pearl with eternal spring-like weather';
+          default: return 'Spring City, highland pearl with eternal spring-like weather';
+        }
+      }
+    },
+    {
+      id: 'lijiang',
+      imageUrl: '/images/destinations/lijiang.jpg',
+      getName: () => {
+        switch (currentLanguage) {
+          case 'zh': return '丽江';
+          case 'en': return 'Lijiang';
+          case 'fr': return 'Lijiang';
+          case 'de': return 'Lijiang';
+          case 'es': return 'Lijiang';
+          case 'ja': return '麗江';
+          case 'ko': return '리장';
+          case 'ru': return 'Лицзян';
+          default: return 'Lijiang';
+        }
+      },
+      getDescription: () => {
+        switch (currentLanguage) {
+          case 'zh': return '纳西古城，雪山映照的世界文化遗产';
+          case 'en': return 'Ancient Naxi town, UNESCO World Heritage site with snow mountain backdrop';
+          default: return 'Ancient Naxi town, UNESCO World Heritage site with snow mountain backdrop';
+        }
+      }
+    },
+    {
+      id: 'huangshan',
+      imageUrl: '/images/destinations/huangshan.jpg',
+      getName: () => {
+        switch (currentLanguage) {
+          case 'zh': return '黄山';
+          case 'en': return 'Huangshan';
+          case 'fr': return 'Huangshan';
+          case 'de': return 'Huangshan';
+          case 'es': return 'Huangshan';
+          case 'ja': return '黄山';
+          case 'ko': return '황산';
+          case 'ru': return 'Хуаншань';
+          default: return 'Huangshan';
+        }
+      },
+      getDescription: () => {
+        switch (currentLanguage) {
+          case 'zh': return '奇松怪石云海温泉，徽州古村落的人文胜境';
+          case 'en': return 'Famous for peculiar pines, rocks, cloud sea, and ancient Hui villages';
+          default: return 'Famous for peculiar pines, rocks, cloud sea, and ancient Hui villages';
+        }
+      }
     }
   ];
   
