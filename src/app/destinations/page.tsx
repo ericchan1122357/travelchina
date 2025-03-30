@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -9,15 +9,25 @@ import { getAllThemes, getThemeName, getCitiesByTheme } from './utils/destinatio
 import DestinationTemplate from './utils/DestinationTemplate';
 import { MagnifyingGlassIcon as SearchIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
+// 搜索参数提取组件
+function DestinationParamsHandler({ setSelectedCity }: { setSelectedCity: (city: string | null) => void }) {
+  const searchParams = useSearchParams();
+  const cityParam = searchParams ? searchParams.get('city') : null;
+  
+  useEffect(() => {
+    setSelectedCity(cityParam);
+  }, [cityParam, setSelectedCity]);
+  
+  return null;
+}
+
 export default function DestinationsIndex() {
   const { currentLanguage } = useLanguage();
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const cityParam = searchParams ? searchParams.get('city') : null;
-
+  
   // 状态管理
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCity, setSelectedCity] = useState<string | null>(cityParam);
+  const [selectedCity, setSelectedCity] = useState<string | null>(null);
   const [expandedThemes, setExpandedThemes] = useState<Record<string, boolean>>({});
   const [filteredDestinations, setFilteredDestinations] = useState<any[]>([]);
   const themes = getAllThemes();
@@ -29,7 +39,7 @@ export default function DestinationsIndex() {
       initialExpanded[theme.id] = true; // 默认全部展开
     });
     setExpandedThemes(initialExpanded);
-  }, []);
+  }, [themes]);
 
   // 获取城市数据
   const destinations = [
@@ -283,12 +293,12 @@ export default function DestinationsIndex() {
       });
       setFilteredDestinations(filtered);
     }
-  }, [searchTerm, currentLanguage]);
+  }, [searchTerm, currentLanguage, destinations]);
 
   // 初始化过滤后的城市列表
   useEffect(() => {
     setFilteredDestinations(destinations);
-  }, []);
+  }, [destinations]);
 
   // 切换主题展开/折叠状态
   const toggleTheme = (themeId: string) => {
@@ -316,6 +326,11 @@ export default function DestinationsIndex() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* 使用 Suspense 包装 useSearchParams 的使用 */}
+      <Suspense fallback={null}>
+        <DestinationParamsHandler setSelectedCity={setSelectedCity} />
+      </Suspense>
+      
       {/* 顶部横幅 */}
       <div className="bg-china-red text-white py-12">
         <div className="container mx-auto px-4">
