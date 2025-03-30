@@ -3,6 +3,6 @@
 import React from 'react';
 import DestinationTemplate from '../utils/DestinationTemplate';
 
-export default function BeijingPage() {
-  return <DestinationTemplate destinationSlug="beijing" />;
+export default function ShanghaiPage() {
+  return <DestinationTemplate destinationSlug="shanghai" />;
 } 
