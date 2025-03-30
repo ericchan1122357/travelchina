@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { 
   getChineseContent, 
@@ -10,25 +10,27 @@ import {
   getSpanishContent, 
   getKoreanContent 
 } from './index';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Lijiang() {
-  // 设置默认语言为中文
-  const [currentLanguage, setCurrentLanguage] = useState("chinese");
-
+  // 使用全局语言上下文
+  const { currentLanguage } = useLanguage();
+  
   // 根据当前语言返回对应的内容
   const getContent = () => {
+    // 将语言代码映射到对应的内容函数
     switch (currentLanguage) {
-      case "chinese":
+      case "zh":
         return getChineseContent();
-      case "english":
+      case "en":
         return getEnglishContent();
-      case "german":
+      case "de":
         return getGermanContent();
-      case "french":
+      case "fr":
         return getFrenchContent();
-      case "spanish":
+      case "es":
         return getSpanishContent();
-      case "korean":
+      case "ko":
         return getKoreanContent();
       default:
         return getChineseContent();
@@ -49,70 +51,6 @@ export default function Lijiang() {
               priority
             />
           </div>
-        </div>
-
-        {/* 语言选择按钮 */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          <button 
-            onClick={() => setCurrentLanguage("chinese")}
-            className={`px-4 py-2 rounded-md transition-colors ${
-              currentLanguage === "chinese" 
-                ? "bg-blue-600 text-white" 
-                : "bg-gray-200 hover:bg-gray-300"
-            }`}
-          >
-            中文
-          </button>
-          <button 
-            onClick={() => setCurrentLanguage("english")}
-            className={`px-4 py-2 rounded-md transition-colors ${
-              currentLanguage === "english" 
-                ? "bg-blue-600 text-white" 
-                : "bg-gray-200 hover:bg-gray-300"
-            }`}
-          >
-            English
-          </button>
-          <button 
-            onClick={() => setCurrentLanguage("german")}
-            className={`px-4 py-2 rounded-md transition-colors ${
-              currentLanguage === "german" 
-                ? "bg-blue-600 text-white" 
-                : "bg-gray-200 hover:bg-gray-300"
-            }`}
-          >
-            Deutsch
-          </button>
-          <button 
-            onClick={() => setCurrentLanguage("french")}
-            className={`px-4 py-2 rounded-md transition-colors ${
-              currentLanguage === "french" 
-                ? "bg-blue-600 text-white" 
-                : "bg-gray-200 hover:bg-gray-300"
-            }`}
-          >
-            Français
-          </button>
-          <button 
-            onClick={() => setCurrentLanguage("spanish")}
-            className={`px-4 py-2 rounded-md transition-colors ${
-              currentLanguage === "spanish" 
-                ? "bg-blue-600 text-white" 
-                : "bg-gray-200 hover:bg-gray-300"
-            }`}
-          >
-            Español
-          </button>
-          <button 
-            onClick={() => setCurrentLanguage("korean")}
-            className={`px-4 py-2 rounded-md transition-colors ${
-              currentLanguage === "korean" 
-                ? "bg-blue-600 text-white" 
-                : "bg-gray-200 hover:bg-gray-300"
-            }`}
-          >
-            한국어
-          </button>
         </div>
         
         {/* 内容区域 */}

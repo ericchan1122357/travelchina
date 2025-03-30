@@ -33,7 +33,7 @@ let globalVideoPreloaded = false;
 
 const HomePage = () => {
   const router = useRouter();
-  const { currentLanguage, setCurrentLanguage } = useLanguage();
+  const { currentLanguage, setLanguage } = useLanguage();
   const [isVideoPreloaded, setIsVideoPreloaded] = useState(globalVideoPreloaded);
 
   // 获取当前语言的翻译
@@ -173,7 +173,7 @@ const HomePage = () => {
       <div className="min-h-screen flex flex-col">
         <NavBar 
           currentLanguage={currentLanguage} 
-          onLanguageChange={setCurrentLanguage} 
+          onLanguageChange={setLanguage} 
         />
         
         <main className="flex-grow">
@@ -243,13 +243,13 @@ const HomePage = () => {
         
         <Footer 
           currentLanguage={currentLanguage} 
-          onLanguageChange={setCurrentLanguage} 
+          onLanguageChange={setLanguage} 
         />
       </div>
     );
   } catch (error) {
-    console.error('Error rendering HomePage:', error);
-    return <div>Something went wrong. Please try again later.</div>;
+    console.error('HomePage渲染错误:', error);
+    return <div className="error-fallback">加载页面时出错。请刷新页面或稍后再试。</div>;
   }
 };
 

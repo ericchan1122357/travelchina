@@ -13,7 +13,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 // 支持的语言列表
-const supportedLanguages = [
+const supportedLanguages: { code: Language; name: string }[] = [
   { code: 'zh', name: '中文' },
   { code: 'en', name: 'English' },
   { code: 'ja', name: '日本語' },
@@ -79,7 +79,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   }
 
   // 上下文值
-  const contextValue = {
+  const contextValue: LanguageContextType = {
     currentLanguage,
     setLanguage,
     languages: supportedLanguages
