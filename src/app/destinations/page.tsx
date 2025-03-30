@@ -1,40 +1,37 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import OptimizedImage from '@/homepage/components/common/OptimizedImage';
+import { getAllThemes, getThemeName, getCitiesByTheme } from './utils/destinationThemes';
+import DestinationTemplate from './utils/DestinationTemplate';
+import { MagnifyingGlassIcon as SearchIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
 export default function DestinationsIndex() {
   const { currentLanguage } = useLanguage();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const cityParam = searchParams ? searchParams.get('city') : null;
+
+  // 状态管理
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCity, setSelectedCity] = useState<string | null>(cityParam);
+  const [expandedThemes, setExpandedThemes] = useState<Record<string, boolean>>({});
+  const [filteredDestinations, setFilteredDestinations] = useState<any[]>([]);
+  const themes = getAllThemes();
   
-  // 获取页面标题
-  const getPageTitle = () => {
-    switch (currentLanguage) {
-      case 'zh': return '探索目的地';
-      case 'en': return 'Explore Destinations';
-      case 'fr': return 'Explorer les Destinations';
-      case 'de': return 'Reiseziele Entdecken';
-      case 'es': return 'Explorar Destinos';
-      case 'ja': return '目的地を探索';
-      case 'ko': return '목적지 탐색';
-      case 'ru': return 'Исследуйте направления';
-      default: return 'Explore Destinations';
-    }
-  };
-  
-  // 获取页面描述
-  const getPageDescription = () => {
-    switch (currentLanguage) {
-      case 'zh': return '探索中国各地的迷人景点，从繁华都市到自然风光，发现每个地方的独特魅力';
-      case 'en': return 'Explore fascinating attractions across China, from bustling cities to natural landscapes, and discover the unique charm of each place';
-      case 'fr': return 'Explorez les attractions fascinantes à travers la Chine, des villes animées aux paysages naturels, et découvrez le charme unique de chaque endroit';
-      case 'de': return 'Entdecken Sie faszinierende Attraktionen in ganz China, von geschäftigen Städten bis hin zu Naturlandschaften, und entdecken Sie den einzigartigen Charme jedes Ortes';
-      default: return 'Explore fascinating attractions across China, from bustling cities to natural landscapes, and discover the unique charm of each place';
-    }
-  };
-  
-  // 目的地数据
+  // 初始化展开的主题
+  useEffect(() => {
+    const initialExpanded: Record<string, boolean> = {};
+    themes.forEach(theme => {
+      initialExpanded[theme.id] = true; // 默认全部展开
+    });
+    setExpandedThemes(initialExpanded);
+  }, []);
+
+  // 获取城市数据
   const destinations = [
     {
       id: 'beijing',
@@ -163,50 +160,20 @@ export default function DestinationsIndex() {
       }
     },
     {
-      id: 'kunming',
-      imageUrl: '/images/destinations/kunming.jpg',
+      id: 'guilin',
+      imageUrl: '/images/destinations/guilin.jpg',
       getName: () => {
         switch (currentLanguage) {
-          case 'zh': return '昆明';
-          case 'en': return 'Kunming';
-          case 'fr': return 'Kunming';
-          case 'de': return 'Kunming';
-          case 'es': return 'Kunming';
-          case 'ja': return '昆明';
-          case 'ko': return '쿤밍';
-          case 'ru': return 'Куньмин';
-          default: return 'Kunming';
+          case 'zh': return '桂林';
+          case 'en': return 'Guilin';
+          default: return 'Guilin';
         }
       },
       getDescription: () => {
         switch (currentLanguage) {
-          case 'zh': return '春城花都，四季如春的高原明珠';
-          case 'en': return 'Spring City, highland pearl with eternal spring-like weather';
-          default: return 'Spring City, highland pearl with eternal spring-like weather';
-        }
-      }
-    },
-    {
-      id: 'lijiang',
-      imageUrl: '/images/destinations/lijiang.jpg',
-      getName: () => {
-        switch (currentLanguage) {
-          case 'zh': return '丽江';
-          case 'en': return 'Lijiang';
-          case 'fr': return 'Lijiang';
-          case 'de': return 'Lijiang';
-          case 'es': return 'Lijiang';
-          case 'ja': return '麗江';
-          case 'ko': return '리장';
-          case 'ru': return 'Лицзян';
-          default: return 'Lijiang';
-        }
-      },
-      getDescription: () => {
-        switch (currentLanguage) {
-          case 'zh': return '纳西古城，雪山映照的世界文化遗产';
-          case 'en': return 'Ancient Naxi town, UNESCO World Heritage site with snow mountain backdrop';
-          default: return 'Ancient Naxi town, UNESCO World Heritage site with snow mountain backdrop';
+          case 'zh': return '山水甲天下，喀斯特地貌的代表';
+          case 'en': return 'Best landscape under heaven, representative of karst topography';
+          default: return 'Best landscape under heaven, representative of karst topography';
         }
       }
     },
@@ -217,12 +184,6 @@ export default function DestinationsIndex() {
         switch (currentLanguage) {
           case 'zh': return '黄山';
           case 'en': return 'Huangshan';
-          case 'fr': return 'Huangshan';
-          case 'de': return 'Huangshan';
-          case 'es': return 'Huangshan';
-          case 'ja': return '黄山';
-          case 'ko': return '황산';
-          case 'ru': return 'Хуаншань';
           default: return 'Huangshan';
         }
       },
@@ -233,63 +194,226 @@ export default function DestinationsIndex() {
           default: return 'Famous for peculiar pines, rocks, cloud sea, and ancient Hui villages';
         }
       }
+    },
+    // 添加更多城市
+    {
+      id: 'zhangjiajie',
+      imageUrl: '/images/destinations/zhangjiajie.jpg',
+      getName: () => {
+        switch (currentLanguage) {
+          case 'zh': return '张家界';
+          case 'en': return 'Zhangjiajie';
+          default: return 'Zhangjiajie';
+        }
+      },
+      getDescription: () => {
+        switch (currentLanguage) {
+          case 'zh': return '影片《阿凡达》取景地，石英砂岩峰林地貌';
+          case 'en': return 'Avatar film location, known for quartzite sandstone peak forest landforms';
+          default: return 'Avatar film location, known for quartzite sandstone peak forest landforms';
+        }
+      }
+    },
+    {
+      id: 'jiuzhaigou',
+      imageUrl: '/images/destinations/jiuzhaigou.jpg',
+      getName: () => {
+        switch (currentLanguage) {
+          case 'zh': return '九寨沟';
+          case 'en': return 'Jiuzhaigou';
+          default: return 'Jiuzhaigou';
+        }
+      },
+      getDescription: () => {
+        switch (currentLanguage) {
+          case 'zh': return '童话世界般的彩池与瀑布，四季如画';
+          case 'en': return 'Fairytale-like colorful pools and waterfalls, beautiful in all four seasons';
+          default: return 'Fairytale-like colorful pools and waterfalls, beautiful in all four seasons';
+        }
+      }
     }
   ];
-  
-  // 获取查看详情文本
-  const getViewDetailsText = () => {
-    switch (currentLanguage) {
-      case 'zh': return '查看详情';
-      case 'en': return 'View Details';
-      case 'fr': return 'Voir les détails';
-      case 'de': return 'Details anzeigen';
-      case 'es': return 'Ver detalles';
-      case 'ja': return '詳細を見る';
-      case 'ko': return '세부 정보보기';
-      case 'ru': return 'Посмотреть детали';
-      default: return 'View Details';
-    }
+
+  // 翻译函数
+  const translate = (key: string) => {
+    const translations: Record<string, Record<string, string>> = {
+      'searchPlaceholder': {
+        'zh': '搜索城市...',
+        'en': 'Search cities...',
+        'fr': 'Rechercher des villes...',
+        'de': 'Städte suchen...',
+        'es': 'Buscar ciudades...',
+        'ja': '都市を検索...',
+        'ko': '도시 검색...',
+        'ru': 'Поиск городов...',
+      },
+      'pageTitle': {
+        'zh': '探索目的地',
+        'en': 'Explore Destinations',
+        'fr': 'Explorer les Destinations',
+        'de': 'Reiseziele Entdecken',
+        'es': 'Explorar Destinos',
+        'ja': '目的地を探索',
+        'ko': '목적지 탐색',
+        'ru': 'Исследуйте направления',
+      },
+      'selectDestination': {
+        'zh': '请从左侧选择一个目的地',
+        'en': 'Please select a destination from the left',
+        'fr': 'Veuillez sélectionner une destination à gauche',
+        'de': 'Bitte wählen Sie links ein Reiseziel aus',
+        'es': 'Por favor, seleccione un destino de la izquierda',
+        'ja': '左側から目的地を選択してください',
+        'ko': '왼쪽에서 목적지를 선택하세요',
+        'ru': 'Пожалуйста, выберите направление слева',
+      }
+    };
+    
+    return translations[key][currentLanguage] || translations[key]['en'];
   };
-  
+
+  // 搜索和过滤功能
+  useEffect(() => {
+    if (searchTerm.trim() === '') {
+      setFilteredDestinations(destinations);
+    } else {
+      const filtered = destinations.filter(destination => {
+        const name = destination.getName().toLowerCase();
+        return name.includes(searchTerm.toLowerCase());
+      });
+      setFilteredDestinations(filtered);
+    }
+  }, [searchTerm, currentLanguage]);
+
+  // 初始化过滤后的城市列表
+  useEffect(() => {
+    setFilteredDestinations(destinations);
+  }, []);
+
+  // 切换主题展开/折叠状态
+  const toggleTheme = (themeId: string) => {
+    setExpandedThemes(prev => ({
+      ...prev,
+      [themeId]: !prev[themeId]
+    }));
+  };
+
+  // 选择城市
+  const handleCitySelect = (cityId: string) => {
+    setSelectedCity(cityId);
+    router.push(`/destinations?city=${cityId}`, { scroll: false });
+  };
+
+  // 查找城市对象
+  const findCityById = (cityId: string) => {
+    return destinations.find(city => city.id === cityId);
+  };
+
+  // 检查城市是否存在于当前筛选结果中
+  const isCityInFilteredResults = (cityId: string) => {
+    return filteredDestinations.some(city => city.id === cityId);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 顶部横幅 */}
-      <div className="bg-china-red text-white py-16">
+      <div className="bg-china-red text-white py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-4">{getPageTitle()}</h1>
-          <p className="text-xl max-w-2xl">{getPageDescription()}</p>
+          <h1 className="text-4xl font-bold">{translate('pageTitle')}</h1>
         </div>
       </div>
       
-      {/* 目的地列表 */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {destinations.map(destination => (
-            <Link 
-              key={destination.id} 
-              href={`/destinations/${destination.id}`}
-              className="block group"
-            >
-              <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 group-hover:shadow-xl">
-                <div className="relative h-48 md:h-64">
-                  <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
-                    <p className="text-gray-500">{destination.getName()} Image</p>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 opacity-70"></div>
-                </div>
-                <div className="p-6">
-                  <h2 className="text-2xl font-bold mb-2 text-gray-800">{destination.getName()}</h2>
-                  <p className="text-gray-600 mb-4">{destination.getDescription()}</p>
-                  <div className="inline-flex items-center text-china-red group-hover:underline">
-                    {getViewDetailsText()}
-                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </div>
-                </div>
+      {/* 主内容区 */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row">
+          {/* 左侧导航区 */}
+          <div className="w-full md:w-1/4 bg-white shadow-md rounded-lg overflow-hidden mb-6 md:mb-0 md:mr-6">
+            {/* 搜索框 */}
+            <div className="p-4 border-b">
+              <div className="relative">
+                <input
+                  type="text"
+                  className="w-full py-2 px-4 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-china-red focus:border-transparent"
+                  placeholder={translate('searchPlaceholder')}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <SearchIcon className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
               </div>
-            </Link>
-          ))}
+            </div>
+            
+            {/* 城市分类目录 */}
+            <div className="overflow-auto max-h-[calc(100vh-250px)]">
+              {searchTerm.trim() === '' ? (
+                // 按主题分类显示
+                themes.map(theme => (
+                  <div key={theme.id} className="border-b last:border-0">
+                    <button
+                      className="flex items-center justify-between w-full p-4 text-left hover:bg-gray-50 transition-colors"
+                      onClick={() => toggleTheme(theme.id)}
+                    >
+                      <span className="font-medium">{getThemeName(theme.id, currentLanguage)}</span>
+                      {expandedThemes[theme.id] ? 
+                        <ChevronUpIcon className="h-5 w-5 text-gray-500" /> : 
+                        <ChevronDownIcon className="h-5 w-5 text-gray-500" />
+                      }
+                    </button>
+                    
+                    {expandedThemes[theme.id] && (
+                      <div className="pl-4 pb-2">
+                        {getCitiesByTheme(theme.id).map(cityId => {
+                          const city = findCityById(cityId);
+                          if (!city) return null;
+                          
+                          return (
+                            <button
+                              key={cityId}
+                              className={`block w-full text-left py-2 px-4 rounded transition-colors ${
+                                selectedCity === cityId ? 'bg-china-red text-white' : 'hover:bg-gray-100'
+                              }`}
+                              onClick={() => handleCitySelect(cityId)}
+                            >
+                              {city.getName()}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                ))
+              ) : (
+                // 搜索结果
+                <div className="p-4">
+                  {filteredDestinations.length > 0 ? (
+                    filteredDestinations.map(city => (
+                      <button
+                        key={city.id}
+                        className={`block w-full text-left py-2 px-4 mb-2 rounded transition-colors ${
+                          selectedCity === city.id ? 'bg-china-red text-white' : 'hover:bg-gray-100'
+                        }`}
+                        onClick={() => handleCitySelect(city.id)}
+                      >
+                        {city.getName()}
+                      </button>
+                    ))
+                  ) : (
+                    <p className="text-gray-500 py-4 text-center">没有找到匹配的城市</p>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+          
+          {/* 右侧内容展示区 */}
+          <div className="w-full md:w-3/4 bg-white shadow-md rounded-lg overflow-hidden">
+            {selectedCity ? (
+              <DestinationTemplate destinationSlug={selectedCity} />
+            ) : (
+              <div className="flex items-center justify-center h-64">
+                <p className="text-gray-500">{translate('selectDestination')}</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
