@@ -7,7 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import OptimizedImage from '@/homepage/components/common/OptimizedImage';
 import { getAllThemes, getThemeName, getCitiesByTheme } from './utils/destinationThemes';
 import DestinationTemplate from './utils/DestinationTemplate';
-import { MagnifyingGlassIcon as SearchIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon as SearchIcon } from '@heroicons/react/24/outline';
 
 // 搜索参数提取组件
 function DestinationParamsHandler({ setSelectedCity }: { setSelectedCity: (city: string | null) => void }) {
@@ -28,19 +28,10 @@ export default function DestinationsIndex() {
   // 状态管理
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
-  const [expandedThemes, setExpandedThemes] = useState<Record<string, boolean>>({});
   const [filteredDestinations, setFilteredDestinations] = useState<any[]>([]);
+  const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
   const themes = getAllThemes();
   
-  // 初始化展开的主题
-  useEffect(() => {
-    const initialExpanded: Record<string, boolean> = {};
-    themes.forEach(theme => {
-      initialExpanded[theme.id] = true; // 默认全部展开
-    });
-    setExpandedThemes(initialExpanded);
-  }, [themes]);
-
   // 获取城市数据
   const destinations = [
     {
@@ -276,6 +267,16 @@ export default function DestinationsIndex() {
         'ja': '左側から目的地を選択してください',
         'ko': '왼쪽에서 목적지를 선택하세요',
         'ru': 'Пожалуйста, выберите направление слева',
+      },
+      'allCities': {
+        'zh': '所有城市',
+        'en': 'All Cities',
+        'fr': 'Toutes les villes',
+        'de': 'Alle Städte',
+        'es': 'Todas las ciudades',
+        'ja': 'すべての都市',
+        'ko': '모든 도시',
+        'ru': 'Все города',
       }
     };
     
@@ -285,27 +286,34 @@ export default function DestinationsIndex() {
   // 搜索和过滤功能
   useEffect(() => {
     if (searchTerm.trim() === '') {
-      setFilteredDestinations(destinations);
+      if (selectedTheme) {
+        // 如果选择了主题，则显示该主题下的城市
+        const citiesInTheme = getCitiesByTheme(selectedTheme);
+        setFilteredDestinations(destinations.filter(city => citiesInTheme.includes(city.id)));
+      } else {
+        // 否则显示所有城市
+        setFilteredDestinations(destinations);
+      }
     } else {
+      // 搜索时忽略主题过滤
       const filtered = destinations.filter(destination => {
         const name = destination.getName().toLowerCase();
         return name.includes(searchTerm.toLowerCase());
       });
       setFilteredDestinations(filtered);
     }
-  }, [searchTerm, currentLanguage, destinations]);
+  }, [searchTerm, currentLanguage, destinations, selectedTheme]);
 
   // 初始化过滤后的城市列表
   useEffect(() => {
     setFilteredDestinations(destinations);
   }, [destinations]);
 
-  // 切换主题展开/折叠状态
-  const toggleTheme = (themeId: string) => {
-    setExpandedThemes(prev => ({
-      ...prev,
-      [themeId]: !prev[themeId]
-    }));
+  // 处理主题选择
+  const handleThemeSelect = (themeId: string | null) => {
+    setSelectedTheme(themeId);
+    // 清空搜索内容
+    setSearchTerm('');
   };
 
   // 选择城市
@@ -319,11 +327,6 @@ export default function DestinationsIndex() {
     return destinations.find(city => city.id === cityId);
   };
 
-  // 检查城市是否存在于当前筛选结果中
-  const isCityInFilteredResults = (cityId: string) => {
-    return filteredDestinations.some(city => city.id === cityId);
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 使用 Suspense 包装 useSearchParams 的使用 */}
@@ -331,103 +334,114 @@ export default function DestinationsIndex() {
         <DestinationParamsHandler setSelectedCity={setSelectedCity} />
       </Suspense>
       
-      {/* 顶部横幅 */}
-      <div className="bg-china-red text-white py-12">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold">{translate('pageTitle')}</h1>
+      {/* 顶部横幅 - 使用苹果风格的设计 */}
+      <div className="bg-china-red text-white py-16">
+        <div className="container mx-auto px-6">
+          <h1 className="text-5xl font-bold mb-4">{translate('pageTitle')}</h1>
+          <p className="text-xl max-w-2xl opacity-90">
+            {currentLanguage === 'zh' 
+              ? '探索中国丰富多彩的旅游目的地，发现每座城市独特的魅力和文化' 
+              : 'Explore China\'s diverse destinations and discover the unique charm and culture of each city'}
+          </p>
         </div>
       </div>
       
       {/* 主内容区 */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row">
+      <div className="container mx-auto px-6 py-12">
+        <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8">
           {/* 左侧导航区 */}
-          <div className="w-full md:w-1/4 bg-white shadow-md rounded-lg overflow-hidden mb-6 md:mb-0 md:mr-6">
+          <div className="w-full md:w-1/3 lg:w-1/4">
             {/* 搜索框 */}
-            <div className="p-4 border-b">
+            <div className="bg-white rounded-2xl shadow-sm p-6 mb-8">
               <div className="relative">
                 <input
                   type="text"
-                  className="w-full py-2 px-4 pr-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-china-red focus:border-transparent"
+                  className="w-full py-3 px-5 pr-12 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-china-red focus:border-transparent transition-shadow"
                   placeholder={translate('searchPlaceholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <SearchIcon className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
+                <SearchIcon className="absolute right-4 top-3.5 h-5 w-5 text-gray-400" />
               </div>
             </div>
             
-            {/* 城市分类目录 */}
-            <div className="overflow-auto max-h-[calc(100vh-250px)]">
-              {searchTerm.trim() === '' ? (
-                // 按主题分类显示
-                themes.map(theme => (
-                  <div key={theme.id} className="border-b last:border-0">
+            {/* 主题筛选区 */}
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden mb-8">
+              <h3 className="text-lg font-semibold p-6 border-b">
+                {currentLanguage === 'zh' ? '按主题浏览' : 'Browse by Theme'}
+              </h3>
+              <div className="p-4">
+                <button
+                  className={`block w-full text-left py-3 px-4 mb-2 rounded-xl transition-colors ${
+                    selectedTheme === null ? 'bg-gray-100 font-medium' : 'hover:bg-gray-50'
+                  }`}
+                  onClick={() => handleThemeSelect(null)}
+                >
+                  {translate('allCities')}
+                </button>
+                
+                {themes.map(theme => (
+                  <button
+                    key={theme.id}
+                    className={`block w-full text-left py-3 px-4 mb-2 rounded-xl transition-colors ${
+                      selectedTheme === theme.id ? 'bg-gray-100 font-medium' : 'hover:bg-gray-50'
+                    }`}
+                    onClick={() => handleThemeSelect(theme.id)}
+                  >
+                    {getThemeName(theme.id, currentLanguage)}
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            {/* 城市列表 */}
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+              <h3 className="text-lg font-semibold p-6 border-b">
+                {currentLanguage === 'zh' ? '城市列表' : 'City List'}
+              </h3>
+              <div className="p-4 max-h-[calc(100vh-400px)] overflow-auto">
+                {filteredDestinations.length > 0 ? (
+                  filteredDestinations.map(city => (
                     <button
-                      className="flex items-center justify-between w-full p-4 text-left hover:bg-gray-50 transition-colors"
-                      onClick={() => toggleTheme(theme.id)}
+                      key={city.id}
+                      className={`block w-full text-left py-3 px-4 mb-2 rounded-xl transition-colors ${
+                        selectedCity === city.id 
+                          ? 'bg-china-red text-white' 
+                          : 'hover:bg-gray-50'
+                      }`}
+                      onClick={() => handleCitySelect(city.id)}
                     >
-                      <span className="font-medium">{getThemeName(theme.id, currentLanguage)}</span>
-                      {expandedThemes[theme.id] ? 
-                        <ChevronUpIcon className="h-5 w-5 text-gray-500" /> : 
-                        <ChevronDownIcon className="h-5 w-5 text-gray-500" />
-                      }
+                      <span className="font-medium">{city.getName()}</span>
                     </button>
-                    
-                    {expandedThemes[theme.id] && (
-                      <div className="pl-4 pb-2">
-                        {getCitiesByTheme(theme.id).map(cityId => {
-                          const city = findCityById(cityId);
-                          if (!city) return null;
-                          
-                          return (
-                            <button
-                              key={cityId}
-                              className={`block w-full text-left py-2 px-4 rounded transition-colors ${
-                                selectedCity === cityId ? 'bg-china-red text-white' : 'hover:bg-gray-100'
-                              }`}
-                              onClick={() => handleCitySelect(cityId)}
-                            >
-                              {city.getName()}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                ))
-              ) : (
-                // 搜索结果
-                <div className="p-4">
-                  {filteredDestinations.length > 0 ? (
-                    filteredDestinations.map(city => (
-                      <button
-                        key={city.id}
-                        className={`block w-full text-left py-2 px-4 mb-2 rounded transition-colors ${
-                          selectedCity === city.id ? 'bg-china-red text-white' : 'hover:bg-gray-100'
-                        }`}
-                        onClick={() => handleCitySelect(city.id)}
-                      >
-                        {city.getName()}
-                      </button>
-                    ))
-                  ) : (
-                    <p className="text-gray-500 py-4 text-center">没有找到匹配的城市</p>
-                  )}
-                </div>
-              )}
+                  ))
+                ) : (
+                  <p className="text-gray-500 py-4 text-center">没有找到匹配的城市</p>
+                )}
+              </div>
             </div>
           </div>
           
           {/* 右侧内容展示区 */}
-          <div className="w-full md:w-3/4 bg-white shadow-md rounded-lg overflow-hidden">
-            {selectedCity ? (
-              <DestinationTemplate destinationSlug={selectedCity} />
-            ) : (
-              <div className="flex items-center justify-center h-64">
-                <p className="text-gray-500">{translate('selectDestination')}</p>
-              </div>
-            )}
+          <div className="w-full md:w-2/3 lg:w-3/4">
+            <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+              {selectedCity ? (
+                <DestinationTemplate destinationSlug={selectedCity} />
+              ) : (
+                <div className="flex flex-col items-center justify-center py-32 px-6 text-center">
+                  <img 
+                    src="/images/destinations/map-placeholder.svg" 
+                    alt="China Map" 
+                    className="w-40 h-40 mb-8 opacity-50"
+                  />
+                  <p className="text-gray-500 text-xl mb-4">{translate('selectDestination')}</p>
+                  <p className="text-gray-400 max-w-md">
+                    {currentLanguage === 'zh' 
+                      ? '从左侧列表中选择一个目的地，开始您的虚拟旅行' 
+                      : 'Select a destination from the list on the left to start your virtual journey'}
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

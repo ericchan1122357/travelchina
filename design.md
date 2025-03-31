@@ -49,6 +49,41 @@ project-root/
 - **ESLint 9**: 代码质量检查工具
 - **ESLint Config Next**: Next.js 特定的 ESLint 配置
 
+## 设计规范
+
+### 字体规范
+
+为确保网站视觉统一性并解决字体版权问题，本项目采用以下字体规范：
+
+1. **基础字体**: 
+   - 全站统一使用**阿里巴巴普惠体**作为主要字体
+   - 字体路径: `/public/fonts/AlibabaPuHuiTi-*.ttf`
+
+2. **字重使用规范**:
+   - 正文内容: AlibabaPuHuiTi-Regular (常规体)
+   - 标题内容: AlibabaPuHuiTi-Bold (粗体)
+   - 次要信息: AlibabaPuHuiTi-Light (轻量体)
+   - 重点内容: AlibabaPuHuiTi-Medium (中等体)
+
+3. **字体声明方式**:
+   - CSS 文件中使用 `font-family: 'Alibaba PuHuiTi', -apple-system, BlinkMacSystemFont, sans-serif;`
+   - Tailwind 配置中已设置 sans 字体族默认为阿里巴巴普惠体
+
+4. **多语言支持**:
+   - 阿里巴巴普惠体支持所有网站需要的语言
+   - 所有语言页面均统一使用此字体，无需针对特定语言使用不同字体
+
+5. **注意事项**:
+   - 禁止在任何组件或页面中使用其他字体
+   - 所有新增页面和组件必须遵循此字体规范
+   - 不要使用在线字体服务，统一使用本地字体文件
+
+6. **字体授权**:
+   - 阿里巴巴普惠体允许个人和企业免费使用，包括商业用途
+   - 字体授权信息可在阿里巴巴官方渠道查询
+
+每位开发人员在添加新页面或修改现有页面时，必须严格遵循上述字体规范，确保网站视觉体验的一致性。
+
 ## 技术要点
 
 ### 1. Next.js App Router
