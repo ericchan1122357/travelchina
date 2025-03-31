@@ -2248,12 +2248,12 @@ export default function PlannerPage() {
       
       /* 确保日期选择器中的所有文本使用英文 */
       input[type="date"], input[type="date"] * {
-        font-family: system-ui, -apple-system, sans-serif !important;
+        font-family: 'Alibaba PuHuiTi', -apple-system, BlinkMacSystemFont, sans-serif !important;
       }
       
       /* 强制日期选择器使用英文 */
       :lang(en) * {
-        font-family: system-ui, -apple-system, sans-serif;
+        font-family: 'Alibaba PuHuiTi', -apple-system, BlinkMacSystemFont, sans-serif;
       }
     `;
     
