@@ -79,9 +79,22 @@ export default function Navbar() {
   const handleDestinationsClick = (e: React.MouseEvent) => {
     e.preventDefault();
     
-    // 使用location.replace替换当前历史记录条目
-    // 这样可以防止用户通过返回按钮返回到详情页
-    window.location.replace('/destinations');
+    // 获取当前URL并解析出基础路径和语言前缀
+    const currentUrl = new URL(window.location.href);
+    const pathParts = currentUrl.pathname.split('/').filter(Boolean);
+    
+    // 检查是否有语言前缀 (如 /en/, /zh/, 等)
+    let basePath = '';
+    if (pathParts.length > 0 && pathParts[0].length === 2) {
+      // 如果第一个部分是两个字符的语言代码
+      basePath = `/${pathParts[0]}`;
+    }
+    
+    // 构造目的地列表页URL
+    const destinationsUrl = `${basePath}/destinations`;
+    
+    // 替换当前历史记录并完全重新加载页面
+    window.location.replace(destinationsUrl);
   };
 
   return (

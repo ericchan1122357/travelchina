@@ -133,23 +133,62 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
   
   // 返回到目的地列表页
   const goToDestinationsList = () => {
-    // 改为使用location.replace，这样可以替换当前历史记录
-    // 防止用户点击返回按钮又回到详情页的情况
-    window.location.replace('/destinations');
+    // 获取当前URL并解析出基础路径和语言前缀
+    const currentUrl = new URL(window.location.href);
+    const pathParts = currentUrl.pathname.split('/').filter(Boolean);
+    
+    // 检查是否有语言前缀 (如 /en/, /zh/, 等)
+    let basePath = '';
+    if (pathParts.length > 0 && pathParts[0].length === 2) {
+      // 如果第一个部分是两个字符的语言代码
+      basePath = `/${pathParts[0]}`;
+    }
+    
+    // 构造目的地列表页URL
+    const destinationsUrl = `${basePath}/destinations`;
+    
+    // 替换当前历史记录
+    window.location.replace(destinationsUrl);
   };
   
   // 在组件的顶部，添加页面加载时的历史记录处理逻辑
   useEffect(() => {
     // 确保在页面加载时正确设置浏览器历史记录
     try {
+      // 获取当前URL的基础路径和语言前缀
+      const currentUrl = new URL(window.location.href);
+      const pathParts = currentUrl.pathname.split('/').filter(Boolean);
+      
+      // 检查是否有语言前缀
+      let basePath = '';
+      if (pathParts.length > 0 && pathParts[0].length === 2) {
+        basePath = `/${pathParts[0]}`;
+      }
+      
+      // 构造目的地列表页URL
+      const destinationsUrl = `${basePath}/destinations`;
+      
       // 捕获popstate事件，处理返回按钮点击
-      const handleBackButton = () => {
-        // 如果URL仍然包含city参数，立即导航到目的地列表页
+      const handleBackButton = (event: PopStateEvent) => {
+        // 当用户点击返回按钮时，如果URL仍然包含city参数
         if (window.location.href.includes('?city=')) {
-          window.location.replace('/destinations');
+          // 阻止默认的返回行为并导航到目的地列表页
+          event.preventDefault(); // 注意：这可能在某些浏览器中不起作用
+          window.location.replace(destinationsUrl);
         }
       };
       
+      // 手动创建一个历史记录点，用于从城市详情页返回
+      // 先保存当前URL
+      const detailUrl = window.location.href;
+      
+      // 然后添加一个指向目的地列表页的历史记录
+      history.pushState({fromDetail: true}, '', destinationsUrl);
+      
+      // 然后再次返回到当前页面
+      history.replaceState({isDetail: true}, '', detailUrl);
+      
+      // 添加事件监听
       window.addEventListener('popstate', handleBackButton);
       
       return () => {

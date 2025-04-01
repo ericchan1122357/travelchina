@@ -33,27 +33,40 @@ function SearchParamsHandler({ setSelectedCity }: { setSelectedCity: (cityId: st
       console.log(`URL params - city: ${city}, language: ${currentLanguage}`);
       setSelectedCity(city);
       
-      // 更简单但更可靠的方式处理浏览器历史
+      // 处理浏览器历史，支持返回按钮跳转到城市列表页
       try {
-        // 为当前页面设置历史状态标记，表明这是城市详情页
-        window.history.replaceState(
-          { isCityDetail: true, city }, 
-          '',
-          window.location.href
-        );
+        // 获取当前URL并解析出基础路径
+        const currentUrl = new URL(window.location.href);
+        const pathParts = currentUrl.pathname.split('/').filter(Boolean);
         
-        // 监听popstate事件，处理返回按钮点击
+        // 检查是否有语言前缀
+        let basePath = '';
+        if (pathParts.length > 0 && pathParts[0].length === 2) {
+          basePath = `/${pathParts[0]}`;
+        }
+        
+        // 构造目的地列表页URL
+        const destinationsUrl = `${basePath}/destinations`;
+        
+        // 创建一个特殊的标记，用于检测这是一个从城市列表页到城市详情页的导航
+        // 这个标记会在handlePopState中被检查
+        sessionStorage.setItem('lastVisitedDestinationsList', 'true');
+        
+        // 监听返回按钮事件
         const handlePopState = () => {
-          // 如果当前URL仍然包含city参数，但我们已经点击了返回按钮
-          // 这说明我们需要手动导航到目的地列表页
+          // 如果用户通过返回按钮从城市详情页返回
+          // 检查我们是否在页面上看到的仍然是城市详情（URL中含有city参数）
           const url = new URL(window.location.href);
-          if (url.searchParams.has('city')) {
-            // 立即阻止默认的返回行为
-            window.location.replace('/destinations');
+          if (url.searchParams.has('city') && sessionStorage.getItem('lastVisitedDestinationsList') === 'true') {
+            console.log('返回按钮被点击，重定向到目的地列表页');
+            // 将标记移除，防止循环重定向
+            sessionStorage.removeItem('lastVisitedDestinationsList');
+            // 重定向到目的地列表页
+            window.location.replace(destinationsUrl);
           }
         };
         
-        // 添加事件监听
+        // 添加事件监听器
         window.addEventListener('popstate', handlePopState);
         
         return () => {
@@ -134,18 +147,24 @@ export default function DestinationsPage() {
   
   // 选择城市 - 使用useCallback优化
   const handleCitySelect = useCallback((city: string) => {
-    // 将当前URL保存到history.state中，以便后续回退能正确处理
-    const currentUrl = window.location.href;
+    // 获取当前URL并解析出基础路径
+    const currentUrl = new URL(window.location.href);
+    const pathParts = currentUrl.pathname.split('/').filter(Boolean);
     
-    // 在导航到城市详情前，先设置当前状态
-    window.history.replaceState(
-      { isDestinationsList: true },
-      '',
-      currentUrl
-    );
+    // 检查是否有语言前缀
+    let basePath = '';
+    if (pathParts.length > 0 && pathParts[0].length === 2) {
+      basePath = `/${pathParts[0]}`;
+    }
     
-    // 然后导航到城市详情页
-    router.push(`/destinations?city=${city}`);
+    // 构造城市详情页的URL
+    const cityDetailUrl = `${basePath}/destinations?city=${city}`;
+    
+    // 设置标记，表示我们即将进入城市详情页
+    sessionStorage.setItem('lastVisitedDestinationsList', 'true');
+    
+    // 导航到城市详情页
+    router.push(cityDetailUrl);
     setSelectedCity(city);
   }, [router]);
   
