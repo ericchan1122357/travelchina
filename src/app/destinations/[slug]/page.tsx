@@ -4,7 +4,6 @@ import React from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import DestinationTemplate from '../utils/DestinationTemplate';
-import Link from 'next/link';
 
 // 专用页面的目的地列表（这些有自己的独立页面）
 const CUSTOM_DESTINATIONS = ['beijing', 'shanghai'];
@@ -27,12 +26,12 @@ export default function DestinationPage() {
           <p className="text-xl text-gray-600 mb-6">
             {currentLanguage === 'zh' ? '目的地未找到' : 'Destination not found'}
           </p>
-          <Link 
-            href="/" 
+          <button 
+            onClick={() => router.back()} 
             className="px-4 py-2 bg-china-red text-white rounded-lg hover:bg-red-700 transition-colors"
           >
-            {currentLanguage === 'zh' ? '返回首页' : 'Go to Homepage'}
-          </Link>
+            {currentLanguage === 'zh' ? '返回' : 'Go Back'}
+          </button>
         </div>
       </div>
     );
