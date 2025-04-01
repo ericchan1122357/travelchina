@@ -3,14 +3,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage, Language } from '@/contexts/LanguageContext';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { currentLanguage } = useLanguage();
+  const { currentLanguage, setLanguage } = useLanguage();
 
   const getTranslatedString = (key: string) => {
-    const translations: Record<string, Record<string, string>> = {
+    const translations: Record<string, Record<Language, string>> = {
       'destinations': {
         'zh': '目的地',
         'en': 'Destinations',
@@ -56,6 +56,14 @@ export default function Navbar() {
     return translations[key][currentLanguage] || translations[key]['en'];
   };
 
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newLanguage = e.target.value as Language;
+    setLanguage(newLanguage);
+    
+    // 将语言选择保存到localStorage，以便在页面刷新后保持选择
+    localStorage.setItem('preferredLanguage', newLanguage);
+  };
+
   const navItems = [
     { href: '/destinations', label: getTranslatedString('destinations') },
     { href: '/guides', label: getTranslatedString('guides') },
@@ -69,7 +77,7 @@ export default function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-red-600 text-xl font-bold">China Travel Guide</span>
+              <span className="text-red-600 text-xl font-bold">China Free Travel</span>
             </Link>
           </div>
 
@@ -92,9 +100,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <select
               value={currentLanguage}
-              onChange={(e) => {
-                // 语言切换逻辑将由LanguageContext处理
-              }}
+              onChange={handleLanguageChange}
               className="ml-3 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md"
             >
               <option value="en">English</option>

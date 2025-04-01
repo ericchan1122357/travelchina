@@ -9,6 +9,8 @@ interface LanguageContextType {
   currentLanguage: Language;
   setLanguage: (lang: Language) => void;
   languages: { code: Language; name: string }[];
+  isLoading: boolean;
+  isChanging: boolean;
 }
 
 // 创建语言上下文
@@ -37,26 +39,51 @@ interface LanguageProviderProps {
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   // 初始语言状态，优先从localStorage获取，若没有则使用浏览器语言或默认中文
   const [currentLanguage, setCurrentLanguage] = useState<Language>('zh');
+  const [isLoading, setIsLoading] = useState(true);
+  const [isChanging, setIsChanging] = useState(false);
 
   // 页面加载时从localStorage读取语言设置
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedLanguage = localStorage.getItem(LANGUAGE_KEY);
-      if (savedLanguage && isSupportedLanguage(savedLanguage)) {
-        setCurrentLanguage(savedLanguage as Language);
-      } else {
-        // 检测浏览器语言
-        const browserLang = detectBrowserLanguage();
-        setCurrentLanguage(browserLang);
+    const initializeLanguage = async () => {
+      if (typeof window !== 'undefined') {
+        try {
+          const savedLanguage = localStorage.getItem(LANGUAGE_KEY);
+          if (savedLanguage && isSupportedLanguage(savedLanguage)) {
+            setCurrentLanguage(savedLanguage as Language);
+          } else {
+            // 检测浏览器语言
+            const browserLang = detectBrowserLanguage();
+            setCurrentLanguage(browserLang);
+            // 保存检测到的语言
+            localStorage.setItem(LANGUAGE_KEY, browserLang);
+          }
+        } catch (error) {
+          console.error('Error initializing language:', error);
+          // 出错时使用默认语言
+          setCurrentLanguage('zh');
+        } finally {
+          setIsLoading(false);
+        }
       }
-    }
+    };
+
+    initializeLanguage();
   }, []);
 
   // 设置语言函数
-  const setLanguage = (lang: Language) => {
-    setCurrentLanguage(lang);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(LANGUAGE_KEY, lang);
+  const setLanguage = async (lang: Language) => {
+    try {
+      setIsChanging(true);
+      setCurrentLanguage(lang);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(LANGUAGE_KEY, lang);
+      }
+      // 模拟语言切换的过渡效果
+      await new Promise(resolve => setTimeout(resolve, 300));
+    } catch (error) {
+      console.error('Error setting language:', error);
+    } finally {
+      setIsChanging(false);
     }
   };
 
@@ -84,12 +111,21 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const contextValue: LanguageContextType = {
     currentLanguage,
     setLanguage,
-    languages: supportedLanguages
+    languages: supportedLanguages,
+    isLoading,
+    isChanging
   };
+
+  // 如果正在加载，显示加载状态
+  if (isLoading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
 
   return (
     <LanguageContext.Provider value={contextValue}>
-      {children}
+      <div className={`transition-opacity duration-300 ${isChanging ? 'opacity-50' : 'opacity-100'}`}>
+        {children}
+      </div>
     </LanguageContext.Provider>
   );
 };

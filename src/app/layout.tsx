@@ -9,20 +9,20 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Travel China - Your Ultimate Guide to China',
-    template: '%s | Travel China'
+    default: 'China Free Travel - Your Ultimate Free Travel Guide to China',
+    template: '%s | China Free Travel'
   },
-  description: 'Discover the best destinations, travel guides, and stories about China. Plan your perfect trip with our comprehensive travel resources.',
-  keywords: ['China travel', 'China tourism', 'Chinese destinations', 'travel guide', 'China vacation', 'Chinese culture', 'travel tips'],
-  authors: [{ name: 'Travel China Team' }],
-  creator: 'Travel China',
-  publisher: 'Travel China',
+  description: 'Plan your perfect free trip to China with our comprehensive travel resources, destination guides, and personalized planning tools.',
+  keywords: ['China free travel', 'China tourism', 'Chinese destinations', 'travel guide', 'China vacation', 'Chinese culture', 'travel tips', 'independent travel'],
+  authors: [{ name: 'China Free Travel Team' }],
+  creator: 'China Free Travel',
+  publisher: 'China Free Travel',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://travelchina.com'),
+  metadataBase: new URL('https://chinafreetravel.com'),
   alternates: {
     canonical: '/',
     languages: {
@@ -39,25 +39,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://travelchina.com',
-    siteName: 'Travel China',
-    title: 'Travel China - Your Ultimate Guide to China',
-    description: 'Discover the best destinations, travel guides, and stories about China. Plan your perfect trip with our comprehensive travel resources.',
+    url: 'https://chinafreetravel.com',
+    siteName: 'China Free Travel',
+    title: 'China Free Travel - Your Ultimate Free Travel Guide to China',
+    description: 'Plan your perfect free trip to China with our comprehensive travel resources, destination guides, and personalized planning tools.',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Travel China - Your Ultimate Guide to China',
+        alt: 'China Free Travel - Your Ultimate Free Travel Guide to China',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Travel China - Your Ultimate Guide to China',
-    description: 'Discover the best destinations, travel guides, and stories about China. Plan your perfect trip with our comprehensive travel resources.',
+    title: 'China Free Travel - Your Ultimate Free Travel Guide to China',
+    description: 'Plan your perfect free trip to China with our comprehensive travel resources, destination guides, and personalized planning tools.',
     images: ['/images/twitter-image.jpg'],
-    creator: '@travelchina',
+    creator: '@chinafreetravel',
   },
   robots: {
     index: true,

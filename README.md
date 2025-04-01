@@ -1,76 +1,65 @@
-# 中国旅游攻略网站
+# China Free Travel
 
-这是一个使用 Next.js 和 Tailwind CSS 构建的中国旅游攻略网站。该网站旨在为游客提供丰富的中国旅游信息和个性化的行程规划服务。
+A comprehensive travel guide website helping travelers plan their perfect trip to China. Built with Next.js, React, and TypeScript.
 
-## 功能特点
+## Features
 
-- 响应式设计，支持各种设备
-- 多语言支持（中文、英文、日文、韩文）
-- 目的地展示和详细介绍
-- 旅行故事分享
-- 实用旅行指南
-- 个性化行程规划
+- Multi-language support (8 languages)
+- AI-powered trip planning
+- Destination guides
+- Travel stories
+- Interactive trip planner
+- Responsive design
 
-## 技术栈
+## Tech Stack
 
-- Next.js 14
-- React 18
+- Next.js 15
+- React 19
 - TypeScript
 - Tailwind CSS
 - ESLint
+- PostCSS
 
-## 设计规范
+## Getting Started
 
-### 字体规范
-
-**重要**: 本项目统一使用**阿里巴巴普惠体**作为全站字体。
-
-- 所有组件和页面必须使用阿里巴巴普惠体
-- 禁止引入或使用其他字体
-- 字体文件位于 `/public/fonts/` 目录下
-- 字体已在全局CSS和Tailwind配置中设置为默认字体
-
-详细的字体规范请查看 [design.md](./design.md) 文档。
-
-## 开始使用
-
-1. 克隆仓库：
-
+1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/china-travel-guide.git
-cd china-travel-guide
+git clone https://github.com/yourusername/china-free-travel.git
 ```
 
-2. 安装依赖：
-
+2. Install dependencies
 ```bash
+cd china-free-travel
 npm install
 ```
 
-3. 启动开发服务器：
-
+3. Run the development server
 ```bash
 npm run dev
 ```
 
-4. 在浏览器中打开 [http://localhost:3000](http://localhost:3000)
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 项目结构
+## Project Structure
 
 ```
-src/
-  ├── app/                # Next.js 应用程序目录
-  ├── homepage/          # 首页相关组件和工具
-  │   ├── components/   # 首页组件
-  │   ├── types/       # TypeScript 类型定义
-  │   └── utils/       # 工具函数和数据
-  └── styles/           # 全局样式
+project-root/
+│
+├── src/                    # Source code
+│   ├── app/               # Next.js App Router
+│   ├── components/        # Shared components
+│   ├── contexts/          # React contexts
+│   ├── lib/              # Utility functions
+│   └── types/            # TypeScript types
+│
+├── public/               # Static files
+└── docs/                # Documentation
 ```
 
-## 贡献
+## Contributing
 
-欢迎提交 Pull Request 和 Issue！
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-## 许可证
+## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
