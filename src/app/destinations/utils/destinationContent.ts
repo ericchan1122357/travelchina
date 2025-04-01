@@ -177,9 +177,60 @@ const beijingContent: Record<Language, DestinationContent> = {
     sections: []
   },
   ja: {
-    title: '北京：古都の古今交響曲',
+    title: '北京：古代の都の過去と現在の交響曲',
     subtitle: '中国の首都の王室の魅力と現代の魅力を探る',
-    sections: []
+    sections: [
+      {
+        title: '第一印象',
+        content: `
+          <p>
+            金色の屋根瓦が輝く壮大な紫禁城、山々を縫うように続く万里の長城、胡同で聞こえる三輪車の鈴の音、夕日を映すCBDのガラスのカーテンウォール...これが北京です。古代と現代、伝統と革新が融合する都市です。3,000年の都市の歴史と800年の首都としての歴史を持つ北京は、中国文明の精髓を担いながら、現代中国の活気あるエネルギーを示しています。
+          </p>
+          
+          <h3>最も代表的な特徴：</h3>
+          <ul>
+            <li>世界最大の王宮複合施設 - 紫禁城（故宮）</li>
+            <li>人類最大の工学プロジェクトの一つ - 万里の長城</li>
+            <li>独特の四合院と胡同文化</li>
+            <li>現代国際都市の繁栄と活力</li>
+          </ul>
+        `
+      },
+      {
+        title: '基本情報の概要',
+        content: `
+          <h3>訪問に最適な季節</h3>
+          <ul>
+            <li>春（3月〜5月）：快適な気温、花が咲き誇る</li>
+            <li>秋（9月〜10月）：晴れた空、心地よい天気、紅葉</li>
+          </ul>
+          
+          <h3>気候の特徴</h3>
+          <ul>
+            <li>春：暖かく快適、時折砂嵐</li>
+            <li>夏：暑く雨が多い</li>
+            <li>秋：涼しく乾燥</li>
+            <li>冬：寒く乾燥</li>
+          </ul>
+        `
+      },
+      {
+        title: '必見の観光スポット',
+        content: `
+          <h3>王宮と庭園</h3>
+          
+          <h4>1. 故宮博物院（紫禁城）</h4>
+          <p>
+            世界最大の宮殿複合施設で、明・清朝の24人の皇帝の住居。720,000平方メートルを占め、建物は壮大で圧巻です。太和殿は中国最大の木造建築物で、皇帝権力の頂点を象徴しています。
+          </p>
+          
+          <h4>2. 頤和園</h4>
+          <p>
+            世界最大かつ最もよく保存された王立庭園で、西太后の夏の避暑地。きらめく昆明湖は頤和園の面積の約4分の3を占めています。長廊は世界最長の彩色回廊で、各セクションにユニークな絵画が描かれています。
+          </p>
+        `
+      }
+    ]
   },
   ko: {
     title: '베이징: 고대 수도의 과거와 현재의 교향곡',
@@ -240,8 +291,17 @@ const shanghaiContent: Record<Language, DestinationContent> = {
   },
   ja: {
     title: '上海：東洋の真珠の魅力',
-    subtitle: '現代と伝統文化が融合する国際都市',
-    sections: []
+    subtitle: '現代と伝統が融合する国際都市',
+    sections: [
+      {
+        title: '都市の概要',
+        content: `
+          <p>
+            上海は中国最大の経済センターであり、外灘の国際建築博覧会、陸家嘴の現代的な超高層ビル、豫園の伝統的な庭園、旧市街の生活を特徴としています。中国の改革開放の窓口として、上海は中国の現代化の成果を示しています。
+          </p>
+        `
+      }
+    ]
   },
   ko: {
     title: '상하이: 동방명주의 매력',
@@ -263,24 +323,39 @@ export const destinationContents: Record<string, Record<Language, DestinationCon
 };
 
 // 获取特定目的地和语言的内容
-export function getDestinationContent(destination: string, language: Language): DestinationContent {
-  // 如果没有该目的地或该语言的内容，返回英文或默认内容
-  if (!destinationContents[destination]) {
+export function getDestinationContent(cityId: string, language: Language): DestinationContent {
+  // 根据城市ID获取相应的内容
+  let cityContent: Record<Language, DestinationContent> | undefined;
+  
+  switch(cityId) {
+    case 'beijing':
+      cityContent = beijingContent;
+      break;
+    case 'shanghai':
+      cityContent = shanghaiContent;
+      break;
+    // 可以添加其他城市...
+    default:
+      // 默认返回空对象
+      return {
+        title: cityId.charAt(0).toUpperCase() + cityId.slice(1),
+        subtitle: '',
+        sections: []
+      };
+  }
+  
+  // 如果请求的语言内容是空的（sections长度为0），则使用英文内容
+  if (cityContent && cityContent[language] && cityContent[language].sections.length === 0) {
     return {
-      title: destination.charAt(0).toUpperCase() + destination.slice(1),
-      subtitle: 'Discover this amazing destination',
-      sections: []
+      ...cityContent[language],
+      sections: cityContent['en'].sections
     };
   }
   
-  // 如果该语言没有内容，返回英文内容
-  if (!destinationContents[destination][language]) {
-    return destinationContents[destination]['en'] || {
-      title: destination.charAt(0).toUpperCase() + destination.slice(1),
-      subtitle: 'Discover this amazing destination',
-      sections: []
-    };
-  }
-  
-  return destinationContents[destination][language];
+  // 返回请求的语言内容，如果不存在则返回英文内容
+  return cityContent ? (cityContent[language] || cityContent['en']) : {
+    title: cityId.charAt(0).toUpperCase() + cityId.slice(1),
+    subtitle: '',
+    sections: []
+  };
 } 

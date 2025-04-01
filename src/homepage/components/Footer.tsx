@@ -53,7 +53,7 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
               className="text-2xl font-bold text-china-red"
               aria-label={currentLanguage === 'zh' ? '返回首页' : 'Back to Home'}
             >
-              中国旅游
+              China Free Travel
             </Link>
             <p className="mt-4 text-gray-400">
               {t('footerDescription') as string}
@@ -221,7 +221,7 @@ const Footer = ({ currentLanguage, onLanguageChange }: FooterProps) => {
           className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
           role="contentinfo"
         >
-          <p>© {year} {currentLanguage === 'zh' ? '中国旅游' : 'China Travel'}. {currentLanguage === 'zh' ? '保留所有权利' : 'All rights reserved'}.</p>
+          <p>© {year} China Free Travel. {currentLanguage === 'zh' ? '保留所有权利' : 'All rights reserved'}.</p>
         </div>
       </div>
     </footer>

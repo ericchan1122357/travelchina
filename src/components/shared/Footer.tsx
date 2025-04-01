@@ -78,7 +78,7 @@ export default function Footer() {
           {/* Brand Section */}
           <div>
             <Link href="/" className="text-2xl font-bold text-white">
-              {getTranslatedString('brand')}
+              China Free Travel
             </Link>
             <p className="mt-2 text-sm">
               {getTranslatedString('tagline')}
@@ -131,7 +131,7 @@ export default function Footer() {
                 <svg className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                contact@chinatravel.com
+                contact@chinafreetravel.com
               </p>
               <p className="flex items-center text-gray-300">
                 <svg className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -142,6 +142,12 @@ export default function Footer() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 border-t border-gray-800">
+        <p className="text-gray-400 text-sm text-center">
+          © {new Date().getFullYear()} China Free Travel. All rights reserved.
+        </p>
       </div>
     </footer>
   );
