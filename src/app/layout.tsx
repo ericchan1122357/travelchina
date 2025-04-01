@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import Navbar from '@/components/shared/Navbar'
+import Footer from '@/components/shared/Footer'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: '中国旅游攻略网站',
-  description: '为外国游客提供个性化定制的中国旅行计划',
+  title: 'Travel China - Your Ultimate Guide to China',
+  description: 'Discover the best destinations, travel guides, and stories about China.',
 }
 
 export default function RootLayout({
@@ -23,7 +23,7 @@ export default function RootLayout({
         <LanguageProvider>
           <div className="min-h-screen flex flex-col">
             <Navbar />
-            <main className="flex-grow">
+            <main className="flex-grow pt-16">
               {children}
             </main>
             <Footer />
