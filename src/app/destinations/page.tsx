@@ -33,43 +33,29 @@ function SearchParamsHandler({ setSelectedCity }: { setSelectedCity: (cityId: st
       console.log(`URL params - city: ${city}, language: ${currentLanguage}`);
       setSelectedCity(city);
       
-      // 为浏览器回退设置历史状态
+      // 更简单但更可靠的方式处理浏览器历史
       try {
-        // 创建新的历史条目
-        const currentUrl = new URL(window.location.href);
-        
-        // 使用replaceState而不是pushState，避免创建新的历史记录
-        // 而是修改当前记录，使其带有destinations标记
+        // 为当前页面设置历史状态标记，表明这是城市详情页
         window.history.replaceState(
-          { city, destinations: true }, 
+          { isCityDetail: true, city }, 
           '',
-          currentUrl.toString()
+          window.location.href
         );
         
-        // 手动添加一个历史记录点用于回退
-        const baseUrl = currentUrl.origin + '/destinations';
-        window.history.pushState(
-          { noCity: true }, 
-          '',
-          baseUrl
-        );
-        
-        // 再次更新为当前URL，但保持状态
-        window.history.replaceState(
-          { city, destinations: true },
-          '',
-          currentUrl.toString()
-        );
-        
-        // 监听popstate事件，当用户点击回退按钮时，检查状态并执行操作
-        const handlePopState = (event: PopStateEvent) => {
-          // 如果回退到了没有city的状态，则重新加载页面
-          if (event.state && event.state.noCity) {
-            window.location.href = '/destinations';
+        // 监听popstate事件，处理返回按钮点击
+        const handlePopState = () => {
+          // 如果当前URL仍然包含city参数，但我们已经点击了返回按钮
+          // 这说明我们需要手动导航到目的地列表页
+          const url = new URL(window.location.href);
+          if (url.searchParams.has('city')) {
+            // 立即阻止默认的返回行为
+            window.location.replace('/destinations');
           }
         };
         
+        // 添加事件监听
         window.addEventListener('popstate', handlePopState);
+        
         return () => {
           window.removeEventListener('popstate', handlePopState);
         };
@@ -148,7 +134,17 @@ export default function DestinationsPage() {
   
   // 选择城市 - 使用useCallback优化
   const handleCitySelect = useCallback((city: string) => {
-    // 在URL中保留当前语言信息，确保在城市详情页面能读取到正确的语言设置
+    // 将当前URL保存到history.state中，以便后续回退能正确处理
+    const currentUrl = window.location.href;
+    
+    // 在导航到城市详情前，先设置当前状态
+    window.history.replaceState(
+      { isDestinationsList: true },
+      '',
+      currentUrl
+    );
+    
+    // 然后导航到城市详情页
     router.push(`/destinations?city=${city}`);
     setSelectedCity(city);
   }, [router]);

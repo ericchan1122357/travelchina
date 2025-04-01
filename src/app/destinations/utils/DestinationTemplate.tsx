@@ -133,9 +133,32 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
   
   // 返回到目的地列表页
   const goToDestinationsList = () => {
-    // 使用window.location跳转，确保完全重新加载页面到目的地列表
-    window.location.href = '/destinations';
+    // 改为使用location.replace，这样可以替换当前历史记录
+    // 防止用户点击返回按钮又回到详情页的情况
+    window.location.replace('/destinations');
   };
+  
+  // 在组件的顶部，添加页面加载时的历史记录处理逻辑
+  useEffect(() => {
+    // 确保在页面加载时正确设置浏览器历史记录
+    try {
+      // 捕获popstate事件，处理返回按钮点击
+      const handleBackButton = () => {
+        // 如果URL仍然包含city参数，立即导航到目的地列表页
+        if (window.location.href.includes('?city=')) {
+          window.location.replace('/destinations');
+        }
+      };
+      
+      window.addEventListener('popstate', handleBackButton);
+      
+      return () => {
+        window.removeEventListener('popstate', handleBackButton);
+      };
+    } catch (error) {
+      console.error('Error handling browser history in DestinationTemplate:', error);
+    }
+  }, []);
   
   // 获取翻译文本
   const getTranslation = (key: string) => {

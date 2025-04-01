@@ -79,8 +79,9 @@ export default function Navbar() {
   const handleDestinationsClick = (e: React.MouseEvent) => {
     e.preventDefault();
     
-    // 直接通过window.location跳转，确保完全重新加载页面
-    window.location.href = '/destinations';
+    // 使用location.replace替换当前历史记录条目
+    // 这样可以防止用户通过返回按钮返回到详情页
+    window.location.replace('/destinations');
   };
 
   return (
