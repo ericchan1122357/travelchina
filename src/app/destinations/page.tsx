@@ -35,71 +35,23 @@ export default function DestinationsPage() {
   // 获取所有主题
   const allThemes = getAllThemes();
   
-  // 获取对应语言的城市名称
-  const getCityName = (cityId: string) => {
-    // 映射城市ID到各语言名称
-    const cityNames: Record<string, Record<string, string>> = {
-      'beijing': {
-        'zh': '北京',
-        'en': 'Beijing',
-        'ja': '北京',
-        'ko': '베이징',
-        'fr': 'Pékin',
-        'de': 'Peking',
-        'es': 'Pekín',
-        'ru': 'Пекин',
-      },
-      'shanghai': {
-        'zh': '上海',
-        'en': 'Shanghai',
-        'ja': '上海',
-        'ko': '상하이',
-        'fr': 'Shanghai',
-        'de': 'Shanghai',
-        'es': 'Shanghái',
-        'ru': 'Шанхай',
-      },
-      'xian': {
-        'zh': '西安',
-        'en': 'Xi\'an',
-        'ja': '西安',
-        'ko': '시안',
-        'fr': 'Xi\'an',
-        'de': 'Xi\'an',
-        'es': 'Xi\'an',
-        'ru': 'Сиань',
-      },
-      'chengdu': {
-        'zh': '成都',
-        'en': 'Chengdu',
-        'ja': '成都',
-        'ko': '청두',
-        'fr': 'Chengdu',
-        'de': 'Chengdu',
-        'es': 'Chengdu',
-        'ru': 'Чэнду',
-      },
-      'hangzhou': {
-        'zh': '杭州',
-        'en': 'Hangzhou',
-        'ja': '杭州',
-        'ko': '항저우',
-        'fr': 'Hangzhou',
-        'de': 'Hangzhou',
-        'es': 'Hangzhou',
-        'ru': 'Ханчжоу',
-      },
-    };
-    
-    return cityNames[cityId]?.[currentLanguage] || cityNames[cityId]?.['en'] || cityId.charAt(0).toUpperCase() + cityId.slice(1);
-  };
-  
   // 获取所有目的地，默认显示"必游之地"主题下的城市
   useEffect(() => {
     const defaultTheme = 'must-visit';
     setActiveTheme(defaultTheme);
     setFilteredDestinations(getCitiesByTheme(defaultTheme));
   }, []);
+
+  // 当语言变化时重新过滤目的地
+  useEffect(() => {
+    if (activeTheme) {
+      if (searchTerm) {
+        handleSearch({ target: { value: searchTerm } } as React.ChangeEvent<HTMLInputElement>);
+      } else {
+        setFilteredDestinations(getCitiesByTheme(activeTheme));
+      }
+    }
+  }, [currentLanguage]);
   
   // 处理搜索
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -121,7 +73,7 @@ export default function DestinationsPage() {
       // 按名称搜索
       const filtered = citiesToFilter.filter(city => {
         // 获取当前语言的城市名
-        const cityName = getCityName(city);
+        let cityName = getLocalizedCityName(city, currentLanguage);
         return cityName.toLowerCase().includes(term.toLowerCase());
       });
       setFilteredDestinations(filtered);
@@ -141,59 +93,268 @@ export default function DestinationsPage() {
     setSelectedCity(city);
   };
   
+  // 获取对应语言的城市名称
+  const getLocalizedCityName = (cityId: string, language: string) => {
+    // 映射城市ID到各语言名称
+    const cityNames: Record<string, Record<string, string>> = {
+      'beijing': {
+        'zh': '北京',
+        'en': 'Beijing',
+        'fr': 'Pékin',
+        'de': 'Peking',
+        'es': 'Pekín',
+        'ja': '北京',
+        'ko': '베이징',
+        'ru': 'Пекин',
+      },
+      'shanghai': {
+        'zh': '上海',
+        'en': 'Shanghai',
+        'fr': 'Shanghai',
+        'de': 'Shanghai',
+        'es': 'Shanghái',
+        'ja': '上海',
+        'ko': '상하이',
+        'ru': 'Шанхай',
+      },
+      'xian': {
+        'zh': '西安',
+        'en': 'Xi\'an',
+        'fr': 'Xi\'an',
+        'de': 'Xi\'an',
+        'es': 'Xi\'an',
+        'ja': '西安',
+        'ko': '시안',
+        'ru': 'Сиань',
+      },
+      'chengdu': {
+        'zh': '成都',
+        'en': 'Chengdu',
+        'fr': 'Chengdu',
+        'de': 'Chengdu',
+        'es': 'Chengdu',
+        'ja': '成都',
+        'ko': '청두',
+        'ru': 'Чэнду',
+      },
+      'hangzhou': {
+        'zh': '杭州',
+        'en': 'Hangzhou',
+        'fr': 'Hangzhou',
+        'de': 'Hangzhou',
+        'es': 'Hangzhou',
+        'ja': '杭州',
+        'ko': '항저우',
+        'ru': 'Ханчжоу',
+      },
+      'suzhou': {
+        'zh': '苏州',
+        'en': 'Suzhou',
+        'fr': 'Suzhou',
+        'de': 'Suzhou',
+        'es': 'Suzhou',
+        'ja': '蘇州',
+        'ko': '쑤저우',
+        'ru': 'Сучжоу',
+      },
+      'guangzhou': {
+        'zh': '广州',
+        'en': 'Guangzhou',
+        'fr': 'Canton',
+        'de': 'Guangzhou',
+        'es': 'Cantón',
+        'ja': '広州',
+        'ko': '광저우',
+        'ru': 'Гуанчжоу',
+      },
+      'qingdao': {
+        'zh': '青岛',
+        'en': 'Qingdao',
+        'fr': 'Qingdao',
+        'de': 'Qingdao',
+        'es': 'Qingdao',
+        'ja': '青島',
+        'ko': '칭다오',
+        'ru': 'Циндао',
+      },
+      'guilin': {
+        'zh': '桂林',
+        'en': 'Guilin',
+        'fr': 'Guilin',
+        'de': 'Guilin',
+        'es': 'Guilin',
+        'ja': '桂林',
+        'ko': '구이린',
+        'ru': 'Гуйлинь',
+      },
+      'lhasa': {
+        'zh': '拉萨',
+        'en': 'Lhasa',
+        'fr': 'Lhassa',
+        'de': 'Lhasa',
+        'es': 'Lhasa',
+        'ja': 'ラサ',
+        'ko': '라싸',
+        'ru': 'Лхаса',
+      },
+      'sanya': {
+        'zh': '三亚',
+        'en': 'Sanya',
+        'fr': 'Sanya',
+        'de': 'Sanya',
+        'es': 'Sanya',
+        'ja': '三亜',
+        'ko': '산야',
+        'ru': 'Санья',
+      },
+      'chongqing': {
+        'zh': '重庆',
+        'en': 'Chongqing',
+        'fr': 'Chongqing',
+        'de': 'Chongqing',
+        'es': 'Chongqing',
+        'ja': '重慶',
+        'ko': '충칭',
+        'ru': 'Чунцин',
+      },
+      'xiamen': {
+        'zh': '厦门',
+        'en': 'Xiamen',
+        'fr': 'Xiamen',
+        'de': 'Xiamen',
+        'es': 'Xiamen',
+        'ja': '厦門',
+        'ko': '샤먼',
+        'ru': 'Сямынь',
+      },
+      'shenzhen': {
+        'zh': '深圳',
+        'en': 'Shenzhen',
+        'fr': 'Shenzhen',
+        'de': 'Shenzhen',
+        'es': 'Shenzhen',
+        'ja': '深セン',
+        'ko': '선전',
+        'ru': 'Шэньчжэнь',
+      },
+      'kunming': {
+        'zh': '昆明',
+        'en': 'Kunming',
+        'fr': 'Kunming',
+        'de': 'Kunming',
+        'es': 'Kunming',
+        'ja': '昆明',
+        'ko': '쿤밍',
+        'ru': 'Куньмин',
+      },
+      'tianjin': {
+        'zh': '天津',
+        'en': 'Tianjin',
+        'fr': 'Tianjin',
+        'de': 'Tianjin',
+        'es': 'Tianjin',
+        'ja': '天津',
+        'ko': '톈진',
+        'ru': 'Тяньцзинь',
+      },
+      'nanjing': {
+        'zh': '南京',
+        'en': 'Nanjing',
+        'fr': 'Nanjing',
+        'de': 'Nanjing',
+        'es': 'Nanjing',
+        'ja': '南京',
+        'ko': '난징',
+        'ru': 'Нанкин',
+      },
+      'wuhan': {
+        'zh': '武汉',
+        'en': 'Wuhan',
+        'fr': 'Wuhan',
+        'de': 'Wuhan',
+        'es': 'Wuhan',
+        'ja': '武漢',
+        'ko': '우한',
+        'ru': 'Ухань',
+      },
+      'guiyang': {
+        'zh': '贵阳',
+        'en': 'Guiyang',
+        'fr': 'Guiyang',
+        'de': 'Guiyang',
+        'es': 'Guiyang',
+        'ja': '貴陽',
+        'ko': '구이양',
+        'ru': 'Гуйян',
+      },
+      'zhangjiajie': {
+        'zh': '张家界',
+        'en': 'Zhangjiajie',
+        'fr': 'Zhangjiajie',
+        'de': 'Zhangjiajie',
+        'es': 'Zhangjiajie',
+        'ja': '張家界',
+        'ko': '장자제',
+        'ru': 'Чжанцзяцзе',
+      },
+    };
+    
+    return cityNames[cityId]?.[language] || cityNames[cityId]?.['en'] || cityId.charAt(0).toUpperCase() + cityId.slice(1);
+  };
+  
   // 获取城市描述
   const getCityDescription = (cityId: string) => {
-    // 映射城市ID到描述
+    // 映射城市ID到各语言描述
     const cityDescriptions: Record<string, Record<string, string>> = {
       'beijing': {
         'zh': '中国首都，拥有悠久历史和现代魅力的文化中心',
         'en': 'China\'s capital, a cultural center with a long history and modern charm',
+        'fr': 'Capitale de la Chine, un centre culturel avec une longue histoire et un charme moderne',
+        'de': 'Chinas Hauptstadt, ein Kulturzentrum mit langer Geschichte und modernem Charme',
+        'es': 'La capital de China, un centro cultural con una larga historia y encanto moderno',
         'ja': '中国の首都、長い歴史と現代的な魅力を持つ文化の中心',
         'ko': '중국의 수도, 오랜 역사와 현대적 매력을 가진 문화 중심지',
-        'fr': 'La capitale de la Chine, un centre culturel avec une longue histoire et un charme moderne',
-        'de': 'Die Hauptstadt Chinas, ein Kulturzentrum mit langer Geschichte und modernem Charme',
-        'es': 'La capital de China, un centro cultural con una larga historia y un encanto moderno',
-        'ru': 'Столица Китая, культурный центр с долгой историей и современным очарованием',
+        'ru': 'Столица Китая, культурный центр с долгой историей и современным шармом',
       },
       'shanghai': {
         'zh': '国际化大都市，融合东西方文化的现代化港口城市',
         'en': 'International metropolis, a modern port city blending Eastern and Western cultures',
-        'ja': '国際都市、東洋と西洋の文化が融合する現代的な港湾都市',
+        'fr': 'Métropole internationale, ville portuaire moderne mélangeant cultures orientale et occidentale',
+        'de': 'Internationale Metropole, eine moderne Hafenstadt, die östliche und westliche Kulturen verbindet',
+        'es': 'Metrópolis internacional, una moderna ciudad portuaria que combina culturas orientales y occidentales',
+        'ja': '国際的な大都市、東洋と西洋の文化を融合させた現代的な港湾都市',
         'ko': '국제 대도시, 동양과 서양 문화가 어우러진 현대적인 항구 도시',
-        'fr': 'Métropole internationale, port moderne où se mêlent cultures orientale et occidentale',
-        'de': 'Internationale Metropole, moderne Hafenstadt, die östliche und westliche Kulturen verbindet',
-        'es': 'Metrópolis internacional, ciudad portuaria moderna que combina culturas orientales y occidentales',
         'ru': 'Международный мегаполис, современный портовый город, сочетающий восточную и западную культуры',
       },
       'xian': {
         'zh': '古都风采，丝绸之路的起点，拥有兵马俑等世界遗产',
         'en': 'Ancient capital, starting point of the Silk Road, home to the Terracotta Warriors',
-        'ja': '古都の風格、シルクロードの起点、兵馬俑などの世界遺産がある',
-        'ko': '고도의 우아함, 실크로드의 출발점, 병마용 등 세계 문화유산을 보유',
-        'fr': 'Ancienne capitale, point de départ de la Route de la Soie, abrite les Guerriers de terre cuite',
+        'fr': 'Ancienne capitale, point de départ de la Route de la Soie, abritant les Guerriers de terre cuite',
         'de': 'Alte Hauptstadt, Ausgangspunkt der Seidenstraße, Heimat der Terrakotta-Armee',
-        'es': 'Capital antigua, punto de partida de la Ruta de la Seda, hogar de los Guerreros de Terracota',
-        'ru': 'Древняя столица, начало Шелкового пути, дом для терракотовых воинов',
+        'es': 'Antigua capital, punto de partida de la Ruta de la Seda, hogar de los Guerreros de Terracota',
+        'ja': '古都、シルクロードの起点、兵馬俑などの世界遺産',
+        'ko': '고대 수도, 실크로드의 시작점, 병마용 등의 세계 유산',
+        'ru': 'Древняя столица, начало Шелкового пути, дом терракотовых воинов',
       },
       'chengdu': {
         'zh': '休闲天堂，以熊猫和美食闻名的西南城市',
         'en': 'Leisure paradise, a southwestern city known for pandas and cuisine',
-        'ja': 'レジャーパラダイス、パンダと料理で知られる中国南西部の都市',
-        'ko': '레저 천국, 판다와 요리로 유명한 중국 남서부 도시',
         'fr': 'Paradis des loisirs, ville du sud-ouest connue pour ses pandas et sa cuisine',
         'de': 'Freizeitparadies, eine südwestliche Stadt, bekannt für Pandas und Küche',
-        'es': 'Paraíso del ocio, ciudad del suroeste conocida por los pandas y la gastronomía',
-        'ru': 'Рай для отдыха, город на юго-западе, известный пандами и кухней',
+        'es': 'Paraíso del ocio, una ciudad del suroeste conocida por los pandas y la cocina',
+        'ja': 'レジャーパラダイス、パンダと料理で有名な南西部の都市',
+        'ko': '레저 파라다이스, 판다와 요리로 유명한 남서부 도시',
+        'ru': 'Рай для отдыха, юго-западный город, известный пандами и кухней',
       },
       'hangzhou': {
         'zh': '人间天堂，西湖美景和茶文化的代表城市',
         'en': 'Paradise on earth, a city representing West Lake scenery and tea culture',
-        'ja': '地上の楽園、西湖の景色と茶文化を代表する都市',
-        'ko': '지상의 낙원, 서호의 아름다운 풍경과 차 문화를 대표하는 도시',
-        'fr': 'Paradis sur terre, ville représentant le paysage du lac Ouest et la culture du thé',
-        'de': 'Paradies auf Erden, Stadt, die für die Landschaft des Westsees und die Teekultur steht',
+        'fr': 'Paradis sur terre, une ville représentant le paysage du lac de l\'Ouest et la culture du thé',
+        'de': 'Paradies auf Erden, eine Stadt, die die Landschaft des Westsees und die Teekultur repräsentiert',
         'es': 'Paraíso en la tierra, una ciudad que representa el paisaje del Lago Oeste y la cultura del té',
-        'ru': 'Рай на земле, город, представляющий пейзажи Западного озера и чайную культуру',
+        'ja': '地上の楽園、西湖の景色と茶文化を代表する都市',
+        'ko': '지상의 낙원, 서호 경치와 차 문화를 대표하는 도시',
+        'ru': 'Рай на земле, город, представляющий пейзаж Западного озера и чайную культуру',
       },
     };
     
@@ -298,26 +459,27 @@ export default function DestinationsPage() {
             </div>
           </div>
           
-          {/* 目的地列表 */}
-          <div className="grid grid-cols-1 gap-6">
+          {/* 目的地卡片列表 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredDestinations.length > 0 ? (
-              filteredDestinations.map((city) => (
-                <div 
-                  key={city}
-                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden cursor-pointer"
-                  onClick={() => handleCitySelect(city)}
+              filteredDestinations.map((cityId) => (
+                <div
+                  key={cityId}
+                  onClick={() => handleCitySelect(cityId)}
+                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
                 >
+                  <div className="h-48 bg-gray-200 flex items-center justify-center">
+                    <p className="text-gray-500">{getLocalizedCityName(cityId, currentLanguage)} Image</p>
+                  </div>
                   <div className="p-6">
-                    <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                      {getCityName(city)}
-                    </h2>
-                    <p className="text-gray-600">{getCityDescription(city)}</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{getLocalizedCityName(cityId, currentLanguage)}</h3>
+                    <p className="text-gray-600">{getCityDescription(cityId)}</p>
                   </div>
                 </div>
               ))
             ) : (
-              <div className="text-center py-12 text-gray-500">
-                {getTranslatedString('noResults')}
+              <div className="col-span-full text-center py-10">
+                <p className="text-gray-500">{getTranslatedString('noResults')}</p>
               </div>
             )}
           </div>

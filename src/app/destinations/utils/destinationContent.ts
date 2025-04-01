@@ -1,9 +1,11 @@
+import React from 'react';
+import { ReactNode } from 'react';
 import { Language } from '@/contexts/LanguageContext';
 
 // 定义内容的结构类型
 export interface DestinationSection {
   title: string;
-  content: React.ReactNode;
+  content: ReactNode;
 }
 
 export interface DestinationContent {
@@ -235,12 +237,82 @@ const beijingContent: Record<Language, DestinationContent> = {
   ko: {
     title: '베이징: 고대 수도의 과거와 현재의 교향곡',
     subtitle: '중국 수도의 왕실 매력과 현대적 매력 탐험',
-    sections: []
+    sections: [
+      {
+        title: '첫인상',
+        content: `
+          <p>
+            금빛 지붕 타일이 빛나는 웅장한 자금성, 산을 따라 구불구불 이어지는 만리장성, 후통에서 들리는 삼륜차 벨 소리, 일몰을 반사하는 CBD의 유리 커튼월... 이것이 베이징입니다. 고대와 현대, 전통과 혁신이 어우러진 도시입니다. 3,000년의 도시 역사와 800년의 수도 역사를 가진 베이징은 중국 문명의 정수를 담으면서도 현대 중국의 활기찬 에너지를 보여줍니다.
+          </p>
+          
+          <h3>가장 대표적인 특징:</h3>
+          <ul>
+            <li>세계 최대의 왕궁 단지 - 자금성</li>
+            <li>인류 최대의 공학 프로젝트 중 하나 - 만리장성</li>
+            <li>독특한 사합원과 후통 문화</li>
+            <li>현대 국제 대도시의 번영과 활력</li>
+          </ul>
+        `
+      },
+      {
+        title: '기본 정보 개요',
+        content: `
+          <h3>방문하기 좋은 계절</h3>
+          <ul>
+            <li>봄(3월-5월): 쾌적한 기온, 꽃이 만발함</li>
+            <li>가을(9월-10월): 맑은 하늘, 편안한 날씨, 붉은 단풍</li>
+          </ul>
+          
+          <h3>기후 특성</h3>
+          <ul>
+            <li>봄: 따뜻하고 쾌적, 가끔 모래 폭풍</li>
+            <li>여름: 덥고 비가 많음</li>
+            <li>가을: 시원하고 건조함</li>
+            <li>겨울: 춥고 건조함</li>
+          </ul>
+        `
+      }
+    ]
   },
   ru: {
     title: 'Пекин: симфония древнего и современного',
     subtitle: 'Исследуйте королевское очарование и современную привлекательность столицы Китая',
-    sections: []
+    sections: [
+      {
+        title: 'Первые впечатления',
+        content: `
+          <p>
+            Великолепный Запретный город с блестящими золотыми крышами, Великая стена, извивающаяся по горам, звуки велорикш в хутонгах, стеклянные фасады делового центра, отражающие закат... Это Пекин, город, сочетающий древнее и современное, традицию и инновации. С 3000-летней историей города и 800-летней историей столицы, Пекин несет в себе сущность китайской цивилизации, демонстрируя при этом энергию современного Китая.
+          </p>
+          
+          <h3>Наиболее характерные особенности:</h3>
+          <ul>
+            <li>Крупнейший в мире дворцовый комплекс - Запретный город</li>
+            <li>Один из величайших инженерных проектов человечества - Великая стена</li>
+            <li>Характерные дворы-усадьбы и культура хутонгов</li>
+            <li>Процветание и энергия современного международного мегаполиса</li>
+          </ul>
+        `
+      },
+      {
+        title: 'Обзор основной информации',
+        content: `
+          <h3>Лучшие сезоны для посещения</h3>
+          <ul>
+            <li>Весна (март-май): Приятная температура, цветущие цветы</li>
+            <li>Осень (сентябрь-октябрь): Ясное небо, комфортная погода, красные листья</li>
+          </ul>
+          
+          <h3>Климатические особенности</h3>
+          <ul>
+            <li>Весна: Тепло и комфортно, иногда песчаные бури</li>
+            <li>Лето: Жарко и дождливо</li>
+            <li>Осень: Прохладно и сухо</li>
+            <li>Зима: Холодно и сухо</li>
+          </ul>
+        `
+      }
+    ]
   }
 };
 
@@ -257,6 +329,25 @@ const shanghaiContent: Record<Language, DestinationContent> = {
             上海是中国最大的经济中心城市，这里有外滩的万国建筑博览，陆家嘴的现代摩天大楼，也有豫园的传统园林和老城厢的市井生活。作为中国改革开放的窗口，上海展现了中国现代化发展的成就。
           </p>
         `
+      },
+      {
+        title: '必游景点',
+        content: `
+          <h3>1. 外滩</h3>
+          <p>
+            外滩是上海的标志性景点，沿黄浦江一侧矗立着52幢风格迥异的万国建筑，被誉为"万国建筑博览会"，这些建筑大多建于19世纪末20世纪初，展示了上海曾经的国际大都市地位。
+          </p>
+          
+          <h3>2. 豫园</h3>
+          <p>
+            豫园是上海市中心一个著名的古典园林，始建于明代嘉靖年间。园内亭台楼阁、假山池塘，体现了江南园林"虽由人作，宛自天开"的特色。
+          </p>
+          
+          <h3>3. 陆家嘴金融区</h3>
+          <p>
+            陆家嘴金融区是上海的现代地标区域，这里聚集了上海中心大厦、金茂大厦、环球金融中心等摩天大楼，特别是上海中心大厦，高632米，是中国第一高楼。
+          </p>
+        `
       }
     ]
   },
@@ -269,6 +360,25 @@ const shanghaiContent: Record<Language, DestinationContent> = {
         content: `
           <p>
             Shanghai is China's largest economic center, featuring the international architectural exposition on the Bund, modern skyscrapers in Lujiazui, traditional gardens of Yu Garden, and old town life. As a window of China's reform and opening up, Shanghai showcases the achievements of China's modernization.
+          </p>
+        `
+      },
+      {
+        title: 'Must-Visit Attractions',
+        content: `
+          <h3>1. The Bund</h3>
+          <p>
+            The Bund is Shanghai's iconic landmark, with 52 buildings of various styles along the Huangpu River, known as the "Exhibition of International Architecture." Most of these buildings were built in the late 19th and early 20th centuries, showcasing Shanghai's former status as an international metropolis.
+          </p>
+          
+          <h3>2. Yu Garden</h3>
+          <p>
+            Yu Garden is a famous classical garden in the center of Shanghai, built during the Ming Dynasty's Jiajing era. The garden features pavilions, artificial hills, and ponds, embodying the characteristic of Jiangnan gardens: "though man-made, it appears natural."
+          </p>
+          
+          <h3>3. Lujiazui Financial District</h3>
+          <p>
+            Lujiazui Financial District is Shanghai's modern landmark area, gathering skyscrapers such as Shanghai Tower, Jin Mao Tower, and Shanghai World Financial Center. Notably, Shanghai Tower, standing at 632 meters, is China's tallest building.
           </p>
         `
       }
@@ -300,13 +410,60 @@ const shanghaiContent: Record<Language, DestinationContent> = {
             上海は中国最大の経済センターであり、外灘の国際建築博覧会、陸家嘴の現代的な超高層ビル、豫園の伝統的な庭園、旧市街の生活を特徴としています。中国の改革開放の窓口として、上海は中国の現代化の成果を示しています。
           </p>
         `
+      },
+      {
+        title: '必見の観光スポット',
+        content: `
+          <h3>1. 外灘（ワイタン）</h3>
+          <p>
+            外灘は上海の象徴的なランドマークで、黄浦江に沿って52棟の様々なスタイルの建物が立ち並び、「国際建築博覧会」として知られています。これらの建物のほとんどは19世紀末から20世紀初頭に建てられ、上海の国際都市としての地位を示しています。
+          </p>
+          
+          <h3>2. 豫園（ユーユェン）</h3>
+          <p>
+            豫園は上海市中心部にある有名な古典的庭園で、明朝の嘉靖年間に建てられました。園内には亭、築山、池があり、江南庭園の特色である「人工でありながら自然に見える」という特徴を体現しています。
+          </p>
+          
+          <h3>3. 陸家嘴金融地区（ルジャズイ）</h3>
+          <p>
+            陸家嘴金融地区は上海の現代的なランドマークエリアで、上海タワー、金茂タワー、上海環球金融中心などの超高層ビルが集まっています。特に上海タワーは632メートルの高さを誇り、中国一の高層ビルです。
+          </p>
+        `
       }
     ]
   },
   ko: {
     title: '상하이: 동방명주의 매력',
     subtitle: '현대와 전통문화가 어우러지는 국제 대도시',
-    sections: []
+    sections: [
+      {
+        title: '도시 개요',
+        content: `
+          <p>
+            상하이는 중국 최대의 경제 중심지로, 외탄의 국제 건축 전시회, 루자쭈이의 현대적인 고층 빌딩, 예원의 전통 정원, 그리고 구시가지의 생활을 특징으로 합니다. 중국의 개혁 개방의 창구로서, 상하이는 중국 현대화의 성과를 보여줍니다.
+          </p>
+        `
+      },
+      {
+        title: '필수 관광지',
+        content: `
+          <h3>1. 외탄(와이탄)</h3>
+          <p>
+            외탄은 상하이의 상징적인 명소로, 황푸강을 따라 52개의 다양한 스타일의 건물이 서 있으며, "국제 건축 전시회"로 알려져 있습니다. 이 건물들의 대부분은 19세기 말과 20세기 초에 지어졌으며, 상하이의 국제 대도시로서의 위상을 보여줍니다.
+          </p>
+          
+          <h3>2. 예원(위위안)</h3>
+          <p>
+            예원은 상하이 중심부에 위치한 유명한 고전 정원으로, 명나라 가정 시대에 건설되었습니다. 정원에는 정자, 인공 언덕, 연못이 있어 강남 정원의 특징인 "인공이지만 자연스러워 보인다"는 특징을 구현하고 있습니다.
+          </p>
+          
+          <h3>3. 루자쭈이 금융지구</h3>
+          <p>
+            루자쭈이 금융지구는 상하이의 현대적인 랜드마크 지역으로, 상하이 타워, 진마오 타워, 상하이 월드 파이낸셜 센터와 같은 고층 건물이 모여 있습니다. 특히 상하이 타워는 632미터 높이로 중국에서 가장 높은 건물입니다.
+          </p>
+        `
+      }
+    ]
   },
   ru: {
     title: 'Шанхай: Очарование восточной жемчужины',

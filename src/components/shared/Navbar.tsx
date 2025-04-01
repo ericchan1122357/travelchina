@@ -2,12 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useLanguage, Language } from '@/contexts/LanguageContext';
 
 export default function Navbar() {
-  const pathname = usePathname() || '';
-  const router = useRouter();
+  const pathname = usePathname();
   const { currentLanguage, setLanguage } = useLanguage();
 
   const getTranslatedString = (key: string) => {
@@ -65,15 +64,6 @@ export default function Navbar() {
     localStorage.setItem('preferredLanguage', newLanguage);
   };
 
-  // 处理导航点击
-  const handleNavClick = (href: string, e: React.MouseEvent) => {
-    // 如果是目的地页面，且当前在详情页，需要重新导航到列表页
-    if (href === '/destinations' && pathname.startsWith('/destinations') && pathname.includes('?city=')) {
-      e.preventDefault();
-      router.push('/destinations');
-    }
-  };
-
   const navItems = [
     { href: '/destinations', label: getTranslatedString('destinations') },
     { href: '/guides', label: getTranslatedString('guides') },
@@ -96,9 +86,8 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={(e) => handleNavClick(item.href, e)}
                 className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-                  pathname === item.href || (item.href === '/destinations' && pathname.startsWith('/destinations'))
+                  pathname === item.href
                     ? 'text-red-600 border-b-2 border-red-600'
                     : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent'
                 }`}
