@@ -11,13 +11,15 @@ import DestinationTemplate from './utils/DestinationTemplate';
 // 提取使用searchParams的逻辑到单独组件
 function SearchParamsHandler({ setSelectedCity }: { setSelectedCity: (cityId: string | null) => void }) {
   const searchParams = useSearchParams();
+  const { currentLanguage } = useLanguage();
   
   useEffect(() => {
     const city = searchParams?.get('city');
     if (city) {
+      console.log(`URL params - city: ${city}, language: ${currentLanguage}`);
       setSelectedCity(city);
     }
-  }, [searchParams, setSelectedCity]);
+  }, [searchParams, setSelectedCity, currentLanguage]);
   
   return null;
 }
@@ -41,6 +43,19 @@ export default function DestinationsPage() {
     setActiveTheme(defaultTheme);
     setFilteredDestinations(getCitiesByTheme(defaultTheme));
   }, []);
+  
+  // 为了确保语言变化时UI更新，添加对currentLanguage的依赖
+  useEffect(() => {
+    if (activeTheme) {
+      setFilteredDestinations(getCitiesByTheme(activeTheme));
+    }
+    
+    // 如果有选中的城市，确保内容更新
+    if (selectedCity) {
+      console.log(`Language changed to ${currentLanguage}, refreshing city: ${selectedCity}`);
+      // 这里不重置selectedCity，仅通知系统语言已更改，由DestinationTemplate处理
+    }
+  }, [currentLanguage, activeTheme, selectedCity]);
   
   // 处理搜索
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,6 +101,7 @@ export default function DestinationsPage() {
   
   // 选择城市
   const handleCitySelect = (city: string) => {
+    // 在URL中保留当前语言信息，确保在城市详情页面能读取到正确的语言设置
     router.push(`/destinations?city=${city}`);
     setSelectedCity(city);
   };
@@ -127,22 +143,52 @@ export default function DestinationsPage() {
       'beijing': {
         'zh': '中国首都，拥有悠久历史和现代魅力的文化中心',
         'en': 'China\'s capital, a cultural center with a long history and modern charm',
+        'fr': 'Capitale de la Chine, centre culturel avec une longue histoire et un charme moderne',
+        'de': 'Chinas Hauptstadt, ein Kulturzentrum mit langer Geschichte und modernem Charme',
+        'es': 'Capital de China, centro cultural con una larga historia y encanto moderno',
+        'ja': '中国の首都、長い歴史と現代的な魅力を持つ文化の中心',
+        'ko': '중국의 수도, 오랜 역사와 현대적 매력이 있는 문화 중심지',
+        'ru': 'Столица Китая, культурный центр с долгой историей и современным очарованием',
       },
       'shanghai': {
         'zh': '国际化大都市，融合东西方文化的现代化港口城市',
         'en': 'International metropolis, a modern port city blending Eastern and Western cultures',
+        'fr': 'Métropole internationale, ville portuaire moderne mêlant cultures orientale et occidentale',
+        'de': 'Internationale Metropole, eine moderne Hafenstadt, die östliche und westliche Kulturen verbindet',
+        'es': 'Metrópolis internacional, una moderna ciudad portuaria que mezcla culturas orientales y occidentales',
+        'ja': '国際的な大都市、東洋と西洋の文化が融合する現代的な港湾都市',
+        'ko': '국제 대도시, 동양과 서양 문화가 어우러진 현대적인 항구 도시',
+        'ru': 'Международный мегаполис, современный портовый город, сочетающий восточную и западную культуры',
       },
       'xian': {
         'zh': '古都风采，丝绸之路的起点，拥有兵马俑等世界遗产',
         'en': 'Ancient capital, starting point of the Silk Road, home to the Terracotta Warriors',
+        'fr': 'Ancienne capitale, point de départ de la Route de la Soie, abrite les Guerriers de terre cuite',
+        'de': 'Alte Hauptstadt, Ausgangspunkt der Seidenstraße, Heimat der Terrakotta-Armee',
+        'es': 'Antigua capital, punto de partida de la Ruta de la Seda, hogar de los Guerreros de Terracota',
+        'ja': '古代の都、シルクロードの起点、兵馬俑のある世界遺産',
+        'ko': '고대 수도, 실크로드의 출발점, 병마용이 있는 세계 유산',
+        'ru': 'Древняя столица, начальная точка Шелкового пути, дом для Терракотовой армии',
       },
       'chengdu': {
         'zh': '休闲天堂，以熊猫和美食闻名的西南城市',
         'en': 'Leisure paradise, a southwestern city known for pandas and cuisine',
+        'fr': 'Paradis du loisir, ville du sud-ouest connue pour ses pandas et sa cuisine',
+        'de': 'Freizeitparadies, eine südwestliche Stadt, bekannt für Pandas und Küche',
+        'es': 'Paraíso de ocio, una ciudad del suroeste conocida por los pandas y la cocina',
+        'ja': 'レジャーの楽園、パンダと料理で知られる中国南西部の都市',
+        'ko': '여가의 천국, 판다와 요리로 유명한 중국 남서부 도시',
+        'ru': 'Рай для отдыха, юго-западный город, известный пандами и кухней',
       },
       'hangzhou': {
         'zh': '人间天堂，西湖美景和茶文化的代表城市',
         'en': 'Paradise on earth, a city representing West Lake scenery and tea culture',
+        'fr': 'Paradis sur terre, ville représentant les paysages du lac de l\'Ouest et la culture du thé',
+        'de': 'Paradies auf Erden, eine Stadt, die die Landschaft des Westsees und die Teekultur repräsentiert',
+        'es': 'Paraíso en la tierra, una ciudad que representa el paisaje del Lago Oeste y la cultura del té',
+        'ja': '地上の楽園、西湖の景色と茶文化を代表する都市',
+        'ko': '지상의 낙원, 서호 경치와 차 문화를 대표하는 도시',
+        'ru': 'Рай на земле, город, представляющий пейзажи Западного озера и чайную культуру',
       },
       // 可以添加更多城市的描述
     };

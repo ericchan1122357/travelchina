@@ -440,6 +440,9 @@ export function getDestinationContent(cityId: string, language: Language): Desti
   // 根据城市ID获取相应的内容
   let cityContent: Record<Language, DestinationContent> | undefined;
   
+  // 记录日志，以便调试
+  console.log(`Getting content for city: ${cityId}, language: ${language}`);
+  
   switch(cityId) {
     case 'beijing':
       cityContent = beijingContent;
@@ -450,6 +453,7 @@ export function getDestinationContent(cityId: string, language: Language): Desti
     // 可以添加其他城市...
     default:
       // 默认返回空对象
+      console.log(`City content not found for: ${cityId}`);
       return {
         title: cityId.charAt(0).toUpperCase() + cityId.slice(1),
         subtitle: '',
@@ -459,14 +463,26 @@ export function getDestinationContent(cityId: string, language: Language): Desti
   
   // 如果请求的语言内容是空的（sections长度为0），则使用英文内容
   if (cityContent && cityContent[language] && cityContent[language].sections.length === 0) {
+    console.log(`Using English content as fallback for language: ${language}`);
     return {
       ...cityContent[language],
       sections: cityContent['en'].sections
     };
   }
   
-  // 返回请求的语言内容，如果不存在则返回英文内容
-  return cityContent ? (cityContent[language] || cityContent['en']) : {
+  // 检查请求的语言是否存在
+  if (cityContent && !cityContent[language]) {
+    console.log(`Language ${language} not found, using English as fallback`);
+    return cityContent['en'];
+  }
+  
+  // 返回请求的语言内容
+  if (cityContent && cityContent[language]) {
+    return cityContent[language];
+  }
+  
+  // 最终使用英文作为备用
+  return {
     title: cityId.charAt(0).toUpperCase() + cityId.slice(1),
     subtitle: '',
     sections: []

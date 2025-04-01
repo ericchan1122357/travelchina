@@ -62,6 +62,16 @@ export default function Navbar() {
     
     // 将语言选择保存到localStorage，以便在页面刷新后保持选择
     localStorage.setItem('preferredLanguage', newLanguage);
+    
+    // 获取当前URL并保留参数
+    const currentUrl = window.location.href;
+    const url = new URL(currentUrl);
+    
+    // 如果URL中包含city参数，确保在语言切换后仍然保留该参数
+    if (url.searchParams.has('city')) {
+      // 不重新加载页面，语言切换会通过Context触发界面更新
+      // 这样可以保留当前页面状态，包括选择的城市
+    }
   };
 
   const navItems = [

@@ -41,12 +41,43 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
     subtitle: '',
     sections: []
   });
+  const [contentLoaded, setContentLoaded] = useState(false);
   
-  // 获取当前目的地和语言的内容
+  // 获取当前目的地和语言的内容 - 确保每当语言变化时重新获取
   useEffect(() => {
+    // 获取内容并设置状态
     const destinationContent = getDestinationContent(destinationSlug, currentLanguage);
     setContent(destinationContent);
+    setContentLoaded(true);
+    
+    // 如果内容加载但为空，尝试最多3次重新加载
+    let retryCount = 0;
+    const maxRetries = 3;
+    
+    const retryLoadingContent = () => {
+      if (destinationContent.sections.length === 0 && retryCount < maxRetries) {
+        retryCount++;
+        console.log(`Retry ${retryCount}/${maxRetries} loading content for ${destinationSlug} in ${currentLanguage}`);
+        
+        // 500ms后重试
+        setTimeout(() => {
+          const newContent = getDestinationContent(destinationSlug, currentLanguage);
+          setContent(newContent);
+        }, 500);
+      }
+    };
+    
+    retryLoadingContent();
+    
+    console.log(`Language changed to ${currentLanguage}, updating content for ${destinationSlug}`);
   }, [destinationSlug, currentLanguage]);
+  
+  // 强制刷新内容
+  const refreshContent = () => {
+    const freshContent = getDestinationContent(destinationSlug, currentLanguage);
+    setContent(freshContent);
+    console.log("Content manually refreshed");
+  };
   
   // 获取相关城市
   useEffect(() => {
@@ -150,7 +181,7 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
   };
   
   // 如果内容加载中，显示加载状态
-  if (!content.title) {
+  if (!contentLoaded) {
     return <div className="flex justify-center items-center h-screen">Loading...</div>;
   }
   
