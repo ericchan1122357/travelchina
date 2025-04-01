@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { CheckIcon, XMarkIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { CheckIcon, XMarkIcon, PlusIcon, ArrowUturnLeftIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getDestinationContent, DestinationContent, DestinationSection } from './destinationContent';
 import { getThemesForCity, getCitiesByTheme } from './destinationThemes';
+import Image from 'next/image';
 
 interface DestinationTemplateProps {
   destinationSlug: string;
@@ -59,8 +61,15 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
     const plannedCities = JSON.parse(localStorage.getItem('plannedCities') || '[]');
     if (plannedCities.includes(destinationSlug)) {
       setIsAddedToPlan(true);
+    } else {
+      setIsAddedToPlan(false);
     }
   }, [destinationSlug]);
+  
+  // 返回目的地列表页面
+  const goBackToList = () => {
+    router.push('/destinations');
+  };
   
   // 将城市添加到旅行计划
   const addToPlan = () => {
@@ -71,6 +80,15 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
     }
     setIsAddedToPlan(true);
     setShowConfirmation(true);
+  };
+  
+  // 从旅行计划中删除城市
+  const removeFromPlan = () => {
+    const plannedCities = JSON.parse(localStorage.getItem('plannedCities') || '[]');
+    const updatedCities = plannedCities.filter((city: string) => city !== destinationSlug);
+    localStorage.setItem('plannedCities', JSON.stringify(updatedCities));
+    setIsAddedToPlan(false);
+    setShowConfirmation(false);
   };
   
   // 前往规划页面
@@ -126,6 +144,16 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
         'ko': '계속 둘러보기',
         'ru': 'Продолжить просмотр',
       },
+      'cancelPlan': {
+        'zh': '取消旅行计划',
+        'en': 'Cancel travel plan',
+        'fr': 'Annuler le plan de voyage',
+        'de': 'Reiseplan stornieren',
+        'es': 'Cancelar el plan de viaje',
+        'ja': '旅行プランをキャンセル',
+        'ko': '여행 계획 취소',
+        'ru': 'Отменить план путешествия',
+      },
       'addedToPlan': {
         'zh': '已加入计划',
         'en': 'Added to plan',
@@ -135,6 +163,16 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
         'ja': 'プランに追加済み',
         'ko': '계획에 추가됨',
         'ru': 'Добавлено в план',
+      },
+      'browseOtherCities': {
+        'zh': '浏览其他城市',
+        'en': 'Browse other cities',
+        'fr': 'Parcourir d\'autres villes',
+        'de': 'Andere Städte durchsuchen',
+        'es': 'Explorar otras ciudades',
+        'ja': '他の都市を閲覧',
+        'ko': '다른 도시 둘러보기',
+        'ru': 'Просмотреть другие города',
       }
     };
     
@@ -162,6 +200,17 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
         <div className="max-w-4xl mx-auto">          
           {/* 文章内容区域 */}
           <div className="bg-white rounded-2xl shadow-md p-6 mb-8">
+            {/* 浏览其他城市按钮 */}
+            <div className="flex justify-end mb-6">
+              <button
+                onClick={goBackToList}
+                className="flex items-center text-blue-600 hover:text-blue-800 transition-colors"
+              >
+                <ArrowUturnLeftIcon className="w-5 h-5 mr-1" />
+                {getTranslation('browseOtherCities')}
+              </button>
+            </div>
+            
             {content.sections && content.sections.length > 0 ? (
               content.sections.map((section, index) => (
                 <ContentSection key={`${destinationSlug}-section-${index}`} section={section} />
@@ -177,7 +226,7 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
             )}
             
             {/* 文章底部推荐区域 */}
-            <div className="mt-12 pt-8 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="mt-16 pt-8 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* 左侧：建议一同游览 */}
               <div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">{getTranslation('suggestedVisits')}</h3>
@@ -195,14 +244,14 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
               </div>
               
               {/* 右侧：加入旅行计划 */}
-              <div>
+              <div className="mt-8">
                 {!showConfirmation ? (
                   <button
                     onClick={addToPlan}
                     className={`flex items-center justify-center w-full px-4 py-3 rounded-xl ${
                       isAddedToPlan 
                         ? 'bg-green-50 text-green-600 border border-green-200' 
-                        : 'bg-blue-500 hover:bg-blue-600 text-white'
+                        : 'bg-red-600 hover:bg-red-700 text-white'
                     } font-medium transition-colors`}
                   >
                     {isAddedToPlan ? (
@@ -218,21 +267,20 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
                     )}
                   </button>
                 ) : (
-                  <div className="bg-blue-50 p-4 rounded-xl">
-                    <p className="text-blue-800 font-medium mb-4">{getTranslation('addedToPlan')}</p>
-                    <div className="flex gap-3">
+                  <div className="bg-green-50 p-4 rounded-xl border border-green-200">
+                    <p className="text-green-700 font-medium mb-4">{getTranslation('addedToPlan')}</p>
+                    <div className="flex flex-col sm:flex-row gap-3">
                       <button
-                        onClick={goToPlannerPage}
-                        className="flex-1 flex items-center justify-center px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium text-sm"
+                        onClick={removeFromPlan}
+                        className="flex-1 flex items-center justify-center px-3 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg font-medium text-sm hover:bg-gray-50"
                       >
-                        <CheckIcon className="w-4 h-4 mr-1" />
-                        {getTranslation('startPlanning')}
+                        <XMarkIcon className="w-4 h-4 mr-1" />
+                        {getTranslation('cancelPlan')}
                       </button>
                       <button
                         onClick={continueBrowsing}
-                        className="flex-1 flex items-center justify-center px-3 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg font-medium text-sm"
+                        className="flex-1 flex items-center justify-center px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium text-sm"
                       >
-                        <XMarkIcon className="w-4 h-4 mr-1" />
                         {getTranslation('continueBrowsing')}
                       </button>
                     </div>
