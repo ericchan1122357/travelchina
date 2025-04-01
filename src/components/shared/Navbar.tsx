@@ -78,7 +78,9 @@ export default function Navbar() {
   // 点击目的地时的处理函数，始终导航到不带参数的目的地列表页
   const handleDestinationsClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    router.push('/destinations');
+    
+    // 直接通过window.location跳转，确保完全重新加载页面
+    window.location.href = '/destinations';
   };
 
   return (

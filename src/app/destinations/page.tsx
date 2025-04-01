@@ -8,13 +8,18 @@ declare global {
 
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, Suspense, useCallback, useMemo } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Image from 'next/image';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { getAllThemes, getCitiesByTheme, getThemeName, ThemeItem } from './utils/destinationThemes';
 import DestinationTemplate from './utils/DestinationTemplate';
+
+// 城市数据预加载 - 避免每次加载页面重新计算
+const DEFAULT_THEME = 'must-visit';
+const PRELOADED_CITIES = getCitiesByTheme(DEFAULT_THEME);
+const ALL_THEMES = getAllThemes();
 
 // 提取使用searchParams的逻辑到单独组件
 function SearchParamsHandler({ setSelectedCity }: { setSelectedCity: (cityId: string | null) => void }) {
@@ -28,20 +33,48 @@ function SearchParamsHandler({ setSelectedCity }: { setSelectedCity: (cityId: st
       console.log(`URL params - city: ${city}, language: ${currentLanguage}`);
       setSelectedCity(city);
       
-      // 确保历史记录中有正确的条目，支持回退按钮
-      if (window.history.state && window.history.state.key) {
-        // 添加一个可回退到城市列表页的历史记录点
+      // 为浏览器回退设置历史状态
+      try {
+        // 创建新的历史条目
         const currentUrl = new URL(window.location.href);
-        const destinationsUrl = new URL(currentUrl.origin + '/destinations');
         
-        // 仅当当前历史堆栈中没有destinations页面时添加
-        if (!window.history.state.destinations) {
-          window.history.replaceState(
-            { ...window.history.state, destinations: true },
-            '',
-            currentUrl.toString()
-          );
-        }
+        // 使用replaceState而不是pushState，避免创建新的历史记录
+        // 而是修改当前记录，使其带有destinations标记
+        window.history.replaceState(
+          { city, destinations: true }, 
+          '',
+          currentUrl.toString()
+        );
+        
+        // 手动添加一个历史记录点用于回退
+        const baseUrl = currentUrl.origin + '/destinations';
+        window.history.pushState(
+          { noCity: true }, 
+          '',
+          baseUrl
+        );
+        
+        // 再次更新为当前URL，但保持状态
+        window.history.replaceState(
+          { city, destinations: true },
+          '',
+          currentUrl.toString()
+        );
+        
+        // 监听popstate事件，当用户点击回退按钮时，检查状态并执行操作
+        const handlePopState = (event: PopStateEvent) => {
+          // 如果回退到了没有city的状态，则重新加载页面
+          if (event.state && event.state.noCity) {
+            window.location.href = '/destinations';
+          }
+        };
+        
+        window.addEventListener('popstate', handlePopState);
+        return () => {
+          window.removeEventListener('popstate', handlePopState);
+        };
+      } catch (error) {
+        console.error('Error setting up browser history:', error);
       }
     }
   }, [searchParams, setSelectedCity, currentLanguage, pathname]);
@@ -57,42 +90,68 @@ export default function DestinationsPage() {
   // 状态管理
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
-  const [activeTheme, setActiveTheme] = useState<string | null>(null);
-  const [filteredDestinations, setFilteredDestinations] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [activeTheme, setActiveTheme] = useState<string | null>(DEFAULT_THEME);
+  const [filteredDestinations, setFilteredDestinations] = useState<string[]>(PRELOADED_CITIES);
+  const [isLoading, setIsLoading] = useState(false);
   
-  // 获取所有主题
-  const allThemes = getAllThemes();
+  // 使用useMemo缓存获取的主题数据，避免重新计算
+  const allThemes = useMemo(() => ALL_THEMES, []);
   
-  // 首次加载时处理
-  useEffect(() => {
-    // 优化性能：延迟非必要数据的加载
-    const initializeData = () => {
-      const defaultTheme = 'must-visit';
-      setActiveTheme(defaultTheme);
-      setFilteredDestinations(getCitiesByTheme(defaultTheme));
-      setIsLoading(false);
-    };
+  // 优化后的搜索处理函数
+  const handleSearch = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value;
+    setSearchTerm(term);
     
-    // 使用requestIdleCallback在浏览器空闲时加载数据
-    if (typeof window !== 'undefined') {
-      if ('requestIdleCallback' in window) {
-        const idleCallbackId = window.requestIdleCallback(initializeData);
-        return () => {
-          if ('cancelIdleCallback' in window) {
-            window.cancelIdleCallback(idleCallbackId);
-          }
-        };
-      } else {
-        // 如果浏览器不支持requestIdleCallback，使用setTimeout
-        const timeoutId = setTimeout(initializeData, 10);
-        return () => clearTimeout(timeoutId);
-      }
+    if (!term && activeTheme) {
+      // 如果搜索词为空且有活动主题，则显示该主题下的所有城市
+      setFilteredDestinations(getCitiesByTheme(activeTheme));
+    } else if (!term && !activeTheme) {
+      // 如果搜索词为空且没有活动主题，则显示必游之地主题下的城市
+      setFilteredDestinations(PRELOADED_CITIES);
     } else {
-      initializeData();
-      return () => {};
+      // 如果有搜索词，则在当前活动主题的城市中搜索
+      let citiesToFilter = activeTheme
+        ? getCitiesByTheme(activeTheme)
+        : PRELOADED_CITIES;
+      
+      // 优化搜索函数，使用本地变量以减少状态更新
+      const searchTermLower = term.toLowerCase();
+      const filtered = citiesToFilter.filter(city => {
+        // 获取当前语言的城市名
+        let cityName = '';
+        switch (currentLanguage) {
+          case 'zh':
+            cityName = getChineseCityName(city);
+            break;
+          default:
+            cityName = city.charAt(0).toUpperCase() + city.slice(1);
+            break;
+        }
+        return cityName.toLowerCase().includes(searchTermLower);
+      });
+      setFilteredDestinations(filtered);
     }
+  }, [activeTheme, currentLanguage]);
+  
+  // 切换主题 - 使用useCallback优化
+  const handleThemeClick = useCallback((themeId: string) => {
+    setIsLoading(true);
+    setActiveTheme(themeId);
+    setSearchTerm('');
+    
+    // 使用requestAnimationFrame延迟非关键更新，让UI先响应
+    requestAnimationFrame(() => {
+      setFilteredDestinations(getCitiesByTheme(themeId));
+      setIsLoading(false);
+    });
   }, []);
+  
+  // 选择城市 - 使用useCallback优化
+  const handleCitySelect = useCallback((city: string) => {
+    // 在URL中保留当前语言信息，确保在城市详情页面能读取到正确的语言设置
+    router.push(`/destinations?city=${city}`);
+    setSelectedCity(city);
+  }, [router]);
   
   // 为了确保语言变化时UI更新，添加对currentLanguage的依赖
   useEffect(() => {
@@ -107,54 +166,10 @@ export default function DestinationsPage() {
     }
   }, [currentLanguage, activeTheme, selectedCity]);
   
-  // 处理搜索
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const term = e.target.value;
-    setSearchTerm(term);
-    
-    if (!term && activeTheme) {
-      // 如果搜索词为空且有活动主题，则显示该主题下的所有城市
-      setFilteredDestinations(getCitiesByTheme(activeTheme));
-    } else if (!term && !activeTheme) {
-      // 如果搜索词为空且没有活动主题，则显示必游之地主题下的城市
-      setFilteredDestinations(getCitiesByTheme('must-visit'));
-    } else {
-      // 如果有搜索词，则在当前活动主题的城市中搜索
-      let citiesToFilter = activeTheme
-        ? getCitiesByTheme(activeTheme)
-        : getCitiesByTheme('must-visit');
-      
-      // 按名称搜索
-      const filtered = citiesToFilter.filter(city => {
-        // 获取当前语言的城市名
-        let cityName = '';
-        switch (currentLanguage) {
-          case 'zh':
-            cityName = getChineseCityName(city);
-            break;
-          default:
-            cityName = city.charAt(0).toUpperCase() + city.slice(1);
-            break;
-        }
-        return cityName.toLowerCase().includes(term.toLowerCase());
-      });
-      setFilteredDestinations(filtered);
-    }
-  };
-  
-  // 切换主题
-  const handleThemeClick = (themeId: string) => {
-    setActiveTheme(themeId);
-    setSearchTerm('');
-    setFilteredDestinations(getCitiesByTheme(themeId));
-  };
-  
-  // 选择城市
-  const handleCitySelect = (city: string) => {
-    // 在URL中保留当前语言信息，确保在城市详情页面能读取到正确的语言设置
-    router.push(`/destinations?city=${city}`);
-    setSelectedCity(city);
-  };
+  // 缓存城市描述获取函数，避免在渲染过程中重复创建
+  const getCityDescriptionCached = useCallback((cityId: string) => {
+    return getCityDescription(cityId, currentLanguage);
+  }, [currentLanguage]);
   
   // 获取对应语言的城市中文名
   const getChineseCityName = (cityId: string) => {
@@ -186,8 +201,8 @@ export default function DestinationsPage() {
     return cityNames[cityId] || cityId;
   };
   
-  // 获取城市描述
-  const getCityDescription = (cityId: string) => {
+  // 将城市描述数据提取出来，并添加语言参数
+  const getCityDescription = (cityId: string, language: string) => {
     // 映射城市ID到描述
     const cityDescriptions: Record<string, Record<string, string>> = {
       'beijing': {
@@ -243,7 +258,7 @@ export default function DestinationsPage() {
       // 可以添加更多城市的描述
     };
     
-    return cityDescriptions[cityId]?.[currentLanguage] || cityDescriptions[cityId]?.['en'] || '';
+    return cityDescriptions[cityId]?.[language] || cityDescriptions[cityId]?.['en'] || '';
   };
   
   // 获取翻译文本
@@ -293,7 +308,7 @@ export default function DestinationsPage() {
     
     return translations[key][currentLanguage] || translations[key]['en'];
   };
-  
+
   return (
     <div className="min-h-screen bg-white">
       {/* 使用Suspense包裹处理URL参数的组件 */}
@@ -369,7 +384,7 @@ export default function DestinationsPage() {
                       {currentLanguage === 'zh' ? getChineseCityName(city) : city.charAt(0).toUpperCase() + city.slice(1)}
                     </h3>
                     <p className="text-sm text-gray-600 mt-1">
-                      {getCityDescription(city) || `Explore the beauty and culture of ${city.charAt(0).toUpperCase() + city.slice(1)}`}
+                      {getCityDescriptionCached(city) || `Explore the beauty and culture of ${city.charAt(0).toUpperCase() + city.slice(1)}`}
                     </p>
                   </div>
                 </div>

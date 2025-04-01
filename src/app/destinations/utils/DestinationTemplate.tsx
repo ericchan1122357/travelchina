@@ -133,7 +133,8 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
   
   // 返回到目的地列表页
   const goToDestinationsList = () => {
-    router.push('/destinations');
+    // 使用window.location跳转，确保完全重新加载页面到目的地列表
+    window.location.href = '/destinations';
   };
   
   // 获取翻译文本
@@ -273,7 +274,7 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
               </div>
               
               {/* 右侧：加入旅行计划 */}
-              <div className="mb-8">
+              <div className="mb-8 mt-6">
                 {!showConfirmation ? (
                   <button
                     onClick={addToPlan}
