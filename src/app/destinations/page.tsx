@@ -8,9 +8,22 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { getAllThemes, getCitiesByTheme, getThemeName, ThemeItem } from './utils/destinationThemes';
 import DestinationTemplate from './utils/DestinationTemplate';
 
+// 提取使用searchParams的逻辑到单独组件
+function SearchParamsHandler({ setSelectedCity }: { setSelectedCity: (cityId: string | null) => void }) {
+  const searchParams = useSearchParams();
+  
+  useEffect(() => {
+    const city = searchParams?.get('city');
+    if (city) {
+      setSelectedCity(city);
+    }
+  }, [searchParams, setSelectedCity]);
+  
+  return null;
+}
+
 export default function DestinationsPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const { currentLanguage } = useLanguage();
   
   // 状态管理
@@ -28,14 +41,6 @@ export default function DestinationsPage() {
     setActiveTheme(defaultTheme);
     setFilteredDestinations(getCitiesByTheme(defaultTheme));
   }, []);
-  
-  // 从URL参数中获取城市信息
-  useEffect(() => {
-    const city = searchParams?.get('city');
-    if (city) {
-      setSelectedCity(city);
-    }
-  }, [searchParams]);
   
   // 处理搜索
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -195,6 +200,11 @@ export default function DestinationsPage() {
   
   return (
     <div className="min-h-screen bg-white">
+      {/* 使用Suspense包裹处理URL参数的组件 */}
+      <Suspense fallback={null}>
+        <SearchParamsHandler setSelectedCity={setSelectedCity} />
+      </Suspense>
+      
       {/* 如果选择了城市，显示城市详情 */}
       {selectedCity ? (
         <Suspense fallback={<div className="flex justify-center items-center h-screen">Loading...</div>}>
