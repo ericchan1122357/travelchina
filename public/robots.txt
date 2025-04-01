@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /destinations/
+Allow: /guides/
+Allow: /stories/
+Allow: /planner/
+Allow: /about/
+Allow: /contact/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://travelchina.com/sitemap.xml 

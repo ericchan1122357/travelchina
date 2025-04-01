@@ -11,16 +11,6 @@ export default function Navbar() {
 
   const getTranslatedString = (key: string) => {
     const translations: Record<string, Record<string, string>> = {
-      'home': {
-        'zh': '首页',
-        'en': 'Home',
-        'fr': 'Accueil',
-        'de': 'Startseite',
-        'es': 'Inicio',
-        'ja': 'ホーム',
-        'ko': '홈',
-        'ru': 'Главная',
-      },
       'destinations': {
         'zh': '目的地',
         'en': 'Destinations',
@@ -28,18 +18,18 @@ export default function Navbar() {
         'de': 'Reiseziele',
         'es': 'Destinos',
         'ja': '目的地',
-        'ko': '목적지',
+        'ko': '여행지',
         'ru': 'Направления',
       },
       'guides': {
-        'zh': '指南',
+        'zh': '攻略',
         'en': 'Guides',
         'fr': 'Guides',
         'de': 'Reiseführer',
         'es': 'Guías',
         'ja': 'ガイド',
         'ko': '가이드',
-        'ru': 'Путеводители',
+        'ru': 'Гиды',
       },
       'stories': {
         'zh': '故事',
@@ -48,8 +38,18 @@ export default function Navbar() {
         'de': 'Geschichten',
         'es': 'Historias',
         'ja': 'ストーリー',
-        'ko': '스토리',
+        'ko': '이야기',
         'ru': 'Истории',
+      },
+      'planner': {
+        'zh': '行程规划',
+        'en': 'Trip Planner',
+        'fr': 'Planificateur',
+        'de': 'Reiseplaner',
+        'es': 'Planificador',
+        'ja': '旅程プランナー',
+        'ko': '여행 플래너',
+        'ru': 'Планировщик',
       },
     };
     
@@ -57,37 +57,55 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { href: '/', label: 'home' },
-    { href: '/destinations', label: 'destinations' },
-    { href: '/guides', label: 'guides' },
-    { href: '/stories', label: 'stories' },
+    { href: '/destinations', label: getTranslatedString('destinations') },
+    { href: '/guides', label: getTranslatedString('guides') },
+    { href: '/stories', label: getTranslatedString('stories') },
+    { href: '/planner', label: getTranslatedString('planner') },
   ];
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 bg-white z-50 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          <div className="flex">
-            <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="text-xl font-bold text-blue-600">
-                Travel China
+          <div className="flex items-center">
+            <Link href="/" className="flex-shrink-0 flex items-center">
+              <span className="text-red-600 text-xl font-bold">China Travel Guide</span>
+            </Link>
+          </div>
+
+          <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                  pathname === item.href
+                    ? 'text-red-600 border-b-2 border-red-600'
+                    : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent'
+                }`}
+              >
+                {item.label}
               </Link>
-            </div>
-            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                    pathname === item.href
-                      ? 'border-blue-500 text-gray-900'
-                      : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                  }`}
-                >
-                  {getTranslatedString(item.label)}
-                </Link>
-              ))}
-            </div>
+            ))}
+          </div>
+
+          <div className="flex items-center">
+            <select
+              value={currentLanguage}
+              onChange={(e) => {
+                // 语言切换逻辑将由LanguageContext处理
+              }}
+              className="ml-3 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md"
+            >
+              <option value="en">English</option>
+              <option value="zh">中文</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="es">Español</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+              <option value="ru">Русский</option>
+            </select>
           </div>
         </div>
       </div>
