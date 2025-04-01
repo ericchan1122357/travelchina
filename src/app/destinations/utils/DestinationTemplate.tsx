@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { CheckIcon, XMarkIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { CheckIcon, XMarkIcon, PlusIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getDestinationContent, DestinationContent, DestinationSection } from './destinationContent';
 import { getThemesForCity, getCitiesByTheme } from './destinationThemes';
@@ -122,6 +122,20 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
     setShowConfirmation(false);
   };
   
+  // 取消旅行计划
+  const cancelPlan = () => {
+    const plannedCities = JSON.parse(localStorage.getItem('plannedCities') || '[]');
+    const updatedPlannedCities = plannedCities.filter((city: string) => city !== destinationSlug);
+    localStorage.setItem('plannedCities', JSON.stringify(updatedPlannedCities));
+    setIsAddedToPlan(false);
+    setShowConfirmation(false);
+  };
+  
+  // 返回到目的地列表页
+  const goToDestinationsList = () => {
+    router.push('/destinations');
+  };
+  
   // 获取翻译文本
   const getTranslation = (key: string) => {
     const translations: Record<string, Record<string, string>> = {
@@ -165,6 +179,16 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
         'ko': '계속 둘러보기',
         'ru': 'Продолжить просмотр',
       },
+      'cancelPlan': {
+        'zh': '取消旅行计划',
+        'en': 'Cancel travel plan',
+        'fr': 'Annuler le plan de voyage',
+        'de': 'Reiseplan abbrechen',
+        'es': 'Cancelar plan de viaje',
+        'ja': '旅行プランをキャンセル',
+        'ko': '여행 계획 취소',
+        'ru': 'Отменить план путешествия',
+      },
       'addedToPlan': {
         'zh': '已加入计划',
         'en': 'Added to plan',
@@ -174,6 +198,16 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
         'ja': 'プランに追加済み',
         'ko': '계획에 추가됨',
         'ru': 'Добавлено в план',
+      },
+      'browseOtherCities': {
+        'zh': '浏览其他城市',
+        'en': 'Browse other cities',
+        'fr': 'Parcourir d\'autres villes',
+        'de': 'Andere Städte durchsuchen',
+        'es': 'Explorar otras ciudades',
+        'ja': '他の都市を閲覧',
+        'ko': '다른 도시 둘러보기',
+        'ru': 'Просмотреть другие города',
       }
     };
     
@@ -239,7 +273,7 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
               </div>
               
               {/* 右侧：加入旅行计划 */}
-              <div>
+              <div className="mb-8">
                 {!showConfirmation ? (
                   <button
                     onClick={addToPlan}
@@ -273,16 +307,27 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
                         {getTranslation('startPlanning')}
                       </button>
                       <button
-                        onClick={continueBrowsing}
+                        onClick={cancelPlan}
                         className="flex-1 flex items-center justify-center px-3 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg font-medium text-sm"
                       >
                         <XMarkIcon className="w-4 h-4 mr-1" />
-                        {getTranslation('continueBrowsing')}
+                        {getTranslation('cancelPlan')}
                       </button>
                     </div>
                   </div>
                 )}
               </div>
+            </div>
+            
+            {/* 浏览其他城市按钮 */}
+            <div className="mt-6 text-center">
+              <button
+                onClick={goToDestinationsList}
+                className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none"
+              >
+                <ArrowLeftIcon className="w-4 h-4 mr-2" />
+                {getTranslation('browseOtherCities')}
+              </button>
             </div>
           </div>
         </div>

@@ -2,11 +2,12 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useLanguage, Language } from '@/contexts/LanguageContext';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const { currentLanguage, setLanguage } = useLanguage();
 
   const getTranslatedString = (key: string) => {
@@ -74,12 +75,11 @@ export default function Navbar() {
     }
   };
 
-  const navItems = [
-    { href: '/destinations', label: getTranslatedString('destinations') },
-    { href: '/guides', label: getTranslatedString('guides') },
-    { href: '/stories', label: getTranslatedString('stories') },
-    { href: '/planner', label: getTranslatedString('planner') },
-  ];
+  // 点击目的地时的处理函数，始终导航到不带参数的目的地列表页
+  const handleDestinationsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    router.push('/destinations');
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white z-50 border-b border-gray-200">
@@ -92,19 +92,47 @@ export default function Navbar() {
           </div>
 
           <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-                  pathname === item.href
-                    ? 'text-red-600 border-b-2 border-red-600'
-                    : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            <a
+              href="/destinations"
+              onClick={handleDestinationsClick}
+              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                pathname && pathname.startsWith('/destinations')
+                  ? 'text-red-600 border-b-2 border-red-600'
+                  : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent'
+              }`}
+            >
+              {getTranslatedString('destinations')}
+            </a>
+            <Link
+              href="/guides"
+              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                pathname === '/guides'
+                  ? 'text-red-600 border-b-2 border-red-600'
+                  : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent'
+              }`}
+            >
+              {getTranslatedString('guides')}
+            </Link>
+            <Link
+              href="/stories"
+              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                pathname === '/stories'
+                  ? 'text-red-600 border-b-2 border-red-600'
+                  : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent'
+              }`}
+            >
+              {getTranslatedString('stories')}
+            </Link>
+            <Link
+              href="/planner"
+              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                pathname === '/planner'
+                  ? 'text-red-600 border-b-2 border-red-600'
+                  : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent'
+              }`}
+            >
+              {getTranslatedString('planner')}
+            </Link>
           </div>
 
           <div className="flex items-center">

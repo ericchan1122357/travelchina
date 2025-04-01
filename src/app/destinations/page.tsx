@@ -1,7 +1,15 @@
+// 声明全局requestIdleCallback和cancelIdleCallback类型
+declare global {
+  interface Window {
+    requestIdleCallback: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+    cancelIdleCallback: (handle: number) => void;
+  }
+}
+
 'use client';
 
 import React, { useState, useEffect, Suspense } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Image from 'next/image';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
@@ -12,14 +20,31 @@ import DestinationTemplate from './utils/DestinationTemplate';
 function SearchParamsHandler({ setSelectedCity }: { setSelectedCity: (cityId: string | null) => void }) {
   const searchParams = useSearchParams();
   const { currentLanguage } = useLanguage();
+  const pathname = usePathname();
   
   useEffect(() => {
     const city = searchParams?.get('city');
     if (city) {
       console.log(`URL params - city: ${city}, language: ${currentLanguage}`);
       setSelectedCity(city);
+      
+      // 确保历史记录中有正确的条目，支持回退按钮
+      if (window.history.state && window.history.state.key) {
+        // 添加一个可回退到城市列表页的历史记录点
+        const currentUrl = new URL(window.location.href);
+        const destinationsUrl = new URL(currentUrl.origin + '/destinations');
+        
+        // 仅当当前历史堆栈中没有destinations页面时添加
+        if (!window.history.state.destinations) {
+          window.history.replaceState(
+            { ...window.history.state, destinations: true },
+            '',
+            currentUrl.toString()
+          );
+        }
+      }
     }
-  }, [searchParams, setSelectedCity, currentLanguage]);
+  }, [searchParams, setSelectedCity, currentLanguage, pathname]);
   
   return null;
 }
@@ -27,21 +52,46 @@ function SearchParamsHandler({ setSelectedCity }: { setSelectedCity: (cityId: st
 export default function DestinationsPage() {
   const router = useRouter();
   const { currentLanguage } = useLanguage();
+  const pathname = usePathname();
   
   // 状态管理
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
   const [activeTheme, setActiveTheme] = useState<string | null>(null);
   const [filteredDestinations, setFilteredDestinations] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   
   // 获取所有主题
   const allThemes = getAllThemes();
   
-  // 获取所有目的地，默认显示"必游之地"主题下的城市
+  // 首次加载时处理
   useEffect(() => {
-    const defaultTheme = 'must-visit';
-    setActiveTheme(defaultTheme);
-    setFilteredDestinations(getCitiesByTheme(defaultTheme));
+    // 优化性能：延迟非必要数据的加载
+    const initializeData = () => {
+      const defaultTheme = 'must-visit';
+      setActiveTheme(defaultTheme);
+      setFilteredDestinations(getCitiesByTheme(defaultTheme));
+      setIsLoading(false);
+    };
+    
+    // 使用requestIdleCallback在浏览器空闲时加载数据
+    if (typeof window !== 'undefined') {
+      if ('requestIdleCallback' in window) {
+        const idleCallbackId = window.requestIdleCallback(initializeData);
+        return () => {
+          if ('cancelIdleCallback' in window) {
+            window.cancelIdleCallback(idleCallbackId);
+          }
+        };
+      } else {
+        // 如果浏览器不支持requestIdleCallback，使用setTimeout
+        const timeoutId = setTimeout(initializeData, 10);
+        return () => clearTimeout(timeoutId);
+      }
+    } else {
+      initializeData();
+      return () => {};
+    }
   }, []);
   
   // 为了确保语言变化时UI更新，添加对currentLanguage的依赖
@@ -253,9 +303,7 @@ export default function DestinationsPage() {
       
       {/* 如果选择了城市，显示城市详情 */}
       {selectedCity ? (
-        <Suspense fallback={<div className="flex justify-center items-center h-screen">Loading...</div>}>
-          <DestinationTemplate destinationSlug={selectedCity} />
-        </Suspense>
+        <DestinationTemplate destinationSlug={selectedCity} />
       ) : (
         // 否则显示目的地选择页面
         <div className="max-w-6xl mx-auto px-6 py-8">
@@ -295,7 +343,11 @@ export default function DestinationsPage() {
           </div>
           
           {/* 城市卡片网格 */}
-          {filteredDestinations.length > 0 ? (
+          {isLoading ? (
+            <div className="text-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
+            </div>
+          ) : filteredDestinations.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredDestinations.map((city) => (
                 <div
