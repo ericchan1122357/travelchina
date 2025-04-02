@@ -1,180 +1,288 @@
-'use client';
-
-import React from 'react';
+"use client";
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { useLanguage, Language } from '@/contexts/LanguageContext';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
+// 导航链接结构
+type NavItem = {
+  href: string;
+  labelKey: string;
+};
+
+// 可用的语言列表
+const AVAILABLE_LANGUAGES = ['en', 'zh', 'fr', 'de', 'es', 'ja', 'ko', 'ru'];
+
+// 导航栏组件
 export default function Navbar() {
-  const pathname = usePathname();
-  const router = useRouter();
   const { currentLanguage, setLanguage } = useLanguage();
-
-  const getTranslatedString = (key: string) => {
-    const translations: Record<string, Record<Language, string>> = {
-      'destinations': {
-        'zh': '目的地',
-        'en': 'Destinations',
-        'fr': 'Destinations',
-        'de': 'Reiseziele',
-        'es': 'Destinos',
-        'ja': '目的地',
-        'ko': '여행지',
-        'ru': 'Направления',
+  const pathname = usePathname() || '';
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  
+  // 监听滚动以改变导航栏样式
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
+  // 导航链接
+  const navLinks: NavItem[] = [
+    { href: '/destinations', labelKey: 'destinations' },
+    { href: '/guides', labelKey: 'guides' },
+    { href: '/stories', labelKey: 'stories' },
+    { href: '/planner', labelKey: 'planner' },
+  ];
+  
+  // 获取翻译
+  const getTranslation = (key: string): string => {
+    const translations: Record<string, Record<string, string>> = {
+      brand: {
+        en: 'China Free Travel',
+        zh: '中国自由行',
+        fr: 'Voyage Libre en Chine',
+        de: 'China Freie Reise',
+        es: 'Viaje Libre a China',
+        ja: '中国自由旅行',
+        ko: '중국 자유 여행',
+        ru: 'Свободное Путешествие по Китаю',
       },
-      'guides': {
-        'zh': '攻略',
-        'en': 'Guides',
-        'fr': 'Guides',
-        'de': 'Reiseführer',
-        'es': 'Guías',
-        'ja': 'ガイド',
-        'ko': '가이드',
-        'ru': 'Гиды',
+      destinations: {
+        en: 'Destinations',
+        zh: '目的地',
+        fr: 'Destinations',
+        de: 'Reiseziele',
+        es: 'Destinos',
+        ja: '目的地',
+        ko: '목적지',
+        ru: 'Направления',
       },
-      'stories': {
-        'zh': '故事',
-        'en': 'Stories',
-        'fr': 'Histoires',
-        'de': 'Geschichten',
-        'es': 'Historias',
-        'ja': 'ストーリー',
-        'ko': '이야기',
-        'ru': 'Истории',
+      guides: {
+        en: 'Guides',
+        zh: '旅游指南',
+        fr: 'Guides',
+        de: 'Reiseführer',
+        es: 'Guías',
+        ja: 'ガイド',
+        ko: '가이드',
+        ru: 'Гиды',
       },
-      'planner': {
-        'zh': '行程规划',
-        'en': 'Trip Planner',
-        'fr': 'Planificateur',
-        'de': 'Reiseplaner',
-        'es': 'Planificador',
-        'ja': '旅程プランナー',
-        'ko': '여행 플래너',
-        'ru': 'Планировщик',
+      stories: {
+        en: 'Stories',
+        zh: '旅行故事',
+        fr: 'Histoires',
+        de: 'Geschichten',
+        es: 'Historias',
+        ja: 'ストーリー',
+        ko: '이야기',
+        ru: 'Истории',
+      },
+      planner: {
+        en: 'Trip Planner',
+        zh: '行程规划',
+        fr: 'Planificateur',
+        de: 'Reiseplaner',
+        es: 'Planificador',
+        ja: '旅行プランナー',
+        ko: '여행 플래너',
+        ru: 'Планировщик',
       },
     };
     
-    return translations[key][currentLanguage] || translations[key]['en'];
+    return translations[key]?.[currentLanguage] || translations[key]?.['en'] || key;
   };
-
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newLanguage = e.target.value as Language;
-    setLanguage(newLanguage);
+  
+  // 处理语言切换
+  const handleLanguageChange = (lang: string) => {
+    setLanguage(lang as Language);
     
-    // 将语言选择保存到localStorage，以便在页面刷新后保持选择
-    localStorage.setItem('preferredLanguage', newLanguage);
+    // 保持当前页面路径，但更新语言
+    const currentPathParts = pathname.split('/').filter(Boolean);
+    let newPath = '/' + lang;
     
-    // 获取当前URL并保留参数
-    const currentUrl = window.location.href;
-    const url = new URL(currentUrl);
-    
-    // 如果URL中包含city参数，确保在语言切换后仍然保留该参数
-    if (url.searchParams.has('city')) {
-      // 不重新加载页面，语言切换会通过Context触发界面更新
-      // 这样可以保留当前页面状态，包括选择的城市
+    // 如果当前路径包含语言代码（前两个字符是语言代码）
+    if (currentPathParts.length > 0 && AVAILABLE_LANGUAGES.includes(currentPathParts[0])) {
+      // 替换语言代码
+      newPath = '/' + lang + '/' + currentPathParts.slice(1).join('/');
+    } else if (currentPathParts.length > 0) {
+      // 如果当前路径不包含语言代码，直接添加
+      newPath = '/' + lang + '/' + currentPathParts.join('/');
     }
+    
+    // 处理URL参数
+    const currentUrl = new URL(window.location.href);
+    const searchParams = currentUrl.search;
+    
+    // 构建新URL并重定向
+    window.location.href = newPath + searchParams;
   };
-
-  // 点击目的地时的处理函数，始终导航到不带参数的目的地列表页
+  
+  // 处理目的地点击
   const handleDestinationsClick = (e: React.MouseEvent) => {
     e.preventDefault();
     
-    // 获取当前URL并解析出基础路径和语言前缀
-    const currentUrl = new URL(window.location.href);
-    const pathParts = currentUrl.pathname.split('/').filter(Boolean);
-    
-    // 检查是否有语言前缀 (如 /en/, /zh/, 等)
+    // 从当前URL解析基础路径和语言前缀
+    const currentPathParts = pathname.split('/').filter(Boolean);
     let basePath = '';
-    if (pathParts.length > 0 && pathParts[0].length === 2) {
-      // 如果第一个部分是两个字符的语言代码
-      basePath = `/${pathParts[0]}`;
+    
+    // 如果当前路径包含语言代码
+    if (currentPathParts.length > 0 && AVAILABLE_LANGUAGES.includes(currentPathParts[0])) {
+      basePath = '/' + currentPathParts[0];
     }
     
     // 构造目的地列表页URL
     const destinationsUrl = `${basePath}/destinations`;
     
-    // 如果当前页面是城市详情页，使用replace以替换当前历史记录
-    // 这样可以确保点击浏览器返回按钮时，不会返回到城市详情页
-    if (window.location.href.includes('?city=')) {
-      window.location.replace(destinationsUrl);
-    } else {
-      // 否则使用普通的跳转
-      window.location.href = destinationsUrl;
-    }
+    // 清除会话存储中可能存在的标志
+    sessionStorage.removeItem('isFromCityDetail');
+    
+    // 使用location.replace来替换当前历史记录，确保返回按钮行为正确
+    window.location.replace(destinationsUrl);
   };
-
+  
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white z-50 border-b border-gray-200">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white/80 backdrop-blur-sm'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-red-600 text-xl font-bold">China Free Travel</span>
+          <div className="flex-shrink-0 flex items-center">
+            <Link href="/" className="flex items-center">
+              <span className="text-xl font-bold text-red-600">{getTranslation('brand')}</span>
             </Link>
           </div>
-
-          <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-            <a
-              href="/destinations"
-              onClick={handleDestinationsClick}
-              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-                pathname && pathname.startsWith('/destinations')
-                  ? 'text-red-600 border-b-2 border-red-600'
-                  : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent'
-              }`}
-            >
-              {getTranslatedString('destinations')}
-            </a>
-            <Link
-              href="/guides"
-              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-                pathname === '/guides'
-                  ? 'text-red-600 border-b-2 border-red-600'
-                  : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent'
-              }`}
-            >
-              {getTranslatedString('guides')}
-            </Link>
-            <Link
-              href="/stories"
-              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-                pathname === '/stories'
-                  ? 'text-red-600 border-b-2 border-red-600'
-                  : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent'
-              }`}
-            >
-              {getTranslatedString('stories')}
-            </Link>
-            <Link
-              href="/planner"
-              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-                pathname === '/planner'
-                  ? 'text-red-600 border-b-2 border-red-600'
-                  : 'text-gray-500 hover:text-gray-900 hover:border-gray-300 border-b-2 border-transparent'
-              }`}
-            >
-              {getTranslatedString('planner')}
-            </Link>
+          
+          {/* 桌面导航 */}
+          <div className="hidden md:flex items-center space-x-4">
+            <div className="flex space-x-4">
+              {navLinks.map((item) => (
+                item.labelKey === 'destinations' ? (
+                  <button
+                    key={item.labelKey}
+                    onClick={handleDestinationsClick}
+                    className={`px-3 py-2 rounded-md text-sm font-medium ${
+                      pathname.includes(item.href)
+                        ? 'text-red-600'
+                        : 'text-gray-700 hover:text-red-600'
+                    }`}
+                  >
+                    {getTranslation(item.labelKey)}
+                  </button>
+                ) : (
+                  <Link
+                    key={item.labelKey}
+                    href={item.href}
+                    className={`px-3 py-2 rounded-md text-sm font-medium ${
+                      pathname.includes(item.href)
+                        ? 'text-red-600'
+                        : 'text-gray-700 hover:text-red-600'
+                    }`}
+                  >
+                    {getTranslation(item.labelKey)}
+                  </Link>
+                )
+              ))}
+            </div>
+            
+            {/* 语言切换器 */}
+            <div className="relative ml-4 border-l border-gray-200 pl-4">
+              <select
+                value={currentLanguage}
+                onChange={(e) => handleLanguageChange(e.target.value)}
+                className="block w-20 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 text-sm"
+              >
+                <option value="en">EN</option>
+                <option value="zh">中文</option>
+                <option value="fr">FR</option>
+                <option value="de">DE</option>
+                <option value="es">ES</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="ru">RU</option>
+              </select>
+            </div>
           </div>
-
-          <div className="flex items-center">
-            <select
-              value={currentLanguage}
-              onChange={handleLanguageChange}
-              className="ml-3 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md"
+          
+          {/* 移动端菜单按钮 */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-red-600 focus:outline-none"
             >
-              <option value="en">English</option>
-              <option value="zh">中文</option>
-              <option value="fr">Français</option>
-              <option value="de">Deutsch</option>
-              <option value="es">Español</option>
-              <option value="ja">日本語</option>
-              <option value="ko">한국어</option>
-              <option value="ru">Русский</option>
-            </select>
+              {isOpen ? (
+                <XMarkIcon className="block h-6 w-6" />
+              ) : (
+                <Bars3Icon className="block h-6 w-6" />
+              )}
+            </button>
           </div>
         </div>
       </div>
+      
+      {/* 移动端菜单 */}
+      {isOpen && (
+        <div className="md:hidden bg-white shadow-lg">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            {navLinks.map((item) => (
+              item.labelKey === 'destinations' ? (
+                <button
+                  key={item.labelKey}
+                  onClick={(e) => {
+                    handleDestinationsClick(e);
+                    setIsOpen(false);
+                  }}
+                  className={`block px-3 py-2 rounded-md text-base font-medium ${
+                    pathname.includes(item.href)
+                      ? 'text-red-600 bg-red-50'
+                      : 'text-gray-700 hover:bg-gray-50 hover:text-red-600'
+                  } w-full text-left`}
+                >
+                  {getTranslation(item.labelKey)}
+                </button>
+              ) : (
+                <Link
+                  key={item.labelKey}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block px-3 py-2 rounded-md text-base font-medium ${
+                    pathname.includes(item.href)
+                      ? 'text-red-600 bg-red-50'
+                      : 'text-gray-700 hover:bg-gray-50 hover:text-red-600'
+                  }`}
+                >
+                  {getTranslation(item.labelKey)}
+                </Link>
+              )
+            ))}
+            
+            {/* 移动端语言切换器 */}
+            <div className="px-3 py-2 border-t border-gray-200 mt-2 pt-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                {currentLanguage === 'zh' ? '语言' : 'Language'}
+              </label>
+              <select
+                value={currentLanguage}
+                onChange={(e) => handleLanguageChange(e.target.value)}
+                className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 text-sm"
+              >
+                <option value="en">English</option>
+                <option value="zh">中文</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="es">Español</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="ru">Русский</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 } 
