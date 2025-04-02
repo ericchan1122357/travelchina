@@ -28,53 +28,64 @@ function SearchParamsHandler({ setSelectedCity }: { setSelectedCity: (cityId: st
   const pathname = usePathname();
   
   useEffect(() => {
+    // 检查是否从从城市列表页导航到城市详情页
+    const pendingNavigation = sessionStorage.getItem('pendingCityDetailNavigation');
+    if (pendingNavigation) {
+      // 清除导航状态
+      sessionStorage.removeItem('pendingCityDetailNavigation');
+      
+      // 不需要额外处理，因为这是正常的前进导航
+      console.log('正常导航到城市详情页');
+    }
+    
+    // 处理URL中的city参数
     const city = searchParams?.get('city');
     if (city) {
       console.log(`URL params - city: ${city}, language: ${currentLanguage}`);
       setSelectedCity(city);
       
-      // 处理浏览器历史，支持返回按钮跳转到城市列表页
-      try {
-        // 获取当前URL并解析出基础路径
-        const currentUrl = new URL(window.location.href);
-        const pathParts = currentUrl.pathname.split('/').filter(Boolean);
-        
-        // 检查是否有语言前缀
-        let basePath = '';
-        if (pathParts.length > 0 && pathParts[0].length === 2) {
-          basePath = `/${pathParts[0]}`;
-        }
-        
-        // 构造目的地列表页URL
-        const destinationsUrl = `${basePath}/destinations`;
-        
-        // 创建一个特殊的标记，用于检测这是一个从城市列表页到城市详情页的导航
-        // 这个标记会在handlePopState中被检查
-        sessionStorage.setItem('lastVisitedDestinationsList', 'true');
-        
-        // 监听返回按钮事件
-        const handlePopState = () => {
-          // 如果用户通过返回按钮从城市详情页返回
-          // 检查我们是否在页面上看到的仍然是城市详情（URL中含有city参数）
-          const url = new URL(window.location.href);
-          if (url.searchParams.has('city') && sessionStorage.getItem('lastVisitedDestinationsList') === 'true') {
-            console.log('返回按钮被点击，重定向到目的地列表页');
-            // 将标记移除，防止循环重定向
-            sessionStorage.removeItem('lastVisitedDestinationsList');
-            // 重定向到目的地列表页
-            window.location.replace(destinationsUrl);
+      // 设置返回按钮处理
+      const handlePopState = function(event: PopStateEvent) {
+        // 点击返回按钮时，如果URL中仍然包含city参数，表示我们需要手动导航
+        // 而不是依赖浏览器的默认行为
+        if (window.location.href.includes('?city=')) {
+          // 获取当前URL并解析出基础路径和语言前缀
+          const currentUrl = new URL(window.location.href);
+          const pathParts = currentUrl.pathname.split('/').filter(Boolean);
+          
+          // 检查是否有语言前缀
+          let basePath = '';
+          if (pathParts.length > 0 && pathParts[0].length === 2) {
+            basePath = `/${pathParts[0]}`;
           }
-        };
-        
-        // 添加事件监听器
-        window.addEventListener('popstate', handlePopState);
-        
-        return () => {
-          window.removeEventListener('popstate', handlePopState);
-        };
-      } catch (error) {
-        console.error('Error setting up browser history:', error);
-      }
+          
+          // 构造目的地列表页URL
+          const destinationsUrl = `${basePath}/destinations`;
+          
+          // 阻止默认行为
+          event.preventDefault();
+          event.stopPropagation();
+          
+          // 跳转到目的地列表页
+          console.log('通过返回按钮导航到目的地列表页');
+          window.location.href = destinationsUrl;
+          
+          // 返回false表示我们已经处理了这个事件
+          return false;
+        }
+      };
+      
+      // 添加一个特殊标记到body元素，表示这是城市详情页
+      document.body.setAttribute('data-city-detail', city);
+      
+      // 添加弹出状态变化处理程序
+      window.addEventListener('popstate', handlePopState);
+      
+      // 在组件卸载时删除事件监听器
+      return () => {
+        window.removeEventListener('popstate', handlePopState);
+        document.body.removeAttribute('data-city-detail');
+      };
     }
   }, [searchParams, setSelectedCity, currentLanguage, pathname]);
   
@@ -160,11 +171,43 @@ export default function DestinationsPage() {
     // 构造城市详情页的URL
     const cityDetailUrl = `${basePath}/destinations?city=${city}`;
     
-    // 设置标记，表示我们即将进入城市详情页
-    sessionStorage.setItem('lastVisitedDestinationsList', 'true');
+    // 使用一种完全不同的方法：先设置一个中间页面，再导航到目标页面
+    // 这样就能强制创建一个可回退的历史记录点
     
-    // 导航到城市详情页
-    router.push(cityDetailUrl);
+    // 1. 先获取当前的滚动位置，保存起来
+    const scrollPosition = window.scrollY;
+    document.body.style.cursor = 'wait'; // 显示等待光标
+    
+    // 2. 禁用当前页面的点击事件，防止用户在导航过程中进行操作
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(255,255,255,0.01)';
+    overlay.style.zIndex = '9999';
+    document.body.appendChild(overlay);
+    
+    // 3. 使用sessionStorage存储关键信息
+    sessionStorage.setItem('pendingCityDetailNavigation', city);
+    sessionStorage.setItem('originUrl', window.location.href);
+    
+    // 4. 执行导航
+    // 先将当前页面替换为自身（但带有特殊参数），这样在历史记录中创建一个新的条目
+    // 然后再导航到目标页面
+    window.history.replaceState(
+      { isDestinationsList: true, scrollPosition },
+      '',
+      window.location.href + (window.location.href.includes('?') ? '&' : '?') + '_dest_list=true'
+    );
+    
+    // 5. 在短暂延迟后导航到城市详情页
+    setTimeout(() => {
+      window.location.href = cityDetailUrl;
+    }, 50);
+    
+    // 设置城市选择状态
     setSelectedCity(city);
   }, [router]);
   
@@ -333,37 +376,89 @@ export default function DestinationsPage() {
       
       {/* 如果选择了城市，显示城市详情 */}
       {selectedCity ? (
-        <DestinationTemplate destinationSlug={selectedCity} />
+        <DestinationTemplate params={{ slug: selectedCity }} />
       ) : (
         // 否则显示目的地选择页面
         <div className="max-w-6xl mx-auto px-6 py-8">
-          <h1 className="text-3xl font-semibold text-gray-900 mb-6">{getTranslatedString('pageTitle')}</h1>
-          
-          {/* 搜索栏 */}
-          <div className="relative mb-8">
-            <div className="flex items-center bg-gray-100 rounded-full px-4 py-2">
-              <MagnifyingGlassIcon className="h-5 w-5 text-gray-500" />
-              <input
-                type="text"
-                className="flex-1 bg-transparent border-0 outline-none px-3 py-1 text-gray-800 placeholder-gray-500"
-                placeholder={getTranslatedString('searchPlaceholder')}
-                value={searchTerm}
-                onChange={handleSearch}
-              />
+          <h1 className="text-3xl font-bold mb-8 text-center">
+            {getTranslatedString('pageTitle')}
+          </h1>
+
+          {/* 搜索和主题过滤部分 */}
+          <div className="mb-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+              {/* 搜索框 */}
+              <div className="relative w-full sm:w-64">
+                <input
+                  type="text"
+                  placeholder={getTranslatedString('searchPlaceholder')}
+                  value={searchTerm}
+                  onChange={handleSearch}
+                  className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                />
+                <MagnifyingGlassIcon className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+              </div>
+              
+              {/* 主题选择区域 - 仅在桌面显示 */}
+              <div className="hidden sm:flex flex-wrap gap-2 min-h-[40px]">
+                {/* "所有主题"按钮 */}
+                <button
+                  onClick={() => {
+                    setActiveTheme(null);
+                    setFilteredDestinations(PRELOADED_CITIES);
+                  }}
+                  className={`px-4 py-1.5 text-sm rounded-full transition-colors ${
+                    activeTheme === null
+                      ? 'bg-china-red text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {getTranslatedString('allThemes')}
+                </button>
+                
+                {/* 主题按钮 */}
+                {allThemes.slice(0, 5).map((theme) => (
+                  <button
+                    key={theme.id}
+                    onClick={() => handleThemeClick(theme.id)}
+                    className={`px-4 py-1.5 text-sm rounded-full transition-colors ${
+                      activeTheme === theme.id
+                        ? 'bg-china-red text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {getThemeName(theme.id, currentLanguage)}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-          
-          {/* 主题导航标签 - 苹果风格扁平设计 */}
-          <div className="mb-10">
-            <div className="flex flex-wrap gap-2">
-              {allThemes.map((theme: ThemeItem) => (
+            
+            {/* 主题选择区域 - 仅在移动设备显示 */}
+            <div className="flex sm:hidden overflow-x-auto pb-2 gap-2 hide-scrollbar">
+              {/* "所有主题"按钮 */}
+              <button
+                onClick={() => {
+                  setActiveTheme(null);
+                  setFilteredDestinations(PRELOADED_CITIES);
+                }}
+                className={`flex-shrink-0 px-4 py-1.5 text-sm rounded-full transition-colors ${
+                  activeTheme === null
+                    ? 'bg-china-red text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {getTranslatedString('allThemes')}
+              </button>
+              
+              {/* 主题按钮 */}
+              {allThemes.map((theme) => (
                 <button
                   key={theme.id}
                   onClick={() => handleThemeClick(theme.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`flex-shrink-0 px-4 py-1.5 text-sm rounded-full whitespace-nowrap transition-colors ${
                     activeTheme === theme.id
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                      ? 'bg-china-red text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
                   {getThemeName(theme.id, currentLanguage)}
@@ -371,45 +466,45 @@ export default function DestinationsPage() {
               ))}
             </div>
           </div>
-          
-          {/* 城市卡片网格 */}
-          {isLoading ? (
-            <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto"></div>
-            </div>
-          ) : filteredDestinations.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredDestinations.map((city) => (
-                <div
-                  key={city}
-                  onClick={() => handleCitySelect(city)}
-                  className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md cursor-pointer transition-shadow"
+
+          {/* 城市列表 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredDestinations.length > 0 ? (
+              filteredDestinations.map((cityId) => (
+                <button
+                  key={cityId}
+                  onClick={() => handleCitySelect(cityId)}
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-red-500"
                 >
-                  {/* 图片容器 */}
-                  <div className="h-48 bg-gray-200 relative">
-                    {/* 这里可以添加实际的城市图片 */}
-                    <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-                      {currentLanguage === 'zh' ? getChineseCityName(city) : city.charAt(0).toUpperCase() + city.slice(1)} Image
-                    </div>
+                  <div className="relative aspect-video">
+                    <img
+                      src={`/images/destinations/${cityId.toLowerCase()}/main.jpg`}
+                      alt={cityId}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        // 图片加载错误时使用默认图片
+                        e.currentTarget.src = '/images/destinations/default.jpg';
+                      }}
+                    />
                   </div>
-                  
-                  {/* 内容 */}
                   <div className="p-4">
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      {currentLanguage === 'zh' ? getChineseCityName(city) : city.charAt(0).toUpperCase() + city.slice(1)}
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900">
+                      {currentLanguage === 'zh' 
+                        ? getChineseCityName(cityId) 
+                        : cityId.charAt(0).toUpperCase() + cityId.slice(1)}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-1">
-                      {getCityDescriptionCached(city) || `Explore the beauty and culture of ${city.charAt(0).toUpperCase() + city.slice(1)}`}
+                    <p className="text-gray-600 line-clamp-2">
+                      {getCityDescription(cityId, currentLanguage)}
                     </p>
                   </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12 text-gray-500">
-              {getTranslatedString('noResults')}
-            </div>
-          )}
+                </button>
+              ))
+            ) : (
+              <div className="col-span-3 text-center py-8 text-gray-500">
+                {getTranslatedString('noResults')}
+              </div>
+            )}
+          </div>
         </div>
       )}
     </div>

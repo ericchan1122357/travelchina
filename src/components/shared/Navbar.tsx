@@ -93,8 +93,14 @@ export default function Navbar() {
     // 构造目的地列表页URL
     const destinationsUrl = `${basePath}/destinations`;
     
-    // 替换当前历史记录并完全重新加载页面
-    window.location.replace(destinationsUrl);
+    // 如果当前页面是城市详情页，使用replace以替换当前历史记录
+    // 这样可以确保点击浏览器返回按钮时，不会返回到城市详情页
+    if (window.location.href.includes('?city=')) {
+      window.location.replace(destinationsUrl);
+    } else {
+      // 否则使用普通的跳转
+      window.location.href = destinationsUrl;
+    }
   };
 
   return (
