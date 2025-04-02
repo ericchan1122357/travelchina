@@ -7,8 +7,7 @@ import DestinationTemplate from '../utils/DestinationTemplate';
 const supportedDestinations = [
   'beijing', 'shanghai', 'hangzhou', 'chengdu', 'xian', 
   'guilin', 'suzhou', 'nanjing', 'xiamen', 'lijiang',
-  'paris', 'london', 'newyork', 'tokyo', 'rome', 
-  'barcelona', 'sydney', 'dubai', 'singapore', 'bangkok'
+  'kunming', 'huangshan', 'sanya', 'guangzhou'
 ];
 
 interface DestinationPageProps {

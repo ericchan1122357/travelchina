@@ -264,9 +264,7 @@ export default function DestinationsPage() {
             {getTranslation('pageTitle')}
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            {currentLanguage === 'zh' 
-              ? '发现世界各地的迷人目的地，探索文化、美食和令人惊叹的风景。' 
-              : 'Discover fascinating destinations around the world, explore cultures, cuisines, and stunning landscapes.'}
+            Discover fascinating destinations around China.
           </p>
         </div>
         
