@@ -47,6 +47,19 @@ const themes: ThemeItem[] = [
     }
   },
   {
+    id: 'food',
+    name: {
+      en: 'Food Paradise',
+      zh: '美食天堂',
+      fr: 'Paradis Culinaire',
+      de: 'Essensparadies',
+      es: 'Paraíso Gastronómico',
+      ja: 'グルメの楽園',
+      ko: '음식 천국',
+      ru: 'Кулинарный Рай',
+    }
+  },
+  {
     id: 'historical',
     name: {
       en: 'Historical Sites',
@@ -76,20 +89,20 @@ const themes: ThemeItem[] = [
 
 // 城市所属主题映射
 const cityThemes: Record<string, string[]> = {
-  'beijing': ['must-visit', 'historical'],
-  'shanghai': ['must-visit', 'modern'],
-  'xian': ['must-visit', 'historical'],
-  'chengdu': ['must-visit', 'natural'],
-  'hangzhou': ['must-visit', 'natural'],
+  'beijing': ['must-visit', 'historical', 'food'],
+  'shanghai': ['must-visit', 'modern', 'food'],
+  'xian': ['must-visit', 'historical', 'food'],
+  'chengdu': ['must-visit', 'food', 'natural'],
+  'hangzhou': ['must-visit', 'natural', 'food'],
   'suzhou': ['natural', 'historical'],
-  'guangzhou': ['modern'],
+  'guangzhou': ['modern', 'food'],
   'guilin': ['natural', 'must-visit'],
   'huangshan': ['natural', 'must-visit'],
   'sanya': ['natural', 'must-visit'],
   'lijiang': ['natural', 'historical'],
   'kunming': ['natural'],
   'nanjing': ['historical'],
-  'xiamen': ['natural', 'modern']
+  'xiamen': ['natural', 'food', 'modern']
 };
 
 // 获取所有主题
@@ -250,45 +263,45 @@ export function getCityDescription(cityId: string, language: string = 'en'): str
       'ko': '나시 고대 도시, 세계 문화 유산, 소박하고 아름다운 산악 도시',
       'ru': 'Древний город Наси, объект Всемирного культурного наследия, деревенский и красивый горный город',
     },
-    'kunming': {
-      'zh': '春城，常年如春的云南省会',
-      'en': 'Spring city, the capital of Yunnan Province with spring-like climate year-round',
-      'fr': 'Ville du printemps, la capitale de la province du Yunnan avec un climat printanier toute l\'année',
-      'de': 'Frühlingsstadt, die Hauptstadt der Provinz Yunnan mit frühlingshaftem Klima das ganze Jahr über',
-      'es': 'Ciudad de la primavera, la capital de la provincia de Yunnan con clima primaveral durante todo el año',
-      'ja': '春の都市、年間を通して春のような気候の雲南省の首都',
-      'ko': '봄의 도시, 연중 봄과 같은 기후를 가진 윈난성의 수도',
-      'ru': 'Весенний город, столица провинции Юньнань с весенним климатом круглый год',
-    },
     'guangzhou': {
-      'zh': '广州，南方重要的经济中心和历史文化名城',
-      'en': 'Guangzhou, an important economic center and historical city in southern China',
-      'fr': 'Guangzhou, un centre économique important et une ville historique du sud de la Chine',
-      'de': 'Guangzhou, ein wichtiges Wirtschaftszentrum und eine historische Stadt im Süden Chinas',
-      'es': 'Guangzhou, un importante centro económico y ciudad histórica en el sur de China',
-      'ja': '広州、中国南部の重要な経済中心地であり歴史的都市',
-      'ko': '광저우, 중국 남부의 중요한 경제 중심지이자 역사적인 도시',
-      'ru': 'Гуанчжоу, важный экономический центр и исторический город на юге Китая',
+      'zh': '羊城，岭南文化中心和美食天堂',
+      'en': 'City of Rams, cultural center of Lingnan and food paradise',
+      'fr': 'Ville des Béliers, centre culturel de Lingnan et paradis de la nourriture',
+      'de': 'Stadt der Widder, kulturelles Zentrum von Lingnan und kulinarisches Paradies',
+      'es': 'Ciudad de los Carneros, centro cultural de Lingnan y paraíso gastronómico',
+      'ja': '羊の街、嶺南文化の中心と食の楽園',
+      'ko': '양의 도시, 링난 문화의 중심지이자 음식의 천국',
+      'ru': 'Город баранов, культурный центр Линнань и гастрономический рай',
     },
     'huangshan': {
-      'zh': '黄山，中国最著名的山岳景区之一，以奇松、怪石、云海、温泉著称',
-      'en': 'Huangshan, one of China\'s most famous mountain scenic areas, known for its unique pines, strange rocks, sea of clouds, and hot springs',
-      'fr': 'Huangshan, l\'une des régions montagneuses les plus célèbres de Chine, connue pour ses pins uniques, ses roches étranges, sa mer de nuages et ses sources chaudes',
-      'de': 'Huangshan, eines der berühmtesten Berggebiete Chinas, bekannt für seine einzigartigen Kiefern, seltsamen Felsen, sein Wolkenmeer und heiße Quellen',
-      'es': 'Huangshan, una de las áreas escénicas montañosas más famosas de China, conocida por sus pinos únicos, extrañas rocas, mar de nubes y aguas termales',
-      'ja': '黄山、中国で最も有名な山岳景勝地の一つで、ユニークな松、奇妙な岩、雲海、温泉で知られています',
-      'ko': '황산, 중국에서 가장 유명한 산악 경관 지역 중 하나로, 독특한 소나무, 기이한 바위, 구름 바다, 온천으로 유명합니다',
-      'ru': 'Хуаншань, один из самых известных горных живописных районов Китая, известный своими уникальными соснами, странными скалами, морем облаков и горячими источниками',
+      'zh': '黄山市，因黄山风景区而闻名的山水胜地',
+      'en': 'Huangshan City, famous for Huangshan scenic area with stunning mountains and waters',
+      'fr': 'Ville de Huangshan, célèbre pour la zone pittoresque de Huangshan avec ses montagnes et ses eaux magnifiques',
+      'de': 'Stadt Huangshan, bekannt für das landschaftlich reizvolle Gebiet Huangshan mit atemberaubenden Bergen und Gewässern',
+      'es': 'Ciudad de Huangshan, famosa por el área escénica de Huangshan con impresionantes montañas y aguas',
+      'ja': '黄山市、素晴らしい山と水の黄山風景区で有名',
+      'ko': '황산시, 멋진 산과 물이 있는 황산 경치 지역으로 유명한 곳',
+      'ru': 'Город Хуаншань, известный живописным районом Хуаншань с потрясающими горами и водами',
     },
     'sanya': {
-      'zh': '三亚，中国著名的热带海滨旅游城市，拥有美丽的海滩和丰富的热带资源',
-      'en': 'Sanya, a famous tropical coastal tourist city in China, with beautiful beaches and abundant tropical resources',
-      'fr': 'Sanya, une célèbre ville touristique côtière tropicale en Chine, avec de belles plages et d\'abondantes ressources tropicales',
-      'de': 'Sanya, eine berühmte tropische Küstenstadt für Touristen in China, mit schönen Stränden und reichhaltigen tropischen Ressourcen',
-      'es': 'Sanya, una famosa ciudad turística costera tropical en China, con hermosas playas y abundantes recursos tropicales',
-      'ja': '三亜、中国の有名な熱帯海岸観光都市で、美しいビーチと豊富な熱帯資源があります',
-      'ko': '산야, 아름다운 해변과 풍부한 열대 자원을.가진 중국의 유명한 열대 해안 관광 도시',
-      'ru': 'Санья, известный тропический прибрежный туристический город в Китае, с красивыми пляжами и обильными тропическими ресурсами',
+      'zh': '三亚，中国最南端的热带滨海旅游城市',
+      'en': 'Sanya, China\'s southernmost tropical coastal tourism city',
+      'fr': 'Sanya, ville touristique côtière tropicale la plus méridionale de Chine',
+      'de': 'Sanya, Chinas südlichste tropische Küstentourismusstadt',
+      'es': 'Sanya, la ciudad turística costera tropical más meridional de China',
+      'ja': '三亜、中国最南端の熱帯沿岸観光都市',
+      'ko': '싼야, 중국 최남단의 열대 해안 관광 도시',
+      'ru': 'Санья, самый южный тропический прибрежный туристический город Китая',
+    },
+    'kunming': {
+      'zh': '昆明，"春城"，四季如春的云南省会',
+      'en': 'Kunming, "City of Eternal Spring", the capital of Yunnan Province with spring-like weather year-round',
+      'fr': 'Kunming, "Ville du Printemps Éternel", la capitale de la province du Yunnan avec un climat printanier toute l\'année',
+      'de': 'Kunming, "Stadt des ewigen Frühlings", die Hauptstadt der Provinz Yunnan mit frühlingshaftem Wetter das ganze Jahr über',
+      'es': 'Kunming, "Ciudad de la Eterna Primavera", la capital de la provincia de Yunnan con clima primaveral durante todo el año',
+      'ja': '昆明、「永遠の春の都市」、一年中春のような天気の雲南省の州都',
+      'ko': '쿤밍, "영원한 봄의 도시", 사계절 내내 봄같은 날씨의 윈난성 수도',
+      'ru': 'Куньмин, "Город вечной весны", столица провинции Юньнань с весенней погодой круглый год',
     }
   };
   

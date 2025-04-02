@@ -13,7 +13,7 @@ const nextConfig = {
   poweredByHeader: false,
   // i18n配置
   i18n: {
-    locales: ['zh', 'en'],
+    locales: ['zh', 'en', 'fr', 'de', 'es', 'ja', 'ko', 'ru'],
     defaultLocale: 'zh',
   },
   // 生产环境配置 - 移除localhost默认值
