@@ -367,7 +367,7 @@ export default function DestinationsPage() {
                   onClick={() => handleCitySelect(city)}
                   className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
                 >
-                  <div className="h-48 bg-gray-200 relative">
+                  <div className="h-64 bg-gray-200 relative">
                     <div className="absolute inset-0 flex items-center justify-center text-gray-400">
                       {getCityImageUrl(city) ? (
                         <img 
