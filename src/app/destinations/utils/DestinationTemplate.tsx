@@ -25,11 +25,20 @@ export function createMarkup(html: string) {
     '<strong class="font-semibold text-gray-800 dark:text-gray-200">$1</strong>'
   );
   
-  // 添加图片/视频容器空间
-  styledHtml = styledHtml.replace(
-    /<h3 class=".*?">(.*?)<\/h3>/g,
-    '<h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mt-8 mb-4">$1</h3><div class="media-container mb-6 mt-4 bg-gray-100 dark:bg-gray-800 rounded-lg p-2 border border-dashed border-gray-300 dark:border-gray-600"><p class="text-center text-gray-500 dark:text-gray-400 py-12">图片/视频空间</p></div>'
-  );
+  // 添加图片/视频容器空间 - 但跳过美食和文化历史部分的h3
+  if (!html.includes("美食指南") && !html.includes("文化历史洞察") && 
+      !html.includes("Food Guide") && !html.includes("Cultural Insights") &&
+      !html.includes("Guide Culinaire") && !html.includes("Aperçu Culturel") &&
+      !html.includes("Gastronomie") && !html.includes("Kultureller Einblick") &&
+      !html.includes("Guía Gastronómica") && !html.includes("Patrimonio Cultural") &&
+      !html.includes("料理ガイド") && !html.includes("文化的洞察") &&
+      !html.includes("음식 가이드") && !html.includes("문화적 통찰") &&
+      !html.includes("Гастрономический гид") && !html.includes("Культурное наследие")) {
+    styledHtml = styledHtml.replace(
+      /<h3 class=".*?">(.*?)<\/h3>/g,
+      '<h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mt-8 mb-4">$1</h3><div class="media-container mb-6 mt-4 bg-gray-100 dark:bg-gray-800 rounded-lg p-2 border border-dashed border-gray-300 dark:border-gray-600"><p class="text-center text-gray-500 dark:text-gray-400 py-12">图片/视频空间</p></div>'
+    );
+  }
   
   // 为段落添加样式
   styledHtml = styledHtml.replace(

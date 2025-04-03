@@ -122,440 +122,228 @@ const beijingContent: Record<Language, DestinationContent> = {
     ]
   },
   en: {
-    title: 'Beijing: Ancient Capital\'s Symphony of Past and Present',
-    subtitle: 'Explore the Royal Charm and Modern Appeal of China\'s Capital',
+    title: "Beijing Capital",
+    subtitle: "Ancient and modern intertwined in the oriental imperial capital",
     sections: [
       {
-        title: 'First Impressions',
+        title: "First Impressions",
         content: `
-          <p>
-            The magnificent Forbidden City with gleaming golden roof tiles, the Great Wall winding through mountains, the sound of tricycle bells in hutongs, the glass curtain walls of the CBD reflecting the sunset... This is Beijing, a city that blends ancient and modern, tradition and innovation. With 3,000 years of urban history and 800 years as a capital, Beijing carries the essence of Chinese civilization while showcasing the vibrant energy of modern China.
-          </p>
-          
-          <h3>Most Representative Features:</h3>
-          <ul>
-            <li>The world's largest royal palace complex - The Forbidden City</li>
-            <li>One of humanity's greatest engineering projects - The Great Wall</li>
-            <li>The distinctive courtyard houses and hutong culture</li>
-            <li>The prosperity and vitality of a modern international metropolis</li>
-          </ul>
+        <p>Beijing, a city with over 3000 years of history and 800 years as a capital, has witnessed the historical changes of China over thousands of years. As China's capital, it features both magnificent ancient architecture like the Forbidden City, Temple of Heaven, and Summer Palace, as well as modern architectural wonders like the Bird's Nest and Water Cube, perfectly blending ancient and modern elements.</p>
+        <p>Stroll through Beijing's hutongs and courtyards to experience the traditional lifestyle of old Beijing; wander through bustling commercial areas like Wangfujing and Sanlitun to experience the modern vitality of this metropolis. Beijing is a city that captivates visitors, waiting for your exploration.</p>
         `
       },
       {
-        title: 'Basic Information Overview',
+        title: "Basic Information Overview",
         content: `
-          <h3>Best Seasons to Visit</h3>
-          <ul>
-            <li>Spring (March-May): Pleasant temperatures, flowers in bloom</li>
-            <li>Autumn (September-October): Clear skies, comfortable weather, red leaves</li>
-          </ul>
-          
-          <h3>Climate Characteristics</h3>
-          <ul>
-            <li>Spring: Warm and comfortable, occasional sandstorms</li>
-            <li>Summer: Hot and rainy</li>
-            <li>Autumn: Cool and dry</li>
-            <li>Winter: Cold and dry</li>
-          </ul>
-          
-          <h3>Transportation</h3>
-          <ul>
-            <li>International Flights: Beijing Daxing International Airport and Capital International Airport</li>
-            <li>City Transportation: Extensive subway network (23 lines), buses, taxis</li>
-            <li>Between Attractions: Subway is most convenient, major attractions have subway stations nearby</li>
-            <li>Recommendation: Purchase a transportation card or use mobile payment</li>
-          </ul>
-          
-          <h3>Recommended Duration</h3>
-          <p>At least 3-5 days, 7 days for an in-depth experience</p>
+        <p><strong>Best time to visit:</strong> Spring (April-May) and autumn (September-October) have pleasant climate, ideal for tourism.</p>
+        <p><strong>Climate characteristics:</strong> Four distinct seasons, with short spring and autumn, longer summer and winter. Summers are hot and rainy, winters cold and dry.</p>
+        <p><strong>Transportation methods:</strong> The subway is the most convenient way to visit Beijing, covering most attractions. Taxis are reasonably priced but may encounter congestion, while shared bicycles are suitable for short trips.</p>
+        <p><strong>Recommended visit duration:</strong> A complete tour of Beijing requires 5-7 days, with at least 3 days needed for major attractions.</p>
+        <p><strong>Cost level:</strong> Beijing's cost of living is relatively high compared to other Chinese cities, but still advantageous compared to international metropolises.</p>
         `
       },
       {
-        title: 'Must-Visit Attractions',
+        title: "Must-Visit Attractions",
         content: `
-          <h3>Royal Palaces and Gardens</h3>
-          
-          <h4>1. The Palace Museum (Forbidden City)</h4>
-          <p>
-            The world's largest palace complex, home to 24 emperors of the Ming and Qing dynasties. Covering 720,000 square meters, the buildings are magnificent and overwhelming. The Hall of Supreme Harmony is China's largest wooden structure, symbolizing the pinnacle of imperial power.
-          </p>
-          <p>
-            <strong>Travel Tips:</strong> Recommended to enter from the Meridian Gate and exit from the Divine Prowess Gate, following the north-south central axis. Book tickets online in advance and avoid weekends and holidays. Closed on Mondays (except public holidays). Special exhibitions require separate reservations.
-          </p>
-          
-          <h4>2. Summer Palace</h4>
-          <p>
-            The world's largest and most well-preserved royal garden, Empress Dowager Cixi's summer retreat. The shimmering Kunming Lake occupies about three-quarters of the Summer Palace's area. The Long Corridor is the world's longest painted corridor, with each section featuring a unique painting.
-          </p>
-          <p>
-            <strong>Travel Tips:</strong> The recommended route is "Back Hill and Front Lake," starting with Longevity Hill and then exploring Kunming Lake. Boat rides offer a special perspective. Summer features lotus flowers while winter offers ice activities on the frozen lake.
-          </p>
-          
-          <h4>3. Temple of Heaven Park</h4>
-          <p>
-            A sacred venue where emperors of the Ming and Qing dynasties performed ceremonies to pray for good harvests. The Circular Mound Altar and the Hall of Prayer for Good Harvests feature precise layouts that embody the ancient Chinese cosmological view of "round heaven and square earth." The Hall of Prayer for Good Harvests is the world's largest ancient circular sacrificial building.
-          </p>
-          <p>
-            <strong>Travel Tips:</strong> Visit early morning to see locals practicing tai chi and other morning exercises for an authentic Beijing experience. A ritual performance is held at the Hall of Prayer for Good Harvests at 2:30 PM daily. The park is large, so purchasing a through ticket for all attractions is recommended.
-          </p>
-          
-          <h3>Historical and Cultural Sites</h3>
-          
-          <h4>1. Badaling Great Wall</h4>
-          <p>
-            The most well-preserved and representative section of the Great Wall, and also the first section opened to tourists. Located about 10 kilometers north of Juyongguan Pass, it was built around 1505 and was an important military stronghold during the Ming Dynasty.
-          </p>
-          <p>
-            <strong>Travel Tips:</strong> Take the S2 train or a tour bus to get there. The north section has a gentler climb, while the south section is steeper. Avoid holidays and arrive early in the morning to beat the crowds.
-          </p>
-          
-          <h4>2. Mutianyu Great Wall</h4>
-          <p>
-            Located in Huairou District, this is one of the finest sections of the Ming Great Wall. This section features diverse architectural styles with both watchtowers and enemy towers, as well as the spectacular "Flying Eagle Facing Upward" landscape, making it a paradise for photography enthusiasts.
-          </p>
-          <p>
-            <strong>Travel Tips:</strong> Cable cars are available for ascent and descent, a good option for those with limited physical stamina. Spring and fall offer the most picturesque views.
-          </p>
-          
-          <h4>3. 798 Art District</h4>
-          <p>
-            Originally an electronics factory complex built in the 1950s, it has now transformed into a cultural and creative park integrating art exhibitions, galleries, design studios, creative shops, and cafes. The district maintains its original industrial-style architecture.
-          </p>
-          <p>
-            <strong>Travel Tips:</strong> Galleries are open Tuesday through Sunday, with many closed on Mondays. Allow half a day to a full day for a leisurely exploration. Art festivals are held in May and October each year.
-          </p>
-          
-          <h3>Characteristic Districts and Hutongs</h3>
-          
-          <h4>1. Nanluoguxiang</h4>
-          <p>
-            One of Beijing's oldest neighborhoods, formed during the Yuan Dynasty with over 740 years of history. Now a gathering place for young artists, with various specialty shops, cafes, bars, and restaurants.
-          </p>
-          <p>
-            <strong>Travel Tips:</strong> Best to visit on weekdays as weekends get very crowded. Explore deeper into the hutongs to experience authentic old Beijing life. Nearby Yandai Xiejie (Tobacco Pouch Slant Street) is also worth a visit.
-          </p>
-          
-          <h4>2. Shichahai Area</h4>
-          <p>
-            Encompasses three bodies of water: Front Lake, Back Lake, and West Lake, surrounded by historical sites like Prince Gong's Mansion, Desheng Gate Arrow Tower, and White Pagoda Temple. One of the best-preserved areas of old Beijing life and traditional culture.
-          </p>
-          <p>
-            <strong>Travel Tips:</strong> Consider taking a rickshaw tour or renting bicycles to circle the lake. Boating in summer and ice skating in winter each offer unique experiences. The bar area around Back Lake has a special atmosphere at night.
-          </p>
+        <h3>The Forbidden City (Palace Museum)</h3>
+        <p>As the world's largest and best-preserved wooden ancient building complex, the Forbidden City was the imperial palace of the Ming and Qing dynasties, housing nearly 9,000 rooms. It contains countless precious cultural relics and is the best place to understand China's ancient imperial history and culture.</p>
+        <p><strong>Travel tips:</strong> Allow 4-6 hours for a visit, book tickets online in advance, and avoid weekends and holidays. The classic route is to enter from Meridian Gate and exit from Shenwu Gate. Consider renting an audio guide to learn more historical details.</p>
+
+        <h3>The Great Wall at Badaling</h3>
+        <p>As the most representative section of the Great Wall, the Badaling Great Wall's construction history dates back to the Ming Dynasty. With steep mountains and beautiful scenery, it's the perfect place to experience the spirit of "He who has never been to the Great Wall is not a true man."</p>
+        <p><strong>Travel tips:</strong> Take the S2 line or tourist bus, avoiding holiday peak periods. Consider taking the cable car up and walking down, saving energy while fully appreciating the scenery. Watch out for icy steps in winter.</p>
+
+        <h3>Mutianyu Great Wall</h3>
+        <p>The Mutianyu Great Wall is one of the best-preserved sections, known for its unique, special, and steep features. The wall winds through steep mountains, with wide walls and solid bricks, making it a paradise for photography enthusiasts.</p>
+        <p><strong>Travel tips:</strong> Take the cable car up and toboggan down for an exciting and novel experience. Bring sufficient water and sun protection, and note that it can be windy at the top, so dress warmly. Buy tickets online in advance during peak season to avoid queues.</p>
+
+        <h3>Temple of Heaven Park</h3>
+        <p>The Temple of Heaven was where Ming and Qing emperors worshipped heaven and prayed for good harvests. Its architectural layout strictly follows the ancient cosmic view of "round heaven and square earth." The Hall of Prayer for Good Harvests is the core of the complex, renowned for its exquisite architectural craftsmanship.</p>
+        <p><strong>Travel tips:</strong> Visit in the early morning to see locals exercising and experience authentic Beijing life. The park is large, so plan your route and wear comfortable shoes. The Echo Wall and Three Sound Stones have interesting acoustic effects worth experiencing.</p>
+
+        <h3>Summer Palace</h3>
+        <p>As the most complete imperial garden, the Summer Palace is based on Kunming Lake and Longevity Hill, combining the delicacy of southern gardens with the grandeur of northern gardens. The Long Corridor, Tower of Buddhist Incense, and Marble Boat are distinctive attractions with enchanting scenery in all four seasons.</p>
+        <p><strong>Travel tips:</strong> The park covers a large area, so allow half a day for your visit. Consider taking a boat to enjoy the lake views, especially spectacular when lotus flowers bloom in summer. The classic route is to enter from the North Palace Gate and exit from the East Palace Gate, covering the main attractions.</p>
         `
       },
       {
-        title: 'Unique Experiences',
+        title: "Unique Experiences",
         content: `
-          <h3>Cultural Experiences</h3>
-          
-          <h4>1. Peking Opera Experience</h4>
-          <p>
-            Watch authentic Peking Opera performances at venues like Mei Lanfang Grand Theatre, Chang'an Grand Theatre, or Huguang Guild Hall to appreciate this "national essence" art form. Some theaters offer makeup experiences where visitors can learn about the process of creating Peking Opera facial masks.
-          </p>
-          
-          <h4>2. Siheyuan (Courtyard House) Stay</h4>
-          <p>
-            Choose to stay in a traditional courtyard house hotel in the old city area to experience the traditional Beijing lifestyle. Many courtyard hotels offer cultural activities such as tea ceremonies and paper-cutting workshops.
-          </p>
-          
-          <h4>3. Prince Gong's Mansion Garden Stroll</h4>
-          <p>
-            Originally the residence of Heshen, a powerful official of the Qing Dynasty, later owned by Prince Gong Yixin. It's the best-preserved princely mansion garden in Beijing, reflecting the lifestyle of Qing Dynasty nobles and the art of garden design.
-          </p>
-          
-          <h3>Seasonal Special Experiences</h3>
-          
-          <h4>1. Spring Flower Viewing</h4>
-          <p>
-            Enjoy cherry blossoms at Yuyuantan Park or Summer Palace from late March to early April; admire peonies at Beijing Botanical Garden in mid-April; and experience the "sea of flowers and scent spreading for miles" at Fragrant Hills Park in May.
-          </p>
-          
-          <h4>2. Summer Cooling Retreats</h4>
-          <p>
-            Take a boat ride on Kunming Lake at the Summer Palace to cool off, or hike up Fragrant Hills or Baiwang Mountain for panoramic views and mountain breezes. In summer evenings, boating at Shichahai offers a pleasant experience with gentle breezes.
-          </p>
-          
-          <h4>3. Autumn Red Leaves</h4>
-          <p>
-            From mid to late October through early November, Fragrant Hills, Hongluo Temple, and Mang Mountain National Forest Park are excellent places to view the spectacular red leaves. The colorful forest views are breathtaking.
-          </p>
-          
-          <h4>4. Winter Ice and Snow Fun</h4>
-          <p>
-            Experience traditional ice carts at Shichahai ice rink, or visit Longqing Gorge to see ice lanterns and feel the unique charm of winter in northern China. Temple fairs held from January to February are also special cultural activities in winter Beijing.
-          </p>
-          
-          <h3>Modern Urban Experiences</h3>
-          
-          <h4>1. National Centre for the Performing Arts Tour</h4>
-          <p>
-            This modern building, known as the "Giant Egg," is a world-class performing arts center. Visitors can tour the interior architecture or attend world-class performances.
-          </p>
-          
-          <h4>2. Bird's Nest and Water Cube Night View</h4>
-          <p>
-            The main venues of the 2008 Olympics, they are brilliantly lit at night, offering excellent photo opportunities. Visitors can tour the interior to learn about Olympic history.
-          </p>
-          
-          <h4>3. Sanlitun and Chaoyang Joy City</h4>
-          <p>
-            Beijing's most fashionable commercial areas, home to international brand stores, specialty restaurants, and entertainment venues. These areas are perfect for experiencing the pulse of modern Beijing.
-          </p>
+        <h3>Hutong Culture Exploration</h3>
+        <p>Beijing's hutongs carry the lifestyle and cultural memories of old Beijing. Nanluoguxiang, Shichahai, and Qianmen Dashilan areas have preserved relatively intact hutong features, making them excellent places to experience traditional Beijing life.</p>
+        <p><strong>Recommended activities:</strong> Ride a tricycle through the hutongs, visit courtyard houses, taste old Beijing snacks, interact with local residents, and experience authentic Beijing culture.</p>
+
+        <h3>Beijing Opera Experience</h3>
+        <p>Traditional operas like Peking Opera and Ping Opera are important components of Beijing culture. Venues like Mei Lanfang Grand Theater and Chang'an Grand Theater regularly host traditional opera performances, offering windows into traditional Chinese art.</p>
+        <p><strong>Recommended activities:</strong> Watch an authentic Peking Opera performance, learn about the meaning of facial masks, try on opera makeup, and interact with artists to learn simple singing techniques and hand gestures.</p>
+
+        <h3>798 Art District</h3>
+        <p>Once an industrial factory area transformed into a contemporary art center, 798 Art District brings together galleries, art studios, design companies, restaurants, and fashion stores, showcasing Beijing's creative vitality and artistic atmosphere.</p>
+        <p><strong>Recommended activities:</strong> Visit various avant-garde art exhibitions, interact with artists, relax in industrial-style cafes, and purchase unique artistic derivatives as souvenirs.</p>
+
+        <h3>Shichahai Ice Activities</h3>
+        <p>In winter, frozen Shichahai turns into a natural ice rink where locals enjoy ice skating, ice games, and ice cars, creating a unique cultural landscape specific to Beijing winters.</p>
+        <p><strong>Recommended activities:</strong> Rent ice skates or ice cars to experience traditional ice activities, taste winter snacks like candied haws, and enjoy the snow-covered Yinding Bridge with views of frozen Shichahai.</p>
         `
       },
       {
-        title: 'Food Guide',
+        title: "Food Guide",
         content: `
-          <h3>Beijing Specialty Cuisine</h3>
-          
-          <h4>1. Peking Duck</h4>
-          <p>
-            Beijing's most famous traditional dish features crispy skin and tender meat, served with sweet bean sauce, scallions, and cucumber slices, all wrapped in thin pancakes. Famous restaurants worth trying include Quanjude, Da Dong, and Bianyifang.
-          </p>
-          <p>
-            <strong>Recommended Restaurants:</strong> Quanjude (Qianmen Branch), Da Dong Roast Duck (Guomao Branch), Siji Minfu Roast Duck (Qianmen Branch)
-          </p>
-          
-          <h4>2. Hot Pot (Shabu-shabu)</h4>
-          <p>
-            A traditional Beijing hot pot originating from the Yuan Dynasty, using Mongolian fat lamb sliced thinly and quickly cooked in boiling clear broth. It's usually eaten with sesame paste and leek flower sauce, resulting in a tender and smooth texture.
-          </p>
-          <p>
-            <strong>Recommended Restaurants:</strong> Donglaishun (Wangfujing Branch), Hongyuanxing (Xidan Branch), Nanlaixun (Chongwenmen Branch)
-          </p>
-          
-          <h4>3. Zhajiang Noodles</h4>
-          <p>
-            A traditional Beijing noodle dish featuring noodles topped with a sauce made from minced meat and fermented soybean paste, served with cucumber strips, bean sprouts, and other fresh vegetables. The dish offers rich flavors and a unique taste.
-          </p>
-          <p>
-            <strong>Recommended Restaurants:</strong> Old Beijing Zhajiang Noodle King (Ghost Street Branch), Huguosi Snacks (Gulou Branch), Master Mianjiang
-          </p>
-          
-          <h4>4. Douzhi (Fermented Mung Bean Juice)</h4>
-          <p>
-            A distinctive Beijing beverage made from mung beans with a slightly sour taste, representing authentic "Old Beijing" flavor. First-time tasters may need to adjust to its unique flavor. Often enjoyed with Jiaoquan (fried ring-shaped pastry) and Guanchang (stuffed intestine).
-          </p>
-          <p>
-            <strong>Recommended Places:</strong> Huguosi Snacks (Gulou Branch), Tianxing Restaurant (Liulichang Branch), Jiumen Snacks (Xicheng Branch)
-          </p>
-          
-          <h3>Special Food Streets and Areas</h3>
-          
-          <h4>1. Ghost Street (Dongzhimen Inner Street)</h4>
-          <p>
-            A famous food street in Beijing known for spicy dishes and late-night dining. Lined with various Sichuan, Hunan, and Northeastern Chinese restaurants, as well as specialty snack shops. Bustling with activity at night, it's a great place to experience Beijing's nightlife.
-          </p>
-          
-          <h4>2. Wangfujing Snack Street</h4>
-          <p>
-            Located within the Wangfujing commercial district, this street brings together specialty snacks from across the country, such as candied haws, lamb skewers, tanghulu (sugar-coated fruit), and chao gan (fried liver). It's always crowded with tourists and has a lively atmosphere.
-          </p>
-          
-          <h4>3. Nanluoguxiang Food</h4>
-          <p>
-            In addition to boutique shops, Nanluoguxiang is home to many specialty restaurants and snack shops, offering everything from traditional pastries to creative cuisine. The experience of exploring and eating along the way has a special charm.
-          </p>
-          
-          <h3>Seasonal Special Foods</h3>
-          
-          <h4>1. Spring: Ai Wowo</h4>
-          <p>
-            A traditional pastry eaten around Qingming Festival, made with mugwort and glutinous rice flour. Green on the outside with sweet fillings, it's known for its detoxifying properties.
-          </p>
-          
-          <h4>2. Summer: Old Beijing Sour Plum Soup</h4>
-          <p>
-            A traditional beverage made from dark plums and hawthorn berries, offering a sweet and sour taste. Known for its heat-clearing and thirst-quenching properties, it's an essential summer drink in Beijing.
-          </p>
-          
-          <h4>3. Autumn: Jiaoquan</h4>
-          <p>
-            Traditional deep-fried dough rings that are crispy outside and soft inside. Often eaten with Douzhi as a traditional Beijing breakfast. Most delicious during the clear and crisp autumn season.
-          </p>
-          
-          <h4>4. Winter: Lvdagun (Donkey Rolling)</h4>
-          <p>
-            A traditional sweet made from glutinous rice flour wrapped around yellow bean flour and brown sugar, then rolled in yellow bean powder. Its appearance resembles a donkey rolling on the ground, hence the name. Warming and comforting in winter.
-          </p>
-          
-          <h3>Dining Etiquette Tips</h3>
-          <p>
-            In Beijing, especially in formal restaurants, round tables are common and dishes are typically served on large plates for sharing. Using serving chopsticks shows respect for others. The "bottoms up" drinking culture is prevalent, but you can drink according to your capacity. Snack shops and street food stalls are more casual, allowing you to fully enjoy the food experience.
-          </p>
+        <h3>Peking Duck</h3>
+        <p>As Beijing's most famous cuisine, Peking duck is known for its crispy skin, tender meat, and bright red color. Restaurants like Quanjude, Da Dong, and Liqun each have their specialties, offering authentic Peking duck experiences.</p>
+        <p><strong>Tasting suggestions:</strong> The traditional way is to wrap duck meat, scallions, and sweet bean sauce in thin pancakes. Also try duck soup and fried rice with duck meat to use every part of the duck.</p>
+
+        <h3>Old Beijing Snacks</h3>
+        <p>Snacks like douzhi (fermented mung bean juice), aiwowo (steamed rice cakes), tanghulu (candied haws), ludagun (glutinous rice rolls), and chaogan (fried liver) carry deep historical and cultural heritage, offering authentic Beijing flavors.</p>
+        <p><strong>Recommended venues:</strong> Huguosi Snack Shop, Nanluoguxiang Snack Street, and Tianqiao Yangji Pastry are great places to taste authentic old Beijing snacks. Each snack has an interesting historical story worth learning about.</p>
+
+        <h3>Hot Pot</h3>
+        <p>Beijing's hot pot originated in the Yuan Dynasty, featuring fresh lamb slices quickly cooked in boiling water and eaten with dipping sauce. Old restaurants like Donglaishun and Nanlaishun maintain traditional techniques and authentic flavors.</p>
+        <p><strong>Tasting suggestions:</strong> Traditional hot pots use copper pots and charcoal fire, with dipping sauce made from sesame paste, leek flowers, and coriander. Winter is the best time to enjoy hot pot, both warming and delicious.</p>
+
+        <h3>Imperial Cuisine</h3>
+        <p>Cuisine from the imperial court is known for its exquisite preparation and the principle of "light but not thin, rich but not greasy." Restaurants like Ziguang Ge and Fengzeyuan offer authentic imperial dining experiences.</p>
+        <p><strong>Signature dishes:</strong> Dishes like roasted whole pig, golden tripe, braised deer tail, and steamed fish lips showcase the exquisite knife skills and temperature control that exemplify imperial food culture.</p>
         `
       },
       {
-        title: 'Cultural and Historical Insights',
+        title: "Cultural and Historical Insights",
         content: `
-          <h3>The Imperial Capital - A Brief History of Beijing</h3>
-          
-          <p>
-            Beijing has a long history, with "Peking Man" living in the area as early as 500,000 years ago. As a city, Beijing has over 3,000 years of history, tracing back to the early Western Zhou Dynasty as the capital of the State of Yan. During the Liao Dynasty, it was called "Yanjing," and in the Jin Dynasty, it was renamed "Zhongdu." The Yuan Dynasty officially established its capital here, naming it "Dadu." In the early Ming Dynasty, Emperor Zhu Yuanzhang temporarily abandoned Beijing, but his son Zhu Di restored it as the capital, renamed it "Beijing," and began building the Forbidden City. After the Qing Dynasty took control, they continued to use Beijing as their capital until the dynasty's fall in 1912. On October 1, 1949, the People's Republic of China was established in Beijing, and it became the capital of new China.
-          </p>
-          
-          <h3>Architectural Art and Philosophy</h3>
-          
-          <p>
-            Beijing's urban layout reflects traditional Chinese philosophical thought and cosmology. The entire city is laid out symmetrically along a central axis, reflecting the Chinese pursuit of balance and harmony in aesthetics. The Forbidden City sits on this central axis, embodying the concept of "unity between heaven and humans." Its architectural layout is rigorous, with decorations that are grand yet dignified, representing the pinnacle of traditional Chinese architectural art.
-          </p>
-          <p>
-            The siheyuan (courtyard house) is the typical representation of Beijing residences. Four buildings surround a courtyard, ensuring close connections between family members while maintaining private spaces, reflecting the Chinese philosophy of "harmony with diversity." Hutong culture demonstrates mutual help and harmony between community neighbors.
-          </p>
-          
-          <h3>Beijing Culture</h3>
-          
-          <h4>1. Peking Opera</h4>
-          <p>
-            Formed in the 19th century, Peking Opera integrates various local operas and is characterized by four main role types: sheng (male), dan (female), jing (painted face), and chou (clown). Stories are presented through singing, recitation, acting, and acrobatics. The facial masks, costumes, and music are highly stylized and symbolic, forming an important part of traditional Chinese culture.
-          </p>
-          
-          <h4>2. Beijing Dialect</h4>
-          <p>
-            Beijing dialect is the foundation of Standard Mandarin Chinese, with distinctive erhua (r-suffix) sounds and tone changes. Traditional Beijing speakers emphasize implicit rather than explicit expression, often using euphemisms that reflect traditional linguistic wisdom.
-          </p>
-          
-          <h4>3. Folk Arts</h4>
-          <p>
-            Traditional crafts such as Beijing kites, "Clay Figure Zhang" figurines, and palace lantern making have deep roots in Beijing. During traditional festivals like Spring Festival and Lantern Festival, Beijing temple fairs feature diverse folk performances such as lion dances, land boats, and stilt walking.
-          </p>
-          
-          <h3>The Fusion of Modern and Traditional</h3>
-          
-          <p>
-            Today's Beijing preserves rich historical and cultural heritage while being full of modern metropolitan vitality. The downtown financial district contrasts with ancient hutongs, and high-tech enterprises coexist with traditional workshops. Beijingers both treasure traditional culture and enthusiastically embrace new things. This inclusive spirit also attracts visitors and residents from around the world.
-          </p>
-          <p>
-            With technological development, Beijing is becoming one of the global innovation centers. Zhongguancun Science Park concentrates numerous high-tech enterprises and research institutions, earning it the title "China's Silicon Valley." Modern buildings like the National Centre for the Performing Arts and CCTV Headquarters add fashionable elements to this ancient city.
-          </p>
-          
-          <h3>Cultural Experience Suggestions</h3>
-          
-          <p>
-            To deeply understand Beijing culture, visitors are encouraged to not only visit famous attractions but also enter ordinary communities to experience locals' daily lives. You can watch elderly people practicing tai chi in parks in the morning or join square dancing groups in the evening; listen to storytelling in teahouses or taste century-old traditional foods at time-honored restaurants; visit cutting-edge art exhibitions or learn traditional crafts. This multi-layered experience will give you a more three-dimensional and profound understanding of Beijing.
-          </p>
+        <h3>Historical Evolution of the Imperial Capital</h3>
+        <p>Beijing served as the capital for five dynasties—Liao, Jin, Yuan, Ming, and Qing—with its urban layout and cultural deposits deeply intertwined with Chinese history. The layout of the city's central axis reflects the ancient Chinese philosophical concept of "unity between heaven and man."</p>
+        <p><strong>Historical context:</strong> From Yuan's Dadu to Ming and Qing's Beijing, the city planning presents a concentric square structure, with the Forbidden City at the core of the central axis, reflecting the feudal idea of "imperial power supremacy."</p>
+
+        <h3>Beijing Cultural Flavor</h3>
+        <p>Beijing flavor culture is the city's unique regional culture, including Beijing dialect, opera, and folk activities. Watching crosstalk performances, visiting temple fairs, and flying kites are windows to experience Beijing flavor culture.</p>
+        <p><strong>Cultural characteristics:</strong> Beijing people emphasize "propriety," value face, have humorous language, and are helpful—these qualities collectively form the essence of Beijing flavor culture.</p>
+
+        <h3>Architectural Art</h3>
+        <p>Beijing's architectural art is represented by palace buildings, garden structures, and religious architecture, collectively showcasing the superb craftsmanship and aesthetic concepts of traditional Chinese architecture.</p>
+        <p><strong>Architectural features:</strong> Emphasis on symmetry, hierarchy, and color symbolism; structures à cadre en bois flexibles et robustes; coins relevés et avant-toits volants à la fois beaux et pratiques, reflétant la sagesse de l'architecture chinoise ancienne.</p>
+
+        <h3>Intangible Cultural Heritage</h3>
+        <p>Beijing has numerous intangible cultural heritage items, such as cloisonné, inside-painted snuff bottles, Beijing embroidery, and sugar figure blowing, as well as traditional performing arts like Peking Opera and Ping Opera.</p>
+        <p><strong>Preservation efforts:</strong> Visit the Beijing Folk Museum to learn about traditional culture, or go to Panjiayuan or Liulichang Cultural Street to find traditional crafts and support the continuation of intangible heritage.</p>
         `
       }
     ]
   },
   fr: {
-    title: 'Pékin: Symphonie de l\'ancien et du moderne',
-    subtitle: 'Explorez le charme royal et l\'attrait moderne de la capitale chinoise',
+    title: "Pékin, la Capitale",
+    subtitle: "Un mélange d'ancien et de moderne dans la capitale impériale orientale",
     sections: [
       {
-        title: 'Premières impressions',
+        title: "Premières Impressions",
         content: `
-          <p>
-            La magnifique Cité Interdite aux tuiles dorées étincelantes, la Grande Muraille serpentant à travers les montagnes, le son des cloches de tricycle dans les hutongs, les murs-rideaux en verre du CBD reflétant le coucher du soleil... C'est Pékin, une ville qui mélange l'ancien et le moderne, la tradition et l'innovation. Avec 3000 ans d'histoire urbaine et 800 ans comme capitale, Pékin porte l'essence de la civilisation chinoise tout en montrant l'énergie vibrante de la Chine moderne.
-          </p>
-          
-          <h3>Caractéristiques les plus représentatives:</h3>
-          <ul>
-            <li>Le plus grand complexe de palais royal au monde - La Cité Interdite</li>
-            <li>L'un des plus grands projets d'ingénierie de l'humanité - La Grande Muraille</li>
-            <li>Les maisons à cour distinctive et la culture des hutongs</li>
-            <li>La prospérité et la vitalité d'une métropole internationale moderne</li>
-          </ul>
+        <p>Pékin, une ville avec plus de 3000 ans d'histoire et 800 ans comme capitale, a été témoin des changements historiques de la Chine à travers les millénaires. En tant que capitale chinoise, elle présente à la fois des architectures anciennes majestueuses comme la Cité Interdite, le Temple du Ciel et le Palais d'Été, ainsi que des merveilles architecturales modernes comme le Nid d'Oiseau et le Cube d'Eau, mélangeant parfaitement éléments anciens et modernes.</p>
+        <p>Promenez-vous dans les hutongs et les cours carrées de Pékin pour découvrir le mode de vie traditionnel de l'ancien Pékin; flânez dans les zones commerciales animées comme Wangfujing et Sanlitun pour ressentir la vitalité moderne de cette métropole. Pékin est une ville qui captive les visiteurs, attendant votre exploration.</p>
         `
       },
       {
-        title: 'Aperçu des informations de base',
+        title: "Aperçu des Informations de Base",
         content: `
-          <h3>Meilleures saisons pour visiter</h3>
-          <ul>
-            <li>Printemps (mars-mai): Températures agréables, fleurs en fleur</li>
-            <li>Automne (septembre-octobre): Ciel clair, temps confortable, feuilles rouges</li>
-          </ul>
-          
-          <h3>Caractéristiques climatiques</h3>
-          <ul>
-            <li>Printemps: Chaud et confortable, tempêtes de sable occasionnelles</li>
-            <li>Été: Chaud et pluvieux</li>
-            <li>Automne: Frais et sec</li>
-            <li>Hiver: Froid et sec</li>
-          </ul>
-          
-          <h3>Transport</h3>
-          <ul>
-            <li>Vols internationaux: Aéroport international de Pékin Daxing et Aéroport international de la capitale</li>
-            <li>Transport urbain: Vaste réseau de métro (23 lignes), bus, taxis</li>
-            <li>Entre les attractions: Le métro est le plus pratique, les principales attractions ont des stations de métro à proximité</li>
-            <li>Recommandation: Achetez une carte de transport ou utilisez le paiement mobile</li>
-          </ul>
-          
-          <h3>Durée recommandée</h3>
-          <p>Au moins 3-5 jours, 7 jours pour une expérience approfondie</p>
+        <p><strong>Meilleure période pour visiter:</strong> Le printemps (avril-mai) et l'automne (septembre-octobre) offrent un climat agréable, idéal pour le tourisme.</p>
+        <p><strong>Caractéristiques climatiques:</strong> Quatre saisons distinctes, avec printemps et automne courts, été et hiver plus longs. Les étés sont chauds et pluvieux, les hivers froids et secs.</p>
+        <p><strong>Moyens de transport:</strong> Le métro est le moyen le plus pratique pour visiter Pékin, desservant la plupart des attractions. Les taxis sont à prix raisonnables mais peuvent rencontrer des embouteillages, tandis que les vélos partagés conviennent aux courts trajets.</p>
+        <p><strong>Durée de visite recommandée:</strong> Une visite complète de Pékin nécessite 5-7 jours, avec au moins 3 jours pour les attractions principales.</p>
+        <p><strong>Niveau de coût:</strong> Le coût de vie à Pékin est relativement élevé par rapport à d'autres villes chinoises, mais reste avantageux comparé aux métropoles internationales.</p>
         `
       },
       {
-        title: 'Attractions incontournables',
+        title: "Attractions Incontournables",
         content: `
-          <h3>Palais royaux et jardins</h3>
-          
-          <h4>1. Le Musée du Palais (Cité Interdite)</h4>
-          <p>
-            Le plus grand complexe palatial du monde, demeure de 24 empereurs des dynasties Ming et Qing. Couvrant 720 000 mètres carrés, les bâtiments sont magnifiques et impressionnants. La Salle de l'Harmonie Suprême est la plus grande structure en bois de Chine, symbolisant le sommet du pouvoir impérial.
-          </p>
-          <p>
-            <strong>Conseils de voyage:</strong> Il est recommandé d'entrer par la Porte du Méridien et de sortir par la Porte de la Prouesse Divine, en suivant l'axe central nord-sud. Réservez vos billets en ligne à l'avance et évitez les week-ends et les jours fériés. Fermé le lundi (sauf jours fériés). Les expositions spéciales nécessitent des réservations séparées.
-          </p>
-          
-          <h4>2. Palais d'Été</h4>
-          <p>
-            Le plus grand et le mieux préservé jardin royal du monde, retraite estivale de l'Impératrice douairière Cixi. Le lac Kunming scintillant occupe environ les trois quarts de la superficie du Palais d'Été. Le Long Corridor est le corridor peint le plus long du monde, chaque section présentant une peinture unique.
-          </p>
-          <p>
-            <strong>Conseils de voyage:</strong> La route recommandée est "Colline arrière et Lac avant", en commençant par la Colline de la Longévité puis en explorant le lac Kunming. Les promenades en bateau offrent une perspective spéciale. L'été présente des fleurs de lotus tandis que l'hiver offre des activités sur glace sur le lac gelé.
-          </p>
-          
-          <h4>3. Parc du Temple du Ciel</h4>
-          <p>
-            Un lieu sacré où les empereurs des dynasties Ming et Qing effectuaient des cérémonies pour prier pour de bonnes récoltes. L'Autel Circulaire et la Salle de Prière pour les Bonnes Récoltes présentent des dispositions précises qui incarnent la vision cosmologique chinoise ancienne du "ciel rond et de la terre carrée". La Salle de Prière pour les Bonnes Récoltes est le plus grand bâtiment sacrificiel circulaire ancien du monde.
-          </p>
-          <p>
-            <strong>Conseils de voyage:</strong> Visitez tôt le matin pour voir les habitants pratiquer le tai-chi et d'autres exercices matinaux pour une expérience authentique de Pékin. Une performance rituelle est organisée à la Salle de Prière pour les Bonnes Récoltes à 14h30 tous les jours. Le parc est grand, il est donc recommandé d'acheter un billet pour toutes les attractions.
-          </p>
-          
-          <h3>Sites historiques et culturels</h3>
-          
-          <h4>1. Grande Muraille de Badaling</h4>
-          <p>
-            La section la mieux préservée et la plus représentative de la Grande Muraille, et aussi la première section ouverte aux touristes. Située à environ 10 kilomètres au nord du col de Juyongguan, elle a été construite vers 1505 et était une importante place forte militaire pendant la dynastie Ming.
-          </p>
-          <p>
-            <strong>Conseils de voyage:</strong> Nehmen Sie den S2-Zug oder einen Touristenbus, um dorthin zu gelangen. Der nördliche Abschnitt hat einen sanfteren Anstieg, während der südliche Abschnitt steiler ist. Vermeiden Sie Feiertage und kommen Sie früh am Morgen, um Menschenmassen zu vermeiden.
-          </p>
-          
-          <h4>2. Grande Muraille de Mutianyu</h4>
-          <p>
-            Située dans le district de Huairou, c'est l'une des plus belles sections de la Grande Muraille Ming. Cette section présente divers styles architecturaux avec à la fois des tours de guet et des tours ennemies, ainsi que le spectaculaire paysage de "l'Aigle volant face vers le haut", ce qui en fait un paradis pour les amateurs de photographie.
-          </p>
-          <p>
-            <strong>Conseils de voyage:</strong> Seilbahnen stehen für Auf- und Abstieg zur Verfügung, eine gute Option für diejenigen mit begrenzter körperlicher Ausdauer. Frühling und Herbst bieten die malerischsten Aussichten.
-          </p>
+        <h3>La Cité Interdite (Musée du Palais)</h3>
+        <p>En tant que plus grand complexe de bâtiments anciens en bois du monde et le mieux préservé, la Cité Interdite était le palais impérial des dynasties Ming et Qing, abritant près de 9 000 pièces. Elle contient d'innombrables reliques culturelles précieuses et constitue le meilleur endroit pour comprendre l'histoire et la culture impériales anciennes de la Chine.</p>
+        <p><strong>Conseils de voyage:</strong> Prévoyez 4-6 heures pour une visite, réservez vos billets en ligne à l'avance et évitez les week-ends et jours fériés. L'itinéraire classique consiste à entrer par la porte Méridienne et sortir par la porte Shenwu. Pensez à louer un audioguide pour en apprendre davantage sur les détails historiques.</p>
+
+        <h3>La Grande Muraille à Badaling</h3>
+        <p>En tant que section la plus représentative de la Grande Muraille, l'histoire de la construction de la Grande Muraille de Badaling remonte à la dynastie Ming. Avec ses montagnes escarpées et ses beaux paysages, c'est l'endroit parfait pour ressentir l'esprit de "Celui qui n'est jamais allé sur la Grande Muraille n'est pas un vrai homme".</p>
+        <p><strong>Conseils de voyage:</strong> Prenez la ligne S2 ou un bus touristique, en évitant les périodes de pointe des jours fériés. Envisagez de prendre le téléphérique pour monter et de descendre à pied, économisant ainsi de l'énergie tout en appréciant pleinement le paysage. Attention aux marches glacées en hiver.</p>
+
+        <h3>La Grande Muraille à Mutianyu</h3>
+        <p>La Grande Muraille de Mutianyu est l'une des sections les mieux préservées, connue pour ses caractéristiques uniques, spéciales et escarpées. Le mur serpente à travers des montagnes abruptes, avec des murs larges et des briques solides, ce qui en fait un paradis pour les amateurs de photographie.</p>
+        <p><strong>Conseils de voyage:</strong> Montez en téléphérique et descendez en toboggan pour une expérience excitante et nouvelle. Apportez suffisamment d'eau et une protection solaire, et notez qu'il peut être venteux au sommet, alors habillez-vous chaudement. Achetez des billets en ligne à l'avance pendant la haute saison pour éviter les files d'attente.</p>
+
+        <h3>Le Parc du Temple du Ciel</h3>
+        <p>Le Temple du Ciel était l'endroit où les empereurs des dynasties Ming et Qing vénéraient le ciel et priaient pour de bonnes récoltes. Sa disposition architecturale suit strictement la vision cosmique ancienne du "ciel rond et terre carrée". La Salle de Prière pour les Bonnes Récoltes est le cœur du complexe, réputée pour son artisanat architectural exquis.</p>
+        <p><strong>Conseils de voyage:</strong> Visitez tôt le matin pour voir les habitants faire de l'exercice et découvrir la vie authentique de Pékin. Le parc est grand, alors planifiez votre itinéraire et portez des chaussures confortables. Le Mur d'Écho et les Trois Pierres Sonores offrent des effets acoustiques intéressants à découvrir.</p>
+
+        <h3>Le Palais d'Été</h3>
+        <p>En tant que jardin impérial le plus complet, le Palais d'Été s'articule autour du lac Kunming et de la colline de la Longévité, combinant la délicatesse des jardins du sud avec la grandeur des jardins du nord. Le Long Corridor, la Tour de l'Encens Bouddhiste et le Bateau de Marbre sont des attractions distinctives offrant des paysages enchanteurs en toutes saisons.</p>
+        <p><strong>Conseils de voyage:</strong> Le parc couvre une grande superficie, prévoyez donc une demi-journée pour votre visite. Envisagez de prendre un bateau pour profiter des vues sur le lac, particulièrement spectaculaires lorsque les fleurs de lotus s'épanouissent en été. L'itinéraire classique consiste à entrer par la Porte Nord du Palais et à sortir par la Porte Est du Palais, couvrant les principales attractions.</p>
+        `
+      },
+      {
+        title: "Expériences Uniques",
+        content: `
+        <h3>Exploration de la Culture des Hutongs</h3>
+        <p>Les hutongs de Pékin portent le mode de vie et les souvenirs culturels de l'ancien Pékin. Les quartiers de Nanluoguxiang, Shichahai et Qianmen Dashilan ont préservé des caractéristiques relativement intactes des hutongs, ce qui en fait d'excellents endroits pour découvrir la vie traditionnelle de Pékin.</p>
+        <p><strong>Activités recommandées:</strong> Faites un tour en tricycle à travers les hutongs, visitez des maisons à cour carrée, goûtez aux collations de l'ancien Pékin, interagissez avec les résidents locaux et découvrez l'authentique culture pékinoise.</p>
+
+        <h3>Expérience de l'Opéra de Pékin</h3>
+        <p>Les opéras traditionnels comme l'Opéra de Pékin et l'Opéra Ping sont des composantes importantes de la culture pékinoise. Des lieux comme le Grand Théâtre Mei Lanfang et le Grand Théâtre Chang'an accueillent régulièrement des représentations d'opéra traditionnel, offrant des fenêtres sur l'art traditionnel chinois.</p>
+        <p><strong>Activités recommandées:</strong> Assistez à une authentique représentation d'Opéra de Pékin, découvrez la signification des masques faciaux, essayez le maquillage d'opéra et interagissez avec des artistes pour apprendre des techniques de chant simples et des gestes manuels.</p>
+
+        <h3>District Artistique 798</h3>
+        <p>Autrefois zone d'usines industrielles transformée en centre d'art contemporain, le District Artistique 798 rassemble des galeries, des studios d'art, des entreprises de design, des restaurants et des magasins de mode, montrant la vitalité créative et l'atmosphère artistique de Pékin.</p>
+        <p><strong>Activités recommandées:</strong> Visitez diverses expositions d'art avant-gardiste, interagissez avec des artistes, détendez-vous dans des cafés de style industriel et achetez des produits dérivés artistiques uniques comme souvenirs.</p>
+
+        <h3>Activités sur Glace à Shichahai</h3>
+        <p>En hiver, le Shichahai gelé se transforme en patinoire naturelle où les habitants pratiquent le patinage sur glace, les jeux de glace et les voitures de glace, créant un paysage culturel unique spécifique aux hivers pékinois.</p>
+        <p><strong>Activités recommandées:</strong> Louez des patins ou des voitures de glace pour découvrir les activités traditionnelles sur glace, goûtez aux collations d'hiver comme les brochettes de fruits confits, et admirez le pont Yinding couvert de neige avec vue sur le Shichahai gelé.</p>
+        `
+      },
+      {
+        title: "Guide Culinaire",
+        content: `
+        <h3>Canard Laqué de Pékin</h3>
+        <p>En tant que cuisine la plus célèbre de Pékin, le canard laqué est connu pour sa peau croustillante, sa viande tendre et sa couleur rouge vif. Des restaurants comme Quanjude, Da Dong et Liqun ont chacun leurs spécialités, offrant d'authentiques expériences de dégustation du canard de Pékin.</p>
+        <p><strong>Suggestions de dégustation:</strong> La façon traditionnelle consiste à envelopper la viande de canard, les oignons verts et la sauce aux haricots sucrée dans de fines crêpes. Essayez également la soupe de canard et le riz frit avec de la viande de canard pour utiliser chaque partie du canard.</p>
+
+        <h3>Collations de l'Ancien Pékin</h3>
+        <p>Des collations comme le douzhi (jus fermenté de haricot mungo), aiwowo (gâteaux de riz cuits à la vapeur), tanghulu (pommes d'amour), ludagun (rouleaux de riz gluant) et chaogan (foie frit) portent un héritage historique et culturel profond, offrant d'authentiques saveurs pékinoises.</p>
+        <p><strong>Lieux recommandés:</strong> La boutique de collations Huguosi, la rue des collations de Nanluoguxiang et la pâtisserie Tianqiao Yangji sont d'excellents endroits pour goûter aux authentiques collations de l'ancien Pékin. Chaque collation a une histoire intéressante qui mérite d'être connue.</p>
+
+        <h3>Fondue Chinoise</h3>
+        <p>La fondue chinoise de Pékin est originaire de la dynastie Yuan, proposant des tranches fines d'agneau rapidement cuites dans de l'eau bouillante et mangées avec une sauce. Les anciens restaurants comme Donglaishun et Nanlaishun maintiennent des techniques traditionnelles et des saveurs authentiques.</p>
+        <p><strong>Suggestions de dégustation:</strong> Les fondues traditionnelles utilisent des pots en cuivre et du feu de charbon de bois, avec une sauce composée de pâte de sésame, de fleurs de poireau et de coriandre. L'hiver est la meilleure période pour déguster la fondue, à la fois réchauffante et délicieuse.</p>
+
+        <h3>Cuisine Impériale</h3>
+        <p>La cuisine de la cour impériale est connue pour sa préparation exquise et son principe de "légère mais pas mince, riche mais pas grasse". Des restaurants comme Ziguang Ge et Fengzeyuan offrent d'authentiques expériences de cuisine impériale.</p>
+        <p><strong>Plats signatures:</strong> Des plats comme le cochon entier rôti, la tripe dorée, la queue de cerf braisée et les lèvres de poisson cuites à la vapeur mettent en valeur les compétences exquises au couteau et le contrôle de la température qui illustrent la culture alimentaire impériale.</p>
+        `
+      },
+      {
+        title: "Aperçu Culturel et Historique",
+        content: `
+        <h3>Évolution Historique de la Capitale Impériale</h3>
+        <p>Pékin a servi de capitale pour cinq dynasties—Liao, Jin, Yuan, Ming et Qing—avec son aménagement urbain et ses dépôts culturels profondément liés à l'histoire chinoise. La disposition de l'axe central de la ville reflète le concept philosophique chinois ancien de "l'unité entre le ciel et l'homme".</p>
+        <p><strong>Contexte historique:</strong> Du Dadu des Yuan au Pékin des Ming et des Qing, l'urbanisme présente une structure carrée concentrique, avec la Cité Interdite au cœur de l'axe central, reflétant l'idée féodale de "suprématie du pouvoir impérial".</p>
+
+        <h3>Saveur Culturelle de Pékin</h3>
+        <p>La culture pékinoise est la culture régionale unique de la ville, incluant le dialecte pékinois, l'opéra et les activités populaires. Regarder des spectacles de crosstalk, visiter des foires de temples et faire voler des cerfs-volants sont des fenêtres pour découvrir la culture pékinoise.</p>
+        <p><strong>Caractéristiques culturelles:</strong> Les Pékinois mettent l'accent sur la "bienséance", valorisent la face, ont un langage humoristique et sont serviables—ces qualités forment collectivement l'essence de la culture pékinoise.</p>
+
+        <h3>Art Architectural</h3>
+        <p>L'art architectural de Pékin est représenté par les bâtiments palatins, les structures de jardins et l'architecture religieuse, montrant collectivement l'artisanat superbe et les concepts esthétiques de l'architecture chinoise traditionnelle.</p>
+        <p><strong>Caractéristiques architecturales:</strong> Accent sur la symétrie, la hiérarchie et le symbolisme des couleurs; structures à cadre en bois flexibles et robustes; coins relevés et avant-toits volants à la fois beaux et pratiques, reflétant la sagesse de l'architecture chinoise ancienne.</p>
+
+        <h3>Patrimoine Culturel Immatériel</h3>
+        <p>Pékin possède de nombreux éléments du patrimoine culturel immatériel, tels que le cloisonné, les tabatières peintes à l'intérieur, la broderie pékinoise et le soufflage de figurines en sucre, ainsi que des arts du spectacle traditionnels comme l'Opéra de Pékin et l'Opéra Ping.</p>
+        <p><strong>Efforts de préservation:</strong> Visitez le Musée folklorique de Pékin pour en apprendre davantage sur la culture traditionnelle, ou rendez-vous à Panjiayuan ou dans la rue culturelle de Liulichang pour trouver des objets artisanaux traditionnels et soutenir la continuité du patrimoine immatériel.</p>
         `
       }
     ]
   },
   de: {
-    title: 'Peking: Symphonie aus Vergangenheit und Gegenwart',
-    subtitle: 'Entdecken Sie den königlichen Charme und die moderne Anziehungskraft der chinesischen Hauptstadt',
+    title: 'Peking Hauptstadt',
+    subtitle: 'Alte und moderne Elemente verwoben in der östlichen Kaiserhauptstadt',
     sections: [
       {
         title: 'Erste Eindrücke',
         content: `
-          <p>
-            Die prächtige Verbotene Stadt mit glänzenden goldenen Dachziegeln, die Große Mauer, die sich durch die Berge windet, der Klang von Dreiradglocken in Hutongs, die Glasvorhangwände des CBD, die den Sonnenuntergang widerspiegeln... Das ist Peking, eine Stadt, die Altes und Modernes, Tradition und Innovation verbindet. Mit 3.000 Jahren Stadtgeschichte und 800 Jahren als Hauptstadt trägt Peking die Essenz der chinesischen Zivilisation in sich und zeigt gleichzeitig die lebendige Energie des modernen Chinas.
-          </p>
-          
-          <h3>Repräsentativste Merkmale:</h3>
-          <ul>
-            <li>Der größte königliche Palastkomplex der Welt - Die Verbotene Stadt</li>
-            <li>Eines der größten Ingenieurskunstwerke der Menschheit - Die Große Mauer</li>
-            <li>Die charakteristischen Hofhäuser und die Hutong-Kultur</li>
-            <li>Der Wohlstand und die Vitalität einer modernen internationalen Metropole</li>
-          </ul>
+          <p>Peking, eine Stadt mit über 3000 Jahren Geschichte und 800 Jahren als Hauptstadt, hat die historischen Veränderungen Chinas über Jahrtausende miterlebt. Als Chinas Hauptstadt beherbergt sie sowohl prächtige alte Bauwerke wie die Verbotene Stadt, den Himmelstempel und den Sommerpalast als auch moderne architektonische Wunderwerke wie das Vogelnest und den Wasserwürfel, die alte und moderne Elemente perfekt miteinander verbinden.</p>
+          <p>Schlendern Sie durch Pekings Hutongs und Innenhöfe, um den traditionellen Lebensstil des alten Pekings zu erleben; erkunden Sie geschäftige Handelsviertel wie Wangfujing und Sanlitun, um die moderne Vitalität dieser Metropole zu spüren. Peking ist eine Stadt, die Besucher fesselt und auf Ihre Erkundung wartet.</p>
         `
       },
       {
@@ -737,101 +525,142 @@ const beijingContent: Record<Language, DestinationContent> = {
     ]
   },
   ja: {
-    title: '北京：古代の都の過去と現在の交響曲',
-    subtitle: '中国の首都の王室の魅力と現代の魅力を探る',
+    title: "北京首都",
+    subtitle: "古代と現代が交差する東方の帝都",
     sections: [
       {
-        title: '第一印象',
+        title: "最初の印象",
         content: `
-          <p>
-            金色の屋根瓦が輝く壮大な紫禁城、山々を縫うように続く万里の長城、胡同で聞こえる三輪車の鈴の音、夕日を映すCBDのガラスのカーテンウォール...これが北京です。古代と現代、伝統と革新が融合する都市です。3,000年の都市の歴史と800年の首都としての歴史を持つ北京は、中国文明の精髓を担いながら、現代中国の活気あるエネルギーを示しています。
-          </p>
-          
-          <h3>最も代表的な特徴：</h3>
-          <ul>
-            <li>世界最大の王宮複合施設 - 紫禁城（故宮）</li>
-            <li>人類最大の工学プロジェクトの一つ - 万里の長城</li>
-            <li>独特の四合院と胡同文化</li>
-            <li>現代国際都市の繁栄と活力</li>
-          </ul>
+        <p>北京は3000年以上の都市としての歴史と800年以上の首都としての歴史を持ち、何千年にもわたる中国の歴史的変遷を目撃してきました。中国の首都として、故宮、天壇、頤和園などの壮大な古代建築物と、鳥の巣、水立方などの現代建築の驚異の両方を備え、古代と現代が完璧に融合しています。</p>
+        <p>北京の胡同と四合院を散策して、古い北京の伝統的な生活様式を感じたり、王府井や三里屯などの賑やかな商業エリアを散策して、この大都市の現代的な活力を体験したりしてください。北京は訪問者を魅了する街であり、あなたの探索を待っています。</p>
         `
       },
       {
-        title: '基本情報の概要',
+        title: "基本情報の概要",
         content: `
-          <h3>訪問に最適な季節</h3>
-          <ul>
-            <li>春（3月〜5月）：快適な気温、花が咲き誇る</li>
-            <li>秋（9月〜10月）：晴れた空、心地よい天気、紅葉</li>
-          </ul>
-          
-          <h3>気候の特徴</h3>
-          <ul>
-            <li>春：暖かく快適、時折砂嵐</li>
-            <li>夏：暑く雨が多い</li>
-            <li>秋：涼しく乾燥</li>
-            <li>冬：寒く乾燥</li>
-          </ul>
+        <p><strong>最適な観光シーズン：</strong> 春（4〜5月）と秋（9〜10月）は気候が快適で、観光に最適です。</p>
+        <p><strong>気候特性：</strong> 四季がはっきりしていて、春と秋が短く、夏と冬が長いです。夏は暑く雨が多く、冬は寒く乾燥しています。</p>
+        <p><strong>交通手段：</strong> 地下鉄は北京を観光する最も便利な方法で、ほとんどの観光スポットをカバーしています。タクシーは手頃な価格ですが渋滞に遭遇することがあり、シェア自転車は短距離の移動に適しています。</p>
+        <p><strong>推奨される訪問期間：</strong> 北京の完全な観光には5〜7日かかり、主要な観光スポットだけでも少なくとも3日必要です。</p>
+        <p><strong>物価水準：</strong> 北京の生活費は他の中国の都市と比較すると比較的高いですが、国際的な大都市と比較するとまだ利点があります。</p>
         `
       },
       {
-        title: '必見の観光スポット',
+        title: "必見の観光スポット",
         content: `
-          <h3>王宮と庭園</h3>
-          
-          <h4>1. 故宮博物院（紫禁城）</h4>
-          <p>
-            世界最大の宮殿複合施設で、明・清朝の24人の皇帝の住居。720,000平方メートルを占め、建物は壮大で圧巻です。太和殿は中国最大の木造建築物で、皇帝権力の頂点を象徴しています。
-          </p>
-          
-          <h4>2. 頤和園</h4>
-          <p>
-            世界最大かつ最もよく保存された王立庭園で、西太后の夏の避暑地。きらめく昆明湖は頤和園の面積の約4分の3を占めています。長廊は世界最長の彩色回廊で、各セクションにユニークな絵画が描かれています。
-          </p>
+        <h3>故宮博物院（紫禁城）</h3>
+        <p>世界最大かつ最も保存状態の良い木造古代建築群として、故宮は明清朝の皇帝の宮殿で、約9,000の部屋があります。数え切れないほどの貴重な文化財が収蔵されており、中国の古代宮廷の歴史と文化を理解するための最良の場所です。</p>
+        <p><strong>旅行のヒント：</strong> 訪問には4〜6時間を見込み、事前にオンラインでチケットを予約し、週末や祝日を避けましょう。午門から入り、神武門から出るのが一般的なルートです。歴史的な詳細をより理解するために、音声ガイドのレンタルを検討してください。</p>
+
+        <h3>八達嶺長城</h3>
+        <p>万里の長城の中で最も代表的な区間として、八達嶺長城の建設歴史は明朝にまで遡ります。険しい山と美しい景色があり、「長城に登らずして好漢にあらず」の精神を感じる絶好の場所です。</p>
+        <p><strong>旅行のヒント：</strong> S2線または観光バスを利用し、祝日のピーク時を避けてください。ケーブルカーで上り、徒歩で下ることを検討すると、エネルギーを節約しながら景色を十分に楽しむことができます。冬には階段が凍ることがあるので注意してください。</p>
+
+        <h3>慕田峪長城</h3>
+        <p>慕田峪長城は、最も保存状態の良い区間の一つで、独特で特別で険しい特徴で知られています。長城は険しい山々の間を蛇行し、壁は広く、レンガは堅固で、写真愛好家の楽園となっています。</p>
+        <p><strong>旅行のヒント：</strong> ケーブルカーで上り、トボガンで下りると、刺激的で新しい体験ができます。十分な水と日焼け止めを持参し、山頂では風が強いことがあるので、暖かい服装をしてください。ピークシーズン中は事前にオンラインでチケットを購入すると、列に並ぶ時間を節約できます。</p>
+
+        <h3>天壇公園</h3>
+        <p>天壇は明清朝の皇帝が天を崇拝し、豊作を祈った場所です。その建築配置は古代の「天円地方」の宇宙観に厳密に従っています。祈年殿は建築群の中心であり、精緻な建築技術で有名です。</p>
+        <p><strong>旅行のヒント：</strong> 早朝に訪れて地元の人々が運動している様子を見ると、本物の北京の生活を体験できます。公園は広いので、ルートを計画し、快適な靴を履いてください。回音壁や三音石には興味深い音響効果があり、体験する価値があります。</p>
+
+        <h3>頤和園</h3>
+        <p>最も完全な皇家庭園として、頤和園は昆明湖と万寿山を基礎とし、南方庭園の精緻さと北方庭園の壮大さを融合しています。長廊、仏香閣、石舫などの見どころは独特で、四季折々の魅力的な景色が楽しめます。</p>
+        <p><strong>旅行のヒント：</strong> 公園は広大な面積をカバーしているので、訪問には半日を見込んでください。特に夏に蓮の花が咲く時期は見事なので、ボートに乗って湖の景色を楽しむことを検討してください。北宮門から入り、東宮門から出るのが主要な見どころをカバーする一般的なルートです。</p>
         `
       }
     ]
   },
   ko: {
-    title: '베이징: 고대 수도의 과거와 현재의 교향곡',
-    subtitle: '중국 수도의 왕실 매력과 현대적 매력 탐험',
+    title: '베이징 수도',
+    subtitle: '동방 제국 수도에서 얽힌 고대와 현대',
     sections: [
       {
         title: '첫인상',
         content: `
-          <p>
-            빛나는 금빛 지붕 타일이 있는 웅장한 자금성, 산을 따라 구불구불 이어지는 만리장성, 후통에서 들리는 세발자전거 벨소리, 일몰을 반사하는 CBD의 유리 커튼월... 이것이 베이징입니다. 고대와 현대, 전통과 혁신이 어우러진 도시입니다. 3,000년의 도시 역사와 800년의 수도 역사를 가진 베이징은 중국 문명의 정수를 담으면서 현대 중국의 활기찬 에너지를 보여줍니다.
-          </p>
-          
-          <h3>가장 대표적인 특징:</h3>
-          <ul>
-            <li>세계 최대의 왕궁 단지 - 자금성</li>
-            <li>인류 최대 공학 프로젝트 중 하나 - 만리장성</li>
-            <li>독특한 사합원과 후통 문화</li>
-            <li>현대 국제 대도시의 번영과 활력</li>
-          </ul>
+        <p>베이징은 3000년 이상의 도시 역사와 800년 이상의 수도 역사를 가진 도시로, 수천 년에 걸친 중국 역사의 변화를 목격했습니다. 중국의 수도로서, 자금성, 천단, 이화원과 같은 웅장한 고대 건축물과 새둥지, 물방울 같은 현대 건축 경이로움을 모두 갖추고 있으며, 고대와 현대 요소가 완벽하게 어우러져 있습니다.</p>
+        <p>베이징의 후통과 사합원을 걸으며 전통적인 베이징 생활 방식을 체험하고, 왕푸징과 산리툰 같은 번화한 상업 지역을 돌아다니며 이 대도시의 현대적인 활력을 느껴보세요. 베이징은 방문객을 매료시키는 도시로, 여러분의 탐험을 기다리고 있습니다.</p>
+        `
+      },
+      {
+        title: '기본 정보 개요',
+        content: `
+        <p><strong>최적의 방문 시기:</strong> 봄(4-5월)과 가을(9-10월)은 쾌적한 기후로 관광에 이상적입니다.</p>
+        <p><strong>기후 특성:</strong> 뚜렷한 사계절이 있으며, 봄과 가을은 짧고 여름과 겨울은 길다. 여름은 덥고 비가 많으며, 겨울은 춥고 건조합니다.</p>
+        <p><strong>교통 수단:</strong> 지하철은 베이징을 관광하는 가장 편리한 방법으로, 대부분의 명소를 커버합니다. 택시는 가격이 합리적이지만 혼잡을 만날 수 있으며, 공유 자전거는 단거리 이동에 적합합니다.</p>
+        <p><strong>권장 방문 기간:</strong> 베이징을 완전히 둘러보려면 5-7일이 필요하며, 주요 명소만 보려면 최소 3일이 필요합니다.</p>
+        <p><strong>비용 수준:</strong> 베이징의 생활비는 다른 중국 도시에 비해 상대적으로 높지만, 국제 대도시에 비하면 여전히 유리합니다.</p>
+        `
+      },
+      {
+        title: '필수 방문 명소',
+        content: `
+        <h3>고궁 박물관(자금성)</h3>
+        <p>세계에서 가장 크고 가장 잘 보존된 목조 고대 건축 단지로, 고궁은 명청 시대의 황제 궁전으로 약 9,000개의 방을 갖추고 있습니다. 수많은 귀중한 문화재를 소장하고 있으며, 중국 고대 궁정 역사와 문화를 이해하는 가장 좋은 장소입니다.</p>
+        <p><strong>여행 팁:</strong> 방문에 4-6시간을 예약하고, 사전에 온라인으로 입장권을 예약하며, 주말과 공휴일을 피하세요. 오문에서 입장하여 신무문으로 나오는 것이 고전적인 루트입니다. 더 많은 역사적 세부 사항을 알아보기 위해 오디오 가이드 대여를 고려하세요.</p>
+
+        <h3>바달링 만리장성</h3>
+        <p>만리장성의 가장 대표적인 구간으로, 바달링 장성의 건설 역사는 명나라 시대로 거슬러 올라갑니다. 가파른 산과 아름다운 경치를 가지고 있어, "장성에 오르지 않으면 진정한 남자가 아니다"라는 정신을 느낄 수 있는 완벽한 장소입니다.</p>
+        <p><strong>여행 팁:</strong> S2 노선이나 관광 버스를 이용하고, 휴일 성수기를 피하세요. 케이블카를 타고 올라가서 걸어서 내려오는 것을 고려하면, 에너지를 절약하면서도 경치를 충분히 감상할 수 있습니다. 겨울에는 계단이 얼 수 있으니 주의하세요.</p>
+
+        <h3>무티안유 만리장성</h3>
+        <p>무티안유 장성은 가장 잘 보존된 구간 중 하나로, 독특하고 특별하며 가파른 특징으로 알려져 있습니다. 장성은 가파른 산들 사이를 굽이굽이 흐르며, 넓은 벽과 견고한 벽돌로 이루어져 있어, 사진 애호가들의 천국입니다.</p>
+        <p><strong>여행 팁:</strong> 케이블카를 타고 올라가서 미끄럼틀을 타고 내려오면 신나고 새로운 경험을 할 수 있습니다. 충분한 물과 자외선 차단제를 가져가고, 산 정상에서는 바람이 강할 수 있으니 따뜻하게 입으세요. 성수기에는 온라인으로 미리 표를 구매하면 줄을 서지 않아도 됩니다.</p>
+
+        <h3>천단 공원</h3>
+        <p>천단은 명청 시대 황제들이 하늘을 숭배하고 풍년을 기원하던 곳입니다. 그 건축 배치는 "둥근 하늘과 네모난 땅"이라는 고대 우주관에 따라 엄격하게 설계되었습니다. 기년전은 단지의 핵심으로, 정교한 건축 기술로 유명합니다.</p>
+        <p><strong>여행 팁:</strong> 이른 아침에 방문하여 지역 주민들이 운동하는 모습을 보고 진정한 베이징 생활을 체험하세요. 공원이 넓으니, 루트를 계획하고 편안한 신발을 신으세요. 회음벽과 삼음석은 흥미로운 음향 효과가 있어 경험할 가치가 있습니다.</p>
+
+        <h3>이화원</h3>
+        <p>가장 완벽한 황제 정원으로, 이화원은 쿤밍 호수와 완수 산을 기반으로, 남방 정원의 정교함과 북방 정원의 웅장함을 결합했습니다. 장랑, 불향각, 석선 등의 명소는 각기 특색이 있으며, 사계절 내내 매혹적인 경치를 자랑합니다.</p>
+        <p><strong>여행 팁:</strong> 공원 면적이 넓으니, 방문에 반나절을 할애하세요. 배를 타고 호수 경치를 즐기는 것을 고려해보세요, 특히 여름 연꽃이 피는 시기에는 장관입니다. 북궁문으로 들어가서 동궁문으로 나오는 것이 주요 명소를 커버하는 클래식 루트입니다.</p>
         `
       }
     ]
   },
   ru: {
-    title: 'Пекин: симфония древнего и современного',
-    subtitle: 'Исследуйте королевское очарование и современную привлекательность столицы Китая',
+    title: 'Пекин - Столица',
+    subtitle: 'Древность и современность переплетаются в восточной имперской столице',
     sections: [
       {
         title: 'Первые впечатления',
         content: `
-          <p>
-            Великолепный Запретный город с блестящими золотыми крышами, Великая стена, извивающаяся через горы, звук колокольчиков велорикш в хутунах, стеклянные стены CBD, отражающие закат... Это Пекин, город, сочетающий древнее и современное, традиции и инновации. С 3000-летней городской историей и 800-летней историей как столицы, Пекин несет в себе сущность китайской цивилизации, демонстрируя при этом энергичную энергию современного Китая.
-          </p>
-          
-          <h3>Наиболее характерные особенности:</h3>
-          <ul>
-            <li>Крупнейший в мире комплекс королевского дворца - Запретный город</li>
-            <li>Один из величайших инженерных проектов человечества - Великая стена</li>
-            <li>Характерные дворовые дома и культура хутунов</li>
-            <li>Процветание и жизненная сила современного международного мегаполиса</li>
-          </ul>
+        <p>Пекин, город с более чем 3000-летней историей и 800-летней историей в качестве столицы, был свидетелем исторических изменений Китая на протяжении тысячелетий. Как столица Китая, он сочетает в себе как величественные древние архитектурные памятники, такие как Запретный город, Храм Неба и Летний дворец, так и современные архитектурные чудеса, такие как Птичье гнездо и Водный куб, идеально сочетая древние и современные элементы.</p>
+        <p>Прогуляйтесь по пекинским хутунам и дворам, чтобы ощутить традиционный образ жизни старого Пекина; посетите оживленные торговые районы, такие как Ванфуцзин и Саньлитунь, чтобы почувствовать современную энергию этого мегаполиса. Пекин — город, который очаровывает посетителей и ждет вашего исследования.</p>
+        `
+      },
+      {
+        title: 'Обзор основной информации',
+        content: `
+        <p><strong>Лучшее время для посещения:</strong> Весна (апрель-май) и осень (сентябрь-октябрь) имеют приятный климат, идеально подходящий для туризма.</p>
+        <p><strong>Климатические особенности:</strong> Четыре четко выраженных сезона, с короткой весной и осенью, более длинным летом и зимой. Лето жаркое и дождливое, зима холодная и сухая.</p>
+        <p><strong>Способы передвижения:</strong> Метро — самый удобный способ осмотра Пекина, охватывающий большинство достопримечательностей. Такси имеют разумные цены, но могут столкнуться с пробками, в то время как общие велосипеды подходят для коротких поездок.</p>
+        <p><strong>Рекомендуемая продолжительность визита:</strong> Полный тур по Пекину требует 5-7 дней, при этом для основных достопримечательностей необходимо не менее 3 дней.</p>
+        <p><strong>Уровень стоимости:</strong> Стоимость жизни в Пекине относительно высока по сравнению с другими китайскими городами, но все еще выгодна по сравнению с международными мегаполисами.</p>
+        `
+      },
+      {
+        title: 'Обязательные к посещению достопримечательности',
+        content: `
+        <h3>Запретный город (Музей Гугун)</h3>
+        <p>Как крупнейший и наиболее хорошо сохранившийся деревянный древний архитектурный комплекс в мире, Запретный город был императорским дворцом династий Мин и Цин, в котором насчитывается около 9000 комнат. Здесь хранятся бесчисленные драгоценные культурные реликвии, и это лучшее место для понимания древней императорской истории и культуры Китая.</p>
+        <p><strong>Советы путешественникам:</strong> Выделите 4-6 часов на посещение, заранее забронируйте билеты онлайн и избегайте выходных и праздников. Классический маршрут — войти через ворота Умэнь и выйти через ворота Шэньу. Рассмотрите возможность аренды аудиогида, чтобы узнать больше исторических деталей.</p>
+
+        <h3>Великая Китайская стена в Бадалине</h3>
+        <p>Как наиболее представительный участок Великой стены, история строительства Великой стены в Бадалине восходит к династии Мин. С крутыми горами и красивыми пейзажами, это идеальное место, чтобы почувствовать дух "Не побывал на Великой стене — не настоящий герой".</p>
+        <p><strong>Советы путешественникам:</strong> Воспользуйтесь линией S2 или туристическим автобусом, избегая пиковых периодов в праздничные дни. Рассмотрите возможность подняться на канатной дороге и спуститься пешком, экономя энергию, при этом полностью наслаждаясь пейзажем. Будьте осторожны с обледенелыми ступенями зимой.</p>
+
+        <h3>Великая Китайская стена в Мутяньюй</h3>
+        <p>Великая стена в Мутяньюй является одним из наиболее хорошо сохранившихся участков, известным своими уникальными, особенными и крутыми характеристиками. Стена извивается среди крутых гор, с широкими стенами и прочными кирпичами, что делает ее раем для энтузиастов фотографии.</p>
+        <p><strong>Советы путешественникам:</strong> Поднимитесь на канатной дороге и спуститесь на тобоггане для захватывающих и новых впечатлений. Возьмите с собой достаточное количество воды и солнцезащитных средств, и обратите внимание, что на вершине может быть ветрено, так что одевайтесь тепло. Покупайте билеты онлайн заранее в высокий сезон, чтобы избежать очередей.</p>
+
+        <h3>Парк Храма Неба</h3>
+        <p>Храм Неба был местом, где императоры династий Мин и Цин поклонялись небу и молились о хорошем урожае. Его архитектурная планировка строго следует древнему космическому взгляду на "круглое небо и квадратную землю". Зал Молитвы за Хороший Урожай является ядром комплекса, известным своим изысканным архитектурным мастерством.</p>
+        <p><strong>Советы путешественникам:</strong> Посетите рано утром, чтобы увидеть местных жителей, занимающихся физическими упражнениями, и испытать подлинную пекинскую жизнь. Парк большой, поэтому планируйте свой маршрут и носите удобную обувь. Стена Эха и Три Звуковых Камня имеют интересные акустические эффекты, которые стоит испытать.</p>
+
+        <h3>Летний дворец</h3>
+        <p>Как самый полный императорский сад, Летний дворец основан на озере Куньмин и холме Долголетия, сочетая в себе изящество южных садов с величием северных садов. Длинный коридор, Башня Буддийского Фимиама и Мраморная лодка являются отличительными достопримечательностями с очаровательными пейзажами во все четыре сезона.</p>
+        <p><strong>Советы путешественникам:</strong> Парк охватывает большую территорию, поэтому выделите полдня на посещение. Рассмотрите возможность прокатиться на лодке, чтобы насладиться видами озера, особенно зрелищными, когда цветут лотосы летом. Классический маршрут — войти через Северные ворота дворца и выйти через Восточные ворота дворца, охватывая основные достопримечательности.</p>
         `
       }
     ]
