@@ -65,7 +65,11 @@ const ContentSection = ({
         {title}
       </h2>
       <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-h3:text-xl prose-h3:my-4 prose-p:mb-4 prose-strong:text-gray-800 dark:prose-strong:text-gray-200 prose-ul:my-4 prose-li:ml-4 prose-li:mb-2">
-        {content}
+        {typeof content === 'string' ? (
+          <div dangerouslySetInnerHTML={createMarkup(content)} />
+        ) : (
+          content
+        )}
       </div>
     </div>
   );
