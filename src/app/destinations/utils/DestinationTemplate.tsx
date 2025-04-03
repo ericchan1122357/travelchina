@@ -12,19 +12,61 @@ interface DestinationTemplateProps {
 }
 
 // 将HTML字符串安全转换为React元素
-const createMarkup = (html: string) => {
-  return { __html: html };
-};
+export function createMarkup(html: string) {
+  // 为景点名称添加样式 (h3标签)
+  let styledHtml = html.replace(
+    /<h3>(.*?)<\/h3>/g, 
+    '<h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mt-8 mb-4">$1</h3>'
+  );
+  
+  // 为重要信息添加样式 (strong标签)
+  styledHtml = styledHtml.replace(
+    /<strong>(.*?)<\/strong>/g,
+    '<strong class="font-semibold text-gray-800 dark:text-gray-200">$1</strong>'
+  );
+  
+  // 添加图片/视频容器空间
+  styledHtml = styledHtml.replace(
+    /<h3 class=".*?">(.*?)<\/h3>/g,
+    '<h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mt-8 mb-4">$1</h3><div class="media-container mb-6 mt-4 bg-gray-100 dark:bg-gray-800 rounded-lg p-2 border border-dashed border-gray-300 dark:border-gray-600"><p class="text-center text-gray-500 dark:text-gray-400 py-12">图片/视频空间</p></div>'
+  );
+  
+  // 为段落添加样式
+  styledHtml = styledHtml.replace(
+    /<p>(.*?)<\/p>/g,
+    '<p class="mb-4 leading-relaxed">$1</p>'
+  );
+
+  // 为列表添加样式
+  styledHtml = styledHtml.replace(
+    /<ul>([\s\S]*?)<\/ul>/g,
+    '<ul class="list-disc pl-5 my-4 space-y-2">$1</ul>'
+  );
+  
+  styledHtml = styledHtml.replace(
+    /<li>(.*?)<\/li>/g,
+    '<li class="ml-4 mb-2">$1</li>'
+  );
+  
+  return { __html: styledHtml };
+}
 
 // 渲染内容部分
-const ContentSection = ({ section }: { section: DestinationSection }) => {
+const ContentSection = ({
+  title,
+  content,
+}: {
+  title: string;
+  content: React.ReactNode;
+}) => {
   return (
-    <div className="mb-8">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">{section.title}</h2>
-      <div 
-        className="text-gray-700 leading-relaxed"
-        dangerouslySetInnerHTML={createMarkup(section.content as string)}
-      />
+    <div className="mb-10">
+      <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+        {title}
+      </h2>
+      <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-h3:text-xl prose-h3:my-4 prose-p:mb-4 prose-strong:text-gray-800 dark:prose-strong:text-gray-200 prose-ul:my-4 prose-li:ml-4 prose-li:mb-2">
+        {content}
+      </div>
     </div>
   );
 };
@@ -307,7 +349,7 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
           <div className="bg-white rounded-2xl shadow-md p-6 mb-8">
             {content.sections && content.sections.length > 0 ? (
               content.sections.map((section, index) => (
-                <ContentSection key={`${destinationSlug}-section-${index}`} section={section} />
+                <ContentSection key={`${destinationSlug}-section-${index}`} title={section.title} content={section.content} />
               ))
             ) : (
               <div className="text-center py-20">
