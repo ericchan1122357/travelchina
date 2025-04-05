@@ -3308,8 +3308,9 @@ export const destinationContents: Record<string, Record<Language, DestinationCon
   beijing: beijingContent,
   shanghai: shanghaiContent,
   xian: xianContent,
-  chengdu: chengduContent,
+  chengdu: chengduContent
   // 可以继续添加其他城市
+,
   guilin: guilinContent
 },
 };
@@ -3322,7 +3323,7 @@ export function getDestinationContent(cityId: string, language: Language): Desti
   // 记录日志，以便调试
   console.log(`Getting content for city: ${cityId}, language: ${language}`);
   
-  switch (cityId) {
+  switch(cityId) {
     case \'beijing\':
       cityContent = beijingContent;
       break;
@@ -3342,9 +3343,6 @@ export function getDestinationContent(cityId: string, language: Language): Desti
       cityContent = guilinContent;
       break;
     // 可以添加其他城市...
-      case 'guilin':
-        cityContent = guilinContent;
-        break;
     default:
       // 默认返回空对象
       console.log(`City content not found for: ${cityId}`);

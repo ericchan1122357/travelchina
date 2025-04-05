@@ -3308,8 +3308,9 @@ export const destinationContents: Record<string, Record<Language, DestinationCon
   beijing: beijingContent,
   shanghai: shanghaiContent,
   xian: xianContent,
-  chengdu: chengduContent,
+  chengdu: chengduContent
   // 可以继续添加其他城市
+,
   guilin: guilinContent
 },
 };
