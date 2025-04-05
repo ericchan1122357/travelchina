@@ -1,0 +1,46 @@
+de: {
+  title: "Hangzhou",
+  subtitle: "Paradies auf Erden, Poesie und Malerei von Jiangnan",
+  sections: [
+    // 第一印象部分 - 详见 hangzhou_de_section_part1.txt
+    {
+      title: "Erste Eindrücke",
+      content: `
+      <p>Hangzhou, von Marco Polo als "die schönste und prächtigste Stadt der Welt" gepriesen, ist ein Juwel von Jiangnan, das sich um den Westsee dreht, wo Berge und Gewässer miteinander verflochten sind und natürliche und kulturelle Landschaften perfekt verschmelzen. Über Jahrtausende hinweg haben die Seelandschaft, Gärten, Pagoden und Pavillons unzählige Gelehrte und Dichter angezogen und sich den Ruf erworben: "Oben ist der Himmel, unten sind Suzhou und Hangzhou."</p>
+      <p>Beim Erkunden von Hangzhou werden Sie vom exquisiten Design der zehn Westseeansichten fasziniert, vom gestaffelten Grün der Longjing-Teeplantagen hypnotisiert und vom tiefen kulturellen Erbe der Song-Dynastie berührt. Diese Stadt verbindet die sanfte Schönheit der Wasserdörfer von Jiangnan mit der lebendigen Atmosphäre der Innovation. Ob Sie auf den Stegen des Xixi-Feuchtgebiets spazieren, durch die alten Straßen von Qinghe Fang schlendern oder die weltberühmte Gezeitenwelle des Qiantang-Flusses betrachten – Hangzhou beeindruckt Besucher stets mit seinem vielfältigen Charme.</p>
+      <p>Das heutige Hangzhou ist nicht nur eine der acht alten Hauptstädte Chinas, sondern auch ein Zentrum der digitalen Wirtschaft und E-Commerce-Innovation. Die Stadt verbindet perfekt Tradition und Moderne, bewahrt ihren historischen Charakter und begrüßt gleichzeitig die Zukunft mit einer offenen und integrativen Haltung, die den einzigartigen Charme der chinesischen Stadtentwicklung zeigt.</p>
+      `
+    },
+    // 基本信息部分 - 详见 hangzhou_de_section_part1.txt
+    {
+      title: "Überblick über grundlegende Informationen",
+      content: `
+      <p><strong>Beste Reisezeit:</strong> Frühling (März-Mai) und Herbst (September-November) sind die idealen Jahreszeiten für einen Besuch in Hangzhou, mit angenehmem Wetter und den schönsten Landschaften. Im Frühling können Sie die blühenden Pfirsich- und Pflaumenbäume rund um den Westsee genießen, während der Herbst den Duft von Osmanthusblüten bringt. Der Sommer, obwohl heiß, bietet Lotusblütenbetrachtung und kühle Rückzugsorte. Der Winter präsentiert gelegentlich den seltenen Anblick des schneebedeckten Westsees und bietet einen einzigartigen Charme.</p>
+      <p><strong>Klimatische Eigenschaften:</strong> Hangzhou hat ein subtropisches Monsunklima mit vier ausgeprägten Jahreszeiten und einer durchschnittlichen Jahrestemperatur von 17,8°C. Die Sommer sind heiß und regnerisch, während die Winter mild sind mit wenig Schnee. Frühling und Herbst haben angenehmes Wetter, obwohl der Frühling tendenziell regnerischer ist, daher ist es ratsam, Regenausrüstung mitzubringen.</p>
+      <p><strong>Verkehr:</strong> Hangzhou verfügt über ein bequemes Verkehrssystem mit einem umfassenden öffentlichen Verkehrsnetz, das U-Bahnen, Busse und Taxis umfasst. Um den Westsee zu erkunden, können Sie zu Fuß gehen, Elektroautos, Touristenboote oder Fahrräder wählen. Spezielle Buslinien verbinden die Hauptattraktionen. Der internationale Flughafen Xiaoshan von Hangzhou und mehrere Hochgeschwindigkeitsbahnhöfe machen die An- und Abreise sehr bequem.</p>
+      <p><strong>Empfohlene Besuchsdauer:</strong> Eine umfassende Erkundung der Hauptattraktionen von Hangzhou erfordert 4-5 Tage. Wenn Sie nur den Westsee und seine Umgebung besuchen möchten, reichen 2-3 Tage aus. Für ein tieferes Erlebnis der Kultur von Hangzhou und der nahegelegenen Wasserdörfer wie Wuzhen und Xitang planen Sie etwa eine Woche ein.</p>
+      <p><strong>Kostenniveau:</strong> Im Vergleich zu Städten der ersten Ebene wie Peking und Shanghai sind die allgemeinen Lebenshaltungskosten in Hangzhou etwas niedriger, aber als beliebtes Touristenziel können die Preise für Essen und Unterkunft in der Nähe der landschaftlich reizvollen Gebiete während der Hochsaison höher sein. Das Stadtzentrum bietet eine Vielzahl von Unterkunftsmöglichkeiten, von Jugendherbergen bis hin zu Fünf-Sterne-Hotels. Lokale Snacks sind erschwinglich, aber Restaurants rund um den Westsee neigen dazu, teurer zu sein.</p>
+      `
+    },
+    // 必游景点部分 - 详见 hangzhou_de_section_part2.txt
+    {
+      title: "Unverzichtbare Sehenswürdigkeiten",
+      content: `[完整内容请参见 hangzhou_de_section_part2.txt]`
+    },
+    // 独特体验部分 - 详见 hangzhou_de_section_part3.txt
+    {
+      title: "Einzigartige Erlebnisse",
+      content: `[完整内容请参见 hangzhou_de_section_part3.txt]`
+    },
+    // 美食指南部分 - 详见 hangzhou_de_section_part4.txt
+    {
+      title: "Lebensmittelführer",
+      content: `[完整内容请参见 hangzhou_de_section_part4.txt]`
+    },
+    // 文化历史洞察部分 - 详见 hangzhou_de_section_part5.txt
+    {
+      title: "Kulturelle und Historische Einblicke",
+      content: `[完整内容请参见 hangzhou_de_section_part5.txt]`
+    }
+  ]
+} 
