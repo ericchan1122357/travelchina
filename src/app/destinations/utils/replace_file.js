@@ -1,4 +1,26 @@
-// 旅游目的地内容类型定义
+const fs = require('fs');
+const path = require('path');
+
+// 文件路径
+const filePath = path.join(__dirname, 'destinationContent.ts');
+
+// 生成简化的内容
+try {
+  console.log('开始创建简化版destinationContent.ts...');
+  
+  // 创建备份文件
+  const timestamp = Date.now();
+  const backupFilePath = `${filePath}.bak_replace_${timestamp}`;
+  
+  // 读取原始文件
+  const originalContent = fs.readFileSync(filePath, 'utf8');
+  
+  // 创建备份
+  fs.writeFileSync(backupFilePath, originalContent);
+  console.log(`创建备份文件: ${backupFilePath}`);
+  
+  // 简化的内容（仅保留英文部分）
+  const simplifiedContent = `// 旅游目的地内容类型定义
 interface DestinationSection {
   title: string;
   content: string;
@@ -21,10 +43,10 @@ const beijingContent: Record<Language, DestinationContent> = {
     sections: [
       {
         title: '初印象',
-        content: `
+        content: \`
         <p>北京，一座有着3000多年历史、800多年建都史的城市，见证了中国千年的历史变迁。作为中国的首都，这里既有雄伟的古代建筑如故宫、天坛、颐和园，也有鸟巢、水立方等现代建筑奇观，完美地融合了古典与现代的元素。</p>
         <p>漫步北京的胡同和四合院，体验老北京的传统生活方式；徜徉在王府井、三里屯等繁华商业区，感受这座大都市的现代活力。北京是一座让游客流连忘返的城市，等待着您的探索。</p>
-        `
+        \`
       }
     ]
   },
@@ -34,10 +56,10 @@ const beijingContent: Record<Language, DestinationContent> = {
     sections: [
       {
         title: "First Impressions",
-        content: `
+        content: \`
         <p>Beijing, a city with over 3000 years of history and 800 years as a capital, has witnessed China's historical changes through the millennia. As the Chinese capital, it features both majestic ancient architectures like the Forbidden City, Temple of Heaven, and Summer Palace, as well as modern architectural wonders like the Bird's Nest and Water Cube, perfectly blending ancient and modern elements.</p>
         <p>Stroll through Beijing's hutongs and courtyards to experience the traditional lifestyle of old Beijing; wander through bustling commercial areas like Wangfujing and Sanlitun to experience the modern vitality of this metropolis. Beijing is a city that captivates visitors, waiting for your exploration.</p>
-        `
+        \`
       }
     ]
   },
@@ -425,3 +447,12 @@ export const destinationContents: Record<string, Record<Language, DestinationCon
 };
 
 export type { DestinationSection, DestinationContent, Language };
+`;
+  
+  // 保存简化的内容
+  fs.writeFileSync(filePath, simplifiedContent, 'utf8');
+  console.log('文件已替换为简化版本');
+  
+} catch (error) {
+  console.error('处理文件时出错:', error);
+} 

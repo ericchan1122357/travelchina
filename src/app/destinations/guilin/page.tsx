@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getDestinationContent } from '../utils/destinationContent';
+import { getDestinationContent, type Language as DestLanguage } from '@/app/destinations/utils/destinationContent';
 
 export default function GuilinPage() {
   const { currentLanguage } = useLanguage();
@@ -25,8 +25,6 @@ export default function GuilinPage() {
         return 'Guilin: Berge und Gewässer unübertroffen unter dem Himmel';
       case 'es':
         return 'Guilin: Montañas y aguas sin rival bajo el cielo';
-      case 'ja':
-        return '桂林：山水は天下一';
       case 'ko':
         return '구이린: 천하제일의 산수';
       case 'ru':
@@ -49,8 +47,6 @@ export default function GuilinPage() {
         return 'Poetische Reise am Li-Fluss, Erkundung der Karstlandschaft-Wunder';
       case 'es':
         return 'Viaje poético por el río Li, explorando las maravillas del paisaje kárstico';
-      case 'ja':
-        return '詩情あふれる漓江の旅、カルスト地形の奇観を探る';
       case 'ko':
         return '시정이 넘치는 리강 여행, 카르스트 지형 경이로움 탐험';
       case 'ru':
@@ -73,8 +69,6 @@ export default function GuilinPage() {
         return 'Zurück';
       case 'es':
         return 'Volver';
-      case 'ja':
-        return '戻る';
       case 'ko':
         return '돌아가기';
       case 'ru':
@@ -85,7 +79,12 @@ export default function GuilinPage() {
   };
   
   // 获取当前语言的城市内容
-  const cityContent = getDestinationContent('guilin', currentLanguage);
+  // 过滤掉 'ja' 等不兼容的语言类型，默认使用 'en'
+  const compatibleLanguage = (['zh', 'en', 'fr', 'de', 'es', 'ko', 'ru'].includes(currentLanguage)) 
+    ? currentLanguage as DestLanguage 
+    : 'en' as DestLanguage;
+  
+  const cityContent = getDestinationContent('guilin', compatibleLanguage);
   
   return (
     <div className="min-h-screen bg-gray-50">
@@ -118,7 +117,7 @@ export default function GuilinPage() {
           
           {/* 文章内容区域 */}
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            {cityContent.sections.map((section, index) => (
+            {cityContent?.sections.map((section, index) => (
               <div key={index} className="mb-8">
                 <h2 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">{section.title}</h2>
                 <div 
