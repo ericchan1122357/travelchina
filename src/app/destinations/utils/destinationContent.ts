@@ -1,5 +1,7 @@
 import { DestinationContent, DestinationSection, Language } from './types';
 import { guilinContent } from './guilinContent.def';
+import { sanyaContent } from './sanyaContent.def';
+import { shenzhenContent } from './shenzhenContent.def';
 
 // 北京的多语言内容
 const beijingContent: Partial<Record<Language, DestinationContent>> = {
@@ -194,6 +196,16 @@ export const getGuilinContent = (lang: Language): DestinationContent => {
   return guilinContent[lang] || guilinContent.en || guilinContent.zh as DestinationContent;
 };
 
+// 导出三亚内容
+export const getSanyaContent = (lang: Language): DestinationContent => {
+  return sanyaContent[lang] || sanyaContent.en || sanyaContent.zh as DestinationContent;
+};
+
+// 导出深圳内容
+export const getShenzhenContent = (lang: Language): DestinationContent => {
+  return shenzhenContent[lang] || shenzhenContent.en || shenzhenContent.zh as DestinationContent;
+};
+
 // 通用的获取目的地内容函数
 export const getDestinationContent = (destinationSlug: string, lang: Language): DestinationContent => {
   switch (destinationSlug) {
@@ -207,6 +219,10 @@ export const getDestinationContent = (destinationSlug: string, lang: Language): 
       return getChengduContent(lang);
     case 'guilin':
       return getGuilinContent(lang);
+    case 'sanya':
+      return getSanyaContent(lang);
+    case 'shenzhen':
+      return getShenzhenContent(lang);
     // 当添加更多城市时，可以在这里添加更多 case
     // case 'hangzhou':
     //   return getHangzhouContent(lang);
@@ -223,5 +239,7 @@ export default {
   getXianContent,
   getChengduContent,
   getGuilinContent,
+  getSanyaContent,
+  getShenzhenContent,
   getDestinationContent,
 }; 
