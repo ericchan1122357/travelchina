@@ -1,4 +1,4 @@
-import { DestinationContent, DestinationSection, Language } from './types';
+import { Language } from '@/contexts/LanguageContext';
 
 // 定义内容的结构类型
 export interface DestinationSection {
@@ -229,14 +229,14 @@ const beijingContent: Record<Language, DestinationContent> = {
     ]
   },
   fr: {
-    title: "Xi'an",
-    subtitle: "Ancienne Capitale de Treize Dynasties",
+    title: "Pékin, la Capitale",
+    subtitle: "Un mélange d'ancien et de moderne dans la capitale impériale orientale",
     sections: [
       {
         title: "Premières Impressions",
         content: `
-        <p>Xi'an, autrefois connue sous le nom de Chang&apos;an, est l'une des capitales anciennes les plus célèbres de Chine, ayant servi de capitale impériale ou de centre politique pour treize dynasties, notamment les Zhou, Qin, Han et Tang. Point de départ de la Route de la Soie, cette ville a une histoire de plus de 3 100 ans avec plus de 1 100 ans en tant que capitale, nourrissant la splendide civilisation chinoise.</p>
-        <p>Le Xi'an d'aujourd'hui mélange parfaitement l'ancien et le moderne. De magnifiques murailles entourent le centre-ville animé, tandis que des sites du patrimoine culturel de renommée mondiale comme l'Armée de Terre Cuite et la Grande Pagode de l'Oie Sauvage côtoient des quartiers commerciaux animés. Le Quartier Musulman aux saveurs islamiques emplit l'air d'arômes alléchants, et la Cité Lumineuse de la Grande Tang, de style dynastie Tang, éblouit avec ses jeux de lumière, mettant en valeur à la fois le profond patrimoine culturel et la vitalité moderne de cette capitale millénaire.</p>
+        <p>Pékin, une ville avec plus de 3000 ans d'histoire et 800 ans comme capitale, a été témoin des changements historiques de la Chine à travers les millénaires. En tant que capitale chinoise, elle présente à la fois des architectures anciennes majestueuses comme la Cité Interdite, le Temple du Ciel et le Palais d'Été, ainsi que des merveilles architecturales modernes comme le Nid d'Oiseau et le Cube d'Eau, mélangeant parfaitement éléments anciens et modernes.</p>
+        <p>Promenez-vous dans les hutongs et les cours carrées de Pékin pour découvrir le mode de vie traditionnel de l'ancien Pékin; flânez dans les zones commerciales animées comme Wangfujing et Sanlitun pour ressentir la vitalité moderne de cette métropole. Pékin est une ville qui captive les visiteurs, attendant votre exploration.</p>
         `
       },
       {
@@ -314,39 +314,40 @@ const beijingContent: Record<Language, DestinationContent> = {
         `
       },
       {
-        title: "Perspectives Culturelles et Historiques",
+        title: "Aperçu Culturel et Historique",
         content: `
-        <h3>Développement Historique de la Capitale Impériale</h3>
-        <p><strong>Contexte historique:</strong> Xi'an (ancienne Chang&apos;an) a servi de capitale ou de centre politique pour treize dynasties, notamment Zhou, Qin, Han et Tang, ce qui en fait la ville avec la plus longue histoire et le plus grand nombre de dynasties en tant que capitale dans l'histoire chinoise. De Feng-Hao de la dynastie Zhou à la ville de Chang&apos;an de la dynastie Han, puis au Palais Daming de la dynastie Tang, la transformation urbaine de Xi'an a été témoin du développement de la civilisation chinoise ancienne.</p>
-        <p><strong>Contexte historique:</strong> Les Zhou occidentaux ont établi la capitale Feng-Hao, posant les bases de Xi'an en tant que centre politique ; après que Qin a unifié les six états, Xianyang est devenue la capitale ; l'empereur Han Gaozu a établi Chang&apos;an comme capitale, initiant la gloire ; pendant les périodes Sui et Tang, la ville de Chang&apos;an était vaste, avec une population dépassant un million, en faisant l'une des métropoles internationales les plus prospères au monde à cette époque.</p>
+        <h3>Évolution Historique de la Capitale Impériale</h3>
+        <p>Pékin a servi de capitale pour cinq dynasties—Liao, Jin, Yuan, Ming et Qing—avec son aménagement urbain et ses dépôts culturels profondément liés à l'histoire chinoise. La disposition de l'axe central de la ville reflète le concept philosophique chinois ancien de "l'unité entre le ciel et l'homme".</p>
+        <p><strong>Contexte historique:</strong> Du Dadu des Yuan au Pékin des Ming et des Qing, l'urbanisme présente une structure carrée concentrique, avec la Cité Interdite au cœur de l'axe central, reflétant l'idée féodale de "suprématie du pouvoir impérial".</p>
 
-        <h3>Point de Départ Oriental de la Route de la Soie</h3>
-        <p>Xi'an était le point de départ oriental de l'ancienne Route de la Soie. Depuis la mission diplomatique de Zhang Qian dans les Régions Occidentales sous le règne de l'empereur Wu de Han, cette grande route commerciale reliant l'Est et l'Ouest a favorisé les échanges économiques et culturels entre la Chine et l'Asie occidentale et l'Europe, faisant de Chang&apos;an une métropole internationale.</p>
-        <p><strong>Fusion culturelle :</strong> Le commerce de la Route de la Soie a apporté des biens, des technologies, des religions et des arts de divers pays ; le bouddhisme, l'islam, le nestorianisme et d'autres religions étrangères se sont répandus ici ; la musique et la danse étrangères, les vêtements exotiques et les fruits des Régions Occidentales ont enrichi la vie de Chang&apos;an ; la soie, la porcelaine et le thé exportés de Chang&apos;an sont également devenus populaires en Occident.</p>
+        <h3>Saveur Culturelle de Pékin</h3>
+        <p>La culture pékinoise est la culture régionale unique de la ville, incluant le dialecte pékinois, l'opéra et les activités populaires. Regarder des spectacles de crosstalk, visiter des foires de temples et faire voler des cerfs-volants sont des fenêtres pour découvrir la culture pékinoise.</p>
+        <p><strong>Caractéristiques culturelles:</strong> Les Pékinois mettent l'accent sur la "bienséance", valorisent la face, ont un langage humoristique et sont serviables—ces qualités forment collectivement l'essence de la culture pékinoise.</p>
 
-        <h3>Culture Internationale de Chang&apos;an sous la Dynastie Tang</h3>
-        <p>Chang&apos;an pendant la dynastie Tang était un centre culturel mondial, accueillant des envoyés, des marchands, des étudiants et des artistes de divers pays. Cette atmosphère de fusion culturelle diverse a favorisé la prospérité de la culture Tang, influençant l'architecture, les vêtements, la nourriture, l'art et d'autres aspects.</p>
-        <p><strong>Patrimoine culturel :</strong> Les poteries Tang Sancai (poteries tricolores émaillées), la poésie Tang et les peintures murales de la dynastie Tang montrent la splendeur de la culture Tang ; la disposition en échiquier de la ville de Chang&apos;an et le style architectural des palais ont profondément influencé les générations ultérieures ; l'esprit ouvert et inclusif de la dynastie Tang a fait de Chang&apos;an le centre culturel le plus dynamique du monde à cette époque.</p>
+        <h3>Art Architectural</h3>
+        <p>L'art architectural de Pékin est représenté par les bâtiments palatins, les structures de jardins et l'architecture religieuse, montrant collectivement l'artisanat superbe et les concepts esthétiques de l'architecture chinoise traditionnelle.</p>
+        <p><strong>Caractéristiques architecturales:</strong> Accent sur la symétrie, la hiérarchie et le symbolisme des couleurs; structures à cadre en bois flexibles et robustes; coins relevés et avant-toits volants à la fois beaux et pratiques, reflétant la sagesse de l'architecture chinoise ancienne.</p>
 
-        <h3>Renaissance Culturelle du Xi'an Moderne</h3>
-        <p>Le Xi'an d'aujourd'hui s'efforce de restaurer son patrimoine historique et culturel, utilisant une combinaison de protection culturelle et de développement touristique pour recréer la gloire de l'ancienne Chang&apos;an. Des projets comme la préservation de la muraille de la ville, le Paradis Tang et le District Culturel de Qujiang mettent en valeur le profond patrimoine historique et culturel de Xi'an.</p>
+        <h3>Patrimoine Culturel Immatériel</h3>
+        <p>Pékin possède de nombreux éléments du patrimoine culturel immatériel, tels que le cloisonné, les tabatières peintes à l'intérieur, la broderie pékinoise et le soufflage de figurines en sucre, ainsi que des arts du spectacle traditionnels comme l'Opéra de Pékin et l'Opéra Ping.</p>
+        <p><strong>Efforts de préservation:</strong> Visitez le Musée folklorique de Pékin pour en apprendre davantage sur la culture traditionnelle, ou rendez-vous à Panjiayuan ou dans la rue culturelle de Liulichang pour trouver des objets artisanaux traditionnels et soutenir la continuité du patrimoine immatériel.</p>
         `
       }
     ]
   },
   de: {
-    title: "Xi'an",
-    subtitle: "Alte Hauptstadt von Dreizehn Dynastien",
+    title: 'Peking Hauptstadt',
+    subtitle: 'Alte und moderne Elemente verwoben in der östlichen Kaiserhauptstadt',
     sections: [
       {
-        title: "Erste Eindrücke",
+        title: 'Erste Eindrücke',
         content: `
-        <p>Xi'an, früher bekannt als Chang&apos;an, ist eine der berühmtesten alten Hauptstädte Chinas und diente als kaiserliche Hauptstadt oder politisches Zentrum für dreizehn Dynastien, darunter die Zhou-, Qin-, Han- und Tang-Dynastien. Als östlicher Ausgangspunkt der Seidenstraße hat diese Stadt eine über 3.100-jährige Geschichte, wobei sie mehr als 1.100 Jahre lang als Hauptstadt diente und die prächtige chinesische Zivilisation nährte.</p>
-        <p>Das heutige Xi'an verbindet perfekt Antike und Moderne. Großartige Stadtmauern umgeben das geschäftige Stadtzentrum, während Weltkulturerbestätten wie die Terrakotta-Armee und die Große Wildganspagode neben lebhaften Geschäftsvierteln stehen. Die islamisch geprägten Speisen im Muslimischen Viertel erfüllen die Luft mit verlockenden Aromen, und die im Tang-Stil gehaltene Große Tang All Day Mall beeindruckt nachts mit ihren Lichtinstallationen, die sowohl das tiefgründige kulturelle Erbe als auch die moderne Vitalität dieser jahrtausendealten Hauptstadt zur Schau stellen.</p>
+          <p>Peking, eine Stadt mit über 3000 Jahren Geschichte und 800 Jahren als Hauptstadt, hat die historischen Veränderungen Chinas über Jahrtausende miterlebt. Als Chinas Hauptstadt beherbergt sie sowohl prächtige alte Bauwerke wie die Verbotene Stadt, den Himmelstempel und den Sommerpalast als auch moderne architektonische Wunderwerke wie das Vogelnest und den Wasserwürfel, die alte und moderne Elemente perfekt miteinander verbinden.</p>
+          <p>Schlendern Sie durch Pekings Hutongs und Innenhöfe, um den traditionellen Lebensstil des alten Pekings zu erleben; erkunden Sie geschäftige Handelsviertel wie Wangfujing und Sanlitun, um die moderne Vitalität dieser Metropole zu spüren. Peking ist eine Stadt, die Besucher fesselt und auf Ihre Erkundung wartet.</p>
         `
       },
       {
-        title: "Grundlegende Informationen",
+        title: 'Grundlegende Informationen',
         content: `
           <h3>Beste Reisezeiten</h3>
           <ul>
@@ -375,7 +376,7 @@ const beijingContent: Record<Language, DestinationContent> = {
         `
       },
       {
-        title: "Sehenswürdigkeiten",
+        title: 'Sehenswürdigkeiten',
         content: `
           <h3>Königliche Paläste und Gärten</h3>
           
@@ -425,14 +426,14 @@ const beijingContent: Record<Language, DestinationContent> = {
     ]
   },
   es: {
-    title: "Xi'an",
-    subtitle: "Antigua Capital de Trece Dinastías",
+    title: 'Pekín: Sinfonía de lo antiguo y lo moderno',
+    subtitle: 'Explore el encanto real y el atractivo moderno de la capital de China',
     sections: [
       {
-        title: "Primeras impresiones",
+        title: 'Primeras impresiones',
         content: `
           <p>
-            La magnífica Ciudad Prohibida con brillantes tejas doradas, la Gran Muralla serpenteando a través de las montañas, el sonido de las campanas de triciclo en los hutongs, las paredes de cristal del CBD reflejando el atardecer... Esta es Xi'an, una ciudad que mezcla lo antiguo y lo moderno, la tradición y la innovación. Con 3.000 años de historia urbana y 800 años como capital, Xi'an lleva la esencia de la civilización china mientras muestra la vibrante energía de la China moderna.
+            La magnífica Ciudad Prohibida con brillantes tejas doradas, la Gran Muralla serpenteando a través de las montañas, el sonido de las campanas de triciclo en los hutongs, las paredes de cristal del CBD reflejando el atardecer... Esta es Pekín, una ciudad que mezcla lo antiguo y lo moderno, la tradición y la innovación. Con 3.000 años de historia urbana y 800 años como capital, Pekín lleva la esencia de la civilización china mientras muestra la vibrante energía de la China moderna.
           </p>
           
           <h3>Características más representativas:</h3>
@@ -445,7 +446,7 @@ const beijingContent: Record<Language, DestinationContent> = {
         `
       },
       {
-        title: "Información básica",
+        title: 'Información básica',
         content: `
           <h3>Mejores temporadas para visitar</h3>
           <ul>
@@ -463,7 +464,7 @@ const beijingContent: Record<Language, DestinationContent> = {
           
           <h3>Transporte</h3>
           <ul>
-            <li>Vuelos internacionales: Aeropuerto Internacional de Xi'an Daxing y Aeropuerto Internacional de la Capital</li>
+            <li>Vuelos internacionales: Aeropuerto Internacional de Pekín Daxing y Aeropuerto Internacional de la Capital</li>
             <li>Transporte urbano: Extensa red de metro (23 líneas), autobuses, taxis</li>
             <li>Entre atracciones: El metro es el más conveniente, las principales atracciones tienen estaciones de metro cercanas</li>
             <li>Recomendación: Compre una tarjeta de transporte o use pago móvil</li>
@@ -474,7 +475,7 @@ const beijingContent: Record<Language, DestinationContent> = {
         `
       },
       {
-        title: "Atracciones imprescindibles",
+        title: 'Atracciones imprescindibles',
         content: `
           <h3>Palacios reales y jardines</h3>
           
@@ -499,7 +500,7 @@ const beijingContent: Record<Language, DestinationContent> = {
             Un lugar sagrado donde los emperadores de las dinastías Ming y Qing realizaban ceremonias para rezar por buenas cosechas. El Altar Circular y el Salón de Oración por las Buenas Cosechas presentan disposiciones precisas que encarnan la visión cosmológica china antigua del "cielo redondo y tierra cuadrada". El Salón de Oración por las Buenas Cosechas es el edificio sacrificial circular antiguo más grande del mundo.
           </p>
           <p>
-            <strong>Consejos de viaje:</strong> Visite temprano en la mañana para ver a los locales practicando tai chi y otros ejercicios matutinos para una experiencia auténtica de Xi'an. Se realiza una actuación ritual en el Salón de Oración por las Buenas Cosechas a las 2:30 PM diariamente. El parque es grande, por lo que se recomienda comprar un boleto para todas las atracciones.
+            <strong>Consejos de viaje:</strong> Visite temprano en la mañana para ver a los locales practicando tai chi y otros ejercicios matutinos para una experiencia auténtica de Pekín. Se realiza una actuación ritual en el Salón de Oración por las Buenas Cosechas a las 2:30 PM diariamente. El parque es grande, por lo que se recomienda comprar un boleto para todas las atracciones.
           </p>
           
           <h3>Sitios históricos y culturales</h3>

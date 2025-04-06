@@ -1,4 +1,4 @@
-import { DestinationContent, DestinationSection, Language } from './types';
+import { Language } from '@/contexts/LanguageContext';
 
 // 定义内容的结构类型
 export interface DestinationSection {
