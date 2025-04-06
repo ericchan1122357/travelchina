@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { CheckIcon, XMarkIcon, PlusIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getDestinationContent, type Language as DestLanguage, DestinationContent, DestinationSection } from './destinationContent';
+import { getDestinationContent, DestinationContent, DestinationSection } from './destinationContent';
 import { getThemesForCity, getCitiesByTheme } from './destinationThemes';
 
 interface DestinationTemplateProps {
@@ -91,7 +91,11 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
   const [isAddedToPlan, setIsAddedToPlan] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [relatedCities, setRelatedCities] = useState<string[]>([]);
-  const [content, setContent] = useState<DestinationContent | null>(null);
+  const [content, setContent] = useState<DestinationContent>({
+    title: '',
+    subtitle: '',
+    sections: []
+  });
   const [contentLoaded, setContentLoaded] = useState(false);
   
   // 在组件挂载时处理浏览器返回按钮
@@ -132,13 +136,8 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
   
   // 获取当前目的地和语言的内容 - 确保每当语言变化时重新获取
   useEffect(() => {
-    // 过滤掉不兼容的语言类型，默认使用 'en'
-    const compatibleLanguage = (['zh', 'en', 'fr', 'de', 'es', 'ko', 'ru'].includes(currentLanguage)) 
-      ? currentLanguage as DestLanguage 
-      : 'en' as DestLanguage;
-      
     // 获取内容并设置状态
-    const destinationContent = getDestinationContent(destinationSlug, compatibleLanguage);
+    const destinationContent = getDestinationContent(destinationSlug, currentLanguage);
     setContent(destinationContent);
     setContentLoaded(true);
     
@@ -147,13 +146,13 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
     const maxRetries = 3;
     
     const retryLoadingContent = () => {
-      if (destinationContent && destinationContent.sections.length === 0 && retryCount < maxRetries) {
+      if (destinationContent.sections.length === 0 && retryCount < maxRetries) {
         retryCount++;
-        console.log(`Retry ${retryCount}/${maxRetries} loading content for ${destinationSlug} in ${compatibleLanguage}`);
+        console.log(`Retry ${retryCount}/${maxRetries} loading content for ${destinationSlug} in ${currentLanguage}`);
         
         // 500ms后重试
         setTimeout(() => {
-          const newContent = getDestinationContent(destinationSlug, compatibleLanguage);
+          const newContent = getDestinationContent(destinationSlug, currentLanguage);
           setContent(newContent);
         }, 500);
       }
@@ -161,16 +160,12 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
     
     retryLoadingContent();
     
-    console.log(`Language changed to ${compatibleLanguage}, updating content for ${destinationSlug}`);
+    console.log(`Language changed to ${currentLanguage}, updating content for ${destinationSlug}`);
   }, [destinationSlug, currentLanguage]);
   
   // 强制刷新内容
   const refreshContent = () => {
-    const compatibleLanguage = (['zh', 'en', 'fr', 'de', 'es', 'ko', 'ru'].includes(currentLanguage)) 
-      ? currentLanguage as DestLanguage 
-      : 'en' as DestLanguage;
-      
-    const freshContent = getDestinationContent(destinationSlug, compatibleLanguage);
+    const freshContent = getDestinationContent(destinationSlug, currentLanguage);
     setContent(freshContent);
     console.log("Content manually refreshed");
   };
@@ -351,12 +346,12 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
         {/* 横幅图片 */}
         <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
           {/* 如果你有图片可以放在这里，否则显示一个占位符 */}
-          <p className="text-gray-500">{content?.title} Panorama Image</p>
+          <p className="text-gray-500">{content.title} Panorama Image</p>
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50"></div>
         <div className="absolute bottom-0 left-0 w-full p-8 text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2">{content?.title}</h1>
-          <p className="text-xl max-w-2xl">{content?.subtitle}</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-2">{content.title}</h1>
+          <p className="text-xl max-w-2xl">{content.subtitle}</p>
         </div>
       </div>
       
@@ -365,14 +360,16 @@ export default function DestinationTemplate({ destinationSlug }: DestinationTemp
         <div className="max-w-4xl mx-auto">          
           {/* 文章内容区域 */}
           <div className="bg-white rounded-2xl shadow-md p-6 mb-8">
-            {content?.sections && content.sections.length > 0 ? (
+            {content.sections && content.sections.length > 0 ? (
               content.sections.map((section, index) => (
                 <ContentSection key={`${destinationSlug}-section-${index}`} title={section.title} content={section.content} />
               ))
             ) : (
-              <div className="text-center p-8">
-                <p className="text-lg text-gray-500">
-                  {contentLoaded ? '暂无内容可显示' : '正在加载内容...'}
+              <div className="text-center py-20">
+                <p className="text-gray-500 italic">
+                  {currentLanguage === 'zh' 
+                    ? '更详细的内容正在编写中，敬请期待...' 
+                    : 'More detailed content is being prepared. Stay tuned...'}
                 </p>
               </div>
             )}
