@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { CheckIcon, XMarkIcon, PlusIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getDestinationContent, DestinationContent, DestinationSection } from './destinationContent';
+import { getDestinationContent } from './destinationContent';
+import { DestinationContent, DestinationSection } from './types';
 import { getThemesForCity, getCitiesByTheme } from './destinationThemes';
 
 interface DestinationTemplateProps {

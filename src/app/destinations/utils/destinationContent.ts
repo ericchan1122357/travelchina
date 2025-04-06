@@ -1,4 +1,5 @@
 import { DestinationContent, DestinationSection, Language } from './types';
+import { guilinContent } from './guilinContent.def';
 
 // 北京的多语言内容
 const beijingContent: Partial<Record<Language, DestinationContent>> = {
@@ -126,16 +127,101 @@ const beijingContent: Partial<Record<Language, DestinationContent>> = {
   // ... 其他语言版本
 };
 
+// 上海的多语言内容 - 简化版，实际使用时需要完整内容
+const shanghaiContent: Partial<Record<Language, DestinationContent>> = {
+  zh: {
+    title: "魔都上海",
+    subtitle: "中西交融的国际大都市",
+    sections: []
+  },
+  en: {
+    title: "Shanghai",
+    subtitle: "International metropolis blending East and West",
+    sections: []
+  }
+};
+
+// 西安的多语言内容 - 简化版，实际使用时需要完整内容
+const xianContent: Partial<Record<Language, DestinationContent>> = {
+  zh: {
+    title: "古都西安",
+    subtitle: "丝绸之路起点，千年帝都风华",
+    sections: []
+  },
+  en: {
+    title: "Xi'an",
+    subtitle: "Ancient capital and starting point of the Silk Road",
+    sections: []
+  }
+};
+
+// 成都的多语言内容 - 简化版，实际使用时需要完整内容
+const chengduContent: Partial<Record<Language, DestinationContent>> = {
+  zh: {
+    title: "悠闲成都",
+    subtitle: "熊猫之乡，休闲美食天堂",
+    sections: []
+  },
+  en: {
+    title: "Chengdu",
+    subtitle: "Home of pandas and culinary paradise",
+    sections: []
+  }
+};
+
 // 导出北京内容
 export const getBeijingContent = (lang: Language): DestinationContent => {
   return beijingContent[lang] || beijingContent.en || beijingContent.zh as DestinationContent;
 };
 
-// 导出杭州内容，西安内容和桂林内容的函数类似
+// 导出上海内容
+export const getShanghaiContent = (lang: Language): DestinationContent => {
+  return shanghaiContent[lang] || shanghaiContent.en || shanghaiContent.zh as DestinationContent;
+};
+
+// 导出西安内容
+export const getXianContent = (lang: Language): DestinationContent => {
+  return xianContent[lang] || xianContent.en || xianContent.zh as DestinationContent;
+};
+
+// 导出成都内容
+export const getChengduContent = (lang: Language): DestinationContent => {
+  return chengduContent[lang] || chengduContent.en || chengduContent.zh as DestinationContent;
+};
+
+// 导出桂林内容
+export const getGuilinContent = (lang: Language): DestinationContent => {
+  return guilinContent[lang] || guilinContent.en || guilinContent.zh as DestinationContent;
+};
+
+// 通用的获取目的地内容函数
+export const getDestinationContent = (destinationSlug: string, lang: Language): DestinationContent => {
+  switch (destinationSlug) {
+    case 'beijing':
+      return getBeijingContent(lang);
+    case 'shanghai':
+      return getShanghaiContent(lang);
+    case 'xian':
+      return getXianContent(lang);
+    case 'chengdu':
+      return getChengduContent(lang);
+    case 'guilin':
+      return getGuilinContent(lang);
+    // 当添加更多城市时，可以在这里添加更多 case
+    // case 'hangzhou':
+    //   return getHangzhouContent(lang);
+    default:
+      // 默认返回北京内容或空内容
+      console.warn(`City content not found for: ${destinationSlug}, returning Beijing content as fallback`);
+      return getBeijingContent(lang);
+  }
+};
 
 export default {
   getBeijingContent,
-  // getHangzhouContent,
-  // getXianContent,
-  // getGuilinContent,
+  getShanghaiContent,
+  getXianContent,
+  getChengduContent,
+  getGuilinContent,
+  getDestinationContent,
 }; 
