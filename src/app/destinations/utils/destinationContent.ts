@@ -1,6 +1,7 @@
 import { guilinContent } from './guilinContent.def';
 import { xianContent } from './xianContent';
 import { chengduContent } from './chengduContent';
+import { hangzhouContent } from './hangzhouContent';
 import { Language } from '@/contexts/LanguageContext';
 
 // 定义内容的结构类型
@@ -105,7 +106,8 @@ export const destinationContents: Record<string, Record<Language, DestinationCon
   shanghai: shanghaiContent,
   xian: xianContent,
   chengdu: chengduContent,
-  guilin: guilinContent
+  guilin: guilinContent,
+  hangzhou: hangzhouContent
 };
 
 // 获取特定目的地和语言的内容
@@ -131,6 +133,9 @@ export function getDestinationContent(cityId: string, language: Language): Desti
       break;
     case 'guilin':
       cityContent = guilinContent;
+      break;
+    case 'hangzhou':
+      cityContent = hangzhouContent;
       break;
     // 可以添加其他城市...
     default:
