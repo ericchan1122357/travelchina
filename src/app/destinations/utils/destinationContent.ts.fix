@@ -1,0 +1,150 @@
+import { Language } from '@/contexts/LanguageContext';
+
+// 定义内容的结构类型
+export interface DestinationSection {
+  title: string;
+  content: React.ReactNode;
+}
+
+export interface DestinationContent {
+  title: string;
+  subtitle: string;
+  sections: DestinationSection[];
+}
+
+// 为缺失的城市创建默认内容对象
+const defaultContent: Record<Language, DestinationContent> = {
+  zh: {
+    title: "默认标题",
+    subtitle: "默认副标题",
+    sections: []
+  },
+  en: {
+    title: "Default Title",
+    subtitle: "Default Subtitle",
+    sections: []
+  },
+  fr: {
+    title: "Titre par défaut",
+    subtitle: "Sous-titre par défaut",
+    sections: []
+  },
+  de: {
+    title: "Standardtitel",
+    subtitle: "Standarduntertitel",
+    sections: []
+  },
+  ja: {
+    title: "デフォルトタイトル",
+    subtitle: "デフォルトサブタイトル",
+    sections: []
+  },
+  ko: {
+    title: "기본 제목",
+    subtitle: "기본 부제목",
+    sections: []
+  },
+  es: {
+    title: "Título predeterminado",
+    subtitle: "Subtítulo predeterminado",
+    sections: []
+  },
+  ru: {
+    title: "Заголовок по умолчанию",
+    subtitle: "Подзаголовок по умолчанию",
+    sections: []
+  }
+};
+
+// 西安的内容 - 仅包含俄语部分，实际内容应完整
+const xianContent: Record<Language, DestinationContent> = {
+  zh: defaultContent.zh,
+  en: defaultContent.en,
+  fr: defaultContent.fr,
+  de: defaultContent.de,
+  ja: defaultContent.ja,
+  ko: defaultContent.ko,
+  es: defaultContent.es,
+  ru: {
+    title: "Сиань",
+    subtitle: "Древняя столица тринадцати династий",
+    sections: [
+      {
+        title: "Первые впечатления",
+        content: `<p>Сиань - одна из древних столиц Китая.</p>`
+      },
+      {
+        title: "Обзор основной информации",
+        content: `<p>Базовая информация о Сиане.</p>`
+      },
+      {
+        title: "Обязательные к посещению достопримечательности",
+        content: `<p>Основные достопримечательности Сианя.</p>`
+      }
+    ]
+  }
+};
+
+// 城市内容集合
+const destinationContents: Record<string, Record<Language, DestinationContent>> = {
+  hangzhou: defaultContent,
+  guilin: defaultContent,
+  xian: xianContent
+};
+
+// 获取特定目的地和语言的内容
+export function getDestinationContent(cityId: string, language: Language): DestinationContent {
+  // 根据城市ID获取相应的内容
+  let cityContent: Record<Language, DestinationContent> | undefined;
+  
+  // 记录日志，以便调试
+  console.log(`Getting content for city: ${cityId}, language: ${language}`);
+  
+  switch(cityId) {
+    case 'hangzhou':
+      cityContent = destinationContents.hangzhou;
+      break;
+    case 'guilin':
+      cityContent = destinationContents.guilin;
+      break;
+    case 'xian':
+      cityContent = destinationContents.xian;
+      break;
+    // 可以添加其他城市...
+    default:
+      // 默认返回空对象
+      console.log(`City content not found for: ${cityId}`);
+    return {
+        title: cityId.charAt(0).toUpperCase() + cityId.slice(1),
+        subtitle: '',
+      sections: []
+    };
+  }
+  
+  // 如果请求的语言内容是空的（sections长度为0），则使用英文内容
+  if (cityContent && cityContent[language] && cityContent[language].sections.length === 0) {
+    console.log(`Using English content as fallback for language: ${language}`);
+    return {
+      ...cityContent[language],
+      sections: cityContent['en'].sections
+    };
+  }
+  
+  // 检查请求的语言是否存在
+  if (cityContent && !cityContent[language]) {
+    console.log(`Language ${language} not found, using English as fallback`);
+    return cityContent['en'];
+  }
+  
+  // 返回请求的语言内容
+  if (cityContent && cityContent[language]) {
+    return cityContent[language];
+  }
+  
+  // 最终使用英文作为备用
+  return {
+    title: cityId.charAt(0).toUpperCase() + cityId.slice(1),
+    subtitle: '',
+    sections: []
+  };
+} 

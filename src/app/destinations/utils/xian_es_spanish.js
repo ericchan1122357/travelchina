@@ -1,4 +1,4 @@
-es: {
+export const xianContentEs = {
   title: "Xi'an",
   subtitle: "Antigua Capital de Trece Dinastías",
   sections: [
@@ -40,4 +40,4 @@ es: {
       `
     }
   ]
-}, 
+}; 
