@@ -1,3 +1,4 @@
+// Xi'an西班牙语内容
 export const xianContentEs = {
   title: "Xi'an",
   subtitle: "Antigua capital de trece dinastías, punto de partida oriental de la Ruta de la Seda",
