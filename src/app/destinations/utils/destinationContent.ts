@@ -104,74 +104,58 @@ const shanghaiContent: Record<Language, DestinationContent> = {
 export const destinationContents: Record<string, Record<Language, DestinationContent>> = {
   beijing: beijingContent,
   shanghai: shanghaiContent,
-  xian: xianContent,
   chengdu: chengduContent,
+  xian: xianContent,
   guilin: guilinContent,
   hangzhou: hangzhouContent
 };
 
 // 获取特定目的地和语言的内容
-export function getDestinationContent(cityId: string, language: Language): DestinationContent {
-  // 根据城市ID获取相应的内容
-  let cityContent: Record<Language, DestinationContent> | undefined;
+export const getDestinationContent = (destinationId: string, language: Language): DestinationContent => {
+  // Convert language parameter to lowercase for case-insensitive matching
+  const lang = language.toLowerCase() as Language;
   
-  // 记录日志，以便调试
-  console.log(`Getting content for city: ${cityId}, language: ${language}`);
+  // Get the destination content based on destinationId
+  let destination: Record<Language, DestinationContent> | undefined;
   
-  switch(cityId) {
+  switch (destinationId) {
     case 'beijing':
-      cityContent = beijingContent;
+      destination = beijingContent;
       break;
     case 'shanghai':
-      cityContent = shanghaiContent;
-      break;
-    case 'xian':
-      cityContent = xianContent;
+      destination = shanghaiContent;
       break;
     case 'chengdu':
-      cityContent = chengduContent;
+      destination = chengduContent;
+      break;
+    case 'xian':
+      destination = xianContent;
       break;
     case 'guilin':
-      cityContent = guilinContent;
+      destination = guilinContent;
       break;
     case 'hangzhou':
-      cityContent = hangzhouContent;
+      destination = hangzhouContent;
       break;
-    // 可以添加其他城市...
+    // ... other destinations
     default:
-      // 默认返回空对象
-      console.log(`City content not found for: ${cityId}`);
-      return {
-        title: cityId.charAt(0).toUpperCase() + cityId.slice(1),
-        subtitle: '',
-        sections: []
-      };
+      // If destination is not found, return the default template
+      return defaultImplementation[lang] || defaultImplementation['en'];
   }
   
-  // 如果请求的语言内容是空的（sections长度为0），则使用英文内容
-  if (cityContent && cityContent[language] && cityContent[language].sections.length === 0) {
-    console.log(`Using English content as fallback for language: ${language}`);
-    return {
-      ...cityContent[language],
-      sections: cityContent['en'].sections
-    };
+  // Check if the requested language is available for this destination
+  // Order of preference: Requested language -> English -> First available language
+  if (destination && destination[lang]) {
+    return destination[lang];
+  } else if (destination && destination['en']) {
+    // Fallback to English if available
+    return destination['en'];
+  } else if (destination) {
+    // Fallback to first available language for this destination
+    const availableLanguage = Object.keys(destination)[0] as Language;
+    return destination[availableLanguage];
   }
   
-  // 检查请求的语言是否存在
-  if (cityContent && !cityContent[language]) {
-    console.log(`Language ${language} not found, using English as fallback`);
-    return cityContent['en'];
-  }
-  
-  // 返回请求的语言内容
-  if (cityContent && cityContent[language]) {
-    return cityContent[language];
-  }
-  
-  // 最终使用英文作为备用
-  return {
-    title: cityId.charAt(0).toUpperCase() + cityId.slice(1),
-    subtitle: '',
-    sections: []
-  };
-} 
+  // If nothing is available, return the default template
+  return defaultImplementation[lang] || defaultImplementation['en'];
+}; 
