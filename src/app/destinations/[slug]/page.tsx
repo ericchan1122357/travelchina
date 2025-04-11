@@ -2,6 +2,7 @@
 
 import React from 'react';
 import DestinationTemplate from '../utils/DestinationTemplate';
+import { getDestinationContent } from '../utils/destinationContent';
 
 // 支持的目的地列表
 const supportedDestinations = [
@@ -36,6 +37,13 @@ export default function DestinationPage({ params }: DestinationPageProps) {
     );
   }
   
+  // 获取目的地内容
+  const content = getDestinationContent(slug);
+  
   // 渲染目的地模板
-  return <DestinationTemplate destinationSlug={slug} />;
+  return <DestinationTemplate 
+    title={content.title}
+    subtitle={content.subtitle}
+    sections={content.sections}
+  />;
 } 
