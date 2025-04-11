@@ -85,7 +85,7 @@ export default function GuilinPage() {
   };
   
   // 获取当前语言的城市内容
-  const cityContent = getDestinationContent('guilin', currentLanguage);
+  const cityContent = getDestinationContent('guilin');
   
   return (
     <div className="min-h-screen bg-gray-50">
