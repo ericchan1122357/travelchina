@@ -5,7 +5,7 @@ import { getDestinationContent } from './utils/destinationContent';
 
 const DestinationDetailPage = () => {
   const searchParams = useSearchParams();
-  const city = searchParams.get('city') || 'xian'; // 默认为西安
+  const city = searchParams?.get('city') || 'xian'; // 默认为西安
 
   const [content, setContent] = useState(getDestinationContent(city));
 
