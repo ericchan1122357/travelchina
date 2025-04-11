@@ -228,7 +228,7 @@ const xianContentDe: DestinationContent = {
 
       <h3>Religiöse Vielfalt und Kulturelle Integration</h3>
       <p>Xi'an war historisch ein Zentrum für verschiedene Religionen und kulturellen Austausch. Nachdem der Buddhismus während der Han-Dynastie nach China eingeführt wurde, echte er in Xi'an und entwickelte sich. Während der Tang-Dynastie koexistierten und entwickelten sich der Taoismus, der Nestorianismus (ein Zweig des Christentums), der Manichéismus, der Zoroastrismus, der Islam und andere in Chang'an, bildeten eine pluralistische und inklusive kulturelle Atmosphäre.</p>
-      <p>Das heutige Xi'an bewahrt noch Relikte verschiedener Religionen, wie den Daci'en-Tempel, den Qinglong-Tempel und die Große Mosquéa. Diese historischen Stätten sind nicht nur religiöse Orte, sondern auch wichtige Materialien zum Studium der chinesischen Religionsgeschichte und des kulturellen Austauschs zwischen China und fremden Ländern. Die muslimische Gemeinschaft und das muslimische Viertel in der Stadt demonstrieren, wie die islamische Kultur harmonisch mit der traditionellen chinesischen Kultur koexistiert und diese beeinflusst.</p>
+      <p>Das heutige Xi'an bewahrt noch Relikte verschiedener Religionen, wie den Daci'en-Tempel, den Qinglong-Tempel und die Große Mosquéa. Diese historischen Stätten sind nicht nur religiöse Orte, sondern auch wichtige Materialien zum Studium der chinesischen Religionsgeschichte und des kulturellen Austauschs zwischen China und l'étranger. La communauté musulmane du centre-ville et le quartier musulman montrent comment la culture islamique coexiste harmonieusement et influence la culture chinoise traditionnelle.</p>
       `
     }
   ]
