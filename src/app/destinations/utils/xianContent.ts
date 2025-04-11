@@ -585,6 +585,240 @@ const xianContentJa: DestinationContent = {
   ]
 };
 
+// 英语内容
+export const xianContentEn: DestinationContent = {
+  title: "Xi'an",
+  subtitle: "The ancient capital with three thousand years of history",
+  sections: [
+    {
+      title: "First Impressions",
+      content: `
+      <p>Xi'an, formerly known as Chang'an, was once the most prosperous capital in the world during the Tang Dynasty. Today, it's a vibrant modern city that perfectly balances its rich historical heritage with urban development. Walking through the ancient city walls, you can feel the pulse of Chinese history while enjoying the conveniences of contemporary life.</p>
+      <p>As one of China's four great ancient capitals, Xi'an offers an incredible journey through time, from the magnificent Terracotta Army to the bustling Muslim Quarter. The city's layout, with its grid pattern and imposing city walls, still preserves the charm of traditional Chinese urban planning.</p>
+      `
+    },
+    {
+      title: "Basic Information Overview",
+      content: `
+      <p><strong>Best seasons to visit:</strong> Spring (March-May) and autumn (September-November) offer pleasant weather with mild temperatures. Summer can be hot and rainy, while winter is cold and dry.</p>
+      <p><strong>Climate characteristics:</strong> Xi'an has a temperate climate with four distinct seasons. Spring and autumn are the most comfortable, summer is hot and humid, and winter is cold with occasional light snow.</p>
+      <p><strong>Transportation:</strong> Xi'an Xianyang International Airport connects to major domestic and international destinations. The city has a well-developed metro system with 6 lines covering most tourist attractions. Buses, taxis, and bike-sharing services are also widely available.</p>
+      <p><strong>Recommended stay duration:</strong> 2-3 days is sufficient to see the main attractions, but 4-5 days allows for a more comprehensive experience including nearby destinations like Mount Hua.</p>
+      <p><strong>Cost level:</strong> Medium. Xi'an is more affordable than Beijing or Shanghai, with reasonable prices for accommodation, food, and attractions.</p>
+      `
+    },
+    {
+      title: "Must-Visit Attractions",
+      content: `
+      <h3>Terracotta Army Museum</h3>
+      <p>This world-famous archaeological site features thousands of life-sized terracotta warriors and horses arranged in battle formations to guard Emperor Qin Shi Huang's tomb. Each warrior has unique facial features and expressions, showcasing the remarkable craftsmanship of ancient China.</p>
+      <p><strong>Travel tip:</strong> Visit early in the morning to avoid crowds and hire a knowledgeable guide to fully appreciate the historical significance. Make sure to visit the pits in order of 1, 3, then 2 for the best experience. Photography is allowed but without flash.</p>
+
+      <h3>Xi'an City Wall</h3>
+      <p>One of the oldest and best-preserved city walls in China, this massive fortification encircles Xi'an's old town. Stretching 14 kilometers in perimeter with a height of 12 meters, the wall offers a panoramic view of the city from its walkway.</p>
+      <p><strong>Travel tip:</strong> Rent a bicycle to ride the full circuit in about 2 hours, or take a leisurely walk along a section. The south gate area is particularly impressive, especially when illuminated at night. Consider visiting at sunset for spectacular views.</p>
+
+      <h3>Big Wild Goose Pagoda</h3>
+      <p>Built in the 7th century during the Tang Dynasty, this Buddhist pagoda was originally constructed to store sutras and Buddha figurines brought from India by the famous monk Xuanzang. The 7-story structure stands at 64 meters tall and represents the architectural style of the Tang Dynasty.</p>
+      <p><strong>Travel tip:</strong> Visit in the evening to enjoy the magnificent musical fountain show in the North Square. If you're interested in Buddhist culture, combine this visit with the adjacent Da Ci'en Temple. Climbing the pagoda offers panoramic views of the city.</p>
+
+      <h3>Shaanxi History Museum</h3>
+      <p>One of China's first large-scale modern museums, it houses over 370,000 historical artifacts that span the province's rich history from prehistoric times to the Qing Dynasty. The museum's architecture is inspired by Tang Dynasty palace design.</p>
+      <p><strong>Travel tip:</strong> Free tickets are limited daily, so arrive early. Special exhibitions may require an additional fee. Focus on the Tang tri-colored pottery, ancient bronze vessels, and gold and silver artifacts if your time is limited.</p>
+
+      <h3>Muslim Quarter</h3>
+      <p>This vibrant area near the Drum Tower is home to Xi'an's Hui Muslim community and features narrow lanes filled with food stalls, souvenir shops, and historic mosques. The Great Mosque, founded in 742 CE, is a fascinating blend of Chinese and Islamic architectural styles.</p>
+      <p><strong>Travel tip:</strong> Visit during dinner time to experience the lively food street at its best, and try local specialties like Roujiamo (Chinese hamburger) and Yang Rou Pao Mo (lamb soup with bread). Be prepared for crowds and remember to bargain when shopping.</p>
+      `
+    },
+    {
+      title: "Unique Experiences",
+      content: `
+      <h3>Cycling on the Ancient City Wall</h3>
+      <p>Rent a bicycle and ride atop the 14km-long city wall to see Xi'an from a different perspective. The full circuit takes about 2 hours and offers spectacular views of both the old town and the modern city.</p>
+      <p><strong>Experience tip:</strong> Go early in the morning or late afternoon to avoid the midday heat and enjoy better lighting for photography. Rental stations are available at several entry points along the wall.</p>
+
+      <h3>Watching a Qinqiang Opera Performance</h3>
+      <p>Experience this ancient art form native to Shaanxi Province, known for its vigorous singing and colorful face masks. It's one of the oldest forms of Chinese opera and is listed as a national intangible cultural heritage.</p>
+      <p><strong>Experience tip:</strong> The Yisu Theater and Shaanxi Grand Theater regularly host performances. Even if you don't understand the language, the visual spectacle and emotional performances are worthwhile experiences.</p>
+
+      <h3>Making your own mini Terracotta Warrior</h3>
+      <p>Visit a workshop near the Terracotta Army where you can learn about the ancient techniques and create your own clay figurine as a unique souvenir.</p>
+      <p><strong>Experience tip:</strong> This activity takes about an hour and is perfect for families with children. Some workshops also offer painting options to customize your warrior.</p>
+
+      <h3>Sunrise at Mount Hua (Huashan)</h3>
+      <p>Take a day trip to one of China's five sacred mountains. Known for its steep cliffs and narrow paths, including the famous 'plank walk' that challenges the bravest visitors. The sunrise view from the East Peak is simply breathtaking.</p>
+      <p><strong>Experience tip:</strong> For the full experience, climb overnight and reach the East Peak before dawn. Take the high-speed train from Xi'an to Huashan North Station (about 40 minutes) and then a shuttle bus to the mountain entrance.</p>
+
+      <h3>Tang Dynasty Show and Dumpling Banquet</h3>
+      <p>Enjoy an evening of imperial court music and dance performances while savoring a feast of dumplings in various shapes, colors, and fillings, representing the culinary artistry of the Tang Dynasty.</p>
+      <p><strong>Experience tip:</strong> The Tang Paradise and Shaanxi Grand Opera House offer the most authentic performances. Book in advance during peak tourist seasons, as these shows are extremely popular.</p>
+      `
+    },
+    {
+      title: "Food Guide",
+      content: `
+      <h3>Biangbiang Noodles</h3>
+      <p>These extra-wide, belt-like noodles are a Shaanxi specialty, famous for having the most complex Chinese character in their name. Served with chili oil, vegetables, and meat, they offer a chewy texture and rich flavor.</p>
+      <p><strong>Recommended restaurant:</strong> Wei Jia Biangbiang Noodles in the Muslim Quarter offers authentic handmade noodles with various toppings.</p>
+
+      <h3>Yangrou Paomo (Lamb Soup with Bread)</h3>
+      <p>A signature dish where you tear unleavened bread into small pieces, which the chef then adds to a flavorful lamb or beef broth with vermicelli noodles and tender meat.</p>
+      <p><strong>Recommended restaurant:</strong> Lao Sun Jia, a century-old establishment near the Drum Tower, is known for its authentic recipe and rich broth.</p>
+
+      <h3>Roujiamo (Chinese Hamburger)</h3>
+      <p>Often considered the world's oldest hamburger, this snack consists of slow-cooked, spiced meat (usually pork or beef) stuffed into a freshly baked wheat bun.</p>
+      <p><strong>Recommended restaurant:</strong> Xianglaixi on Xiyang Market Street serves some of the juiciest and most flavorful roujiamo in the city.</p>
+
+      <h3>Liangpi (Cold Noodles)</h3>
+      <p>A refreshing cold dish made from rice or wheat flour, served with chili oil, vinegar, and various toppings. Perfect for hot summer days.</p>
+      <p><strong>Recommended restaurant:</strong> Ma Jie Liangpi in the Muslim Quarter is famous for its perfect balance of tangy, spicy, and savory flavors.</p>
+
+      <h3>Muslim-style Cuisine</h3>
+      <p>Xi'an's large Muslim community offers halal versions of Chinese dishes and unique specialties like lamb kebabs, persimmon cakes, and osmanthus jelly.</p>
+      <p><strong>Recommended restaurant:</strong> Lao Mi Jia in the Muslim Quarter serves authentic Hui Muslim cuisine including excellent lamb dishes and hand-pulled noodles.</p>
+      `
+    },
+    {
+      title: "Cultural and Historical Insights",
+      content: `
+      <h3>Historical Transitions</h3>
+      <p>Xi'an served as the capital for 13 dynasties over a span of more than 1,000 years. Each dynasty left its mark on the city, contributing to its rich cultural tapestry. The most significant periods were the Han Dynasty (206 BCE-220 CE) and the Tang Dynasty (618-907 CE), when the city reached its zenith of prosperity and international influence.</p>
+      <p>The urban layout of present-day Xi'an still reflects the meticulous grid design of Chang'an during the Tang Dynasty, considered one of the greatest examples of ancient urban planning in world history.</p>
+
+      <h3>Starting Point of the Silk Road</h3>
+      <p>As the eastern terminus of the ancient Silk Road, Xi'an was a crucial hub for trade and cultural exchange between China and the West. This role transformed it into one of the world's most cosmopolitan cities during the Tang Dynasty, home to merchants, monks, and envoys from across Asia, the Middle East, and Europe.</p>
+      <p>The diverse religious buildings in Xi'an, including Buddhist temples and the Great Mosque, stand as testament to the cultural exchange facilitated by the Silk Road.</p>
+
+      <h3>Tang Dynasty Glory</h3>
+      <p>The Tang era represents China's golden age of arts and culture, marked by unprecedented openness to foreign influences. Xi'an's archaeological sites and museums display the sophisticated aesthetic sensibilities of this period, from exquisite Tang tri-colored pottery to elegant court ladies' figurines.</p>
+      <p>The cultural achievements of the Tang Dynasty—in poetry, music, dance, painting, and sculpture—continue to influence Chinese culture to this day, and Xi'an proudly preserves and celebrates this heritage.</p>
+
+      <h3>Religious Diversity</h3>
+      <p>Xi'an has been a center for various religions throughout its history. Buddhism flourished during the Tang Dynasty, as evidenced by the Big Wild Goose Pagoda. The city is also home to one of China's oldest Islamic communities, with the Great Mosque dating back to the 8th century.</p>
+      <p>This religious diversity contributed significantly to Xi'an's cultural richness. Today, visitors can explore Buddhist temples, Taoist shrines, and Islamic mosques, witnessing the harmonious coexistence of different belief systems that has characterized the city for centuries.</p>
+      `
+    }
+  ]
+};
+
+// 韩语内容
+export const xianContentKo: DestinationContent = {
+  title: "시안",
+  subtitle: "3천년의 역사를 가진 고대 수도",
+  sections: [
+    {
+      title: "첫인상",
+      content: `
+      <p>시안(西安)은 과거 '창안(長安)'이라 불렸으며, 당나라 시대에는 세계에서 가장 번영한 수도였습니다. 오늘날 시안은 풍부한 역사적 유산과 도시 개발이 완벽하게 균형을 이루는 활기찬 현대 도시입니다. 고대 성벽을 걸으며 현대적인 생활의 편리함을 즐기면서도 중국 역사의 맥박을 느낄 수 있습니다.</p>
+      <p>중국의 4대 고대 수도 중 하나인 시안은 웅장한 병마용에서부터 활기찬 무슬림 거리까지, 시간을 통한 놀라운 여행을 제공합니다. 격자 패턴과 인상적인 성벽이 있는 도시 구조는 여전히 전통적인 중국 도시 계획의 매력을 보존하고 있습니다.</p>
+      `
+    },
+    {
+      title: "기본 정보 개요",
+      content: `
+      <p><strong>방문하기 좋은 계절:</strong> 봄(3월-5월)과 가을(9월-11월)은 온화한 기온으로 쾌적한 날씨를 제공합니다. 여름은 덥고 비가 많이 내릴 수 있으며, 겨울은 춥고 건조합니다.</p>
+      <p><strong>기후 특성:</strong> 시안은 사계절이 뚜렷한 온대 기후를 가지고 있습니다. 봄과 가을이 가장 편안하고, 여름은 덥고 습하며, 겨울은 춥고 가끔 가벼운 눈이 내립니다.</p>
+      <p><strong>교통:</strong> 시안 셴양 국제공항은 주요 국내 및 국제 목적지와 연결됩니다. 도시는 대부분의 관광 명소를 포함하는 6개 노선의 잘 발달된 지하철 시스템을 갖추고 있습니다. 버스, 택시 및 자전거 공유 서비스도 널리 이용 가능합니다.</p>
+      <p><strong>권장 체류 기간:</strong> 주요 명소를 보려면 2-3일이면 충분하지만, 화산(화산)과 같은 인근 목적지를 포함한 더 포괄적인 경험을 위해서는 4-5일이 좋습니다.</p>
+      <p><strong>비용 수준:</strong> 중간. 시안은 베이징이나 상하이보다 더 저렴하며, 숙박, 식사 및 관광 명소의 가격이 합리적입니다.</p>
+      `
+    },
+    {
+      title: "꼭 방문해야 할 명소",
+      content: `
+      <h3>병마용 박물관</h3>
+      <p>이 세계적으로 유명한 고고학 유적지는 진시황 황제의 무덤을 지키기 위해 전투 대형으로 배치된 수천 개의 실물 크기 테라코타 전사와 말을 특징으로 합니다. 각 전사는 고대 중국의 놀라운 장인 정신을 보여주는 독특한 얼굴 특징과 표정을 가지고 있습니다.</p>
+      <p><strong>여행 팁:</strong> 군중을 피하려면 아침 일찍 방문하고, 역사적 의미를 충분히 이해하기 위해 지식이 풍부한 가이드를 고용하세요. 최상의 경험을 위해 1, 3, 2번 순서로 전시장을 방문하세요. 사진 촬영은 허용되지만 플래시는 사용할 수 없습니다.</p>
+
+      <h3>시안 성벽</h3>
+      <p>중국에서 가장 오래되고 가장 잘 보존된 성벽 중 하나인 이 거대한 요새는 시안의 구시가지를 둘러싸고 있습니다. 12미터 높이에 둘레 14킬로미터에 달하는 성벽은 그 보도에서 도시의 파노라마 뷰를 제공합니다.</p>
+      <p><strong>여행 팁:</strong> 자전거를 빌려 약 2시간 만에 전체 회로를 타거나 한 구간을 따라 여유롭게 산책하세요. 남문 지역은 특히 밤에 조명을 받을 때 특히 인상적입니다. 환상적인 전망을 위해 일몰 시간에 방문하는 것을 고려해보세요.</p>
+
+      <h3>대안탑(대야생 거위 탑)</h3>
+      <p>당나라 시대인 7세기에 지어진 이 불교 탑은 원래 유명한 승려 현장이 인도에서 가져온 경전과 부처 상을 보관하기 위해 건설되었습니다. 7층 구조물은 높이 64미터로 당나라 건축 양식을 대표합니다.</p>
+      <p><strong>여행 팁:</strong> 북광장에서 웅장한 음악 분수 쇼를 즐기려면 저녁에 방문하세요. 불교 문화에 관심이 있다면 인접한 대자은사와 함께 방문하세요. 탑에 올라가면、도시의 파노라마 전경을 볼 수 있습니다.</p>
+
+      <h3>산시 역사 박물관</h3>
+      <p>중국 최초의 대규모 현대 박물관 중 하나로, 선사 시대부터 청나라까지 성의 풍부한 역사를 아우르는 37만 점 이상의 역사적 유물을 소장하고 있습니다. 박물관의 건축물은 당나라 궁전 디자인에서 영감을 받았습니다.</p>
+      <p><strong>여행 팁:</strong> 무료 티켓은 매일 제한되어 있으므로 일찍 도착하세요. 특별 전시회는 추가 요금이 필요할 수 있습니다. 시간이 제한적이라면 당삼채, 고대 청동 기물, 금은 공예품에 집중하세요.</p>
+
+      <h3>무슬림 거리</h3>
+      <p>고루 근처의 이 활기찬 지역은 시안의 회족 무슬림 커뮤니티의 본거지이며, 음식 노점, 기념품 가게, 역사적인 모스크가 있는 좁은 골목이 특징입니다. 742년에 설립된 대청진사(그레이트 모스크)는 중국과 이슬람 건축 양식이 흥미롭게 혼합되어 있습니다.</p>
+      <p><strong>여행 팁:</strong> 활기찬 음식 거리를 최대한 경험하려면 저녁 식사 시간에 방문하고, 로우자모(중국식 햄버거)와 양로우 파오모(빵이 들어간 양고기 수프)와 같은 지역 특산품을 맛보세요. 혼잡한 상황에 대비하고 쇼핑 시 흥정하는 것을 잊지 마세요.</p>
+      `
+    },
+    {
+      title: "특별한 경험",
+      content: `
+      <h3>고대 성벽에서의 자전거 타기</h3>
+      <p>자전거를 빌려 14km 길이의 성벽 위에서 타며 시안을 다른 관점에서 볼 수 있습니다. 전체 회로는 약 2시간이 소요되며 구시가지와 현대 도시 모두의 멋진 전망을 제공합니다.</p>
+      <p><strong>경험 팁:</strong> 정오의 열기를 피하고 사진 촬영을 위한 더 나은 조명을 즐기려면 이른 아침이나 늦은 오후에 가세요. 대여 station은 성벽을 따라 여러 입구에서 이용 가능합니다.</p>
+
+      <h3>친창 오페라 공연 관람</h3>
+      <p>활기찬 노래와 화려한 얼굴 마스크로 알려진 산시성 고유의 이 고대 예술 형태를 경험해보세요. 중국 오페라의 가장 오래된 형태 중 하나이며 국가 무형 문화유산으로 등재되어 있습니다.</p>
+      <p><strong>경험 팁:</strong> 이수 극장과 산시 대극장에서 정기적으로 공연을 개최합니다. 언어를 이해하지 못하더라도 시각적 스펙터클과 감정적인 공연은 가치 있는 경험입니다.</p>
+
+      <h3>나만의 미니 병마용 만들기</h3>
+      <p>병마용 근처의 공방을 방문하여 고대 기술에 대해 배우고 독특한 기념품으로 자신만의 점토 인형을 만들어보세요.</p>
+      <p><strong>경험 팁:</strong> 이 활동은 약 1시간이 소요되며 어린이가 있는 가족에게 완벽합니다. 일부 공방에서는 전사를 맞춤화할 수 있는 페인팅 옵션도 제공합니다.</p>
+
+      <h3>화산(화산)에서의 일출</h3>
+      <p>중국의 다섯 개의 성산 중 하나로 당일 여행을 떠나보세요. 가장 용감한 방문객들에게 도전이 되는 유명한 '판자 길'을 포함한 가파른 절벽과 좁은 길로 유명합니다. 동봉에서 바라보는 일출 전망은 그저 숨이 막힐 정도로 아름답습니다.</p>
+      <p><strong>경험 팁:</strong> 완전한 경험을 위해 밤새 등산하여 동이 트기 전에 동봉에 도착하세요. 시안에서 화산 북역까지 고속철도(약 40분)를 타고 셔틀 버스를 이용해 산 입구로 이동하세요.</p>
+
+      <h3>당나라 쇼와 만두 연회</h3>
+      <p>당나라의 요리 예술을 대표하는 다양한 모양, 색상 및 속을 가진 만두 feast을 즐기며 궁중 음악과 춤 공연의 밤을 즐겨보세요.</p>
+      <p><strong>경험 팁:</strong> 당낙원과 산시 대극장에서 가장 정통한 공연을 제공합니다. 이 공연들은 매우 인기가 있으므로 성수기에는 미리 예약하세요.</p>
+      `
+    },
+    {
+      title: "음식 가이드",
+      content: `
+      <h3>비앙비앙 면</h3>
+      <p>이 특별히 넓은 벨트 모양의 면은 산시 특산품으로, 이름에 가장 복잡한 중국 문자를 가진 것으로 유명합니다. 칠리 오일, 야채 및 고기와 함께 제공되며 쫄깃한 식감과 풍부한 맛을 제공합니다.</p>
+      <p><strong>추천 레스토랑:</strong> 무슬림 거리의 웨이자 비앙비앙 면은 다양한 토핑과 함께 정통 수제 면을 제공합니다.</p>
+
+      <h3>양로우 파오모(빵이 들어간 양고기 수프)</h3>
+      <p>무발효 빵을 작은 조각으로 찢은 다음 주방장이 버미첼리 면과 부드러운 고기가 들어간 풍미 있는 양고기 또는 소고기 국물에 첨가하는 시그니처 요리입니다.</p>
+      <p><strong>추천 레스토랑:</strong> 고루 근처의 100년 된 업체인 라오 순 지아는 정통 레시피와 풍부한 국물로 유명합니다.</p>
+
+      <h3>로우지아모(중국식 햄버거)</h3>
+      <p>종종 세계에서 가장 오래된 햄버거로 간주되는 이 간식은 느리게 요리된 향신료 고기(일반적으로 돼지고기 또는 소고기)를 갓 구운 밀 번에 채운 것입니다.</p>
+      <p><strong>추천 레스토랑:</strong> 시양 시장 거리의 샹라이시는 도시에서 가장 즙이 많고 맛있는 로우지아모를 제공합니다.</p>
+
+      <h3>량피(냉면)</h3>
+      <p>쌀가루나 밀가루로 만든 상쾌한 냉면으로, 칠리 오일, 식초 및 다양한 토핑과 함께 제공됩니다. 더운 여름날에 완벽합니다.</p>
+      <p><strong>추천 레스토랑:</strong> 무슬림 거리의 마지에 량피는 새콤하고 매운맛, 그리고 짭짤한 맛의 완벽한 균형으로 유명합니다.</p>
+
+      <h3>무슬림 스타일 요리</h3>
+      <p>시안의 대규모 무슬림 커뮤니티는 중국 요리의 할랄 버전과 양고기 케밥, 감 케이크, 계수나무 젤리와 같은 독특한 특산품을 제공합니다.</p>
+      <p><strong>추천 레스토랑:</strong> 무슬림 거리의 라오미지아는 훌륭한 양고기 요리와 손으로 당긴 면을 포함한 정통 회족 무슬림 요리를 제공합니다.</p>
+      `
+    },
+    {
+      title: "문화적 역사적 통찰",
+      content: `
+      <h3>역사적 변천</h3>
+      <p>시안은 1,000년이 넘는 기간 동안 13개 왕조의 수도로 봉사했습니다. 각 왕조는 도시에 자신의 흔적을 남겨 풍부한 문화적 태피스트리에 기여했습니다. 가장 중요한 시기는 한나라(기원전 206년-서기 220년)와 당나라(618-907년)로, 이 때 도시는 번영과 국제적 영향력의 정점에 도달했습니다.</p>
+      <p>현재 시안의 도시 구조는 여전히 당나라 시대 창안의 세심한 격자형 디자인을 반영하고 있으며, 이는 세계 역사상 가장 위대한 고대 도시 계획의 예 중 하나로 간주됩니다.</p>
+
+      <h3>실크로드의 출발점</h3>
+      <p>고대 실크로드의 동쪽 종착지로서 시안은 중국과 서방 사이의 무역과 문화 교류의 중요한 허브였습니다. 이 역할은 당나라 시대에 아시아, 중동, 유럽 전역에서 온 상인, 승려, 사절들의 본거지인 세계에서 가장 국제적인 도시 중 하나로 변모시켰습니다.</p>
+      <p>시안의 다양한 종교 건물, 불교 사원 및 대청진사는 실크로드가 촉진한 문화 교류의 증거로 남아 있습니다.</p>
+
+      <h3>당나라의 영광</h3>
+      <p>당나라 시대는 외국의 영향에 대한 전례 없는 개방성을 특징으로 하는 중국 예술과 문화의 황금기를 대표합니다. 시안의 고고학 유적지와 박물관은 정교한 당삼채 도자기에서부터 우아한 궁녀 인형에 이르기까지 이 시기의 세련된 미적 감각을 보여줍니다.</p>
+      <p>시와 음악, 춤, 회화, 조각 등 당나라의 문화적 성취는 오늘날까지도 중국 문화에 영향을 미치고 있으며, 시안은 이러한 유산을 자랑스럽게 보존하고 기념하고 있습니다.</p>
+
+      <h3>종교적 다양성</h3>
+      <p>시안은 역사를 통틀어 다양한 종교의 중심지였습니다. 대안탑이 증명하듯이 불교는 당나라 시대에 번창했습니다. 이 도시는 또한 8세기로 거슬러 올라가는 대청진사가 있는 중국에서 가장 오래된 이슬람 공동체의 본거지이기도 합니다.</p>
+      <p>이러한 종교적 다양성은 시안의 문화적 풍요로움에 크게 기여했습니다. 오늘날 방문객들은 불교 사원, 도교 신사 및 이슬람 모스크를 탐험하며 수세기 동안 도시를 특징지은 다른 신앙 체계의 조화로운 공존을 목격할 수 있습니다.</p>
+      `
+    }
+  ]
+};
+
 // 合并所有内容
 export const xianContent = {
   "fr": xianContentFr,
@@ -706,5 +940,7 @@ export const xianContent = {
         `
       }
     ]
-  }
+  },
+  "en": xianContentEn,
+  "ko": xianContentKo
 }; 
